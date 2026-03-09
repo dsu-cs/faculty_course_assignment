@@ -9,6 +9,7 @@ Our backend database for the web server.
 # Build & Run the Project
 - Install the official [Docker Compose](https://docs.docker.com/compose/install/)
 - Navigate to the project's root directory (`faculty_course_assignment`)
+- Create a `.env` file based on `.env.example`
 - Spin up the Compose project with `docker compose up -d`
 - Bring the project down with `docker compose down`
 
