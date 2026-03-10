@@ -1,0 +1,28 @@
+services:
+  postgres:
+    # Reference: https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+    image: postgres:latest
+    container_name: postgres
+    # we won't expose ports, containers will communicate via internal docker network
+    env_file:
+      - .env
+    networks:
+      - backend
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 1s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+networks:
+  backend:
+    name: backend
+    driver: bridge  # isolated from host network
+
+volumes:
+  postgres_data:
+    name: postgres
