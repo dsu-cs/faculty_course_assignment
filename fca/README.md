@@ -51,4 +51,22 @@ The following details how to deploy this application.
 
 ### Docker
 
+#### Quickstart
+
+To run this project on local for the first time **using Docker**, you need to first build the docker image before running the container. 
+You must also have Dockr installed on your development machine.
+
+**NOTE:** Run these commands in the same directory where this file is located.
+
+```bash
+cd 
+docker compose -f docker-compose.local.yml build
+```
+
+After that, you can run the container (and start the server) by running the following command:
+
+```bash
+docker compose -f docker-compose.local.yml up
+```
+
 See detailed [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/3-deployment/deployment-with-docker.html).
