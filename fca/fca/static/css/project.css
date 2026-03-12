@@ -1,13 +1,118 @@
-/* These styles are generated from project.scss. */
+/* Dakota State Brand Color variables*/
+:root {
+  --dsu-white: #fff;
+  --dsu-blue:#003552;
+  --trojan-blue:#00779e;
+  --trojan-blue-bold: #0009dd1e; /*odd, but DSU brand manual specs a different trojan blue for BOLD only */
+  --trojan-blue-for-graphics: #00a9e0;/* Also odd, but brand manual said so ¯\_(ツ)_/¯  (it does look better with the gradient) */
+  --light-gray:#f4f4f4;
+  --light-gray-2:#747676;/* per brand manual, this is for on a white background (probably for accessibility) */
+  --dark-gray:#4d4f53;
+  /* darkened colors, for hover states */
+--dsu-blue-darkened: color-mix(in srgb, var(--dsu-blue) 80%, black);
+--light-gray-darkened: color-mix(in srgb, var(--light-gray) 80%, black);
+--trojan-blue-darkened: color-mix(in srgb, var(--trojan-blue-for-graphics) 80%, black);
+--dark-gray-darkened: color-mix(in srgb, var(--dark-gray) 80%, black);
 
-.alert-debug {
-  color: black;
-  background-color: white;
-  border-color: #d6e9c6;
+}
+/* Our own special classes */
+/* Background Gradients - DSU manual said these can be at only 0 or 90 */
+.bg-dsu-gradient{
+    background: var(--dsu-blue);
+    background: linear-gradient(90deg, var(--dsu-blue) 0%, var(--trojan-blue-for-graphics) 100%);
+}
+.bg-dsu-gradient-vertical {
+    background: var(--dsu-blue);
+    background: linear-gradient(0deg, var(--dsu-blue) 0%, var(--trojan-blue-for-graphics) 100%);
 }
 
-.alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
+/* End of Our own special classes */
+
+/* Bootstrap Overrides - some of these are !important because Bootstrap marked them as such and it is the only way to override them */
+.text-primary{
+  color: var(--dsu-blue)!important;
 }
+.text-info{
+  color: var(--trojan-blue)!important;
+}
+
+strong.text-info, fw-bolder.text-info, fw-bold.text-info{
+  color: var(--trojan-blue-bold)!important;
+}
+
+.text-secondary{
+color:var(--light-gray-2)!important;
+
+}
+
+.text-dark{
+color:var(--dark-gray)!important;
+}
+
+.bg-primary {
+background-color:var(--dsu-blue)!important;
+}
+
+.bg-info {
+background-color:var(--trojan-blue-for-graphics)!important;
+}
+
+.bg-secondary {
+background-color:var(--light-gray)!important;
+}
+
+.bg-dark {
+background-color: var(--dark-gray)!important;
+}
+
+.bg-light {
+background-color: var(--dsu-white)!important;
+}
+
+
+.btn-primary {
+background-color:var(--dsu-blue)!important;
+border-color:var(--dsu-blue)!important;
+
+}
+.btn-primary:hover{
+  background-color:var(--dsu-blue-darkened)!important;
+  border-color:var(--dsu-blue)!important;
+}
+.btn-secondary {
+background-color:var(--light-gray)!important;
+border-color:var(--light-gray)!important;
+color:black;
+}
+.btn-secondary:hover {
+background-color:var(--light-gray-darkened)!important;
+}
+
+.btn-info {
+background-color:var(--trojan-blue-for-graphics)!important;
+border-color:var(--trojan-blue-for-graphics)!important
+color:white!important;
+}
+
+.btn-info:hover {
+background-color:var(--trojan-blue-darkened)!important;
+}
+
+
+
+.btn-dark {
+background-color:var(--dark-gray)!important;
+border-color:var(--dark-gray)!important;
+}
+.btn-dark:hover {
+background-color:var(--dark-gray-darkened)!important;
+}
+
+.btn-link{
+color:var(--trojan-blue)!important;
+}
+.btn-link:hover{
+color:var(--trojan-blue-darkened)!important;
+
+}
+
