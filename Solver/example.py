@@ -6,9 +6,9 @@ from faculty_scheduling import load_all, build_csp, run_solver, validate, write_
 
 # Step 1 — load the CSVs
 data = load_all(
-    preferences_path="data/preferences.csv",
-    time_blocks_path="data/time_blocks.csv",
-    workload_path="data/workload.csv",
+    preferences_path="preferences.csv",
+    time_blocks_path="time_blocks.csv",
+    workload_path="workload.csv",
 )
 
 # Step 2 — build the model
@@ -22,7 +22,7 @@ assignment = run_solver(built)
 if assignment is None:
     print("No solution found.")
 else:
-    write_schedule_csv(assignment, data.sections, data.faculty, "output/schedule.csv")
+    write_schedule_csv(assignment, data.sections, data.faculty, "schedule.csv")
 
 # For validation
 if assignment is not None:
@@ -31,6 +31,6 @@ if assignment is not None:
 
     if report.passed:
         print_summary(assignment, data)
-        write_schedule_csv(assignment, data.sections, data.faculty, "output/schedule.csv")
+        write_schedule_csv(assignment, data.sections, data.faculty, "schedule.csv")
     else:
         print("Validation failed — schedule not written.")
