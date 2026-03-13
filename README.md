@@ -14,19 +14,6 @@ To build & run this tool, use the [Docker guide](docs/docker.md).
  
 See the [Docker guide](docs/docker.md) for full setup instructions.
  
-### Run the solver
- 
-```bash
-# Build and run the solver against the bundled sample CSVs
-docker compose run --rm solver
- 
-# Output lands in ./solver-output/schedule.csv
-```
- 
-```bash
-# Run the solver test suite (no CSV files needed)
-docker compose run --rm solver --test
-```
  
 ### Run the full stack (webserver + database)
  
