@@ -2,7 +2,7 @@ from ortools.sat.python import cp_model
 import sys
 sys.path.append("Solver")
 
-from faculty_scheduling import load_all, build_csp, run_solver, validate, write_schedule_csv
+from faculty_scheduling import load_all, build_csp, run_solver, validate, write_schedule_csv, print_summary
 
 # Step 1 — load the CSVs
 data = load_all(
