@@ -1,0 +1,15 @@
+# Generated output
+schedule.csv
+ 
+# Documentation — not needed at runtime
+README.md
+KNOWN_ISSUES.md
+ 
+# Example integration script (not part of the solver itself)
+example.py
+ 
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
