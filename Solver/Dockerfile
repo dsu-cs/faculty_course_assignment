@@ -9,7 +9,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir ortools openpyxl
  
 # Copy solver source
-COPY faculty_scheduling.py .
+COPY src/faculty_scheduling.py .
  
 # Copy default input CSVs (used when no volume is mounted)
 COPY preferences.csv time_blocks.csv workload.csv ./
