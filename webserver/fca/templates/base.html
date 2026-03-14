@@ -1,32 +1,30 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>
     {% block title %}
     FCA
     {% endblock title %}
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description"
-        content="Behold My Awesome Project!"/>
-  <meta name="author"
-        content="dsu-cd"/>
-  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Behold My Awesome Project!" />
+  <meta name="author" content="dsu-cd" />
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
   {% block css %}
   <!-- Latest compiled and minified Bootstrap CSS -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+    integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Your stuff: Third-party CSS libraries go here -->
   <!-- This file stores project-specific CSS -->
 
 
-  <link href="{% static 'css/project.css' %}" rel="stylesheet"/>
+  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
 
   {% endblock css %}
@@ -37,11 +35,9 @@
 
 
   <!-- Bootstrap JS -->
-  <script defer
-          src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-          integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+    integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Your stuff: Third-party javascript libraries go here -->
 
 
@@ -52,167 +48,170 @@
 
   {% endblock javascript %}
 </head>
+
 <body class="{% block bodyclass %}{% endblock bodyclass %}">
-<div class="mb-1">
-  <nav class="navbar navbar-expand-md navbar-dark bg-primary ">
-    <div class="container-fluid">
-      <button class="navbar-toggler navbar-toggler-right"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'images/DSU_UniversityLogo_Icon_White.png' %}" alt="DSU Logo" title="Click to go home"
-             height="24" class="d-inline-block align-text-top">
-      </a>
+  <div class="mb-1">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary ">
+      <div class="container-fluid">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img src="{% static 'images/DSU_UniversityLogo_Icon_White.png' %}" alt="DSU Logo" title="Click to go home"
+            height="24" class="d-inline-block align-text-top">
+        </a>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-          </li>
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link"
-               href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-          </li>
-          {% else %}
-          {% if ACCOUNT_ALLOW_REGISTRATION %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
-{% block body %}
 
-<div class="container">
-  {% if messages %}
-  {% for message in messages %}
-  <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-    {{ message }}
-    <button type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"></button>
-  </div>
-  {% endfor %}
-  {% endif %}
-  {% block main %}
-  {% block content %}
-  <div class="py-4">
-    <h1>Hello World</h1>
-    <p>This is the default file created by Django CookieCutter. This is the base template, so all other templates exted
-      this one. So, while we may want to delete this route later, don't delete this file</p>
-    <p>For further docs, <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank"
-                            rel="nofollow noopener">see the Bootstrap 5 documentation</a> as that is the CSS framework
-      we are using.</p>
-    <p>Our CSS does not use a build process, but we do have Bootstrap overrides and custom classes in project.css
-      according to the <a href="https://dsu.edu/marketing/_files/DSU-Brand-Manual_web.pdf" target="_blank"
-                          rel="nofollow noopener">DSU Brand Manual</a></p>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Text Color Classes</h5>
-          <ul>
-            <li class="text-primary">Primary (Uses DSU Blue)</li>
-            <li class="text-secondary">Secondary (Uses DSU Light Gray)</li>
-            <li class="text-success">Success</li>
-            <li class="text-danger">Danger</li>
-            <li class="text-warning">Warning</li>
-            <li class="text-info">Info (Uses DSU Trojan Blue)</li>
-            <li class="text-info fw-bolder">Info but Bold (Uses DSU Trojan Blue Variant)</li>
-            <li class="text-dark">Dark (Uses DSU Gray)</li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home<span class="visually-hidden">(current)</span></a>
+            </li>
+
+            
+            {% if request.user.is_authenticated %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
+            </li>
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
+            </li>
+            {% else %}
+            {% if ACCOUNT_ALLOW_REGISTRATION %}
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dean_download' %}">Download<span class="visually-hidden">(current)</span></a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-      <div class="card py-1">
-        <div class="card-body bg-primary">
-          <h5 class="card-title text-white">.bg-primary</h5>
-        </div>
-      </div>
-
-      <div class="card py-1">
-        <div class="card-body bg-secondary">
-          <h5 class="card-title ">.bg-secondary</h5>
-        </div>
-      </div>
-
-      <div class="card py-1">
-        <div class="card-body bg-info">
-          <h5 class="card-title text-white">.bg-info</h5>
-        </div>
-      </div>
-
-      <div class="card py-1">
-        <div class="card-body bg-dark">
-          <h5 class="card-title text-white">.bg-dark</h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Sample Buttons</h5>
-          <a class="mx-1 my-1 btn btn-primary" href="#">.btn-primary</a>
-          <a class="mx-1 my-1 btn btn-secondary">.btn-secondary</a>
-          <a class="mx-1 my-1 btn btn-success">.btn-success</a>
-          <a class="mx-1 my-1 btn btn-danger">.btn-danger</a>
-          <a class="mx-1 my-1 btn btn-warning">.btn-warning</a>
-          <a class="mx-1 my-1 btn btn-info">.btn-info</a>
-          <a class="mx-1 my-1 btn btn-light">.btn-light</a>
-          <a class="mx-1 my-1 btn btn-dark">.btn-dark</a>
-          <a class="mx-1 my-1 btn btn-link">.btn-link</a>
-        </div>
-      </div>
-    </div>
+    </nav>
   </div>
-  {% endblock content %}
-  {% endblock main %}
-</div>
+  {% block body %}
 
+  <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% block main %}
+    {% block content %}
+    <div class="py-4">
+      <h1>Hello World</h1>
+      <p>This is the default file created by Django CookieCutter. This is the base template, so all other templates
+        exted
+        this one. So, while we may want to delete this route later, don't delete this file</p>
+      <p>For further docs, <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank"
+          rel="nofollow noopener">see the Bootstrap 5 documentation</a> as that is the CSS framework
+        we are using.</p>
+      <p>Our CSS does not use a build process, but we do have Bootstrap overrides and custom classes in project.css
+        according to the <a href="https://dsu.edu/marketing/_files/DSU-Brand-Manual_web.pdf" target="_blank"
+          rel="nofollow noopener">DSU Brand Manual</a></p>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Text Color Classes</h5>
+            <ul>
+              <li class="text-primary">Primary (Uses DSU Blue)</li>
+              <li class="text-secondary">Secondary (Uses DSU Light Gray)</li>
+              <li class="text-success">Success</li>
+              <li class="text-danger">Danger</li>
+              <li class="text-warning">Warning</li>
+              <li class="text-info">Info (Uses DSU Trojan Blue)</li>
+              <li class="text-info fw-bolder">Info but Bold (Uses DSU Trojan Blue Variant)</li>
+              <li class="text-dark">Dark (Uses DSU Gray)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-{% endblock body %}
-<footer class="bg-primary text-white mt-auto fixed-bottom">
-  <div class="container p-3">
-    <p class="text-center mb-0"><span class="fw-bolder">Dakota State University</span> | Faculty Course Assignment
-      Application </p>
+      <div class="col-12 col-md-4">
+        <div class="card py-1">
+          <div class="card-body bg-primary">
+            <h5 class="card-title text-white">.bg-primary</h5>
+          </div>
+        </div>
+
+        <div class="card py-1">
+          <div class="card-body bg-secondary">
+            <h5 class="card-title ">.bg-secondary</h5>
+          </div>
+        </div>
+
+        <div class="card py-1">
+          <div class="card-body bg-info">
+            <h5 class="card-title text-white">.bg-info</h5>
+          </div>
+        </div>
+
+        <div class="card py-1">
+          <div class="card-body bg-dark">
+            <h5 class="card-title text-white">.bg-dark</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Sample Buttons</h5>
+            <a class="mx-1 my-1 btn btn-primary" href="#">.btn-primary</a>
+            <a class="mx-1 my-1 btn btn-secondary">.btn-secondary</a>
+            <a class="mx-1 my-1 btn btn-success">.btn-success</a>
+            <a class="mx-1 my-1 btn btn-danger">.btn-danger</a>
+            <a class="mx-1 my-1 btn btn-warning">.btn-warning</a>
+            <a class="mx-1 my-1 btn btn-info">.btn-info</a>
+            <a class="mx-1 my-1 btn btn-light">.btn-light</a>
+            <a class="mx-1 my-1 btn btn-dark">.btn-dark</a>
+            <a class="mx-1 my-1 btn btn-link">.btn-link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+    {% endblock main %}
   </div>
-</footer>
-{% block modal %}
-{% endblock modal %}
-{% block inline_javascript %}
-{% comment %}
-Script tags with only code, no src (defer by default). To run
-with a "defer" so that you run inline code:
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    /* Run whatever you want */
-  });
-</script>
-{% endcomment %}
-{% endblock inline_javascript %}
+
+
+  {% endblock body %}
+  <footer class="bg-primary text-white mt-auto fixed-bottom">
+    <div class="container p-3">
+      <p class="text-center mb-0"><span class="fw-bolder">Dakota State University</span> | Faculty Course Assignment
+        Application </p>
+    </div>
+  </footer>
+  {% block modal %}
+  {% endblock modal %}
+  {% block inline_javascript %}
+  {% comment %}
+  Script tags with only code, no src (defer by default). To run
+  with a "defer" so that you run inline code:
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      /* Run whatever you want */
+    });
+  </script>
+  {% endcomment %}
+  {% endblock inline_javascript %}
 </body>
+
 </html>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Dean Download{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="mb-4">Dean Download Page</h1>
+  <p class="text-muted">
+    Upload the Faculty Preference CSV and BIM Scrape CSV to generate the workbook.
+  </p>
+
+  <div class="card shadow-sm p-4">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="faculty_csv" class="form-label">Faculty Preference CSV</label>
+        <input
+          class="form-control"
+          type="file"
+          id="faculty_csv"
+          name="faculty_csv"
+          accept=".csv"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="bim_csv" class="form-label">BIM Scrape CSV</label>
+        <input
+          class="form-control"
+          type="file"
+          id="bim_csv"
+          name="bim_csv"
+          accept=".csv"
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Generate Workbook
+      </button>
+    </form>
+  </div>
+
+  {% if message %}
+    <div class="alert alert-info mt-4">
+      {{ message }}
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}
