@@ -26,3 +26,7 @@ class DeanDownloadView(View):
         )
 
         return render(request, self.template_name, {"message": message})
+    
+class FacultyPreferenceView(View):
+    template_name = "pages/faculty_preference.html"
+    ## Add Additional Code here

@@ -12,8 +12,8 @@
     {% endblock title %}
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Behold My Awesome Project!" />
-  <meta name="author" content="dsu-cd" />
+  <meta name="description" content="Faculty Course Assignment Project" />
+  <meta name="author" content="dsu-cs" />
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
   {% block css %}
   <!-- Latest compiled and minified Bootstrap CSS -->
@@ -83,6 +83,9 @@
             <li class="nav-item">
               {# URL provided by django-allauth/account/urls.py #}
               <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'faculty_preference' %}">Dean Download<span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dean_download' %}">Dean Download<span class="visually-hidden">(current)</span></a>
