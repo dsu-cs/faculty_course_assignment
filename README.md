@@ -9,6 +9,7 @@ To build & run this tool, use the [Docker guide](docs/docker.md).
 | Component | Description |
 |---|---|
 | [Solver](Solver/README.md) | CP-SAT constraint solver — assigns faculty to sections based on preferences, workload limits, and time conflicts |
+| [Web Server](webserver/README.md) | Faculty interface for submitting course preferences. Assembler of workbook through BIM scraping for the deans. |
  
 ## Quick Start
  
@@ -20,6 +21,13 @@ See the [Docker guide](docs/docker.md) for full setup instructions.
 ```bash
 cp .env.example .env
 docker compose up -d postgres
+```
+
+### Run just the webserver component
+cd into webserver folder
+```bash
+cp .env.example .env
+docker compose -f docker-compose.local.yml up --build
 ```
  
 ## CI
