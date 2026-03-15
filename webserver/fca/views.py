@@ -29,4 +29,8 @@ class DeanDownloadView(View):
     
 class FacultyPreferenceView(View):
     template_name = "pages/faculty_preference.html"
-    ## Add Additional Code here
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    ## Add additional code here for completion of form, postgres, etc
+    ## will need a POST request
