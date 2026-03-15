@@ -23,9 +23,7 @@
   <!-- Your stuff: Third-party CSS libraries go here -->
   <!-- This file stores project-specific CSS -->
 
-
   <link href="{% static 'css/project.css' %}" rel="stylesheet" />
-
 
   {% endblock css %}
   <!-- Le javascript
@@ -33,17 +31,11 @@
   {# Placed at the top of the document so pages load faster with defer #}
   {% block javascript %}
 
-
   <!-- Bootstrap JS -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
     integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- Your stuff: Third-party javascript libraries go here -->
-
-
-  <!-- place project specific Javascript in this file -->
-
-
+  
   <script defer src="{% static 'js/project.js' %}"></script>
 
   {% endblock javascript %}
@@ -93,7 +85,7 @@
               <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'dean_download' %}">Download<span class="visually-hidden">(current)</span></a>
+              <a class="nav-link" href="{% url 'dean_download' %}">Dean Download<span class="visually-hidden">(current)</span></a>
             </li>
             {% endif %}
           </ul>
