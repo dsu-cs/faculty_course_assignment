@@ -21,8 +21,8 @@
     integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Your stuff: Third-party CSS libraries go here -->
+   
   <!-- This file stores project-specific CSS -->
-
   <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
   {% endblock css %}
@@ -85,7 +85,7 @@
               <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'faculty_preference' %}">Dean Download<span class="visually-hidden">(current)</span></a>
+              <a class="nav-link" href="{% url 'faculty_preference' %}">Faculty Preferences<span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dean_download' %}">Dean Download<span class="visually-hidden">(current)</span></a>
@@ -110,10 +110,9 @@
     {% block main %}
     {% block content %}
     <div class="py-4">
-      <h1>Hello World</h1>
+      <h1>Faculty Course Assignment Web Server</h1>
       <p>This is the default file created by Django CookieCutter. This is the base template, so all other templates
-        exted
-        this one. So, while we may want to delete this route later, don't delete this file</p>
+        exted this one. So, while we may want to delete this route later, don't delete this file</p>
       <p>For further docs, <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank"
           rel="nofollow noopener">see the Bootstrap 5 documentation</a> as that is the CSS framework
         we are using.</p>
