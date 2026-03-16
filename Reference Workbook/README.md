@@ -1,3 +1,15 @@
+
+# Run the tab Creater
+(Creates the data tabs on a pre-existing excel file)
+Environment
+    python -m venv venv
+    .\venv\Scripts\activate
+    pip install -r requirements.txt
+Run Program
+    python tab_creater.py
+
+
+
 ## Data Flow
 
 ```
