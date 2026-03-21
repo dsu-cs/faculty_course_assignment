@@ -65,15 +65,39 @@ def solve():
     }
     """
     try:
-        # Get data from request
-        data = request.get_json()
+        # Try to get JSON data with better error handling
+        # force=True: parse even if Content-Type is wrong
+        # silent=True: return None instead of raising exception
+        data = request.get_json(force=True, silent=True)
         
-        if not data:
+        # Handle case where JSON parsing failed (invalid JSON)
+        if data is None:
+            logger.warning("Failed to parse JSON data or no data sent")
             return jsonify({
                 "status": "error",
-                "message": "No data received"
+                "message": "Invalid JSON format"
             }), 400
         
+        # Handle case where data is empty dict {}
+        # This is valid JSON but contains no data
+        if not data or len(data) == 0:
+            logger.warning("Received empty data object")
+            return jsonify({
+                "status": "success",
+                "message": "STUB: Empty request received",
+                "data_received": {},
+                "violations": [],
+                "warnings": [
+                    {
+                        "type": "warning",
+                        "message": "No data provided in request"
+                    }
+                ],
+                "recommendations": [],
+                "timestamp": datetime.now().isoformat()
+            }), 200
+        
+        # Log what we received
         logger.info(f"Received solve request with {len(data)} keys")
         logger.info(f"Keys in request: {list(data.keys())}")
         
@@ -107,10 +131,11 @@ def solve():
         return jsonify(response), 200
         
     except Exception as e:
-        logger.error(f"Error processing solve request: {str(e)}", exc_info=True)
+        # Catch any other unexpected errors
+        logger.error(f"Unexpected error processing solve request: {str(e)}", exc_info=True)
         return jsonify({
             "status": "error",
-            "message": str(e),
+            "message": "Internal server error",
             "timestamp": datetime.now().isoformat()
         }), 500
 
