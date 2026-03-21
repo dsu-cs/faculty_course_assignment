@@ -1,6 +1,12 @@
 # Docker Structure
 We are using Docker Compose for the project, and our services currently include:
+- [`django`](#django)
 - [`postgres`](#postgres)
+
+## Django
+Our frontend for the web server.
+- Uses a CookieCutter template application
+- Custom Bootstrap CSS overrides for the styling from [DSU Brand Manual](https://dsu.edu/marketing/_files/DSU-Brand-Manual_web.pdf)
 
 ## Postgres
 Our backend database for the web server.
