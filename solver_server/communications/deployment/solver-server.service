@@ -1,0 +1,18 @@
+[Unit]
+Description=Faculty Course Assignment Solver Server
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/faculty_course_assignment/solver_server/communications
+Environment="PATH=/opt/faculty_course_assignment/venv/bin"
+ExecStart=/opt/faculty_course_assignment/venv/bin/gunicorn \
+    --config /opt/faculty_course_assignment/solver_server/communications/deployment/gunicorn_config.py \
+    server:app
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
