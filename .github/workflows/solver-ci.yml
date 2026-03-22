@@ -11,7 +11,7 @@ on:
       - '.github/workflows/solver-ci.yml'
 
   push:
-    branches: ['main']
+    branches: ['main', 'communications-setup']
     paths:
       - 'Solver/**'
       - '.github/workflows/solver-ci.yml'
