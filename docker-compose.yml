@@ -18,19 +18,6 @@ services:
       start_period: 10s
     restart: unless-stopped
 
-  solver:
-    build:
-      context: ./Solver
-      dockerfile: Dockerfile
-    container_name: solver
-    # Mount a host directory to retrieve schedule.csv after the solver finishes.
-    # Replace ./solver-output with any path on your machine.
-    volumes:
-      - ./solver-output:/app/output
-    # The solver exits on its own once finished — no restart needed.
-    restart: "no"
-
-
 networks:
   backend:
     name: backend
