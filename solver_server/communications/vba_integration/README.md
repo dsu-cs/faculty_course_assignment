@@ -1,6 +1,6 @@
-# VBA Integration Module
+# Complete VBA Integration for Excel Workbook
 
-Excel VBA code to call the Communications Server API.
+Complete Excel VBA integration for Faculty Course Assignment Solver.
 
 ## Author
 Muhammad Bhutta (Manager - Communications Feature)
@@ -9,69 +9,95 @@ Muhammad Bhutta (Manager - Communications Feature)
 Lindsey Crow (Developer - Communications Feature)
 
 ## Files
-- SolverAPI.bas - Main VBA module with API functions
+
+1. SolverAPI.bas - API communication module
+2. ExcelDataHelper.bas - Excel data reader and CSV builder
+3. MainController.bas - Main orchestrator
+
+## Excel Workbook Structure
+
+Your workbook needs these sheets:
+
+1. Preferences - Faculty preferences
+   - Column A: Section
+   - Column B: Faculty
+   - Column C: Score (0-3 or X)
+
+2. TimeBlocks - Section meeting times
+   - Column A: Section
+   - Column B: Pattern (MWF, TTh, MW)
+   - Column C: Start Time (HH:MM)
+
+3. Workload - Faculty min/max load
+   - Column A: Faculty
+   - Column B: Min sections
+   - Column C: Max sections
+
+4. Results - Output sheet (auto-created)
 
 ## Installation
 
-1. Open Excel workbook
+1. Open your Excel workbook
 2. Press Alt+F11 to open VBA Editor
 3. Go to File > Import File
-4. Select SolverAPI.bas
-5. Module will appear in your project
+4. Import all three .bas files:
+   - SolverAPI.bas
+   - ExcelDataHelper.bas
+   - MainController.bas
 
 ## Usage
 
-### Test the Connection
+### Option 1: Run from VBA
+
+Press Alt+F11, then in Immediate Window:
 ```vb
-Sub TestConnection()
-    SolverAPI.TestAPI
-End Sub
+MainController.RunSolver
 ```
 
-This will:
-- Check if server is running
-- Send sample data
-- Show response in message box
+### Option 2: Add Button to Excel
 
-### Use in Your Code
+1. Developer tab > Insert > Button
+2. Assign macro: MainController.RunSolver
+3. Click button to run solver
+
+### Option 3: Quick Test
 ```vb
-' Check server is running
-If SolverAPI.CheckServerHealth() Then
-    
-    ' Build CSV strings from your Excel data
-    Dim prefCSV As String
-    Dim timeCSV As String  
-    Dim workCSV As String
-    
-    ' TODO: Build CSV from Excel sheets
-    prefCSV = BuildPreferencesCSV()
-    timeCSV = BuildTimeBlocksCSV()
-    workCSV = BuildWorkloadCSV()
-    
-    ' Call solver
-    Dim response As String
-    response = SolverAPI.CallSolver(prefCSV, timeCSV, workCSV)
-    
-    ' Parse response and update Excel
-    ParseAndDisplayResults response
-    
-End If
+MainController.QuickTest
 ```
 
-## API Details
+## Complete Workflow
 
-See API_SPEC.md for complete endpoint documentation.
+1. User fills data in Preferences, TimeBlocks, Workload sheets
+2. User clicks "Run Solver" button
+3. VBA checks server is running
+4. VBA reads Excel data and builds CSV strings
+5. VBA calls API POST /solve endpoint
+6. API calls Anto's solver
+7. Solver returns assignments
+8. VBA writes results to Results sheet
+9. User sees assignments
 
-## Server Must Be Running
+## Server Requirements
 
-Before using this module, the Flask server must be running:
-- Local: http://localhost:5000
+Flask server must be running:
+- Local development: http://localhost:5000
 - Production: Update API_BASE_URL in SolverAPI.bas
 
-## Next Steps for Lindsey
+Start server:
+```bash
+python solver_server/communications/server.py
+```
 
-1. Import SolverAPI.bas into workbook
-2. Test with TestAPI() function
-3. Build functions to read Excel data into CSV format
-4. Build functions to parse JSON response
-5. Build functions to write results to Excel
+## Troubleshooting
+
+- "Server not running" - Start Flask server first
+- "Error reading data" - Check sheet names match exactly
+- "Invalid JSON" - Check data has no special characters
+
+## Next Steps
+
+1. Create sample Excel workbook with correct sheet structure
+2. Import all three VBA modules
+3. Add data to sheets
+4. Test with Quick Test first
+5. Run full solver with RunSolver
