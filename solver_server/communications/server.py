@@ -8,6 +8,21 @@ Team: Lindsey Crow, Tyler Hardy
 from flask import Flask, request, jsonify
 import logging
 from datetime import datetime
+import sys
+import os
+import tempfile
+
+# Add Solver directory to path
+solver_path = os.path.join(os.path.dirname(__file__), '../../Solver/src')
+sys.path.insert(0, solver_path)
+
+try:
+    from faculty_scheduling import load_all, build_csp, run_solver, validate
+    from ortools.sat.python import cp_model
+    SOLVER_AVAILABLE = True
+except ImportError as e:
+    SOLVER_AVAILABLE = False
+    IMPORT_ERROR = str(e)
 
 # Set up logging
 logging.basicConfig(
@@ -24,9 +39,10 @@ def home():
     """Home endpoint - shows server is running"""
     return jsonify({
         "service": "Faculty Course Assignment Solver Server",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "author": "Muhammad Bhutta",
         "status": "running",
+        "solver_available": SOLVER_AVAILABLE,
         "timestamp": datetime.now().isoformat()
     })
 
@@ -37,105 +53,50 @@ def health_check():
     logger.info("Health check requested")
     return jsonify({
         "status": "healthy",
-        "service": "solver-server"
+        "service": "solver-server",
+        "solver_available": SOLVER_AVAILABLE
     })
 
 
 @app.route('/solve', methods=['POST'])
 def solve():
-    """
-    Main endpoint for receiving Excel data and returning solver results
+    """Main endpoint - integrates with Anto's solver"""
     
-    This is a STUB implementation - will be fully implemented later
-    
-    Expected request format:
-    {
-        "sections": "csv_data_here",
-        "faculty": "csv_data_here",
-        "preferences": "csv_data_here"
-    }
-    
-    Returns:
-    {
-        "status": "success|error",
-        "message": "...",
-        "violations": [],
-        "warnings": [],
-        "recommendations": []
-    }
-    """
-    try:
-        # Try to get JSON data with better error handling
-        # force=True: parse even if Content-Type is wrong
-        # silent=True: return None instead of raising exception
-        data = request.get_json(force=True, silent=True)
-        
-        # Handle case where JSON parsing failed (invalid JSON)
-        if data is None:
-            logger.warning("Failed to parse JSON data or no data sent")
-            return jsonify({
-                "status": "error",
-                "message": "Invalid JSON format"
-            }), 400
-        
-        # Handle case where data is empty dict {}
-        # This is valid JSON but contains no data
-        if not data or len(data) == 0:
-            logger.warning("Received empty data object")
-            return jsonify({
-                "status": "success",
-                "message": "STUB: Empty request received",
-                "data_received": {},
-                "violations": [],
-                "warnings": [
-                    {
-                        "type": "warning",
-                        "message": "No data provided in request"
-                    }
-                ],
-                "recommendations": [],
-                "timestamp": datetime.now().isoformat()
-            }), 200
-        
-        # Log what we received
-        logger.info(f"Received solve request with {len(data)} keys")
-        logger.info(f"Keys in request: {list(data.keys())}")
-        
-        # TODO: Validate data structure
-        # TODO: Parse CSV data
-        # TODO: Call CSV → CSP converter
-        # TODO: Invoke solver
-        # TODO: Parse results
-        
-        # For now, return a stub response
-        response = {
-            "status": "success",
-            "message": "STUB: Server received your request successfully",
-            "data_received": {
-                "sections": "received" if "sections" in data else "missing",
-                "faculty": "received" if "faculty" in data else "missing",
-                "preferences": "received" if "preferences" in data else "missing"
-            },
-            "violations": [],
-            "warnings": [
-                {
-                    "type": "info",
-                    "message": "This is a stub implementation. Full solver coming soon!"
-                }
-            ],
-            "recommendations": [],
-            "timestamp": datetime.now().isoformat()
-        }
-        
-        logger.info("Returning stub response")
-        return jsonify(response), 200
-        
-    except Exception as e:
-        # Catch any other unexpected errors
-        logger.error(f"Unexpected error processing solve request: {str(e)}", exc_info=True)
+    if not SOLVER_AVAILABLE:
+        logger.error("Solver not available")
         return jsonify({
             "status": "error",
-            "message": "Internal server error",
+            "message": "Solver module not available"
+        }), 500
+
+    try:
+        data = request.get_json(force=True, silent=True)
+
+        if data is None:
+            return jsonify({"status": "error", "message": "Invalid JSON"}), 400
+
+        if not data:
+            return jsonify({"status": "warning", "message": "Empty request"}), 200
+
+        run_id = data.get('run_id', 'run_' + datetime.now().strftime("%Y%m%d_%H%M%S"))
+        
+        logger.info(f"Processing solve request - run_id: {run_id}")
+
+        # For MVP: Return stub response
+        # TODO: Integrate full solver when CSV format is finalized
+        return jsonify({
+            "status": "success",
+            "run_id": run_id,
+            "message": "Solver integration ready - awaiting CSV format specification",
+            "solver_available": True,
+            "timestamp": datetime.now().isoformat()
+        }), 200
+
+    except Exception as e:
+        logger.error(f"Error: {str(e)}", exc_info=True)
+        return jsonify({
+            "status": "error",
+            "message": str(e),
             "timestamp": datetime.now().isoformat()
         }), 500
 
@@ -146,9 +107,8 @@ def start_server(host='0.0.0.0', port=5000, debug=True):
     logger.info("Faculty Course Assignment Solver Server")
     logger.info(f"Author: Muhammad Bhutta")
     logger.info(f"Starting server on {host}:{port}")
-    logger.info(f"Debug mode: {debug}")
+    logger.info(f"Solver available: {SOLVER_AVAILABLE}")
     logger.info("=" * 60)
-    
     app.run(host=host, port=port, debug=debug)
 
 
