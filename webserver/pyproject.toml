@@ -29,6 +29,7 @@ dependencies = [
   "pillow==12.1.1",
   "psycopg[c]==3.3.3",
   "python-slugify==8.0.4",
+  "pyjwt==2.10.1",
   "redis==7.3.0",
   "whitenoise==6.12.0",
 ]
