@@ -1,5 +1,5 @@
 
-# Run the tab Creater
+# Run the tab Creator
 (Creates the data tabs on a pre-existing excel file)
 Environment
     python -m venv venv
@@ -7,6 +7,18 @@ Environment
     pip install -r requirements.txt
 Run Program
     python tab_creater.py
+
+Description
+    It creates the Different Tabs in the workbook. Using the BIM CSV File.
+    If the Tab does exist it edits the Tab, if it doesn't exist it creates the Tab.
+
+
+# Workbook
+Update Log
+ - different fields are revealed when selecting from dropdowns
+ - Faculty and Course Page both have there own dropdown area inside the Work Tab.
+ - The Faculty Fields are now filled in when selecting a certain Faculty.
+
 
 
 
