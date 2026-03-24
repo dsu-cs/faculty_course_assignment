@@ -98,3 +98,24 @@ def test_magic_verify_replayed_token_denied(client):
 
     second_response = client.get(reverse("users:magic_verify", kwargs={"token": token}))
     assert second_response.status_code == HTTPStatus.FORBIDDEN
+
+
+def test_authenticated_nav_shows_faculty_and_dean_links(client):
+    user = UserFactory.create(email="faculty@dsu.edu")
+    client.force_login(user)
+
+    response = client.get(reverse("home"))
+
+    assert response.status_code == HTTPStatus.OK
+    content = response.content.decode()
+    assert reverse("faculty_preference") in content
+    assert reverse("dean_download") in content
+
+
+def test_magic_login_nav_hides_faculty_and_dean_links_for_anonymous(client):
+    response = client.get(reverse("users:magic_login"))
+
+    assert response.status_code == HTTPStatus.OK
+    content = response.content.decode()
+    assert reverse("faculty_preference") not in content
+    assert reverse("dean_download") not in content
