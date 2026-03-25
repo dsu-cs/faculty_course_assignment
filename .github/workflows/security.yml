@@ -1,0 +1,57 @@
+name: Security Scan
+
+on:
+  schedule:
+    - cron: "0 */23 * * *"
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+
+jobs:
+  checkov:
+    name: Checkov IaC Scan
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov
+        run: checkov -d . --quiet --compact
+
+  secret-scan:
+    name: Secret Scan (TruffleHog)
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install TruffleHog
+        run: |
+          curl -sSfL \
+            https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh \
+            | sh -s -- -b /usr/local/bin
+
+      - name: TruffleHog OSS
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+
+          ARGS="git file://$(pwd) --fail --no-update --only-verified"
+
+          if [ -n "$BASE" ] && [ "$BASE" != "0000000000000000000000000000000000000000" ]; then
+            trufflehog $ARGS --since-commit "$BASE"
+          else
+            trufflehog $ARGS
+          fi
