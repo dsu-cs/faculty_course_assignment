@@ -1,50 +1,67 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Dean Download{% endblock title %}
 
 {% block content %}
 <div class="container py-5">
-  <h1 class="mb-4">Dean Download Page</h1>
-  <p class="text-muted">
-    Upload the Faculty Preference CSV and BIM Scrape CSV to generate the workbook.
-  </p>
 
-  <div class="card shadow-sm p-4">
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
+  <form method="post" class="page-section">
+    {% csrf_token %}
 
-      <div class="mb-3">
-        <label for="faculty_csv" class="form-label">Faculty Preference CSV</label>
-        <input
-          class="form-control"
-          type="file"
-          id="faculty_csv"
-          name="faculty_csv"
-          accept=".csv"
-          required
-        >
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-5 col-md-6">
+        <div class="upload-card">
+          <div class="upload-card-header faculty-header">
+            <h3>Faculty Preferences</h3>
+          </div>
+          <div class="upload-card-body text-center">
+            <div class="section-label with-lines">Survey Results CSV</div>
+            <p class="section-text centered-text">
+              Faculty preference data ready to merge.
+            </p>
+
+            <div class="status-pill status-pill-center">
+              <span>✓</span>
+              <span>CSV Ready</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="mb-3">
-        <label for="bim_csv" class="form-label">BIM Scrape CSV</label>
-        <input
-          class="form-control"
-          type="file"
-          id="bim_csv"
-          name="bim_csv"
-          accept=".csv"
-          required
-        >
-      </div>
+      <div class="col-lg-5 col-md-6">
+        <div class="upload-card">
+          <div class="upload-card-header bim-header">
+            <h3>BIM Data</h3>
+          </div>
+          <div class="upload-card-body text-center">
+            <div class="section-label with-lines">Current BIM Data CSV</div>
+            <p class="section-text centered-text">
+              Latest course information from BIM scrape.
+            </p>
 
-      <button type="submit" class="btn btn-primary">
-        Generate Workbook
+            <div class="status-pill status-pill-center">
+              <span>✓</span>
+              <span>CSV Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="download-panel text-center mt-5">
+      <h3>Download Workbook</h3>
+      <p>
+        Prepare and download the combined Excel workbook.
+      </p>
+      <button type="submit" class="btn generate-btn">
+        Download Workbook
       </button>
-    </form>
-  </div>
+    </div>
+  </form>
 
   {% if message %}
-    <div class="alert alert-info mt-4">
+    <div class="alert alert-info mt-4 shadow-sm rounded-4 text-center">
       {{ message }}
     </div>
   {% endif %}
