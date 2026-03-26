@@ -4,6 +4,7 @@ name: Docker Compose CD
 description: Re-deploy on updates to `main` to our VM over SSH.
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
