@@ -25,8 +25,8 @@ jobs:
           port: '22'
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           timeout: 300  # if we take over 5 minutes, there's a problem...
-          # ref_name in our case is the branch name, which is main for this workflow
-          # .env only gets copied if it doesn't already exist to avoid overwriting.
+          # ref_name is the branch name, main for this workflow
+          # .env is copied only if missing to avoid accidental overwrite.
           script: |
             set -eux
             cd "${{ secrets.PROJECT_PATH }}"
@@ -44,5 +44,6 @@ jobs:
             git pull origin "${{ github.ref_name }}"
             echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose pull
             echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose build
-            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose up -d --force-recreate
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose up -d \
+              --force-recreate
             echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose ps

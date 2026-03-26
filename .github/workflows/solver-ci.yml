@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-### This is the testing of the Solver library
+  # This is the testing of the Solver library
   native-solver-tests:
     name: Native solver tests
     runs-on: ubuntu-latest
@@ -65,7 +65,8 @@ jobs:
           retention-days: 7
 
   docker-solver-tests:
-  ### This tests the solver system in the context of a standalone Docker container in case we split it out in the future
+    # This tests the solver system in the context of a standalone
+    # Docker container in case we split it out in the future
     name: Docker solver tests
     runs-on: ubuntu-latest
 
