@@ -25,12 +25,23 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           timeout: 300  # if we take over 5 minutes, there's a problem...
           # ref_name in our case is the branch name, which is main for this workflow
+          # .env only gets copied if it doesn't already exist to avoid overwriting.
           script: |
             set -eux
             cd "${{ secrets.PROJECT_PATH }}"
+            if [ ! -f .env ] && [ -f .env.example ]; then
+              cp .env.example .env
+              echo "Copied .env.example to .env"
+            elif [ ! -f .env ]; then
+              echo "WARNING: .env not found and .env.example not present" >&2
+              exit 1
+            else
+              echo ".env already exists"
+            fi
             git fetch --all --prune
             git checkout --force "${{ github.ref_name }}"
             git pull origin "${{ github.ref_name }}"
             docker compose pull
             docker compose build
             docker compose up -d --force-recreate
+            docker compose ps

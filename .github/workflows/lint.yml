@@ -14,6 +14,6 @@ jobs:
 
       # lint all yaml files in the branch
       - name: yaml-lint
-        uses: khiemdoan/yaml-linting-action@v1
+        uses: khiemdoan/yaml-linting-action@v1.0.0
         with:
           files: .

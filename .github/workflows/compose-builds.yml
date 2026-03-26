@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
         # https://github.com/marketplace/actions/docker-setup-compose
       - name: Set up Docker Compose
         uses: docker/setup-compose-action@v2
