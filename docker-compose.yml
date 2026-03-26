@@ -21,7 +21,7 @@ services:
 
   solver-api:
     build:
-      context: .
+      context: Solver
       dockerfile: Dockerfile
     container_name: solver-api
     depends_on:
