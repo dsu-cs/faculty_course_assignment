@@ -18,7 +18,11 @@ Update Log
  - different fields are revealed when selecting from dropdowns
  - Faculty and Course Page both have there own dropdown area inside the Work Tab.
  - The Faculty Fields are now filled in when selecting a certain Faculty.
-
+ - Checkboxes Can now delete Faculty from a course (With lot of small bug fixes)
+ - Now the selection of the College and Faculty and Course mode are clean and
+   feel professional.
+ - The Course Mode and Faculty Page now have hidden rows at the Top to seperate
+   the different selections.
 
 
 
