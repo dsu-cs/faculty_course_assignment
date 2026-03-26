@@ -1,0 +1,36 @@
+name: Docker Compose CD
+
+description: Re-deploy on updates to `main` to our VM over SSH.
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # https://github.com/appleboy/ssh-action
+      - name: Deploy to remote server via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          port: '22'
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          timeout: 300  # if we take over 5 minutes, there's a problem...
+          # ref_name in our case is the branch name, which is main for this workflow
+          script: |
+            set -eux
+            cd "${{ secrets.PROJECT_PATH }}"
+            git fetch --all --prune
+            git checkout --force "${{ github.ref_name }}"
+            git pull origin "${{ github.ref_name }}"
+            docker compose pull
+            docker compose build
+            docker compose up -d --force-recreate
