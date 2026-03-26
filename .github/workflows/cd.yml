@@ -1,3 +1,4 @@
+---
 name: Docker Compose CD
 
 description: Re-deploy on updates to `main` to our VM over SSH.
@@ -41,7 +42,7 @@ jobs:
             git fetch --all --prune
             git checkout --force "${{ github.ref_name }}"
             git pull origin "${{ github.ref_name }}"
-            docker compose pull
-            docker compose build
-            docker compose up -d --force-recreate
-            docker compose ps
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose pull
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose build
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose up -d --force-recreate
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose ps

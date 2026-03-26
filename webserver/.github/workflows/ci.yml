@@ -1,3 +1,4 @@
+---
 name: CI
 
 # Enable Buildkit and let compose use it to speed up image building

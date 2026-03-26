@@ -1,9 +1,10 @@
+---
 name: Docker Compose Validation
 description: Build & Run the Docker compose stack and pass health checks.
 
 on:
-  pull_request:
-  push:
+  pull_request: true
+  push: true
 
 jobs:
   validate:
@@ -13,8 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      # https://github.com/docker/setup-docker-action
       - name: Set up Docker Engine
-        uses: docker/setup-docker@v3
+        uses: docker/setup-docker-action@v5
         with:
           version: latest
 
