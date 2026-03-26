@@ -1,0 +1,19 @@
+name: Run linters
+description: Run linters on yaml files for formatting and syntax errors.
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  yaml-lint:
+    runs-on: ubuntu-slim
+
+    steps:
+      - uses: actions/checkout@v6
+
+      # lint all yaml files in the branch
+      - name: yaml-lint
+        uses: khiemdoan/yaml-linting-action@v1
+        with:
+          files: .
