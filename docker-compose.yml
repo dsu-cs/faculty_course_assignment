@@ -1,9 +1,11 @@
+---
 services:
   postgres:
-    # Reference: https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+    # https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
     image: postgres:latest
     container_name: postgres
-    # we won't expose ports, containers will communicate via internal docker network
+    # we won't expose ports
+    # containers will communicate via internal docker network
     env_file:
       - .env
     networks:

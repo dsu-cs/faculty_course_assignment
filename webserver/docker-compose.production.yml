@@ -1,10 +1,9 @@
+---
 volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   production_traefik: {}
   production_django_media: {}
-
-
 
 services:
   django:

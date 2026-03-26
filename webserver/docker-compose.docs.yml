@@ -1,3 +1,4 @@
+---
 services:
   docs:
     image: fca_local_docs
