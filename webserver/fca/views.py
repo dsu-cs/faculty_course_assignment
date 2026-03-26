@@ -16,7 +16,7 @@ class DeanDownloadView(View):
             return render(
                 request,
                 self.template_name,
-                {"message": "Please upload both CSV files."},
+                {"message": "Both CSV files must be added."},
             )
 
         # this need to be update by IURI later on
