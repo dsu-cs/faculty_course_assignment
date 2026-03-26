@@ -8,15 +8,20 @@ on:
 jobs:
   validate:
     name: Compose validation
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Set up Docker Engine
+        uses: docker/setup-docker@v3
+        with:
+          version: latest
+
       - name: Copy .env.example to .env
         run: cp .env.example .env
 
-        # https://github.com/marketplace/actions/docker-setup-compose
+      # https://github.com/marketplace/actions/docker-setup-compose
       - name: Set up Docker Compose
         uses: docker/setup-compose-action@v2
         with:
