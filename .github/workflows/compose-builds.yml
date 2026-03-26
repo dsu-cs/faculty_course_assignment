@@ -3,8 +3,8 @@ name: Docker Compose Validation
 description: Build & Run the Docker compose stack and pass health checks.
 
 on:
-  pull_request: true
-  push: true
+  pull_request:
+  push:
 
 jobs:
   validate:

@@ -3,8 +3,8 @@ name: Run linters
 description: Run linters on yaml files for formatting and syntax errors.
 
 on:
-  pull_request: true
-  push: true
+  pull_request:
+  push:
 
 jobs:
   yaml-lint:
