@@ -6,12 +6,12 @@ on:
   push:
 
 jobs:
-  build:
+  validate:
+    name: Compose validation
     runs-on: ubuntu-slim
     steps:
-        #
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
         # https://github.com/marketplace/actions/docker-setup-compose
       - name: Set up Docker Compose
