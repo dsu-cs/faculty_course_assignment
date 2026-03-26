@@ -113,15 +113,44 @@ def run(term=None):
                     active_days = day_table.find_all('td', class_='active')
                     days_text = "".join([day.get_text(strip=True) for day in active_days])
 
-                    # 2. Get Time (skipping dates)
+                    # 2. Get Time — split on " in " to avoid including location text
                     for string in meeting_cell.stripped_strings:
                         if "-" in string and any(char.isdigit() for char in string) and "/" not in string:
-                            time_text = string.replace(" in", "").replace(" ", "").strip()
+                            time_text = string.split(" in ")[0].replace(" ", "").strip()
+                            if time_text.endswith("in"):
+                                time_text = time_text[:-2]
                             break
-                    # 3. Get Room (Looks for the link containing 'room.html')
+
+                    # 3. Get Room — filter out TBD
                     room_link = meeting_cell.find('a', href=lambda x: x and 'room.html' in x)
                     if room_link:
-                        room_text = room_link.get_text(strip=True)
+                        room_val = room_link.get_text(strip=True)
+                        if room_val.upper() != "TBD":
+                            room_text = room_val
+                else:
+                    # Fallback: no tblDOW — parse the meeting cell text directly
+                    cell_text = meeting_cell.get_text(strip=True)
+                    if "Internet" in cell_text:
+                        days_text = "Internet"
+                    else:
+                        # Extract active days from recognized abbreviations
+                        day_abbrevs = {"Su", "M", "Tu", "W", "Th", "F", "Sa"}
+                        days_text = "".join(s for s in meeting_cell.stripped_strings if s in day_abbrevs)
+
+                        # Extract time — split on " in " to avoid including location text
+                        for string in meeting_cell.stripped_strings:
+                            if "-" in string and any(char.isdigit() for char in string) and "/" not in string:
+                                time_text = string.split(" in ")[0].replace(" ", "").strip()
+                                if time_text.endswith("in"):
+                                    time_text = time_text[:-2]
+                                break
+
+                        # Extract room — filter out TBD
+                        room_link = meeting_cell.find('a', href=lambda x: x and 'room.html' in x)
+                        if room_link:
+                            room_val = room_link.get_text(strip=True)
+                            if room_val.upper() != "TBD":
+                                room_text = room_val
 
                 # --- Faculty Logic ---
                 # Targets specifically the Faculty column (2nd from right)
