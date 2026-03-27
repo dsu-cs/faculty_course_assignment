@@ -1,11 +1,14 @@
 from django.contrib import messages
 from django.db import transaction
+from django.http import FileResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
 
+from fca.preferences.exporters import build_dean_download_artifacts
 from fca.preferences.models import FacultyCoursePreference
 from fca.preferences.models import FacultyPreferenceSubmission
+from fca.preferences.services import group_sections_for_preferences
 from fca.preferences.services import get_prefixes
 from fca.preferences.services import load_sections_tab_data
 
@@ -22,22 +25,16 @@ class DeanDownloadView(View):
         return render(request, self.template_name)
 
     def post(self, request):
-        faculty_csv = request.FILES.get("faculty_csv")
-        bim_csv = request.FILES.get("bim_csv")
+        try:
+            artifacts = build_dean_download_artifacts()
+        except (FileNotFoundError, ValueError) as exc:
+            return render(request, self.template_name, {"message": str(exc)})
 
-        if not faculty_csv or not bim_csv:
-            return render(
-                request,
-                self.template_name,
-                {"message": "Both CSV files must be added."},
-            )
-
-        # this need to be update by IURI later on
-        message = (
-            f"Received files: {faculty_csv.name} and {bim_csv.name}. "
-            "Workbook generation logic will be connected next."
+        return FileResponse(
+            artifacts.workbook_path.open("rb"),
+            as_attachment=True,
+            filename=artifacts.workbook_path.name,
         )
-        return render(request, self.template_name, {"message": message})
 
 
 class FacultyPreferenceView(View):
@@ -45,10 +42,11 @@ class FacultyPreferenceView(View):
 
     def get_context_data(self, selected_prefixes: list[str] | None = None):
         sections = load_sections_tab_data()
+        courses = group_sections_for_preferences(sections)
         prefixes = get_prefixes(sections)
         return {
             "prefixes": prefixes,
-            "sections": sections,
+            "courses": courses,
             "selected_prefixes": selected_prefixes or [],
         }
 
@@ -57,7 +55,11 @@ class FacultyPreferenceView(View):
 
     def post(self, request):
         sections = load_sections_tab_data()
-        sections_by_crn = {section["crn"]: section for section in sections}
+        courses = group_sections_for_preferences(sections)
+        if not courses:
+            messages.error(request, "No course data was found in sections_tab.csv.")
+            return render(request, self.template_name, self.get_context_data())
+
         selected_prefixes = sorted(
             {
                 prefix.strip().upper()
@@ -66,40 +68,32 @@ class FacultyPreferenceView(View):
             },
         )
 
-        saved_preferences: list[FacultyCoursePreference] = []
+        submitted_preferences: dict[str, str] = {}
         for key, value in request.POST.items():
             if not key.startswith("pref_"):
                 continue
             if value not in VALID_PREFERENCE_VALUES:
                 continue
+            submitted_preferences[key.removeprefix("pref_")] = value
 
-            crn = key.removeprefix("pref_")
-            section = sections_by_crn.get(crn)
-            if section is None:
-                continue
-
+        saved_preferences: list[FacultyCoursePreference] = []
+        for course in courses:
+            course_id = str(course["id"])
+            preference = submitted_preferences.get(course_id, "X")
             saved_preferences.append(
                 FacultyCoursePreference(
-                    crn=section["crn"],
-                    prefix=section["prefix"],
-                    course_number=section["number"],
-                    sequence=section["sequence"],
-                    title=section["title"],
-                    credits=section["credits"],
-                    faculty=section["faculty"],
-                    meeting_days=section["days"],
-                    meeting_time=section["time"],
-                    room=section["room"],
-                    preference=value,
+                    crn=course_id,
+                    prefix=str(course["prefix"]),
+                    course_number=str(course["number"]),
+                    sequence="",
+                    title=str(course["title"]),
+                    credits=str(course["credits"]),
+                    faculty="",
+                    meeting_days="",
+                    meeting_time="",
+                    room=f"{course['section_count']} section(s)",
+                    preference=preference,
                 ),
-            )
-
-        if not saved_preferences:
-            messages.error(request, "Select at least one course preference before submitting.")
-            return render(
-                request,
-                self.template_name,
-                self.get_context_data(selected_prefixes=selected_prefixes),
             )
 
         faculty_identifier = "anonymous"

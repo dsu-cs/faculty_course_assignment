@@ -33,7 +33,7 @@ def load_sections_tab_data() -> list[dict[str, str]]:
             number = (row.get("Num") or "").strip()
             sequence = (row.get("Seq") or "").strip()
 
-            if not prefix or not crn:
+            if not prefix or not crn or not number:
                 continue
 
             sections.append(
@@ -49,7 +49,7 @@ def load_sections_tab_data() -> list[dict[str, str]]:
                     "days": (row.get("Days") or "").strip(),
                     "time": (row.get("Time") or "").strip(),
                     "room": (row.get("Room") or "").strip(),
-                }
+                },
             )
 
     sections.sort(
@@ -58,9 +58,46 @@ def load_sections_tab_data() -> list[dict[str, str]]:
             section["number"],
             section["sequence"],
             section["crn"],
-        )
+        ),
     )
     return sections
+
+
+def build_course_group_id(prefix: str, number: str) -> str:
+    return f"{prefix}-{number}"
+
+
+def group_sections_for_preferences(sections: list[dict[str, str]]) -> list[dict[str, str | int | list[str]]]:
+    grouped: dict[tuple[str, str], dict[str, str | int | list[str]]] = {}
+
+    for section in sections:
+        key = (section["prefix"], section["number"])
+        course = grouped.setdefault(
+            key,
+            {
+                "id": build_course_group_id(section["prefix"], section["number"]),
+                "prefix": section["prefix"],
+                "number": section["number"],
+                "title": section["title"],
+                "credits": section["credits"],
+                "section_count": 0,
+                "section_crns": [],
+            },
+        )
+
+        course["section_count"] = int(course["section_count"]) + 1
+        section_crns = course["section_crns"]
+        if isinstance(section_crns, list):
+            section_crns.append(section["crn"])
+
+        if not course["title"] and section["title"]:
+            course["title"] = section["title"]
+        if not course["credits"] and section["credits"]:
+            course["credits"] = section["credits"]
+
+    courses = list(grouped.values())
+    courses.sort(key=lambda course: (str(course["prefix"]), str(course["number"])))
+    return courses
 
 
 def get_prefixes(sections: list[dict[str, str]]) -> list[str]:

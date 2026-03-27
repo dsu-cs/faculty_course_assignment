@@ -15,6 +15,7 @@ services:
     volumes:
       - /app/.venv
       - .:/app:z
+      - ../Reference Workbook:/reference-workbook:ro
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres

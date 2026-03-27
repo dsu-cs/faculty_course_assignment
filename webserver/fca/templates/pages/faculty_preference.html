@@ -8,7 +8,7 @@
   <h1 class="mb-4">Faculty Course Preference Form</h1>
 
   <p class="text-muted">
-    Search by subject prefix, then mark your preference for each section.
+    Search by subject prefix, then mark your preference for each grouped course.
   </p>
 
   <div class="card shadow-sm p-4">
@@ -65,14 +65,14 @@
   </div>
 </div>
 
-{{ sections|json_script:"sections-data" }}
+{{ courses|json_script:"courses-data" }}
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const sections = JSON.parse(document.getElementById("sections-data").textContent);
+    const courses = JSON.parse(document.getElementById("courses-data").textContent);
     const tableBody = document.getElementById("courseTableBody");
     const form = document.getElementById("facultyPreferenceForm");
     const prefixSelect = new TomSelect("#prefixFilter", {
@@ -94,11 +94,11 @@
 
     function renderCourses() {
       const activePrefixes = selectedPrefixes();
-      const visibleSections = activePrefixes.length
-        ? sections.filter((section) => activePrefixes.includes(section.prefix))
+      const visibleCourses = activePrefixes.length
+        ? courses.filter((course) => activePrefixes.includes(course.prefix))
         : [];
 
-      if (!visibleSections.length) {
+      if (!visibleCourses.length) {
         tableBody.innerHTML = `
           <tr>
             <td colspan="4" class="text-muted text-center py-4">
@@ -109,29 +109,23 @@
         return;
       }
 
-      tableBody.innerHTML = visibleSections.map((section) => {
-        const courseLabel = `${section.number}${section.sequence ? " " + section.sequence : ""} - ${section.title}`;
-        const detailBits = [
-          `CRN ${section.crn}`,
-          section.days || "TBA",
-          section.time || "TBA",
-          section.room || "TBA",
-          section.faculty || "Staff",
-        ];
+      tableBody.innerHTML = visibleCourses.map((course) => {
+        const courseLabel = `${course.number} - ${course.title}`;
+        const detailLabel = `${course.section_count} section${course.section_count === 1 ? "" : "s"} grouped`;
 
         return `
           <tr>
-            <td><strong>${escapeHtml(section.prefix)}</strong></td>
+            <td><strong>${escapeHtml(course.prefix)}</strong></td>
             <td>${escapeHtml(courseLabel)}</td>
-            <td>${escapeHtml(detailBits.join(" | "))}</td>
+            <td>${escapeHtml(detailLabel)}</td>
             <td>
-              <div class="btn-group" role="group" aria-label="Preference for ${escapeHtml(`${section.prefix} ${section.number}`)}">
+              <div class="btn-group" role="group" aria-label="Preference for ${escapeHtml(`${course.prefix} ${course.number}`)}">
                 ${["0", "1", "2", "3", "X"].map((value) => {
-                  const labelClass = value === "0" ? "btn-outline-primary" : value === "X" ? "btn-outline-danger" : "btn-outline-secondary";
-                  const inputId = `c${section.id}_${value}`;
-                  const checked = value === "0" ? "checked" : "";
+                  const labelClass = value === "X" ? "btn-outline-danger" : value === "0" ? "btn-outline-primary" : "btn-outline-secondary";
+                  const inputId = `c${course.id}_${value}`;
+                  const checked = value === "X" ? "checked" : "";
                   return `
-                    <input type="radio" class="btn-check" name="pref_${section.crn}" id="${inputId}" value="${value}" ${checked}>
+                    <input type="radio" class="btn-check" name="pref_${course.id}" id="${inputId}" value="${value}" ${checked}>
                     <label class="btn ${labelClass}" for="${inputId}">${value}</label>
                   `;
                 }).join("")}
