@@ -621,7 +621,7 @@ def load_all(
     #sections_path:    str = DEFAULT_SECTIONS_PATH,
 
     sections_path:    str | None = DEFAULT_SECTIONS_PATH, #  MAKING IT OPTIONAL FOR CD
-    time_path:        str = DEFAULT_TIME_PATH,
+    time_blocks_path: str = DEFAULT_TIME_PATH,
     preferences_path: str = DEFAULT_PREFERENCES_PATH,
     workload_path:    str | None = DEFAULT_WORKLOAD_PATH,
 ) -> SchedulingData:
@@ -638,7 +638,7 @@ def load_all(
       6. Build conflict pairs from regular sections only
     """
     # ── Step 1 & 2: Read CSVs ────────────────────────────────────────
-    time_by_crn     = load_time_csv(time_path)
+    time_by_crn = load_time_csv(time_blocks_path)
 
     try:
         sections_by_crn = load_sections_csv(sections_path)
@@ -1096,7 +1096,7 @@ def main() -> None:
     
     parser.add_argument("--sections", default=DEFAULT_SECTIONS_PATH,
                         help="Path to sections.csv (optional — derived from time_blocks.csv if not found)")
-    parser.add_argument("--time",        default=DEFAULT_TIME_PATH,
+    parser.add_argument("--time_blocks", default=DEFAULT_TIME_PATH,
                         help="Path to time.csv")
     parser.add_argument("--preferences", default=DEFAULT_PREFERENCES_PATH,
                         help="Path to preferences.csv")
@@ -1113,7 +1113,7 @@ def main() -> None:
         return
 
     # Step 1 — Load CSVs
-    data = load_all(args.sections, args.time, args.preferences, args.workload)
+    data = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
 
     # Step 2 — Build model
     model = cp_model.CpModel()
