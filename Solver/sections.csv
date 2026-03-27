@@ -1,0 +1,51 @@
+﻿CRN,Sub,Num,Seq,Crd,Desc,Current Seats,Max Seats,Waitlist,Faculty,Current Workload
+72944,CIS,332,D01,3,Structured Systems Analysis and Design,16,25,0,,5
+72983,CIS,484,D01,3,Database Management Systems,11,25,0,,5
+77882,BIOL,221L,D02,1,Human Anatomy Lab,5,24,0,,5
+70757,BIOL,103,D01,2,Biology Survey II,35,48,0,,5
+73643,CSC,105,D07,3,Introduction to Computers,24,24,0,,5
+74260,CSC,482,D01,3,Algorithms and Optimization,13,25,0,,5
+73311,PSYC,101,D01,3,General Psychology,18,25,0,,5
+80691,PSYC,101,D02,3,General Psychology,21,25,0,,5
+71177,INED,211,D01,3,South Dakota American Indian Culture and Education,22,25,0,,5
+80830,HON,202,DH2,1,Intermediate Honors Seminar,16,25,0,,5
+76824,HON,102,DH3,1,Introduction to Honors,18,18,0,,5
+72795,MATH,316,D01,3,Discrete Mathematics,6,20,0,,5
+76222,MATH,281,DH1,3,Honors: Intro to Statistics,25,30,0,,5
+73553,CLI,101,D01,3,Introduction to Cyber Leadership,11,13,0,,5
+78118,CLI,470,D01,3,Online Radicalization,9,9,0,,5
+70439,BADM,101,D01,3,Survey of Business,39,40,0,,5
+70788,BADM,310,D01,3,Business Finance,9,25,0,,5
+77198,PHIL,100,D01,3,Introduction to Philosophy,10,24,0,,5
+73059,GS,100,DA1,0 TO 1,University Experience,50,50,0,,5
+78328,GS,100,DB1,0 TO 1,University Experience,40,40,0,,5
+72790,LIBM,205,D02,2,Children's Literature,24,25,0,,5
+70346,ACCT,210,D01,3,Principles of Accounting I,18,25,0,,5
+79221,HIST,358,D01,3,The United States Since 1941,11,13,0,,5
+77839,ENGL,101,DK3,3,Composition I,10,12,0,,5
+70769,ENGL,201,D04,3,Composition II,15,24,0,,5
+79216,DAD,280,D01,3,Film Editing,11,20,0,,5
+71213,DAD,222,D02,3,Audio Production I: Foundations,14,18,0,,5
+74050,PHYS,111L,D02,1,Introduction to Physics I Laboratory,13,24,0,,5
+74052,PHYS,185L,D01,1,Solar System Astronomy Lab,13,24,0,,5
+73309,POLS,350,D01,3,International Relations,8,13,0,,5
+71216,INFA,713,D01,3,Managing Security Risks,12,25,0,,5
+79118,INFA,702,D01,3,Introduction to Data Privacy,23,25,0,,5
+73937,ECON,201,D01,3,Principles of Microeconomics,3,25,0,,5
+74110,ECON,202,D01,3,Principles of Macroeconomics,12,25,0,,5
+77047,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,16,25,0,,5
+79232,GEOG,132L,DH1,1,Physical Geography  Natural Landscapes Lab,18,20,0,,5
+74222,EDFN,300,D01,3,Principles of Practices of Teaching Middle School,20,25,0,,5
+77926,EDFN,102,D01,3,Introduction to Education,23,25,0,,5
+73956,MUS,204,D01,3,Introduction to Digital Sound Design,13,18,0,,5
+78311,MUS,100,D02,3,Music Appreciation,21,30,0,,5
+73568,SEED,303,D01,1,Sec/Mid Content Area: Math,15,15,0,,5
+73566,SEED,302,D03,2,Sec/Mid Content Area: Math,9,10,0,,5
+79223,MCOM,351,D01,3,Web Design,15,20,0,,5
+73949,MCOM,362,D01,3,Digital Typography,16,20,0,,5
+75310,EXS,482,D01,3,Theory of Strength and Conditioning,2,25,0,,5
+72811,EXS,145,D01,3,Introduction to Exercise Science and Physical Education,21,25,0,,5
+77928,EDER,431,D01,3,Educational Technology and Assessment,14,25,0,,5
+79677,SPED,443,D01,1,Serving Students With Learning Disabilities Practicum,24,25,0,,5
+79676,SPED,442,D01,2,Serving Students With Learning Disabilities,24,25,0,,5
+75303,PE,300,D01,3,Applied Sport and Exercise Science,13,25,0,,5

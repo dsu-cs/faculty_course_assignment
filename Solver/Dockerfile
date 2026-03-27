@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir ortools openpyxl
 COPY src/faculty_scheduling.py .
  
 # Copy default input CSVs (used when no volume is mounted)
-COPY preferences.csv time_blocks.csv workload.csv ./
+COPY preferences.csv time.csv sections.csv ./
  
 # Output directory — mount a host path here to retrieve schedule.csv
 RUN mkdir -p /app/output
