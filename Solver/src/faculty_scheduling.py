@@ -42,7 +42,7 @@ from workload import FACULTY_MAX_WORKLOAD, OVERLOAD_PENALTY
 # ══════════════════════════════════════════════════════════════════════
 # Default workbook path
 DEFAULT_SECTIONS_PATH    = "sections.csv"
-DEFAULT_TIME_PATH        = "time.csv"
+DEFAULT_TIME_PATH        = "time_blocks.csv"
 DEFAULT_PREFERENCES_PATH = "preferences.csv"
 
 # Solver time limit — increase for larger problems
