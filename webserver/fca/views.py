@@ -27,7 +27,7 @@ class DeanDownloadView(View):
     def post(self, request):
         try:
             artifacts = build_dean_download_artifacts()
-        except (FileNotFoundError, ValueError) as exc:
+        except (FileNotFoundError, ImportError, ValueError) as exc:
             return render(request, self.template_name, {"message": str(exc)})
 
         return FileResponse(

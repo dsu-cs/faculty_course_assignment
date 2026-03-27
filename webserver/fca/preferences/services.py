@@ -10,6 +10,7 @@ SECTION_CSV_CANDIDATES = (
     Path(settings.BASE_DIR) / "BIM Scraper" / "sections_tab.csv",
     Path(settings.BASE_DIR).parent / "Reference Workbook" / "sections_tab.csv",
 )
+RAW_SECTION_HEADERS = ["CRN", "Sub", "Num", "Seq", "Crd", "Desc", "Seats", "Waitlist", "Days", "Time", "Room", "Faculty"]
 
 
 def get_sections_tab_path() -> Path:
@@ -21,45 +22,48 @@ def get_sections_tab_path() -> Path:
     raise FileNotFoundError(msg)
 
 
-def load_sections_tab_data() -> list[dict[str, str]]:
-    sections_path = get_sections_tab_path()
+def load_raw_sections_tab_data(path: Path | None = None) -> list[dict[str, str]]:
+    sections_path = path or get_sections_tab_path()
 
     with sections_path.open(newline="", encoding="utf-8-sig") as csv_file:
         reader = csv.DictReader(csv_file)
-        sections: list[dict[str, str]] = []
+        rows: list[dict[str, str]] = []
         for row in reader:
-            prefix = (row.get("Sub") or "").strip().upper()
-            crn = (row.get("CRN") or "").strip()
-            number = (row.get("Num") or "").strip()
-            sequence = (row.get("Seq") or "").strip()
+            normalized_row = {header: (row.get(header) or "").strip() for header in RAW_SECTION_HEADERS}
+            if normalized_row["CRN"]:
+                rows.append(normalized_row)
 
-            if not prefix or not crn or not number:
-                continue
+    rows.sort(key=lambda row: (row["Sub"], row["Num"], row["Seq"], row["CRN"]))
+    return rows
 
-            sections.append(
-                {
-                    "id": crn,
-                    "crn": crn,
-                    "prefix": prefix,
-                    "number": number,
-                    "sequence": sequence,
-                    "title": (row.get("Desc") or "").strip(),
-                    "credits": (row.get("Crd") or "").strip(),
-                    "faculty": (row.get("Faculty") or "").strip(),
-                    "days": (row.get("Days") or "").strip(),
-                    "time": (row.get("Time") or "").strip(),
-                    "room": (row.get("Room") or "").strip(),
-                },
-            )
 
-    sections.sort(
-        key=lambda section: (
-            section["prefix"],
-            section["number"],
-            section["sequence"],
-            section["crn"],
-        ),
-    )
+def load_sections_tab_data(path: Path | None = None) -> list[dict[str, str]]:
+    sections: list[dict[str, str]] = []
+    for row in load_raw_sections_tab_data(path):
+        prefix = row["Sub"].upper()
+        crn = row["CRN"]
+        number = row["Num"]
+        sequence = row["Seq"]
+
+        if not prefix or not crn or not number:
+            continue
+
+        sections.append(
+            {
+                "id": crn,
+                "crn": crn,
+                "prefix": prefix,
+                "number": number,
+                "sequence": sequence,
+                "title": row["Desc"],
+                "credits": row["Crd"],
+                "faculty": row["Faculty"],
+                "days": row["Days"],
+                "time": row["Time"],
+                "room": row["Room"],
+            },
+        )
+
     return sections
 
 

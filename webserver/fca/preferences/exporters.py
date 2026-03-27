@@ -6,11 +6,12 @@ import shutil
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from types import SimpleNamespace
 
 from django.conf import settings
 
 from fca.preferences.models import FacultyPreferenceSubmission
+from fca.preferences.services import RAW_SECTION_HEADERS
+from fca.preferences.services import load_raw_sections_tab_data
 from fca.preferences.services import load_sections_tab_data
 
 
@@ -20,12 +21,14 @@ REFERENCE_WORKBOOK_DIR_CANDIDATES = (
     Path(settings.BASE_DIR).parent / "Reference Workbook",
 )
 REFERENCE_WORKBOOK_FILE_CANDIDATES = ("workbook.xlsm", "workbook.xlsx")
+BIM_SCRAPER_PATH = Path(settings.BASE_DIR) / "BIM Scraper" / "bim_scraper.py"
 EXPORT_DIR = Path(settings.MEDIA_ROOT) / "dean_downloads"
 PREFERENCE_RANK = {"X": -1, "0": 0, "1": 1, "2": 2, "3": 3}
 
 
 @dataclass
 class DeanDownloadArtifacts:
+    sections_csv_path: Path
     preferences_csv_path: Path
     workbook_path: Path
 
@@ -54,24 +57,19 @@ def _get_reference_workbook_path() -> Path:
     raise FileNotFoundError(msg)
 
 
-def _load_reference_tab_creator(reference_workbook_path: Path):
-    import openpyxl
-
-    workbook_dir = _get_reference_workbook_dir()
-    module_path = workbook_dir / "tab_creator.py"
-    spec = importlib.util.spec_from_file_location("reference_tab_creator", module_path)
+def _load_module(module_name: str, module_path: Path):
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
     if spec is None or spec.loader is None:
-        msg = f"Unable to load workbook helper from {module_path}"
+        msg = f"Unable to load module from {module_path}"
         raise ImportError(msg)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-
-    if reference_workbook_path.suffix.lower() == ".xlsm":
-        module.openpyxl = SimpleNamespace(
-            load_workbook=lambda file_path: openpyxl.load_workbook(file_path, keep_vba=True),
-        )
-
     return module
+
+
+def refresh_bim_sections_csv(output_path: Path) -> Path:
+    scraper_module = _load_module("bim_scraper", BIM_SCRAPER_PATH)
+    return Path(scraper_module.run(output_path))
 
 
 def _latest_submissions_by_faculty() -> dict[str, FacultyPreferenceSubmission]:
@@ -100,8 +98,8 @@ def _collapse_submission_preferences(submission: FacultyPreferenceSubmission) ->
     return grouped_preferences
 
 
-def build_preferences_csv(output_path: Path) -> Path:
-    sections = load_sections_tab_data()
+def build_preferences_csv(output_path: Path, sections_csv_path: Path | None = None) -> Path:
+    sections = load_sections_tab_data(sections_csv_path) if sections_csv_path else load_sections_tab_data()
     latest_submissions = _latest_submissions_by_faculty()
     faculty_names = list(latest_submissions.keys())
 
@@ -130,15 +128,117 @@ def build_preferences_csv(output_path: Path) -> Path:
     return output_path
 
 
-def _populate_preferences_tab(workbook_path: Path, preferences_csv_path: Path) -> None:
+def _load_workbook(workbook_path: Path):
     from openpyxl import load_workbook
+
+    return load_workbook(workbook_path, keep_vba=workbook_path.suffix.lower() == ".xlsm")
+
+
+def _prepare_sheet(workbook, title: str):
+    sheet = workbook[title] if title in workbook.sheetnames else workbook.create_sheet(title)
+    for merged_range in list(sheet.merged_cells.ranges):
+        sheet.unmerge_cells(str(merged_range))
+    if sheet.max_row:
+        sheet.delete_rows(1, sheet.max_row)
+    return sheet
+
+
+def _style_title_and_headers(sheet, headers: list[str], title: str) -> None:
     from openpyxl.styles import Alignment
     from openpyxl.styles import Font
     from openpyxl.styles import PatternFill
 
-    workbook = load_workbook(workbook_path, keep_vba=workbook_path.suffix.lower() == ".xlsm")
-    sheet = workbook["Preferences"] if "Preferences" in workbook.sheetnames else workbook.create_sheet("Preferences")
-    sheet.delete_rows(1, sheet.max_row)
+    title_fill = PatternFill(start_color="1F4E78", end_color="1F4E78", fill_type="solid")
+    header_fill = PatternFill(start_color="5B9BD5", end_color="5B9BD5", fill_type="solid")
+    white_font = Font(color="FFFFFF", bold=True)
+
+    sheet.cell(row=1, column=1).value = title
+    sheet.cell(row=1, column=1).fill = title_fill
+    sheet.cell(row=1, column=1).font = Font(color="FFFFFF", bold=True, size=14)
+    sheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=max(1, len(headers)))
+
+    for column_index, header in enumerate(headers, start=1):
+        cell = sheet.cell(row=2, column=column_index)
+        cell.value = header
+        cell.fill = header_fill
+        cell.font = white_font
+        cell.alignment = Alignment(horizontal="center")
+
+
+def _populate_sections_tab(workbook_path: Path, raw_sections: list[dict[str, str]]) -> None:
+    workbook = _load_workbook(workbook_path)
+    headers = RAW_SECTION_HEADERS
+    sheet = _prepare_sheet(workbook, "Sections")
+    _style_title_and_headers(sheet, headers, "Sections")
+
+    for row_index, row_data in enumerate(raw_sections, start=3):
+        for column_index, header in enumerate(headers, start=1):
+            sheet.cell(row=row_index, column=column_index).value = row_data.get(header, "")
+
+    widths = {
+        "A": 10,
+        "B": 8,
+        "C": 8,
+        "D": 8,
+        "E": 8,
+        "F": 36,
+        "G": 12,
+        "H": 10,
+        "I": 10,
+        "J": 14,
+        "K": 24,
+        "L": 28,
+    }
+    for column_letter, width in widths.items():
+        sheet.column_dimensions[column_letter].width = width
+
+    workbook.save(workbook_path)
+
+
+def _format_time(raw_time: str) -> tuple[str, str]:
+    if "-" not in raw_time:
+        return raw_time, ""
+    start_time, end_time = [value.strip() for value in raw_time.split("-", maxsplit=1)]
+    if len(start_time) == 4:
+        start_time = f"{start_time[:2]}:{start_time[2:]}"
+    if len(end_time) == 4:
+        end_time = f"{end_time[:2]}:{end_time[2:]}"
+    return start_time, end_time
+
+
+def _populate_time_tab(workbook_path: Path, raw_sections: list[dict[str, str]]) -> None:
+    workbook = _load_workbook(workbook_path)
+    headers = ["CRN", "Sub", "Days", "Start Time", "End Time", "Room"]
+    sheet = _prepare_sheet(workbook, "Time")
+    _style_title_and_headers(sheet, headers, "Time")
+
+    for row_index, row_data in enumerate(raw_sections, start=3):
+        start_time, end_time = _format_time(row_data.get("Time", ""))
+        row_values = [
+            row_data.get("CRN", ""),
+            row_data.get("Sub", ""),
+            row_data.get("Days", ""),
+            start_time,
+            end_time,
+            row_data.get("Room", ""),
+        ]
+        for column_index, value in enumerate(row_values, start=1):
+            sheet.cell(row=row_index, column=column_index).value = value
+
+    widths = {"A": 10, "B": 8, "C": 10, "D": 12, "E": 12, "F": 24}
+    for column_letter, width in widths.items():
+        sheet.column_dimensions[column_letter].width = width
+
+    workbook.save(workbook_path)
+
+
+def _populate_preferences_tab(workbook_path: Path, preferences_csv_path: Path) -> None:
+    from openpyxl.styles import Alignment
+    from openpyxl.styles import Font
+    from openpyxl.styles import PatternFill
+
+    workbook = _load_workbook(workbook_path)
+    sheet = _prepare_sheet(workbook, "Preferences")
 
     with preferences_csv_path.open(newline="", encoding="utf-8") as csv_file:
         rows = list(csv.reader(csv_file))
@@ -177,20 +277,21 @@ def build_dean_download_artifacts() -> DeanDownloadArtifacts:
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     EXPORT_DIR.mkdir(parents=True, exist_ok=True)
+    sections_csv_path = EXPORT_DIR / f"sections_tab_{timestamp}.csv"
     preferences_csv_path = EXPORT_DIR / f"survey_preferences_{timestamp}.csv"
     workbook_path = EXPORT_DIR / f"faculty_assignment_workbook_{timestamp}{reference_workbook_path.suffix.lower()}"
 
-    build_preferences_csv(preferences_csv_path)
+    sections_csv_path = refresh_bim_sections_csv(sections_csv_path)
+    build_preferences_csv(preferences_csv_path, sections_csv_path)
     shutil.copy2(reference_workbook_path, workbook_path)
 
-    sections = load_sections_tab_data()
-    tab_creator = _load_reference_tab_creator(reference_workbook_path)
-    tab_creator.create_tabs(str(workbook_path), ["Sections", "Time", "Assignment", "Preferences"])
-    tab_creator.populate_sections_tab(str(workbook_path), sections)
-    tab_creator.populate_time_tab(str(workbook_path), sections)
+    raw_sections = load_raw_sections_tab_data(sections_csv_path)
+    _populate_sections_tab(workbook_path, raw_sections)
+    _populate_time_tab(workbook_path, raw_sections)
     _populate_preferences_tab(workbook_path, preferences_csv_path)
 
     return DeanDownloadArtifacts(
+        sections_csv_path=sections_csv_path,
         preferences_csv_path=preferences_csv_path,
         workbook_path=workbook_path,
     )
