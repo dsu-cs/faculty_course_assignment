@@ -1,9 +1,10 @@
 import csv
 from pathlib import Path
 
-from bs4 import BeautifulSoup
+import sys
+from datetime import datetime
 from playwright.sync_api import sync_playwright
-
+from bs4 import BeautifulSoup
 
 DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parent / "sections_tab.csv"
 
@@ -93,4 +94,5 @@ def run(output_path: Path | str = DEFAULT_OUTPUT_PATH) -> Path:
 
 
 if __name__ == "__main__":
-    run()
+    term = sys.argv[1] if len(sys.argv) > 1 else None
+    run(term)
