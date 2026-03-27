@@ -1,51 +1,202 @@
-﻿CRN,Sub,Num,Seq,Crd,Desc,Current Seats,Max Seats,Waitlist,Faculty,Current Workload
-72944,CIS,332,D01,3,Structured Systems Analysis and Design,16,25,0,,5
-72983,CIS,484,D01,3,Database Management Systems,11,25,0,,5
-77882,BIOL,221L,D02,1,Human Anatomy Lab,5,24,0,,5
-70757,BIOL,103,D01,2,Biology Survey II,35,48,0,,5
-73643,CSC,105,D07,3,Introduction to Computers,24,24,0,,5
-74260,CSC,482,D01,3,Algorithms and Optimization,13,25,0,,5
-73311,PSYC,101,D01,3,General Psychology,18,25,0,,5
-80691,PSYC,101,D02,3,General Psychology,21,25,0,,5
-71177,INED,211,D01,3,South Dakota American Indian Culture and Education,22,25,0,,5
-80830,HON,202,DH2,1,Intermediate Honors Seminar,16,25,0,,5
-76824,HON,102,DH3,1,Introduction to Honors,18,18,0,,5
-72795,MATH,316,D01,3,Discrete Mathematics,6,20,0,,5
-76222,MATH,281,DH1,3,Honors: Intro to Statistics,25,30,0,,5
-73553,CLI,101,D01,3,Introduction to Cyber Leadership,11,13,0,,5
-78118,CLI,470,D01,3,Online Radicalization,9,9,0,,5
-70439,BADM,101,D01,3,Survey of Business,39,40,0,,5
-70788,BADM,310,D01,3,Business Finance,9,25,0,,5
-77198,PHIL,100,D01,3,Introduction to Philosophy,10,24,0,,5
-73059,GS,100,DA1,0 TO 1,University Experience,50,50,0,,5
-78328,GS,100,DB1,0 TO 1,University Experience,40,40,0,,5
-72790,LIBM,205,D02,2,Children's Literature,24,25,0,,5
-70346,ACCT,210,D01,3,Principles of Accounting I,18,25,0,,5
-79221,HIST,358,D01,3,The United States Since 1941,11,13,0,,5
-77839,ENGL,101,DK3,3,Composition I,10,12,0,,5
-70769,ENGL,201,D04,3,Composition II,15,24,0,,5
-79216,DAD,280,D01,3,Film Editing,11,20,0,,5
-71213,DAD,222,D02,3,Audio Production I: Foundations,14,18,0,,5
-74050,PHYS,111L,D02,1,Introduction to Physics I Laboratory,13,24,0,,5
-74052,PHYS,185L,D01,1,Solar System Astronomy Lab,13,24,0,,5
-73309,POLS,350,D01,3,International Relations,8,13,0,,5
-71216,INFA,713,D01,3,Managing Security Risks,12,25,0,,5
-79118,INFA,702,D01,3,Introduction to Data Privacy,23,25,0,,5
-73937,ECON,201,D01,3,Principles of Microeconomics,3,25,0,,5
-74110,ECON,202,D01,3,Principles of Macroeconomics,12,25,0,,5
-77047,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,16,25,0,,5
-79232,GEOG,132L,DH1,1,Physical Geography  Natural Landscapes Lab,18,20,0,,5
-74222,EDFN,300,D01,3,Principles of Practices of Teaching Middle School,20,25,0,,5
-77926,EDFN,102,D01,3,Introduction to Education,23,25,0,,5
-73956,MUS,204,D01,3,Introduction to Digital Sound Design,13,18,0,,5
-78311,MUS,100,D02,3,Music Appreciation,21,30,0,,5
-73568,SEED,303,D01,1,Sec/Mid Content Area: Math,15,15,0,,5
-73566,SEED,302,D03,2,Sec/Mid Content Area: Math,9,10,0,,5
-79223,MCOM,351,D01,3,Web Design,15,20,0,,5
-73949,MCOM,362,D01,3,Digital Typography,16,20,0,,5
-75310,EXS,482,D01,3,Theory of Strength and Conditioning,2,25,0,,5
-72811,EXS,145,D01,3,Introduction to Exercise Science and Physical Education,21,25,0,,5
-77928,EDER,431,D01,3,Educational Technology and Assessment,14,25,0,,5
-79677,SPED,443,D01,1,Serving Students With Learning Disabilities Practicum,24,25,0,,5
-79676,SPED,442,D01,2,Serving Students With Learning Disabilities,24,25,0,,5
-75303,PE,300,D01,3,Applied Sport and Exercise Science,13,25,0,,5
+Sections
+CRN,Sub,Num,Seq,Crd,Desc,Seats,Waitlist,Days,Time,Room,Faculty,Current Workload
+71464,INFS,890,D01,1,Seminar,19/25,0,W,1100-1150,East Hall 201,,5
+74260,CSC,482,D01,3,Algorithms and Optimization,13/25,0,TuTh,1600-1715,East Hall 003,,5
+75713,CLI,242,D01,3,Cyber Social Science Method and Analysis,13/13,0,MWF,0900-0950,Tunheim Classroom Building 111,,5
+73912,CSC,314,D01,3,Assembly Language,3/25,0,MWF,1400-1450,East Hall 100,,5
+74438,MATH,281,D01,3,Introduction to Statistics,17/35,0,TuTh,1300-1415,Tunheim Classroom Building 203,,5
+73642,CSC,105,D06,3,Introduction to Computers,24/24,0,TuTh,0800-0915,Beacom Institute of Technology 112,,5
+70828,ARTD,185,D01,3,Introduction to Animation,25/30,0,MW,1400-1515,Beacom Institute of Technology 114,,5
+70785,BIOL,151,D01,3,General Biology I,54/60,0,MWF,1100-1150,Ruth Habeger Science Center 135,,5
+80691,PSYC,101,D02,3,General Psychology,21/25,0,MWF,1400-1450,Kennedy Center 104,,5
+73954,MUS,100,D01,3,Music Appreciation,21/30,0,Tu,1100-1215,Ruth Habeger Science Center 135,,5
+77880,BIOL,221,D01,3,Human Anatomy,11/48,0,MWF,1100-1150,Tunheim Classroom Building 203,,5
+80707,BIOL,211L,D01,1,Lab: Environmental Biology,25/25,0,M,1300-1450,Ruth Habeger Science Center 109,,5
+77839,ENGL,101,DK3,3,Composition I,10/12,0,MWF,1400-1450,Beadle Hall 205,,5
+75757,CSC,300,D05,3,Data Structures,16/25,0,MWF,0800-0850,East Hall 003,,5
+79231,GEOG,132,DH1,3,Physical Geography: Natural Landscapes,18/20,0,MWF,1400-1450,Ruth Habeger Science Center 121,,5
+73575,SOC,100,D01,3,Introduction to Sociology,20/25,0,TuTh,1300-1415,Beadle Hall 206,,5
+73568,SEED,303,D01,1,Sec/Mid Content Area: Math,15/15,0,F,0800-0850,Kennedy Center 105,,5
+79214,ARTD,442,D01,3,2D Digital Animation III,18/25,0,TuTh,1100-1215,Kennedy Center 112,,5
+77192,MATH,114,D03,3,College Algebra,32/35,0,TuTh,0930-1045,Ruth Habeger Science Center 114,,5
+74934,CSC,163,D01,3,Hardware Virtualization and Data Communication,17/25,0,MWF,0800-0850,East Hall 018,,5
+74119,CSC,428,D02,3,Reverse Engineering,0/25,0,TuTh,1430-1545,Beacom Institute of Technology 231,,5
+74439,PE,354,D01,3,Prevention and Care of Athletic Injuries,6/25,0,TuTh,1100-1215,Kennedy Center 122,,5
+75725,CMST,101,D03,3,Foundations of Communication,23/24,0,MWF,1100-1150,Beadle Hall 206,,5
+71213,DAD,222,D02,3,Audio Production I: Foundations,14/18,0,MWF,0900-0950,Tunheim Classroom Building 209,,5
+70730,ENGL,101,D01,3,Composition I,11/12,0,MWF,1000-1050,Beadle Hall 305,,5
+72823,CIS,123,D01,3,Problem Solving & Programming,17/25,0,MWF,1400-1450,East Hall 003,,5
+72965,CIS,372,D01,3,Programming for Analytics,7/25,0,TuTh,1100-1215,East Hall 003,,5
+73856,CSC,150,D06,3,Computer Science I,24/24,0,MWF,1500-1550,Kennedy Center 112,,5
+76192,ACCT,210,D02,3,Principles of Accounting I,21/25,0,TuTh,1300-1415,East Hall 003,,5
+77905,BADM,201,D01,3,Fundamentals of AI in Organizations,19/25,0,TuTh,0930-1045,Tunheim Classroom Building 111,,5
+70773,ENGL,201,D05,3,Composition II,9/24,0,MWF,1000-1050,Beadle Hall 006,,5
+70754,ENGL,101,D03,3,Composition I,18/24,0,MWF,1000-1050,Beadle Hall 205,,5
+75741,MATH,201,D04,3,Introduction to Discrete Mathematics,17/20,0,MWF,1100-1150,Ruth Habeger Science Center 114,,5
+74431,MATH,201,D01,3,Introduction to Discrete Mathematics,18/20,0,MWF,0900-0950,Ruth Habeger Science Center 114,,5
+78298,CSC,478,D01,3,Artificial Intelligence Tools and Frameworks,18/25,0,TuTh,1600-1715,East Hall 108,,5
+71234,INFS,605,D01,3,Foundations of Programming,24/25,0,Tu,1100-1330,Tunheim Classroom Building 109,,5
+79118,INFA,702,D01,3,Introduction to Data Privacy,23/25,0,TuTh,1600-1715,East Hall 010,,5
+73894,CSC,250,D01,3,Computer Science II,23/25,0,MWF,1400-1450,East Hall 108,,5
+77046,GEOG,131,D01,3,Physical Geography: Weather and Climate,16/25,0,MWF,1200-1250,Ruth Habeger Science Center 121,,5
+77948,CSC,247,D01,3,Introduction to Artificial Intelligence,17/25,0,MWF,1500-1550,East Hall 108,,5
+79213,ARTD,441,D01,3,3-D Design/Production,17/25,0,TuTh,0800-0915,Beacom Institute of Technology 114,,5
+75770,ELED,455,D01,3,Evidence-Based Reading (K-3),20/25,0,MWF,0900-0950,Kennedy Center 105,,5
+73631,CSC,105,D02,3,Introduction to Computers,23/24,0,MWF,0900-0950,Beacom Institute of Technology 112,,5
+77941,CSC,547,D01,3,Artificial Intelligence,25/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,,5
+73061,GS,100,DC2,0 TO 1,University Experience,84/85,0,M,1200-1250,East Hall 100,,5
+75727,CMST,101,D05,3,Foundations of Communication,24/24,0,TuTh,1100-1215,Beadle Hall 205,,5
+73883,CSC,420,D01,3,Cellular and Mobile Communications,0/25,0,MWF,0900-0950,Beacom Institute of Technology 233,,5
+73641,CSC,105,D05,3,Introduction to Computers,24/24,0,MWF,1500-1550,Beacom Institute of Technology 112,,5
+70696,BIOL,101L,D01,1,Biology Survey I Lab,18/25,0,Tu,1300-1450,Ruth Habeger Science Center 106,,5
+79215,CMST,215,DH2,3,Honors: Public Speaking,23/24,0,MWF,1500-1550,Beadle Hall 205,,5
+73645,CSC,105,D08,3,Introduction to Computers,24/24,0,TuTh,1100-1215,Beacom Institute of Technology 112,,5
+73559,CHEM,326,D01,3,Organic Chemistry I,4/10,0,MWF,1200-1250,Ruth Habeger Science Center 139,,5
+70700,BIOL,101L,D02,1,Biology Survey I Lab,21/25,0,Tu,1030-1225,Ruth Habeger Science Center 106,,5
+74408,ART,231,D01,3,Painting I,12/18,0,TuTh,1600-1830,Beadle Hall 302,,5
+74051,PHYS,185,D01,2,Solar System Astronomy,13/24,0,MW,1400-1450,Ruth Habeger Science Center 143,,5
+79493,SPED,417,D01,3,Vocational-Transitional Programming,22/25,0,TuTh,1100-1215,Kennedy Center 105,,5
+70788,BADM,310,D01,3,Business Finance,9/25,0,MWF,0900-0950,East Hall 018,,5
+70385,ART,111,D01,3,Drawing I,18/18,0,TuTh,1100-1330,Beadle Hall 302,,5
+77090,ENGL,201,D01,3,Composition II,17/24,0,TuTh,1430-1545,Beadle Hall 109,,5
+70856,BADM,360,D01,3,Organization and Management,3/25,0,TuTh,0800-0915,East Hall 217,,5
+70790,BIOL,151L,D01,1,General Biology I Lab,30/30,0,Th,0800-0950,Ruth Habeger Science Center 109,,5
+73884,CSC,420,D02,3,Cellular and Mobile Communications,0/25,1,MWF,1000-1050,Beacom Institute of Technology 233,,5
+80698,MATH,413,D01,3,Abstract Algebra I,14/20,0,TuTh,1300-1415,Ruth Habeger Science Center 113,,5
+73311,PSYC,101,D01,3,General Psychology,18/25,0,MWF,0900-0950,Kennedy Center 104,,5
+76178,ENGL,032,DK1,2,Basic Writing,11/12,0,TuTh,1000-1050,Beadle Hall 010,,5
+70761,ENGL,101,D07,3,Composition I,24/24,0,MWF,0900-0950,Beadle Hall 305,,5
+74125,CSC,436,D03,3,Offensive Network Security,11/25,0,TuTh,0800-0915,Beacom Institute of Technology 231,,5
+75253,CIS,210,D01,1,QuickBooks I,10/25,0,TuTh,1100-1215,East Hall 010,,5
+73643,CSC,105,D07,3,Introduction to Computers,24/24,0,TuTh,0930-1045,Beacom Institute of Technology 112,,5
+78148,ELED,360,D01,3,K-8 Social Science Methods,8/25,0,MWF,0800-0850,Kennedy Center 117,,5
+73041,GAME,444,D01,3,Project Development I,16/24,0,MWF,0800-0850,Beacom Institute of Technology 135,,5
+73906,CSC,300,D03,3,Data Structures,23/50,0,MWF,0900-0950,East Hall 100,,5
+79494,SPED,460,D01,3,Family Systems and Professional Collaboration,8/25,0,TuTh,1230-1345,Kennedy Center 105,,5
+74290,CSC,722,D01,3,Machine Learning Fundamentals,21/25,0,MW,1400-1515,Beacom Institute of Technology 233,,5
+71204,HON,102,DH1,1,Introduction to Honors,18/18,0,W,1400-1450,Ruth Habeger Science Center 132,,5
+73629,CSC,105,D01,3,Introduction to Computers,24/24,0,MWF,0800-0850,East Hall 108,,5
+74951,CSC,234,D05,3,Software Security,13/25,0,TuTh,0930-1045,Beacom Institute of Technology 231,,5
+75303,PE,300,D01,3,Applied Sport and Exercise Science,13/25,0,TuTh,0930-1045,Kennedy Center 123,,5
+71441,INFS,762,D01,3,Data Warehousing & Data Mining,24/25,0,Tu,1300-1530,Kennedy Center 122,,5
+73896,CSC,250,D02,3,Computer Science II,22/25,0,MWF,1100-1150,Beacom Institute of Technology 117,,5
+71512,CSC,150,D01,3,Computer Science I,23/24,0,MWF,0900-0950,Beacom Institute of Technology 213,,5
+75909,EXS,376,D01,3,Technology Integration,13/15,0,TuTh,1230-1345,Kennedy Center 123,,5
+75831,CSC,402,D01,3,Mathematical Foundations of Artificial Intelligence,2/25,0,MW,1500-1615,East Hall 018,,5
+70722,ART,121,D01,3,Design I 2D,18/20,0,MWF,1400-1540,Beadle Hall 303,,5
+71089,BADM,468,D01,3,International Management,20/25,0,TuTh,0930-1045,East Hall 108,,5
+72944,CIS,332,D01,3,Structured Systems Analysis and Design,16/25,0,TuTh,1300-1415,East Hall 018,,5
+75711,INFS,830,D01,3,Decision Support Systems,25/25,0,W,1500-1730,East Hall 201,,5
+74128,CSC,447,D01,3,Artificial Intelligence,4/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,,5
+80673,BADM,415,D01,3,Financial Institutions,11/25,0,MWF,1100-1150,East Hall 018,,5
+75355,GAME,363,D01,3,Game Genres: Deep Games,21/24,0,MWF,1100-1150,Beacom Institute of Technology 135,,5
+73564,CIS,275,D01,3,Web Application Programming I,19/25,0,TuTh,0930-1045,East Hall 003,,5
+70593,ELED,320,D01,3,K-8 Science Methods,8/25,0,MWF,0900-0950,Kennedy Center 117,,5
+76237,BIOL,101,D04,2,Biology Survey I,21/25,0,TuTh,0900-0950,Ruth Habeger Science Center 135,,5
+75740,MATH,201,D05,3,Introduction to Discrete Mathematics,19/20,0,MWF,1400-1450,Ruth Habeger Science Center 114,,5
+75164,CIS,438,D01,3,Advanced Project Management,23/25,0,TuTh,0930-1045,Tunheim Classroom Building 109,,5
+70779,BIOL,103L,D02,1,Biology Survey II Lab,16/24,0,W,1230-1425,Ruth Habeger Science Center 106,,5
+80675,BADM,476,D01,3,Marketing Research,21/25,0,MWF,0900-0950,East Hall 003,,5
+80644,DAD,310,D01,3,Sound Design for Film,12/18,0,MWF,1400-1450,Tunheim Classroom Building 209,,5
+75726,CMST,101,D04,3,Foundations of Communication,20/24,0,TuTh,0930-1045,Beadle Hall 205,,5
+79133,CSC,409,D01,3,Operating Environments,1/25,7,TuTh,0930-1045,Beacom Institute of Technology 213,,5
+73063,GS,100,DE2,0 TO 1,University Exper: ELED/SPED,25/25,0,W,1200-1250,Kennedy Center 105,,5
+80641,CIV,100,D02,3,American Civics,17/24,0,MWF,1400-1450,Beadle Hall 302,,5
+77939,CSC,439,D02,3,Threat Hunting and Incident Response,0/25,3,TuTh,1300-1415,Beacom Institute of Technology 233,,5
+74412,BADM,482,D01,3,Business Policy and Strategy,15/25,0,TuTh,1300-1415,East Hall 010,,5
+73017,GAME,365,D01,3,Classical Myth and Media,10/12,0,TuTh,0930-1045,Beacom Institute of Technology 135,,5
+70692,ELED,459,D01,3,Introduction to Literacy Assessment and Remediation,11/25,0,MWF,1100-1150,Kennedy Center 105,,5
+75175,INFS,601,D01,3,Information Systems,23/25,0,Tu,1500-1730,Tunheim Classroom Building 109,,5
+73562,CHEM,112L,D02,1,General Chemistry I Lab,12/20,0,Tu,0800-0950,Ruth Habeger Science Center 136,,5
+79130,CSC,470,D02,3,Software Engineering,1/25,0,MWF,0900-0950,Beacom Institute of Technology 231,,5
+74937,CSC,285,D01,3,Networking I,21/25,0,TuTh,0800-0915,Beacom Institute of Technology 213,,5
+74121,CSC,430,D01,3,Windows Administration,1/25,0,TuTh,1300-1415,Beacom Institute of Technology 117,,5
+73877,CSC,388,D01,3,Computer Forensics Fundamentals,0/25,4,TuTh,1100-1215,East Hall 018,,5
+73862,CSC,150,DH2,3,Computer Science I,25/25,0,MTuWThF,1126-1150,East Hall 100,,5
+80637,ART,121,D02,3,Design I 2D,19/20,0,MWF,1000-1140,Beadle Hall 303,,5
+73958,PE,207,D01,1,Professional Preparation  Strength Training,0/25,2,MW,1300-1350,Zimmermann Hall 001A,,5
+75254,CIS,211,D01,1,Quickbooks II,13/25,0,TuTh,1100-1215,East Hall 010,,5
+77187,ART,213,D02,3,Figure Drawing,1/18,0,TuTh,1430-1545,Beacom Institute of Technology 114,,5
+81041,CSC,409,D02,3,Operating Environments,18/25,0,MWF,0800-0850,Beacom Institute of Technology 213,,5
+73060,GS,100,DC1,0 TO 1,University Experience,145/145,0,M,1200-1250,Tunheim Classroom Building 203,,5
+76593,CSC,161,D02,3,"Computer Hardware, Data Communications, and Networking",23/25,0,MWF,1100-1150,East Hall 108,,5
+74271,CSC,718,D01,3,Operating Systems & Parallel Programming,18/25,0,TuTh,1430-1545,Kennedy Center 105,,5
+75723,CMST,101,D01,3,Foundations of Communication,21/24,0,MWF,0900-0950,Beadle Hall 109,,5
+74988,CSC,482,D02,3,Algorithms and Optimization,2/25,0,TuTh,1430-1545,East Hall 003,,5
+77837,ENGL,101,D08,3,Composition I,12/12,0,MWF,1400-1450,Beadle Hall 205,,5
+80708,BIOL,492,D01,3,Topics: Cells and Tissues,17/20,0,MWF,1100-1150,Ruth Habeger Science Center 109,,5
+73062,GS,100,DB2,0 TO 1,University Experience,40/40,0,Th,1200-1250,Tunheim Classroom Building 203,,5
+73873,CSC,387,D01,5,Routing and Switching,0/24,3,MWF,1100-1225,Beacom Institute of Technology 231,,5
+74415,EXS,350L,D01,1,Exercise Physiology Lab,6/15,0,Th,1300-1450,Kennedy Center 110,,5
+70766,BIOL,103L,D01,1,Biology Survey II Lab,19/24,0,Th,1300-1450,Ruth Habeger Science Center 106,,5
+73855,CSC,150,D03,3,Computer Science I,24/24,0,MWF,1100-1150,Kennedy Center 112,,5
+71158,HIST,121,D01,3,Western Civilization I,19/25,0,MWF,1000-1050,Beadle Hall 302,,5
+74124,CSC,436,D02,3,Offensive Network Security,0/25,1,TuTh,0930-1045,Beacom Institute of Technology 233,,5
+77047,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,16/25,0,Tu,1030-1225,Ruth Habeger Science Center 143,,5
+76222,MATH,281,DH1,3,Honors: Intro to Statistics,25/30,0,TuTh,1100-1215,Ruth Habeger Science Center 121,,5
+71246,INFS,720,D01,3,System Analysis and Design Using Case Tools,25/25,0,M,0900-1130,Tunheim Classroom Building 109,,5
+80647,ENGL,492,D01,3,ST: Online Radicalization,2/3,0,MWF,1000-1050,Beadle Hall 304,,5
+73937,ECON,201,D01,3,Principles of Microeconomics,3/25,0,MWF,0900-0950,East Hall 217,,5
+76232,CSC,439,D01,3,Threat Hunting and Incident Response,0/25,2,TuTh,0800-0915,East Hall 010,,5
+79232,GEOG,132L,DH1,1,Physical Geography  Natural Landscapes Lab,18/20,0,Tu,1300-1450,Ruth Habeger Science Center 143,,5
+80714,BIOL,331L,D01,1,Microbiology Lab,0/20,1,Tu,0800-0950,Ruth Habeger Science Center 101,,5
+76592,CSC,161,D01,3,"Computer Hardware, Data Communications, and Networking",24/25,0,MWF,1000-1050,Beacom Institute of Technology 112,,5
+71238,INFS,608,D01,3,Applied Statistics,24/25,0,W,1500-1730,Tunheim Classroom Building 109,,5
+70782,BIOL,145,D01,1,Introduction to Scientific Inquiry,15/16,0,W,1200-1245,Ruth Habeger Science Center 101,,5
+71177,INED,211,D01,3,South Dakota American Indian Culture and Education,22/25,0,MWF,1000-1050,Kennedy Center 120,,5
+79212,ARTD,350,D01,3,Background Design/Character Design,22/25,0,TuTh,1300-1415,Beacom Institute of Technology 114,,5
+80727,CSC,230,D01,1,Tech Foundations: Ethics,20/25,0,TuTh,1100-1215,East Hall 201,,5
+70682,BIOL,101,D01,2,Biology Survey I,18/25,0,MW,0800-0850,Ruth Habeger Science Center 135,,5
+70437,ARTD,480,D01,3,Digital Photography III,10/20,0,W,1600-1830,Beadle Hall 108,,5
+75763,EXS,350L,D02,1,Exercise Physiology Lab,0/15,0,Tu,1300-1450,Kennedy Center 110,,5
+76533,CSC,334,D01,3,Web Development,13/25,0,TuTh,0800-0915,Beacom Institute of Technology 117,,5
+77918,GS,100,DE1,0 TO 1,University Experience: PE/EXS,25/25,0,Tu,1200-1250,Kennedy Center 117,,5
+71093,BADM,481,D01,3,Promotional Management,18/25,0,TuTh,1300-1415,East Hall 217,,5
+72997,GAME,101,D01,1,Game Design Core Experience,39/40,0,W,1200-1250,Beacom Institute of Technology 135,,5
+75761,PE,341,D01,3,Curriculum Development and Evaluation,18/25,0,TuTh,0800-0915,Kennedy Center 122,,5
+71216,INFA,713,D01,3,Managing Security Risks,12/25,0,TuTh,0800-0915,East Hall 108,,5
+80670,ACCT,480,D01,3,Advanced Accounting,25/25,0,MWF,1200-1250,East Hall 003,,5
+80829,HON,202,DH1,1,Intermediate Honors Seminar,10/25,0,W,1200-1250,Beadle Hall 206,,5
+73014,GAME,333,D01,3,Project and Process I,18/24,0,MWF,0800-0850,Beacom Institute of Technology 135,,5
+76535,CSC,334,D03,3,Web Development,0/25,0,TuTh,1100-1215,Beacom Institute of Technology 117,,5
+74424,MATH,120,D01,3,Trigonometry,31/35,0,TuTh,1100-1215,Ruth Habeger Science Center 114,,5
+70595,ELED,330,D01,3,K-8 Math Methods,8/25,0,MWF,1000-1050,Kennedy Center 117,,5
+79221,HIST,358,D01,3,The United States Since 1941,11/13,0,TuTh,1300-1415,Kennedy Center 119,,5
+80713,BIOL,331,D01,3,Microbiology,0/20,2,MWF,0800-0850,Ruth Habeger Science Center 101,,5
+77907,CIS,378,D01,3,Applied Artificial Intelligence and Applications,25/25,0,TuTh,1100-1215,Tunheim Classroom Building 111,,5
+70837,EPSY,302,D01,3,Educational Psychology,21/25,0,MWF,1000-1050,Kennedy Center 104,,5
+75367,BADM,336,D01,3,Entrepreneurship I,14/25,0,MWF,0800-0850,East Hall 217,,5
+73875,CSC,387,D02,5,Routing and Switching,14/25,0,MWF,1400-1525,Beacom Institute of Technology 231,,5
+79237,MATH,201,D06,3,Introduction to Discrete Mathematics,20/20,0,MWF,1400-1450,Beadle Hall 206,,5
+73885,CSC,420,D03,3,Cellular and Mobile Communications,3/25,0,MWF,1100-1150,Beacom Institute of Technology 233,,5
+75734,CMST,215,DH1,3,Honors: Public Speaking,10/24,0,MWF,1100-1150,Beadle Hall 205,,5
+74805,EPSY,210,D02,3,Lifespan Development,20/25,0,MWF,1200-1250,Kennedy Center 104,,5
+70707,BIOL,101L,D03,1,Biology Survey I Lab,23/25,0,Tu,0800-0950,Ruth Habeger Science Center 106,,5
+73870,CSC,234,D03,3,Software Security,0/25,0,TuTh,1100-1215,Beacom Institute of Technology 231,,5
+70439,BADM,101,D01,3,Survey of Business,39/40,0,TuTh,1430-1545,East Hall 108,,5
+73869,CSC,234,D02,3,Software Security,1/25,0,TuTh,0930-1045,East Hall 018,,5
+70758,ENGL,101,D05,3,Composition I,23/24,0,TuTh,0930-1045,Beadle Hall 305,,5
+70346,ACCT,210,D01,3,Principles of Accounting I,18/25,0,MWF,1100-1150,East Hall 010,,5
+71453,INFS,768,D01,3,Predictive Analytics for Decision Making,22/25,0,Th,1300-1530,Tunheim Classroom Building 111,,5
+74658,EPSY,210,D01,3,Lifespan Development,25/25,0,TuTh,0930-1045,Kennedy Center 112,,5
+74049,PHYS,111L,D01,1,Introduction to Physics I Laboratory,8/24,0,Th,1300-1450,Ruth Habeger Science Center 143,,5
+75728,CMST,101,DEM,3,Foundations of Communication,24/24,0,TuTh,1340-1455,Off Campus MADIHS,,5
+78328,GS,100,DB1,0 TO 1,University Experience,40/40,0,W,1200-1250,East Hall 108,,5
+80830,HON,202,DH2,1,Intermediate Honors Seminar,16/25,0,F,1200-1250,Beadle Hall 206,,5
+78311,MUS,100,D02,3,Music Appreciation,21/30,0,MWF,1100-1150,Beadle Hall 006,,5
+77926,EDFN,102,D01,3,Introduction to Education,23/25,0,MWF,0900-0950,Kennedy Center 122,,5
+70760,ENGL,101,D06,3,Composition I,22/24,0,TuTh,1100-1215,Beadle Hall 305,,5
+71221,INFA,751,D01,3,Wireless Security,16/25,0,TuTh,1300-1415,East Hall 201,,5
+70757,BIOL,103,D01,2,Biology Survey II,35/48,0,MW,1000-1050,Ruth Habeger Science Center 106,,5
+77942,CSC,578,D01,3,Artificial Intelligence Tools and Frameworks,21/25,0,TuTh,1600-1715,Beacom Institute of Technology 233,,5
+74110,ECON,202,D01,3,Principles of Macroeconomics,12/25,0,MWF,1200-1250,East Hall 217,,5
+70377,ACCT,211,D01,3,Principles of Accounting II,7/25,0,MWF,1200-1250,East Hall 010,,5
+74939,CSC,285,D03,3,Networking I,14/25,0,TuTh,1300-1415,Beacom Institute of Technology 213,,5
+73561,CHEM,112L,D01,1,General Chemistry I Lab,12/20,0,Tu,1300-1450,Ruth Habeger Science Center 136,,5
+74448,MATH,114,D04,3,College Algebra,34/35,0,TuTh,1100-1215,Ruth Habeger Science Center 113,,5
+75176,INFS,724,D01,3,Project & Change Management,25/25,0,Th,1100-1330,Tunheim Classroom Building 109,,5
+71227,DAD,422,D01,3,Audio Production III  Advanced Techniques and MIDI Music,17/18,0,MWF,1500-1550,Tunheim Classroom Building 209,,5
+75165,CIS,474,D01,3,Business Intelligence and Big Data,19/25,0,MWF,0900-0950,East Hall 108,,5
+73956,MUS,204,D01,3,Introduction to Digital Sound Design,13/18,0,TuTh,1300-1415,Tunheim Classroom Building 209,,5
+75310,EXS,482,D01,3,Theory of Strength and Conditioning,2/25,0,MWF,0900-0950,Kennedy Center 112,,5
+76534,CSC,334,D02,3,Web Development,2/25,0,TuTh,0930-1045,Beacom Institute of Technology 117,,5

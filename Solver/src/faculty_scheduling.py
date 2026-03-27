@@ -4,10 +4,11 @@ faculty_scheduling.py
 Faculty scheduling solver using Google OR-Tools CP-SAT.
 
 Reads three CSV files as input:
-    preferences.csv  — section x faculty preference scores x or (0 to +3)
-    time_blocks.csv  — section day pattern + start time (registrar data)
-    workload.csv     — faculty min/max teaching load
-
+    sections.csv    — course sections with enrollment data
+    time.csv        — time block data per section
+    preferences.csv — faculty preference scores (0-3 or x)
+    workload.csv    — optional, per-faculty research units (defaults to 0)
+    
 Solves a Constraint Satisfaction Problem (CSP) to find the best
 faculty-to-section assignment that satisfies all constraints.
 
@@ -17,7 +18,9 @@ Outputs:
 
 Usage:
     python faculty_scheduling.py
-    python faculty_scheduling.py --preferences p.csv --time_blocks t.csv --workload w.csv
+    python faculty_scheduling.py --sections s.csv --time t.csv --preferences p.csv
+    python faculty_scheduling.py --workload w.csv  (optional)
+    python faculty_scheduling.py --test
 
 CSV formats are described in each loader function below.
 """
@@ -30,10 +33,9 @@ import argparse
 from dataclasses import dataclass, field
 from datetime import time, datetime, timedelta
 from itertools import combinations
-from typing import NamedTuple
 
 from ortools.sat.python import cp_model
-from workload import FACULTY_MAX_WORKLOAD, OVERLOAD_PENALTY
+from workload import FACULTY_MAX_WORKLOAD, OVERLOAD_PENALTY, DEFAULT_COURSE_WORKLOAD
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -44,6 +46,7 @@ from workload import FACULTY_MAX_WORKLOAD, OVERLOAD_PENALTY
 DEFAULT_SECTIONS_PATH    = "sections.csv"
 DEFAULT_TIME_PATH        = "time_blocks.csv"
 DEFAULT_PREFERENCES_PATH = "preferences.csv"
+DEFAULT_WORKLOAD_PATH    = "workload.csv"
 
 # Solver time limit — increase for larger problems
 SOLVER_TIME_LIMIT_SECONDS = 60.0
@@ -106,6 +109,11 @@ HEADER_ALIASES: dict[str, str] = {
     "current_workload":     "current_workload",      # total workload units for section
     "workload_per_student": "workload_per_student",  # workload per enrolled student
     "research_workload":    "research_workload",     # unique/research section workload
+
+    #per faculty workload stuff
+    "research_units":   "research_units",
+    "release_units":    "research_units",
+    "research":         "research_units",
 }
 
 def _resolve_header(raw: str | None) -> str | None:
@@ -206,7 +214,13 @@ def _parse_seats(raw) -> tuple[int, int]:
     if "/" in s:
         parts = s.split("/", 1)
         try:
-            return int(parts[0].strip()), int(parts[1].strip())
+            cur = int(parts[0].strip())
+            mx = int(parts[1].strip())
+            # Sanity check — seat counts should be reasonable
+            # A date like 12/11/2000 would give mx=2000 which is clearly wrong and sometimes happens due to bad excel formatting
+            if cur > 999 or mx > 999:
+                return 0, 0
+            return cur, mx
         except ValueError:
             return 0, 0
     # Single number — treat as current seats, max unknown
@@ -490,6 +504,49 @@ def load_preferences_csv(path: str) -> tuple[list[str], list[str], dict[str, dic
           f"{len(faculty)} faculty | {len(exclusions)} exclusion(s)")
     return faculty, preferences, exclusions
 
+def load_workload_csv(path: str) -> dict[str, int]:
+    """
+    Read workload.csv — optional per-faculty research unit assignments.
+
+    Expected format:
+        Faculty, Research Units/Buyout?
+        Wendy Simmermon, 10
+        Jeffrey E Elbert, 0
+
+    Returns:
+        dict[faculty_name → research_units_already_assigned]
+
+    Faculty not in this file default to 0 research units,
+    meaning their full FACULTY_MAX_WORKLOAD(30) cap is available.
+    """
+    research_units: dict[str, int] = {}
+
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.reader(f)
+
+        header_row = next(reader, None)
+        if header_row is None:
+            return {}
+
+        # Skip title row if present
+        if _resolve_header(header_row[0]) is None and header_row[0].strip():
+            header_row = next(reader, None)
+        if header_row is None:
+            return {}
+
+        for row in reader:
+            if not row or not row[0].strip():
+                continue
+            faculty = row[0].strip()
+            try:
+                units = int(row[1].strip()) if len(row) > 1 else 0
+            except ValueError:
+                units = 0
+            research_units[faculty] = units
+
+    print(f"[Loader] workload.csv: {len(research_units)} faculty with research units")
+    return research_units
+
 def _build_section(sec_data: dict, time_data: dict | None) -> Section:
     """
     Combine a Sections tab row and its matching Time tab row (if any)
@@ -557,9 +614,12 @@ def build_conflict_pairs(regular: list[Section]) -> list[tuple[str, str]]:
     return pairs
 
 def load_all(
-    sections_path:    str = DEFAULT_SECTIONS_PATH,
+    #sections_path:    str = DEFAULT_SECTIONS_PATH,
+
+    sections_path:    str | None = DEFAULT_SECTIONS_PATH, #  MAKING IT OPTIONAL FOR CD
     time_path:        str = DEFAULT_TIME_PATH,
     preferences_path: str = DEFAULT_PREFERENCES_PATH,
+    workload_path:    str | None = DEFAULT_WORKLOAD_PATH,
 ) -> SchedulingData:
     """
     Master loader — reads all three CSVs and returns a SchedulingData
@@ -574,9 +634,23 @@ def load_all(
       6. Build conflict pairs from regular sections only
     """
     # ── Step 1 & 2: Read CSVs ────────────────────────────────────────
-    sections_by_crn = load_sections_csv(sections_path)
     time_by_crn     = load_time_csv(time_path)
 
+    try:
+        sections_by_crn = load_sections_csv(sections_path)
+    except (FileNotFoundError, TypeError):
+        print("[Loader] sections.csv not found — deriving from time_blocks.csv")
+        sections_by_crn = {
+                crn: {
+                    "crn":     crn,
+                    "sub":     data.get("sub", ""),
+                    "num":     "", "seq": "", "crd": "",
+                    "desc":    "", "seats": "", "waitlist": "0",
+                    "faculty": "",
+                }
+                for crn, data in time_by_crn.items()
+            }
+        
     # ── Step 3 & 4: Join and bucket ───────────────────────────────────
     regular:    list[Section] = []
     single_day: list[Section] = []
@@ -603,20 +677,25 @@ def load_all(
     conflict_pairs = build_conflict_pairs(regular)
 
     # ── Section workload units ───────────────────────────────────────
-    # Read current_workload from each section. Defaults to 1 if missing
+    # Read current_workload from each section. Defaults to DEFAULT_COURSE_WORKLOAD if missing.
     # so the constraint is always unit-based, never section-count based.
     all_sections = regular + single_day + internet
     section_workload: dict[str, int] = {}
     for sec in all_sections:
         try:
-            units = int(sec.current_workload) if sec.current_workload is not None else 1
+            units = int(sec.current_workload) if sec.current_workload is not None else DEFAULT_COURSE_WORKLOAD
         except (ValueError, TypeError):
-            units = 1
+            units = DEFAULT_COURSE_WORKLOAD
         section_workload[sec.crn] = units
 
     # ── Faculty workload bounds ───────────────────────────────────────
     # min=0 (no hard minimum), max=FACULTY_MAX_WORKLOAD units (soft cap)
-    workload = {f: (0, FACULTY_MAX_WORKLOAD) for f in faculty}
+    # If workload.csv not provided or faculty not listed, full cap is used.
+    try:
+        research_units = load_workload_csv(workload_path)
+    except (FileNotFoundError, TypeError):
+        research_units = {}
+    workload = {f: (0, max(0,FACULTY_MAX_WORKLOAD - research_units.get(f,0))) for f in faculty}
 
     print(f"[Loader] regular={len(regular)} | "
           f"single_day={len(single_day)} | "
@@ -624,7 +703,9 @@ def load_all(
           f"conflict_pairs={len(conflict_pairs)} | "
           f"workload units per section={set(section_workload.values())}")
 
-    sections_to_solve = ([s.crn for s in regular] +[s.crn for s in internet]) #change this for filtering dual credit and internet. This is what OR sees
+    # filter linked internet twins and dual credit here before this list is built
+    # Only what's in this list gets sent to OR
+    sections_to_solve = ([s.crn for s in regular] + [s.crn for s in internet])
 
     return SchedulingData(
         regular          = regular,
@@ -879,8 +960,8 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     print(f"  {'─' * 41}")
     print(f"  {'Total preference score':.<35} {total_score:>+6}")
 
-    print(f"\n  {'Faculty':<25} {'Units':>6}  {'Sections':>9}  {'Cap':>4}  Status")
-    print(f"  {'─' * 25} {'─' * 6}  {'─' * 9}  {'─' * 4}  {'─' * 12}")
+    print(f"\n  {'Faculty':<25} {'Units':>6}  {'Sections':>9}  {'Cap':>4}  {'Research':>9}  Status")
+    print(f"  {'─'*25} {'─'*6}  {'─'*9}  {'─'*4}  {'─'*9}  {'─'*12}")
 
     unit_load: dict[str, int] = {f: 0 for f in data.faculty}
     sect_load: dict[str, int] = {f: 0 for f in data.faculty}
@@ -893,8 +974,9 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
         _, mx = data.workload[f]
         units = unit_load[f]
         sects = sect_load[f]
+        research = FACULTY_MAX_WORKLOAD - mx   # research = cap reduction
         status = "✓ OK" if units <= mx else f"⚠ +{units - mx} over cap"
-        print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {status}")
+        print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {research:>9}  {status}")
 
     print(f"\n  Single-day sections (not scheduled): {len(data.single_day)}")
     print(f"{'═' * 62}\n")
@@ -1007,12 +1089,15 @@ def run_all_tests() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Faculty scheduling solver")
-    parser.add_argument("--sections",    default=DEFAULT_SECTIONS_PATH,
-                        help="Path to sections.csv")
+    
+    parser.add_argument("--sections", default=DEFAULT_SECTIONS_PATH,
+                        help="Path to sections.csv (optional — derived from time_blocks.csv if not found)")
     parser.add_argument("--time",        default=DEFAULT_TIME_PATH,
                         help="Path to time.csv")
     parser.add_argument("--preferences", default=DEFAULT_PREFERENCES_PATH,
                         help="Path to preferences.csv")
+    parser.add_argument("--workload", default=DEFAULT_WORKLOAD_PATH,
+                        help="Optional path to workload.csv (faculty research units)")
     parser.add_argument("--output",   default="schedule.csv",
                         help="Output path for the schedule CSV")
     parser.add_argument("--test",     action="store_true",
@@ -1024,7 +1109,7 @@ def main() -> None:
         return
 
     # Step 1 — Load CSVs
-    data = load_all(args.sections, args.time, args.preferences)
+    data = load_all(args.sections, args.time, args.preferences, args.workload)
 
     # Step 2 — Build model
     model = cp_model.CpModel()

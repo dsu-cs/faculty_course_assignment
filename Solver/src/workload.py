@@ -20,6 +20,10 @@ from __future__ import annotations
 # do so if no feasible solution exists within the cap.
 FACULTY_MAX_WORKLOAD: int = 30
 
+# Default workload units per section when current_workload is missing.
+# Used as a fallback — sections.csv should always provide this value.
+DEFAULT_COURSE_WORKLOAD: int = 4
+
 # ── Penalty for exceeding the soft cap ───────────────────────────────
 # Each unit over FACULTY_MAX_WORKLOAD costs this many preference points.
 # Raise this value to make the solver try harder to stay within the cap.
