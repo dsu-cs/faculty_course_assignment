@@ -20,7 +20,6 @@ Python 3.10 or higher is recommended.
 ```
 Solver/
 src/faculty_scheduling.py  # Main solver — all logic in one file
-src/workload.py            # helper code to easily change workload limits and penalties
 preferences.csv            # Input: faculty preference scores per section
 time_blocks.csv            # Input: registrar-assigned time blocks
 sections.csv               # Input: section metadata (optional — derived from time_blocks.csv if missing)
@@ -105,9 +104,7 @@ effective cap = FACULTY_MAX_WORKLOAD - research_units
 
 ---
 ## Workload Configuration
-
-Workload constants live in `workload.py` and are imported by the solver:
-
+Workload limits are configured via constants at the top of `faculty_scheduling.py`:
 ```python
 FACULTY_MAX_WORKLOAD  = 30   # soft cap — total units per faculty per semester
 OVERLOAD_PENALTY      = 10   # preference points lost per unit over cap

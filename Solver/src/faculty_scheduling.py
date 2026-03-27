@@ -35,7 +35,6 @@ from datetime import time, datetime, timedelta
 from itertools import combinations
 
 from ortools.sat.python import cp_model
-from workload import FACULTY_MAX_WORKLOAD, OVERLOAD_PENALTY, DEFAULT_COURSE_WORKLOAD
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -47,6 +46,11 @@ DEFAULT_SECTIONS_PATH    = "sections.csv"
 DEFAULT_TIME_PATH        = "time_blocks.csv"
 DEFAULT_PREFERENCES_PATH = "preferences.csv"
 DEFAULT_WORKLOAD_PATH    = "workload.csv"
+
+# ── Workload configuration ────────────────────────────────────────────
+FACULTY_MAX_WORKLOAD    = 30   # soft cap — total units per faculty per semester
+OVERLOAD_PENALTY        = 10   # preference points lost per unit over cap
+DEFAULT_COURSE_WORKLOAD =  4   # fallback units per section if current_workload missing
 
 # Solver time limit — increase for larger problems
 SOLVER_TIME_LIMIT_SECONDS = 60.0

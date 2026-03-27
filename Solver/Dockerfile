@@ -10,7 +10,6 @@ RUN pip install --no-cache-dir ortools openpyxl
  
 # Copy solver source
 COPY src/faculty_scheduling.py .
-COPY src/workload.py .
 
 # Required CSVs
 COPY preferences.csv time_blocks.csv ./
