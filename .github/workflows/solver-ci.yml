@@ -63,7 +63,6 @@ jobs:
           name: schedule-native
           path: solver-output-native/schedule.csv
           retention-days: 7
-<<<<<<< HEAD
 
   docker-solver-tests:
     # This tests the solver system in the context of a standalone
@@ -95,5 +94,3 @@ jobs:
           name: schedule-docker
           path: solver-output-docker/schedule.csv
           retention-days: 7
-=======
->>>>>>> origin/main
