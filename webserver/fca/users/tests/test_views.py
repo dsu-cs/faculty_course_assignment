@@ -94,7 +94,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = AnonymousUser()
         response = user_detail_view(request, username=user.username)
-        login_url = reverse(settings.LOGIN_URL)
+        login_url = reverse("users:magic_login")
 
         assert isinstance(response, HttpResponseRedirect)
         assert response.status_code == HTTPStatus.FOUND
