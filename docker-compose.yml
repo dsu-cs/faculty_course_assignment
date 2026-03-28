@@ -46,8 +46,8 @@ services:
 
   solver-api:
     build:
-      context: Solver
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Solver/Dockerfile
     container_name: solver-api
     depends_on:
       postgres:
