@@ -29,6 +29,8 @@ services:
     container_name: django
     depends_on:
       - postgres
+    networks:
+      - backend
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
       interval: 10s
@@ -37,7 +39,7 @@ services:
       start_period: 10s
     volumes:
       - /app/.venv
-      - .:/app:z
+      - ./webserver:/app:z
     env_file:
       - .env
     ports:
