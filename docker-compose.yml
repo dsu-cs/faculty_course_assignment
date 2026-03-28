@@ -28,15 +28,16 @@ services:
     image: django
     container_name: django
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - backend
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
       interval: 10s
       timeout: 5s
-      retries: 3
-      start_period: 10s
+      retries: 10
+      start_period: 60s
     volumes:
       - /app/.venv
       - ./webserver:/app:z

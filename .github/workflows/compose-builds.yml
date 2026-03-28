@@ -40,7 +40,7 @@ jobs:
       - name: Wait for health checks
         uses: jaracogmbh/docker-compose-health-check-action@v1.0.0
         with:
-          timeout: 10
+          max-retries: 30
           retry-interval: 10
           compose-file: docker-compose.yml
           skip-exited: false
