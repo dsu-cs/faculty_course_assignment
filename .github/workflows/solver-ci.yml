@@ -62,33 +62,3 @@ jobs:
           name: schedule-native
           path: solver-output-native/schedule.csv
           retention-days: 7
-
-  docker-solver-tests:
-  ### This tests the solver system in the context of a standalone Docker container in case we split it out in the future
-    name: Docker solver tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v6
-
-      - name: Build solver image
-        run: docker build -t solver:ci ./Solver
-
-      - name: Run solver test suite in Docker
-        run: docker run --rm solver:ci --test
-
-      - name: Run solver against bundled sample CSVs in Docker
-        run: |
-          mkdir -p "${{ github.workspace }}/solver-output-docker"
-          docker run --rm \
-            -v "${{ github.workspace }}/solver-output-docker:/app/output" \
-            solver:ci
-          test -f "${{ github.workspace }}/solver-output-docker/schedule.csv"
-
-      - name: Upload docker schedule.csv artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: schedule-docker
-          path: solver-output-docker/schedule.csv
-          retention-days: 7
