@@ -23,9 +23,9 @@ RAW_SECTION_HEADERS = [
     "Time",
     "Room",
     "Faculty",
-    "Workload If Full",
-    "Workload Per Student",
-    "Special Workload",
+    "workload_if_full",
+    "workload_per_student",
+    "special_workload",
 ]
 
 

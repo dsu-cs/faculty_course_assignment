@@ -1,10 +1,11 @@
 import csv
+import re
 import sys
 from datetime import datetime
-from pathlib import Path
 from decimal import Decimal
 from decimal import InvalidOperation
 from decimal import ROUND_HALF_UP
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
@@ -12,6 +13,12 @@ from playwright.sync_api import sync_playwright
 SEASON_ORDER = {"Spring": 1, "Summer": 2, "Fall": 3}
 DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parent / "sections_tab.csv"
 WORKLOAD_DECIMAL_PLACES = Decimal("0.0001")
+GRADUATE_WORKLOAD_MULTIPLIER = Decimal("1.33")
+SMALL_SECTION_MULTIPLIER = Decimal("0.10")
+PRIVATE_INSTRUCTION_MULTIPLIER = Decimal("0.33")
+DISSERTATION_PER_STUDENT = Decimal("0.5")
+STUDENT_TEACHING_PER_STUDENT = Decimal("0.67")
+MAX_DISSERTATION_CHAIR_STUDENTS = 6
 
 
 def _split_term(term: str) -> tuple[int, str]:
@@ -23,6 +30,13 @@ def _split_term(term: str) -> tuple[int, str]:
 def _format_decimal(value: Decimal) -> str:
     normalized = value.quantize(WORKLOAD_DECIMAL_PLACES, rounding=ROUND_HALF_UP).normalize()
     return format(normalized, "f")
+
+
+def _parse_decimal(value: str) -> Decimal:
+    try:
+        return Decimal(str(value).strip())
+    except (InvalidOperation, AttributeError):
+        return Decimal("0")
 
 
 def _parse_credit_hours(credit_text: str) -> Decimal:
@@ -52,19 +66,112 @@ def _parse_seat_counts(seat_text: str) -> tuple[int, int]:
     return current_seats, max_seats
 
 
-def _build_workload_fields(credit_text: str, seat_text: str) -> dict[str, str]:
-    _, max_seats = _parse_seat_counts(seat_text)
-    workload_if_full = _parse_credit_hours(credit_text)
+def _parse_course_level(number_text: str) -> int | None:
+    match = re.search(r"(\d{3})", str(number_text))
+    if match is None:
+        return None
+    return int(match.group(1))
 
-    if max_seats > 0 and workload_if_full > 0:
-        workload_per_student = workload_if_full / Decimal(max_seats)
-    else:
-        workload_per_student = Decimal("0")
+
+def _is_online(row: dict[str, str]) -> bool:
+    return row.get("Days", "").strip().lower() == "internet"
+
+
+def _faculty_count(faculty_text: str) -> int:
+    names = [name.strip() for name in str(faculty_text).split("/") if name.strip()]
+    return max(1, len(names))
+
+
+def _is_independent_study(course_level: int | None) -> bool:
+    return course_level is not None and course_level % 100 == 91
+
+
+def _is_undergraduate_research(course_level: int | None) -> bool:
+    return course_level == 498
+
+
+def _is_doctoral_dissertation(number_text: str) -> bool:
+    return str(number_text).strip().upper() == "898D"
+
+
+def _is_student_teaching(description: str) -> bool:
+    return "student teaching" in str(description).strip().lower()
+
+
+def _standard_workload(credit_hours: Decimal, course_level: int | None) -> Decimal:
+    if course_level is not None and course_level >= 700:
+        return credit_hours * GRADUATE_WORKLOAD_MULTIPLIER
+    return credit_hours
+
+
+def _per_student_workload(
+    credit_hours: Decimal,
+    course_level: int | None,
+    number_text: str,
+    description: str,
+) -> Decimal:
+    if _is_independent_study(course_level):
+        return Decimal("0")
+    if _is_doctoral_dissertation(number_text):
+        return DISSERTATION_PER_STUDENT
+    if _is_student_teaching(description):
+        return STUDENT_TEACHING_PER_STUDENT
+    if _is_undergraduate_research(course_level):
+        return SMALL_SECTION_MULTIPLIER * credit_hours
+    if course_level is not None and course_level >= 700:
+        return SMALL_SECTION_MULTIPLIER * credit_hours * GRADUATE_WORKLOAD_MULTIPLIER
+    return SMALL_SECTION_MULTIPLIER * credit_hours
+
+
+def _workload_if_full(
+    credit_hours: Decimal,
+    course_level: int | None,
+    number_text: str,
+    description: str,
+    max_seats: int,
+) -> Decimal:
+    if _is_independent_study(course_level):
+        return Decimal("0")
+    if _is_doctoral_dissertation(number_text):
+        return DISSERTATION_PER_STUDENT * min(max_seats, MAX_DISSERTATION_CHAIR_STUDENTS)
+    if _is_student_teaching(description):
+        return STUDENT_TEACHING_PER_STUDENT * max_seats
+    if _is_undergraduate_research(course_level):
+        return SMALL_SECTION_MULTIPLIER * credit_hours * max_seats
+    return _standard_workload(credit_hours, course_level)
+
+
+def _build_workload_fields(row: dict[str, str]) -> dict[str, str]:
+    credit_hours = _parse_credit_hours(row.get("Crd", ""))
+    current_seats, max_seats = _parse_seat_counts(row.get("Seats", ""))
+    if max_seats <= 0:
+        max_seats = current_seats
+
+    course_level = _parse_course_level(row.get("Num", ""))
+    faculty_divisor = Decimal(_faculty_count(row.get("Faculty", "")))
+
+    workload_if_full = _workload_if_full(
+        credit_hours,
+        course_level,
+        row.get("Num", ""),
+        row.get("Desc", ""),
+        max_seats,
+    )
+    workload_per_student = _per_student_workload(
+        credit_hours,
+        course_level,
+        row.get("Num", ""),
+        row.get("Desc", ""),
+    )
+
+    # Policy IIA.13: split section workload evenly when more than one faculty member teaches the section.
+    workload_if_full /= faculty_divisor
+    workload_per_student /= faculty_divisor
 
     return {
-        "Workload If Full": _format_decimal(workload_if_full),
-        "Workload Per Student": _format_decimal(workload_per_student),
-        "Special Workload": "",
+        "workload_if_full": _format_decimal(workload_if_full),
+        "workload_per_student": _format_decimal(workload_per_student),
+        "special_workload": "",
     }
 
 
@@ -215,26 +322,22 @@ def scrape_sections(term: str | None = None) -> list[dict[str, str]]:
             faculty_links = faculty_cell.find_all("a")
             faculty_names = [link.get_text(strip=True) for link in faculty_links]
 
-            credits_text = cells[4].get_text(strip=True)
-            seats_text = cells[6].get_text(strip=True).replace(" ", "")
-
-            scraped_rows.append(
-                {
-                    "CRN": cells[0].get_text(strip=True),
-                    "Sub": cells[1].get_text(strip=True),
-                    "Num": cells[2].get_text(strip=True),
-                    "Seq": cells[3].get_text(strip=True),
-                    "Crd": credits_text,
-                    "Desc": cells[5].get_text(strip=True),
-                    "Seats": seats_text,
-                    "Waitlist": cells[7].get_text(strip=True),
-                    "Days": days_text,
-                    "Time": time_text,
-                    "Room": room_text,
-                    "Faculty": "/".join(faculty_names),
-                    **_build_workload_fields(credits_text, seats_text),
-                }
-            )
+            base_row = {
+                "CRN": cells[0].get_text(strip=True),
+                "Sub": cells[1].get_text(strip=True),
+                "Num": cells[2].get_text(strip=True),
+                "Seq": cells[3].get_text(strip=True),
+                "Crd": cells[4].get_text(strip=True),
+                "Desc": cells[5].get_text(strip=True),
+                "Seats": cells[6].get_text(strip=True).replace(" ", ""),
+                "Waitlist": cells[7].get_text(strip=True),
+                "Days": days_text,
+                "Time": time_text,
+                "Room": room_text,
+                "Faculty": "/".join(faculty_names),
+            }
+            base_row.update(_build_workload_fields(base_row))
+            scraped_rows.append(base_row)
 
         browser.close()
         return scraped_rows
@@ -260,9 +363,9 @@ def write_sections_csv(
         "Time",
         "Room",
         "Faculty",
-        "Workload If Full",
-        "Workload Per Student",
-        "Special Workload",
+        "workload_if_full",
+        "workload_per_student",
+        "special_workload",
     ]
 
     with resolved_output_path.open(mode="w", newline="", encoding="utf-8") as csv_file:
