@@ -270,8 +270,6 @@ def populate_assignment_tab(file_path, data):
     title_cell.fill = blue_fill
 
     #Headers:  CRN ... ALL TEACHERS NAMES
-
-
     workbook.save(file_path)
 
 if __name__ == "__main__":

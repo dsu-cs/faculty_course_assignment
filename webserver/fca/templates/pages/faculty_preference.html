@@ -8,18 +8,15 @@
   <h1 class="mb-4">Faculty Course Preference Form</h1>
 
   <p class="text-muted">
-    Select prefixes to filter by, then mark your preference for each course.
+    Search by subject prefix, then mark your preference for each grouped course.
   </p>
 
   <div class="card shadow-sm p-4">
-
-    <form method="post">
+    <form method="post" id="facultyPreferenceForm">
       {% csrf_token %}
 
-      <!-- PREFIX FILTER -->
       <div class="mb-4">
-
-        <label class="form-label">Filter by Prefix</label>
+        <label class="form-label" for="prefixFilter">Filter by Prefix</label>
 
         <select
           id="prefixFilter"
@@ -28,143 +25,123 @@
           placeholder="Search prefixes..."
         >
           {% for prefix in prefixes %}
-            <option value="{{ prefix }}">{{ prefix }}</option>
+            <option value="{{ prefix }}" {% if prefix in selected_prefixes %}selected{% endif %}>{{ prefix }}</option>
           {% endfor %}
         </select>
 
         <div class="form-text">
           Search and select one or more prefixes.
         </div>
-
       </div>
 
-
-      <!-- COURSES TABLE -->
       <div class="mb-3">
-
         <h5 class="mb-3">Courses</h5>
 
         <div class="table-responsive">
-
           <table class="table table-bordered align-middle">
-
             <thead class="table-light">
               <tr>
                 <th style="width:120px;">Prefix</th>
                 <th>Course</th>
+                <th>Section Details</th>
                 <th style="width:260px;">Preference</th>
               </tr>
             </thead>
-
-            <tbody>
-
-              {% for course in courses %}
+            <tbody id="courseTableBody">
               <tr>
-
-                <td><strong>{{ course.prefix }}</strong></td>
-
-                <td>
-                  {{ course.number }} - {{ course.title }}
+                <td colspan="4" class="text-muted text-center py-4">
+                  Select one or more prefixes to load course sections.
                 </td>
-
-                <td>
-
-                  <div class="btn-group" role="group">
-
-                    <input type="radio" class="btn-check"
-                      name="pref_{{ course.id }}"
-                      id="c{{ course.id }}_0"
-                      value="0" checked>
-
-                    <label class="btn btn-outline-primary"
-                      for="c{{ course.id }}_0">0</label>
-
-
-                    <input type="radio" class="btn-check"
-                      name="pref_{{ course.id }}"
-                      id="c{{ course.id }}_1"
-                      value="1">
-
-                    <label class="btn btn-outline-secondary"
-                      for="c{{ course.id }}_1">1</label>
-
-
-                    <input type="radio" class="btn-check"
-                      name="pref_{{ course.id }}"
-                      id="c{{ course.id }}_2"
-                      value="2">
-
-                    <label class="btn btn-outline-secondary"
-                      for="c{{ course.id }}_2">2</label>
-
-
-                    <input type="radio" class="btn-check"
-                      name="pref_{{ course.id }}"
-                      id="c{{ course.id }}_3"
-                      value="3">
-
-                    <label class="btn btn-outline-secondary"
-                      for="c{{ course.id }}_3">3</label>
-
-
-                    <input type="radio" class="btn-check"
-                      name="pref_{{ course.id }}"
-                      id="c{{ course.id }}_x"
-                      value="X">
-
-                    <label class="btn btn-outline-danger"
-                      for="c{{ course.id }}_x">X</label>
-
-                  </div>
-
-                </td>
-
               </tr>
-              {% endfor %}
-
             </tbody>
-
           </table>
-
         </div>
       </div>
 
-
-      <!-- SUBMIT -->
       <button type="submit" class="btn btn-primary">
         Submit Preferences
       </button>
-
     </form>
-
   </div>
-
-  {% if message %}
-  <div class="alert alert-info mt-4">
-    {{ message }}
-  </div>
-  {% endif %}
-
 </div>
 
+{{ courses|json_script:"courses-data" }}
 
-<!-- TOM SELECT CSS -->
 <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
-
-<!-- TOM SELECT JS -->
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
-
 <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const courses = JSON.parse(document.getElementById("courses-data").textContent);
+    const tableBody = document.getElementById("courseTableBody");
+    const form = document.getElementById("facultyPreferenceForm");
+    const prefixSelect = new TomSelect("#prefixFilter", {
+      plugins: ["remove_button"],
+      maxItems: null,
+      create: false,
+      persist: false,
+      placeholder: "Search prefixes...",
+    });
 
-new TomSelect("#prefixFilter",{
-    plugins: ['remove_button'],
-    maxItems: null,
-    create: false,
-    persist: false,
-    placeholder: "Search prefixes..."
-});
+    const selectedPrefixes = () => prefixSelect.getValue().map((value) => value.toUpperCase());
 
+    const escapeHtml = (value) => String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll("\"", "&quot;")
+      .replaceAll("'", "&#39;");
+
+    function renderCourses() {
+      const activePrefixes = selectedPrefixes();
+      const visibleCourses = activePrefixes.length
+        ? courses.filter((course) => activePrefixes.includes(course.prefix))
+        : [];
+
+      if (!visibleCourses.length) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="text-muted text-center py-4">
+              Select one or more prefixes to load course sections.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = visibleCourses.map((course) => {
+        const courseLabel = `${course.number} - ${course.title}`;
+        const detailLabel = `${course.section_count} section${course.section_count === 1 ? "" : "s"} grouped`;
+
+        return `
+          <tr>
+            <td><strong>${escapeHtml(course.prefix)}</strong></td>
+            <td>${escapeHtml(courseLabel)}</td>
+            <td>${escapeHtml(detailLabel)}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Preference for ${escapeHtml(`${course.prefix} ${course.number}`)}">
+                ${["0", "1", "2", "3", "X"].map((value) => {
+                  const labelClass = value === "X" ? "btn-outline-danger" : value === "0" ? "btn-outline-primary" : "btn-outline-secondary";
+                  const inputId = `c${course.id}_${value}`;
+                  const checked = value === "X" ? "checked" : "";
+                  return `
+                    <input type="radio" class="btn-check" name="pref_${course.id}" id="${inputId}" value="${value}" ${checked}>
+                    <label class="btn ${labelClass}" for="${inputId}">${value}</label>
+                  `;
+                }).join("")}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    prefixSelect.on("change", renderCourses);
+    renderCourses();
+
+    form.addEventListener("submit", () => {
+      renderCourses();
+    });
+  });
 </script>
-
 {% endblock content %}

@@ -33,6 +33,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock:rw \
     uv sync
 
+RUN uv run playwright install --with-deps chromium
 # Keep runtime aligned when pyproject changes but lockfile lags.
 RUN --mount=type=cache,target=/root/.cache/uv uv pip install pyjwt==2.10.1
 
