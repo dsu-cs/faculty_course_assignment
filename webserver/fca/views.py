@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.views import View
 
 from fca.preferences.exporters import build_dean_download_artifacts
+from fca.preferences.exporters import get_available_bim_terms
+from fca.preferences.exporters import get_default_bim_term
 from fca.preferences.models import FacultyCoursePreference
 from fca.preferences.models import FacultyPreferenceSubmission
 from fca.preferences.services import group_sections_for_preferences
@@ -26,14 +28,44 @@ def _normalize_preference_value(value: str) -> str:
 class DeanDownloadView(View):
     template_name = "pages/dean_download.html"
 
+    def _get_context_data(
+        self,
+        *,
+        selected_term: str | None = None,
+        message: str | None = None,
+    ) -> dict[str, object]:
+        available_terms: list[str] = []
+        term_load_error = None
+
+        try:
+            available_terms = get_available_bim_terms()
+        except Exception as exc:
+            term_load_error = f"Unable to load BIM terms right now: {exc}"
+
+        resolved_selected_term = selected_term
+        if available_terms and selected_term not in available_terms:
+            resolved_selected_term = get_default_bim_term(available_terms)
+
+        return {
+            "available_terms": available_terms,
+            "selected_term": resolved_selected_term,
+            "message": message,
+            "term_load_error": term_load_error,
+        }
+
     def get(self, request):
-        return render(request, self.template_name)
+        return render(request, self.template_name, self._get_context_data())
 
     def post(self, request):
+        selected_term = request.POST.get("bim_term", "").strip() or None
         try:
-            artifacts = build_dean_download_artifacts()
-        except (FileNotFoundError, ImportError, ValueError) as exc:
-            return render(request, self.template_name, {"message": str(exc)})
+            artifacts = build_dean_download_artifacts(term=selected_term)
+        except (FileNotFoundError, ImportError, RuntimeError, ValueError) as exc:
+            return render(
+                request,
+                self.template_name,
+                self._get_context_data(selected_term=selected_term, message=str(exc)),
+            )
 
         return FileResponse(
             artifacts.workbook_path.open("rb"),
@@ -118,3 +150,5 @@ class FacultyPreferenceView(View):
 
         messages.success(request, "Preferences submitted successfully.")
         return redirect("faculty_preference")
+
+

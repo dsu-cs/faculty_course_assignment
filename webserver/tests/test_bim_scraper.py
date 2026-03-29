@@ -123,3 +123,25 @@ def test_independent_study_does_not_count_toward_workload():
         "workload_per_student": "0",
         "special_workload": "",
     }
+
+
+class _FakeOption:
+    def __init__(self, text: str):
+        self._text = text
+
+    def inner_text(self) -> str:
+        return self._text
+
+
+def test_extract_term_options_filters_to_valid_bim_terms():
+    options = [
+        _FakeOption("Select..."),
+        _FakeOption("2026 Spring"),
+        _FakeOption("2026 Fall"),
+        _FakeOption("Archive"),
+        _FakeOption("2026 Winter"),
+    ]
+
+    result = BIM_SCRAPER._extract_term_options(options)
+
+    assert result == ["2026 Spring", "2026 Fall"]

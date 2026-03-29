@@ -67,9 +67,22 @@ def _load_module(module_name: str, module_path: Path):
     return module
 
 
-def refresh_bim_sections_csv(output_path: Path) -> Path:
+def get_available_bim_terms() -> list[str]:
     scraper_module = _load_module("bim_scraper", BIM_SCRAPER_PATH)
-    return Path(scraper_module.run(output_path))
+    return list(scraper_module.fetch_available_terms())
+
+
+def get_default_bim_term(available_terms: list[str]) -> str | None:
+    if not available_terms:
+        return None
+    scraper_module = _load_module("bim_scraper", BIM_SCRAPER_PATH)
+    chosen_term, _warning = scraper_module.select_term(None, available_terms)
+    return chosen_term
+
+
+def refresh_bim_sections_csv(output_path: Path, term: str | None = None) -> Path:
+    scraper_module = _load_module("bim_scraper", BIM_SCRAPER_PATH)
+    return Path(scraper_module.run(term=term, output_path=output_path))
 
 
 def _latest_submissions_by_faculty() -> dict[str, FacultyPreferenceSubmission]:
@@ -275,7 +288,7 @@ def _populate_preferences_tab(workbook_path: Path, preferences_csv_path: Path) -
     workbook.save(workbook_path)
 
 
-def build_dean_download_artifacts() -> DeanDownloadArtifacts:
+def build_dean_download_artifacts(term: str | None = None) -> DeanDownloadArtifacts:
     reference_workbook_path = _get_reference_workbook_path()
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -284,7 +297,7 @@ def build_dean_download_artifacts() -> DeanDownloadArtifacts:
     preferences_csv_path = EXPORT_DIR / f"survey_preferences_{timestamp}.csv"
     workbook_path = EXPORT_DIR / f"faculty_assignment_workbook_{timestamp}{reference_workbook_path.suffix.lower()}"
 
-    sections_csv_path = refresh_bim_sections_csv(sections_csv_path)
+    sections_csv_path = refresh_bim_sections_csv(sections_csv_path, term=term)
     build_preferences_csv(preferences_csv_path, sections_csv_path)
     shutil.copy2(reference_workbook_path, workbook_path)
 

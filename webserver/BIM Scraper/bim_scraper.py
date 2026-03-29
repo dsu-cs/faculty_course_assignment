@@ -19,6 +19,7 @@ PRIVATE_INSTRUCTION_MULTIPLIER = Decimal("0.33")
 DISSERTATION_PER_STUDENT = Decimal("0.5")
 STUDENT_TEACHING_PER_STUDENT = Decimal("0.67")
 MAX_DISSERTATION_CHAIR_STUDENTS = 6
+TERM_SELECTORS = ("select#selTerm", "select[name='selTerm']", "select")
 
 
 def _split_term(term: str) -> tuple[int, str]:
@@ -30,6 +31,25 @@ def _split_term(term: str) -> tuple[int, str]:
 def _format_decimal(value: Decimal) -> str:
     normalized = value.quantize(WORKLOAD_DECIMAL_PLACES, rounding=ROUND_HALF_UP).normalize()
     return format(normalized, "f")
+
+
+def _extract_term_options(options) -> list[str]:
+    return [
+        option.inner_text().strip()
+        for option in options
+        if option.inner_text().strip()
+        and option.inner_text().strip() != "Select..."
+        and len(option.inner_text().strip().split()) == 2
+        and option.inner_text().strip().split()[1] in SEASON_ORDER
+    ]
+
+
+def _find_term_select(page):
+    for selector in TERM_SELECTORS:
+        select = page.query_selector(selector)
+        if select is not None:
+            return select, selector
+    raise RuntimeError("Could not find term dropdown on page.")
 
 
 def _wait_for_term_results(page) -> None:
@@ -234,6 +254,19 @@ def select_term(cli_term: str | None, available_terms: list[str]) -> tuple[str, 
     return sorted_terms[-1], None
 
 
+def fetch_available_terms() -> list[str]:
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        page = browser.new_page()
+
+        page.goto("https://bim.inclass.today/", wait_until="networkidle")
+        select, _selector = _find_term_select(page)
+        terms = _extract_term_options(select.query_selector_all("option"))
+
+        browser.close()
+        return terms
+
+
 def scrape_sections(term: str | None = None) -> list[dict[str, str]]:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
@@ -242,26 +275,14 @@ def scrape_sections(term: str | None = None) -> list[dict[str, str]]:
         print("Loading page... this may take a moment for the full table.")
         page.goto("https://bim.inclass.today/", wait_until="networkidle")
 
-        select = page.query_selector("select")
-        if select is None:
-            browser.close()
-            raise RuntimeError("Could not find term dropdown on page.")
-
-        options = select.query_selector_all("option")
-        all_terms = [
-            opt.inner_text().strip()
-            for opt in options
-            if opt.inner_text().strip()
-            and opt.inner_text().strip() != "Select..."
-            and len(opt.inner_text().strip().split()) == 2
-            and opt.inner_text().strip().split()[1] in SEASON_ORDER
-        ]
+        select, selector = _find_term_select(page)
+        all_terms = _extract_term_options(select.query_selector_all("option"))
 
         chosen_term, warning = select_term(term, all_terms)
         if warning:
             print(warning)
 
-        page.select_option("select", label=chosen_term)
+        page.select_option(selector, label=chosen_term)
         _wait_for_term_results(page)
         print(f"Using term: {chosen_term}")
 
