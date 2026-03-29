@@ -43,8 +43,8 @@ def test_graduate_course_uses_equated_multiplier():
     result = BIM_SCRAPER._build_workload_fields(row)
 
     assert result == {
-        "workload_if_full": "3.99",
-        "workload_per_student": "0.399",
+        "workload_if_full": "4",
+        "workload_per_student": "0.4",
         "special_workload": "",
     }
 

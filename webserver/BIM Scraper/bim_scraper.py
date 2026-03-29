@@ -12,8 +12,8 @@ from playwright.sync_api import sync_playwright
 
 SEASON_ORDER = {"Spring": 1, "Summer": 2, "Fall": 3}
 DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parent / "sections_tab.csv"
-WORKLOAD_DECIMAL_PLACES = Decimal("0.0001")
-GRADUATE_WORKLOAD_MULTIPLIER = Decimal("1.33")
+WORKLOAD_DECIMAL_PLACES = Decimal("0.01")
+GRADUATE_WORKLOAD_MULTIPLIER = Decimal("4") / Decimal("3")
 SMALL_SECTION_MULTIPLIER = Decimal("0.10")
 PRIVATE_INSTRUCTION_MULTIPLIER = Decimal("0.33")
 DISSERTATION_PER_STUDENT = Decimal("0.5")
@@ -32,11 +32,18 @@ def _format_decimal(value: Decimal) -> str:
     return format(normalized, "f")
 
 
-def _parse_decimal(value: str) -> Decimal:
-    try:
-        return Decimal(str(value).strip())
-    except (InvalidOperation, AttributeError):
-        return Decimal("0")
+def _wait_for_term_results(page) -> None:
+    page.wait_for_function(
+        """
+        () => {
+            const update = document.getElementById("txtUpdate");
+            const rows = document.querySelectorAll("tr.trSearch");
+            return update && update.textContent.trim() !== "Select a Term" && rows.length > 0;
+        }
+        """,
+        timeout=60000,
+    )
+    page.wait_for_timeout(1000)
 
 
 def _parse_credit_hours(credit_text: str) -> Decimal:
@@ -71,10 +78,6 @@ def _parse_course_level(number_text: str) -> int | None:
     if match is None:
         return None
     return int(match.group(1))
-
-
-def _is_online(row: dict[str, str]) -> bool:
-    return row.get("Days", "").strip().lower() == "internet"
 
 
 def _faculty_count(faculty_text: str) -> int:
@@ -259,17 +262,13 @@ def scrape_sections(term: str | None = None) -> list[dict[str, str]]:
             print(warning)
 
         page.select_option("select", label=chosen_term)
+        _wait_for_term_results(page)
         print(f"Using term: {chosen_term}")
-
-        page.click('th:has-text("CRN")')
-
-        page.wait_for_load_state("networkidle")
-        page.wait_for_selector("td a")
 
         soup = BeautifulSoup(page.content(), "html.parser")
         scraped_rows: list[dict[str, str]] = []
 
-        for row in soup.find_all("tr"):
+        for row in soup.select("tr.trSearch"):
             cells = row.find_all("td")
             if not cells or not cells[0].get_text(strip=True).isdigit():
                 continue

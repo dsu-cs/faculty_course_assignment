@@ -18,6 +18,11 @@ VALID_PREFERENCE_VALUES = {
 }
 
 
+def _normalize_preference_value(value: str) -> str:
+    normalized = value.strip().upper()
+    return normalized if normalized in VALID_PREFERENCE_VALUES else ""
+
+
 class DeanDownloadView(View):
     template_name = "pages/dean_download.html"
 
@@ -72,9 +77,10 @@ class FacultyPreferenceView(View):
         for key, value in request.POST.items():
             if not key.startswith("pref_"):
                 continue
-            if value not in VALID_PREFERENCE_VALUES:
+            normalized_value = _normalize_preference_value(value)
+            if not normalized_value:
                 continue
-            submitted_preferences[key.removeprefix("pref_")] = value
+            submitted_preferences[key.removeprefix("pref_")] = normalized_value
 
         saved_preferences: list[FacultyCoursePreference] = []
         for course in courses:

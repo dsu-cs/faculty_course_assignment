@@ -74,7 +74,6 @@
   window.addEventListener("DOMContentLoaded", () => {
     const courses = JSON.parse(document.getElementById("courses-data").textContent);
     const tableBody = document.getElementById("courseTableBody");
-    const form = document.getElementById("facultyPreferenceForm");
     const prefixSelect = new TomSelect("#prefixFilter", {
       plugins: ["remove_button"],
       maxItems: null,
@@ -82,6 +81,7 @@
       persist: false,
       placeholder: "Search prefixes...",
     });
+    const preferenceState = new Map(courses.map((course) => [String(course.id), "X"]));
 
     const selectedPrefixes = () => prefixSelect.getValue().map((value) => value.toUpperCase());
 
@@ -123,7 +123,7 @@
                 ${["0", "1", "2", "3", "X"].map((value) => {
                   const labelClass = value === "X" ? "btn-outline-danger" : value === "0" ? "btn-outline-primary" : "btn-outline-secondary";
                   const inputId = `c${course.id}_${value}`;
-                  const checked = value === "X" ? "checked" : "";
+                  const checked = preferenceState.get(String(course.id)) === value ? "checked" : "";
                   return `
                     <input type="radio" class="btn-check" name="pref_${course.id}" id="${inputId}" value="${value}" ${checked}>
                     <label class="btn ${labelClass}" for="${inputId}">${value}</label>
@@ -136,12 +136,19 @@
       }).join("");
     }
 
+    tableBody.addEventListener("change", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement) || target.type !== "radio") {
+        return;
+      }
+      if (!target.name.startsWith("pref_")) {
+        return;
+      }
+      preferenceState.set(target.name.replace("pref_", ""), target.value);
+    });
+
     prefixSelect.on("change", renderCourses);
     renderCourses();
-
-    form.addEventListener("submit", () => {
-      renderCourses();
-    });
   });
 </script>
 {% endblock content %}
