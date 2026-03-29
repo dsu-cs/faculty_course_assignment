@@ -28,6 +28,7 @@ CSV formats are described in each loader function below.
 from __future__ import annotations
 
 import csv
+import io
 import os
 import sys
 import argparse
@@ -48,6 +49,7 @@ DEFAULT_TIME_PATH        = "time_blocks.csv"
 DEFAULT_PREFERENCES_PATH = "preferences.csv"
 DEFAULT_WORKLOAD_PATH    = "workload.csv"
 DEFAULT_SCHEDULE_PATH    = "schedule.csv"
+DEFAULT_LOG_PATH         = "solver_log.txt"
 
 # ── Workload configuration ────────────────────────────────────────────
 FACULTY_MAX_WORKLOAD    = 30   # soft cap — total units per faculty per semester
@@ -1121,6 +1123,8 @@ def main() -> None:
                     help="Path to existing schedule.csv to validate instead of solving")
     parser.add_argument("--output",   default="schedule.csv",
                         help="Output path for the schedule CSV")
+    parser.add_argument("--log", default=DEFAULT_LOG_PATH,
+                    help="Path to save solver output log (default: solver_log.txt)")
     parser.add_argument("--test",     action="store_true",
                         help="Run T1/T2 logic tests (no CSV files required)")
     args = parser.parse_args()
@@ -1129,45 +1133,58 @@ def main() -> None:
         run_all_tests()
         return
 
-    if args.validate is not None:
-        # Validate mode — load existing schedule, skip solver
-        if not os.path.exists(args.validate):
-            print(f"Error: Schedule file '{args.validate}' not found.")
+    #Capture all output to log file
+    captured = io.StringIO()
+    sys.stdout = captured
+
+    try:
+
+        if args.validate is not None:
+            # Validate mode — load existing schedule, skip solver
+            if not os.path.exists(args.validate):
+                print(f"Error: Schedule file '{args.validate}' not found.")
+                sys.exit(1)
+            data       = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
+            assignment = load_schedule_csv(args.validate)
+            report     = validate(assignment, data)
+            report.print_report()
+            # Do NOT overwrite schedule.csv
+            sys.exit(0 if report.passed else 1)
+
+        # Step 1 — Load CSVs
+        data = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
+
+        # Step 2 — Build model
+        model = cp_model.CpModel()
+        built = build_csp(model, data)
+
+        # Step 3 — Solve
+        assignment = run_solver(built, time_limit=SOLVER_TIME_LIMIT_SECONDS)
+
+        if assignment is None:
+            print("No solution found. Exiting.")
             sys.exit(1)
-        data       = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
-        assignment = load_schedule_csv(args.validate)
-        report     = validate(assignment, data)
+
+        # Step 4 — Validate
+        report = validate(assignment, data)
         report.print_report()
-        # Do NOT overwrite schedule.csv
-        sys.exit(0 if report.passed else 1)
 
-    # Step 1 — Load CSVs
-    data = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
+        if not report.passed:
+            print("Validation failed — schedule NOT written.")
+            sys.exit(1)
 
-    # Step 2 — Build model
-    model = cp_model.CpModel()
-    built = build_csp(model, data)
+        # Step 5 — Summary
+        print_summary(assignment, data)
 
-    # Step 3 — Solve
-    assignment = run_solver(built, time_limit=SOLVER_TIME_LIMIT_SECONDS)
+        # Step 6 — Write output
+        write_schedule_csv(assignment, data, args.output)
 
-    if assignment is None:
-        print("No solution found. Exiting.")
-        sys.exit(1)
-
-    # Step 4 — Validate
-    report = validate(assignment, data)
-    report.print_report()
-
-    if not report.passed:
-        print("Validation failed — schedule NOT written.")
-        sys.exit(1)
-
-    # Step 5 — Summary
-    print_summary(assignment, data)
-
-    # Step 6 — Write output
-    write_schedule_csv(assignment, data, args.output)
+    finally:
+        sys.stdout = sys.__stdout__
+        log_content = captured.getvalue()
+        with open(args.log, "w", encoding="utf-8") as f:
+            f.write(log_content)
+        print(f"[Log] Output saved → {args.log}")
 
 
 if __name__ == "__main__":
