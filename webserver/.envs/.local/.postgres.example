@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=fca
+POSTGRES_USER=replace-with-postgres-user
+POSTGRES_PASSWORD=replace-with-postgres-password

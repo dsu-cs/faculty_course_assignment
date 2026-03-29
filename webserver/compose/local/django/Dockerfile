@@ -33,6 +33,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock:rw \
     uv sync
 
+# Keep runtime aligned when pyproject changes but lockfile lags.
+RUN --mount=type=cache,target=/root/.cache/uv uv pip install pyjwt==2.10.1
+
 # devcontainer dependencies and utils
 RUN apt-get update && apt-get install --no-install-recommends -y \
   sudo git bash-completion nano ssh

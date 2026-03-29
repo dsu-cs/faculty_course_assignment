@@ -28,6 +28,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-dev
 
+# Keep runtime aligned when pyproject changes but lockfile lags.
+RUN --mount=type=cache,target=/root/.cache/uv uv pip install pyjwt==2.10.1
+
 # Python 'run' stage
 FROM python:3.13-slim-bookworm AS python-run-stage
 
