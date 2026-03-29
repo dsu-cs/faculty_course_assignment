@@ -5,6 +5,9 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from fca.views import DeanDownloadView
+from fca.views import FacultyPreferenceView
+
 
 from .api import api
 
@@ -15,6 +18,9 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/about.html"),
         name="about",
     ),
+    path("dean-download/", DeanDownloadView.as_view(), name="dean_download"),
+    # Django Admin, use {% url 'admin:index' %}
+    path("faculty-preference/", FacultyPreferenceView.as_view(), name="faculty_preference"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

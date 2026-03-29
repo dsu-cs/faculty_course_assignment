@@ -1,24 +1,34 @@
-FROM python:3.13-slim
- 
-# Metadata
-LABEL description="Faculty Scheduling Solver — Google OR-Tools CP-SAT"
- 
+FROM python:3.12-slim
+
+LABEL description="Faculty Course Assignment Flask + Solver service"
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PORT=5000
+
 WORKDIR /app
- 
-# Install ortools (and openpyxl, as noted in Solver/README.md)
-RUN pip install --no-cache-dir ortools openpyxl
- 
-# Copy solver source
-COPY src/faculty_scheduling.py .
- 
-# Copy default input CSVs (used when no volume is mounted)
-COPY preferences.csv time_blocks.csv workload.csv ./
- 
-# Output directory — mount a host path here to retrieve schedule.csv
+
+# Install Python dependencies first for better layer caching.
+COPY requirements.txt ./requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt && \
+    pip install gunicorn
+
+# Copy only the application code needed by the Flask service and solver.
+COPY Solver ./Solver
+COPY solver_server ./solver_server
+
+# Optional default input files remain available inside the container.
 RUN mkdir -p /app/output
- 
-# Run the solver by default; pass --test to run the test suite instead.
-# Input paths and output path are overridable via CLI args:
-#   --preferences, --time_blocks, --workload, --output
-ENTRYPOINT ["python", "faculty_scheduling.py"]
-CMD ["--output", "/app/output/schedule.csv"]
+
+EXPOSE 5000
+
+# Flask app already exists here:
+# solver_server/communications/server.py -> app = Flask(__name__)
+CMD ["gunicorn", \
+     "--bind", "0.0.0.0:5000", \
+     "--workers", "2", \
+     "--threads", "4", \
+     "--timeout", "120", \
+     "solver_server.communications.server:app"]

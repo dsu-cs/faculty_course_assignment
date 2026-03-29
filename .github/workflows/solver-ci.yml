@@ -11,7 +11,7 @@ on:
       - '.github/workflows/solver-ci.yml'
 
   push:
-    branches: ['main']
+    branches: ['main', 'communications-setup']
     paths:
       - 'Solver/**'
       - '.github/workflows/solver-ci.yml'
@@ -21,39 +21,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-test:
+### This is the testing of the Solver library
+  native-solver-tests:
+    name: Native solver tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v6
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build solver image
-        uses: docker/build-push-action@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          context: ./Solver
-          push: false
-          load: true
-          tags: solver:ci
-          cache-from: type=gha,scope=solver
-          cache-to: type=gha,scope=solver,mode=max
+          python-version: '3.13'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install openpyxl
 
       - name: Run solver test suite
-        run: docker run --rm solver:ci --test
+        run: python Solver/src/faculty_scheduling.py --test
 
       - name: Run solver against bundled sample CSVs
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/solver-output:/app/output \
-            solver:ci
-          test -f ${{ github.workspace }}/solver-output/schedule.csv
+          mkdir -p "${{ github.workspace }}/solver-output-native"
+          python Solver/src/faculty_scheduling.py \
+            --preferences Solver/preferences.csv \
+            --time_blocks Solver/time_blocks.csv \
+            --workload Solver/workload.csv \
+            --output "${{ github.workspace }}/solver-output-native/schedule.csv"
+          test -f "${{ github.workspace }}/solver-output-native/schedule.csv"
 
-      - name: Upload schedule.csv artifact
+      - name: Upload native schedule.csv artifact
         uses: actions/upload-artifact@v4
         with:
-          name: schedule
-          path: solver-output/schedule.csv
+          name: schedule-native
+          path: solver-output-native/schedule.csv
           retention-days: 7

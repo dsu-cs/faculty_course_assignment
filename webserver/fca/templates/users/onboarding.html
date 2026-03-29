@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Complete Onboarding
+{% endblock title %}
+
+{% block content %}
+  <h1>Welcome to FCA</h1>
+  <p>Complete onboarding for <strong>{{ email }}</strong>.</p>
+  <form method="post" action="{% url 'users:onboarding' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Complete onboarding</button>
+  </form>
+{% endblock content %}

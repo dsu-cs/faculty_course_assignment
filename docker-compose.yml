@@ -18,17 +18,31 @@ services:
       start_period: 10s
     restart: unless-stopped
 
-  solver:
+
+  solver-api:
     build:
-      context: ./Solver
+      context: Solver
       dockerfile: Dockerfile
-    container_name: solver
-    # Mount a host directory to retrieve schedule.csv after the solver finishes.
-    # Replace ./solver-output with any path on your machine.
+    container_name: solver-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PORT: 5000
+      PYTHONUNBUFFERED: "1"
+    networks:
+      - backend
+    ports:
+      - "5000:5000"
     volumes:
-      - ./solver-output:/app/output
-    # The solver exits on its own once finished — no restart needed.
-    restart: "no"
+      - solver_output:/app/output
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health').read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
 
 
 networks:
@@ -39,3 +53,5 @@ networks:
 volumes:
   postgres_data:
     name: postgres
+  solver_output:
+    name: solver-output

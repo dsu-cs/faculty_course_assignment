@@ -116,3 +116,232 @@ color:var(--trojan-blue-darkened)!important;
 
 }
 
+.dean-hero {
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.dean-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #143d68;
+  letter-spacing: -1px;
+}
+
+.dean-subtitle {
+  font-size: 1.2rem;
+  color: #5a7090;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.dean-subtitle::before,
+.dean-subtitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 130px;
+  height: 1px;
+  background: #d7e0ea;
+}
+
+.dean-subtitle::before {
+  right: 100%;
+  margin-right: 18px;
+}
+
+.dean-subtitle::after {
+  left: 100%;
+  margin-left: 18px;
+}
+
+.dean-description {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  color: #546b86;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.page-section {
+  margin-top: 2.8rem;
+}
+
+.upload-card {
+  border: 1px solid #dbe3ec;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(15, 53, 87, 0.08);
+  height: 100%;
+}
+
+.upload-card-header {
+  padding: 1.35rem 1.5rem;
+  color: #fff;
+}
+
+.upload-card-header h3 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.faculty-header {
+  background: linear-gradient(135deg, #2166b2 0%, #4b95dd 100%);
+}
+
+.bim-header {
+  background: linear-gradient(135deg, #3d9740 0%, #52b36f 100%);
+}
+
+.upload-card-body {
+  padding: 2rem 2rem 2.2rem;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #173f68;
+  margin-bottom: 1rem;
+}
+
+.with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.with-lines::before,
+.with-lines::after {
+  content: "";
+  flex: 1;
+  max-width: 90px;
+  height: 1px;
+  background: #d7e0ea;
+}
+
+.section-text {
+  color: #5c7088;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.4rem;
+  font-style: italic;
+}
+
+.centered-text {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #ffffff;
+  color: #234d7b;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.status-pill-center {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.status-pill span:first-child {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #4ca64f;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.download-panel {
+  max-width: 520px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0f3f6b 0%, #175284 100%);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 12px 28px rgba(15, 53, 87, 0.16);
+  color: #fff;
+}
+
+.download-panel h3 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.download-panel p {
+  margin-bottom: 1.3rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.generate-btn {
+  background: #ffffff;
+  color: #0f3f6b;
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  min-width: 250px;
+  transition: all 0.2s ease;
+}
+
+.generate-btn:hover {
+  background: #edf5fd;
+  color: #0f3f6b;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 991px) {
+  .dean-subtitle::before,
+  .dean-subtitle::after {
+    width: 70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dean-title {
+    font-size: 2.8rem;
+  }
+
+  .dean-subtitle::before,
+  .dean-subtitle::after {
+    display: none;
+  }
+
+  .upload-card-body {
+    min-height: auto;
+    padding: 1.6rem 1.2rem 1.8rem;
+  }
+
+  .download-panel {
+    padding: 1.4rem 1rem;
+  }
+
+  .download-panel h3 {
+    font-size: 1.7rem;
+  }
+}
+

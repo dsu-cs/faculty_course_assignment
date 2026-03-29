@@ -20,3 +20,18 @@ def test_update():
 def test_redirect():
     assert reverse("users:redirect") == "/users/~redirect/"
     assert resolve("/users/~redirect/").view_name == "users:redirect"
+
+
+def test_magic_login():
+    assert reverse("users:magic_login") == "/users/auth/login/"
+    assert resolve("/users/auth/login/").view_name == "users:magic_login"
+
+
+def test_magic_check_email():
+    assert reverse("users:magic_check_email") == "/users/auth/check-email/"
+    assert resolve("/users/auth/check-email/").view_name == "users:magic_check_email"
+
+
+def test_onboarding():
+    assert reverse("users:onboarding") == "/users/auth/onboarding/"
+    assert resolve("/users/auth/onboarding/").view_name == "users:onboarding"

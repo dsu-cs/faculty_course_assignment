@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dean Download{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+
+  <form method="post" class="page-section">
+    {% csrf_token %}
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-5 col-md-6">
+        <div class="upload-card">
+          <div class="upload-card-header faculty-header">
+            <h3>Faculty Preferences</h3>
+          </div>
+          <div class="upload-card-body text-center">
+            <div class="section-label with-lines">Survey Results CSV</div>
+            <p class="section-text centered-text">
+              Faculty preference data ready to merge.
+            </p>
+
+            <div class="status-pill status-pill-center">
+              <span>✓</span>
+              <span>CSV Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-6">
+        <div class="upload-card">
+          <div class="upload-card-header bim-header">
+            <h3>BIM Data</h3>
+          </div>
+          <div class="upload-card-body text-center">
+            <div class="section-label with-lines">Current BIM Data CSV</div>
+            <p class="section-text centered-text">
+              Latest course information from BIM scrape.
+            </p>
+
+            <div class="status-pill status-pill-center">
+              <span>✓</span>
+              <span>CSV Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="download-panel text-center mt-5">
+      <h3>Download Workbook</h3>
+      <p>
+        Prepare and download the combined Excel workbook.
+      </p>
+      <button type="submit" class="btn generate-btn">
+        Download Workbook
+      </button>
+    </div>
+  </form>
+
+  {% if message %}
+    <div class="alert alert-info mt-4 shadow-sm rounded-4 text-center">
+      {{ message }}
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}
