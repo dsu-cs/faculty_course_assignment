@@ -128,7 +128,7 @@ def build_preferences_csv(output_path: Path, sections_csv_path: Path | None = No
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(["section_id", *faculty_names])
+        writer.writerow(["CRN", *faculty_names])
 
         for section in sections:
             key = (section["prefix"], section["number"])
@@ -260,7 +260,7 @@ def _populate_preferences_tab(workbook_path: Path, preferences_csv_path: Path) -
         rows = list(csv.reader(csv_file))
 
     if not rows:
-        rows = [["section_id"]]
+        rows = [["CRN"]]
 
     title_fill = PatternFill(start_color="2F75B5", end_color="2F75B5", fill_type="solid")
     header_fill = PatternFill(start_color="5B9BD5", end_color="5B9BD5", fill_type="solid")
@@ -311,3 +311,4 @@ def build_dean_download_artifacts(term: str | None = None) -> DeanDownloadArtifa
         preferences_csv_path=preferences_csv_path,
         workbook_path=workbook_path,
     )
+
