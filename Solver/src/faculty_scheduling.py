@@ -13,14 +13,14 @@ Solves a Constraint Satisfaction Problem (CSP) to find the best
 faculty-to-section assignment that satisfies all constraints.
 
 Outputs:
-    schedule.csv     — section x faculty assignment matrix (0/1)
-    prints a human-readable summary to the terminal
+    Outputs: schedule.csv — two column file with crn and assigned_faculty
 
 Usage:
     python faculty_scheduling.py
     python faculty_scheduling.py --sections s.csv --time t.csv --preferences p.csv
     python faculty_scheduling.py --workload w.csv  (optional)
     python faculty_scheduling.py --test
+    python faculty_scheduling.py --validate schedule.csv
 
 CSV formats are described in each loader function below.
 """
@@ -28,6 +28,8 @@ CSV formats are described in each loader function below.
 from __future__ import annotations
 
 import csv
+import io
+import os
 import sys
 import argparse
 from dataclasses import dataclass, field
@@ -46,6 +48,8 @@ DEFAULT_SECTIONS_PATH    = "sections.csv"
 DEFAULT_TIME_PATH        = "time_blocks.csv"
 DEFAULT_PREFERENCES_PATH = "preferences.csv"
 DEFAULT_WORKLOAD_PATH    = "workload.csv"
+DEFAULT_SCHEDULE_PATH    = "schedule.csv"
+DEFAULT_LOG_PATH         = "solver_log.txt"
 
 # ── Workload configuration ────────────────────────────────────────────
 FACULTY_MAX_WORKLOAD    = 30   # soft cap — total units per faculty per semester
@@ -551,6 +555,20 @@ def load_workload_csv(path: str) -> dict[str, int]:
     print(f"[Loader] workload.csv: {len(research_units)} faculty with research units")
     return research_units
 
+def load_schedule_csv(path: str) -> dict[str, str]:
+    assignment = {}
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if "assigned_faculty" not in reader.fieldnames:
+            print(f"Error: CSV file {path} missing column 'assigned_faculty'")
+            return {}
+        for row in reader:
+            crn = row["crn"].strip()
+            faculty = row["assigned_faculty"].strip()
+            if faculty:
+                assignment[crn] = faculty
+    return assignment
+
 def _build_section(sec_data: dict, time_data: dict | None) -> Section:
     """
     Combine a Sections tab row and its matching Time tab row (if any)
@@ -944,6 +962,8 @@ def validate(assignment: dict[str, str], data: SchedulingData) -> ValidationRepo
 def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     """Print a formatted human-readable schedule to the terminal."""
 
+
+    '''
     print(f"\n{'═' * 62}")
     print("  SCHEDULE SUMMARY")
     print(f"{'═' * 62}")
@@ -964,6 +984,9 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     print(f"  {'─' * 41}")
     print(f"  {'Total preference score':.<35} {total_score:>+6}")
 
+    '''
+
+    '''
     print(f"\n  {'Faculty':<25} {'Units':>6}  {'Sections':>9}  {'Cap':>4}  {'Research':>9}  Status")
     print(f"  {'─'*25} {'─'*6}  {'─'*9}  {'─'*4}  {'─'*9}  {'─'*12}")
 
@@ -982,29 +1005,23 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
         status = "✓ OK" if units <= mx else f"⚠ +{units - mx} over cap"
         print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {research:>9}  {status}")
 
+    '''
+
     print(f"\n  Single-day sections (not scheduled): {len(data.single_day)}")
     print(f"{'═' * 62}\n")
 
 def write_schedule_csv(assignment: dict[str, str],
                        data: SchedulingData,
                        output_path: str) -> None:
-    """
-    Write the solver output to a CSV file.
 
-    Output format (0/1 matrix):
-        crn, Faculty A, Faculty B, ...
-        70346, 1, 0, ...
-    """
-    faculty  = data.faculty
-    sections = data.sections_to_solve
+    all_sections = data.regular + data.single_day + data.internet
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["crn"] + faculty)
-        for crn in sections:
-            assigned = assignment.get(crn)
-            row = [crn] + [1 if fac == assigned else 0 for fac in faculty]
-            writer.writerow(row)
+        writer.writerow(["crn", "assigned_faculty"])
+        for sec in all_sections:
+            faculty = assignment.get(sec.crn, "")
+            writer.writerow([sec.crn, faculty])
 
     print(f"[Output] Schedule written → {output_path}")
 
@@ -1102,8 +1119,12 @@ def main() -> None:
                         help="Path to preferences.csv")
     parser.add_argument("--workload", default=DEFAULT_WORKLOAD_PATH,
                         help="Optional path to workload.csv (faculty research units)")
+    parser.add_argument("--validate", default=None,
+                    help="Path to existing schedule.csv to validate instead of solving")
     parser.add_argument("--output",   default="schedule.csv",
                         help="Output path for the schedule CSV")
+    parser.add_argument("--log", default=DEFAULT_LOG_PATH,
+                    help="Path to save solver output log (default: solver_log.txt)")
     parser.add_argument("--test",     action="store_true",
                         help="Run T1/T2 logic tests (no CSV files required)")
     args = parser.parse_args()
@@ -1112,33 +1133,58 @@ def main() -> None:
         run_all_tests()
         return
 
-    # Step 1 — Load CSVs
-    data = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
+    #Capture all output to log file
+    captured = io.StringIO()
+    sys.stdout = captured
 
-    # Step 2 — Build model
-    model = cp_model.CpModel()
-    built = build_csp(model, data)
+    try:
 
-    # Step 3 — Solve
-    assignment = run_solver(built, time_limit=SOLVER_TIME_LIMIT_SECONDS)
+        if args.validate is not None:
+            # Validate mode — load existing schedule, skip solver
+            if not os.path.exists(args.validate):
+                print(f"Error: Schedule file '{args.validate}' not found.")
+                sys.exit(1)
+            data       = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
+            assignment = load_schedule_csv(args.validate)
+            report     = validate(assignment, data)
+            report.print_report()
+            # Do NOT overwrite schedule.csv
+            sys.exit(0 if report.passed else 1)
 
-    if assignment is None:
-        print("No solution found. Exiting.")
-        sys.exit(1)
+        # Step 1 — Load CSVs
+        data = load_all(args.sections, args.time_blocks, args.preferences, args.workload)
 
-    # Step 4 — Validate
-    report = validate(assignment, data)
-    report.print_report()
+        # Step 2 — Build model
+        model = cp_model.CpModel()
+        built = build_csp(model, data)
 
-    if not report.passed:
-        print("Validation failed — schedule NOT written.")
-        sys.exit(1)
+        # Step 3 — Solve
+        assignment = run_solver(built, time_limit=SOLVER_TIME_LIMIT_SECONDS)
 
-    # Step 5 — Summary
-    print_summary(assignment, data)
+        if assignment is None:
+            print("No solution found. Exiting.")
+            sys.exit(1)
 
-    # Step 6 — Write output
-    write_schedule_csv(assignment, data, args.output)
+        # Step 4 — Validate
+        report = validate(assignment, data)
+        report.print_report()
+
+        if not report.passed:
+            print("Validation failed — schedule NOT written.")
+            sys.exit(1)
+
+        # Step 5 — Summary
+        print_summary(assignment, data)
+
+        # Step 6 — Write output
+        write_schedule_csv(assignment, data, args.output)
+
+    finally:
+        sys.stdout = sys.__stdout__
+        log_content = captured.getvalue()
+        with open(args.log, "w", encoding="utf-8") as f:
+            f.write(log_content)
+        print(f"[Log] Output saved → {args.log}")
 
 
 if __name__ == "__main__":
