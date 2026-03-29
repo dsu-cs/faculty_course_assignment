@@ -1,6 +1,7 @@
 """
 Tests for CSV Converter Module
 Author: Muhammad Bhutta
+Updated: March 29, 2026 - To match PR #24 format
 """
 
 import pytest
@@ -15,33 +16,62 @@ def test_converter_initialization():
     converter.cleanup()
 
 
-def test_valid_conversion():
-    """Test conversion with valid CSV data"""
+def test_valid_conversion_with_all_files():
+    """Test conversion with all CSV files (including optional workload)"""
     converter = CSVConverter()
     
+    # PR #24 format with title rows
     data = {
-        "preferences_csv": "section,faculty,score\nCSC150,Alice,3\n",
-        "time_blocks_csv": "section,pattern,start_time\nCSC150,MWF,08:00\n",
-        "workload_csv": "faculty,min,max\nAlice,1,2\n"
+        "sections_csv": "Sections\nCRN,Sub,Num,Seq,Crd,Desc,Seats,Waitlist,Days,Time,Room,Faculty,Current Workload\n71464,INFS,890,D01,1,Seminar,19/25,0,W,1100-1150,East Hall 201,,5\n",
+        "time_blocks_csv": "Time\nCRN,Sub,Days,Start Time,End Time,Room\n71464,INFS,W,11:00,11:50,East Hall 201\n",
+        "preferences_csv": "Preferences\nCRN,Alice,Bob\n71464,3,1\n",
+        "workload_csv": "Workload\nFaculty,Research Units\nAlice,15\n"
     }
     
     result = converter.convert_from_json(data)
     
     assert result.success is True
+    assert os.path.exists(result.sections_path)
     assert os.path.exists(result.preferences_path)
     assert os.path.exists(result.time_blocks_path)
     assert os.path.exists(result.workload_path)
     
+    # Verify content was written correctly
+    with open(result.sections_path, 'r') as f:
+        content = f.read()
+        assert "Sections" in content
+        assert "CRN,Sub,Num" in content
+    
     converter.cleanup()
 
 
-def test_missing_data():
-    """Test conversion fails with missing data"""
+def test_valid_conversion_without_workload():
+    """Test conversion works without optional workload.csv"""
     converter = CSVConverter()
     
     data = {
-        "preferences_csv": "section,faculty,score\n"
-        # Missing time_blocks_csv and workload_csv
+        "sections_csv": "Sections\nCRN,Sub,Num,Seq,Crd,Desc,Seats,Waitlist,Days,Time,Room,Faculty,Current Workload\n71464,INFS,890,D01,1,Seminar,19/25,0,W,1100-1150,East Hall 201,,5\n",
+        "time_blocks_csv": "Time\nCRN,Sub,Days,Start Time,End Time,Room\n71464,INFS,W,11:00,11:50,East Hall 201\n",
+        "preferences_csv": "Preferences\nCRN,Alice,Bob\n71464,3,1\n"
+    }
+    
+    result = converter.convert_from_json(data)
+    
+    assert result.success is True
+    assert os.path.exists(result.sections_path)
+    assert os.path.exists(result.preferences_path)
+    assert os.path.exists(result.time_blocks_path)
+    assert result.workload_path == ""
+    
+    converter.cleanup()
+
+
+def test_missing_required_data():
+    """Test conversion fails when required data is missing"""
+    converter = CSVConverter()
+    
+    data = {
+        "sections_csv": "Sections\nCRN,Sub,Num\n"
     }
     
     result = converter.convert_from_json(data)
