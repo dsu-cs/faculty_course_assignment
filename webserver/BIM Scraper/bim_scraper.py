@@ -2,22 +2,79 @@ import csv
 import sys
 from datetime import datetime
 from pathlib import Path
+from decimal import Decimal
+from decimal import InvalidOperation
+from decimal import ROUND_HALF_UP
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 SEASON_ORDER = {"Spring": 1, "Summer": 2, "Fall": 3}
 DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parent / "sections_tab.csv"
+WORKLOAD_DECIMAL_PLACES = Decimal("0.0001")
+
+
+def _split_term(term: str) -> tuple[int, str]:
+    year_text, season = term.split(maxsplit=1)
+    season = season.strip().title()
+    return int(year_text), season
+
+
+def _format_decimal(value: Decimal) -> str:
+    normalized = value.quantize(WORKLOAD_DECIMAL_PLACES, rounding=ROUND_HALF_UP).normalize()
+    return format(normalized, "f")
+
+
+def _parse_credit_hours(credit_text: str) -> Decimal:
+    parts = []
+    for token in str(credit_text).replace("-", " ").split():
+        try:
+            parts.append(Decimal(token))
+        except InvalidOperation:
+            continue
+    if not parts:
+        return Decimal("0")
+    return max(parts)
+
+
+def _parse_seat_counts(seat_text: str) -> tuple[int, int]:
+    current_seats = 0
+    max_seats = 0
+    current_text, _, max_text = str(seat_text).partition("/")
+    try:
+        current_seats = int(current_text.strip()) if current_text.strip() else 0
+    except ValueError:
+        current_seats = 0
+    try:
+        max_seats = int(max_text.strip()) if max_text.strip() else 0
+    except ValueError:
+        max_seats = 0
+    return current_seats, max_seats
+
+
+def _build_workload_fields(credit_text: str, seat_text: str) -> dict[str, str]:
+    _, max_seats = _parse_seat_counts(seat_text)
+    workload_if_full = _parse_credit_hours(credit_text)
+
+    if max_seats > 0 and workload_if_full > 0:
+        workload_per_student = workload_if_full / Decimal(max_seats)
+    else:
+        workload_per_student = Decimal("0")
+
+    return {
+        "Workload If Full": _format_decimal(workload_if_full),
+        "Workload Per Student": _format_decimal(workload_per_student),
+        "Special Workload": "",
+    }
 
 
 def term_key(term: str) -> tuple[int, int]:
-    year, season = term.split()
+    year, season = _split_term(term)
     return (int(year), SEASON_ORDER[season])
 
 
 def get_next_term(term: str) -> str:
-    year, season = term.split()
-    year = int(year)
+    year, season = _split_term(term)
 
     if season == "Spring":
         return f"{year} Summer"
@@ -30,6 +87,9 @@ def get_current_term() -> str:
     now = datetime.now()
     month = now.month
     year = now.year
+
+    if not 1 <= month <= 12:
+        raise ValueError(f"Invalid month: {month}")
 
     if month <= 5:
         season = "Spring"
@@ -155,20 +215,24 @@ def scrape_sections(term: str | None = None) -> list[dict[str, str]]:
             faculty_links = faculty_cell.find_all("a")
             faculty_names = [link.get_text(strip=True) for link in faculty_links]
 
+            credits_text = cells[4].get_text(strip=True)
+            seats_text = cells[6].get_text(strip=True).replace(" ", "")
+
             scraped_rows.append(
                 {
                     "CRN": cells[0].get_text(strip=True),
                     "Sub": cells[1].get_text(strip=True),
                     "Num": cells[2].get_text(strip=True),
                     "Seq": cells[3].get_text(strip=True),
-                    "Crd": cells[4].get_text(strip=True),
+                    "Crd": credits_text,
                     "Desc": cells[5].get_text(strip=True),
-                    "Seats": cells[6].get_text(strip=True).replace(" ", ""),
+                    "Seats": seats_text,
                     "Waitlist": cells[7].get_text(strip=True),
                     "Days": days_text,
                     "Time": time_text,
                     "Room": room_text,
                     "Faculty": "/".join(faculty_names),
+                    **_build_workload_fields(credits_text, seats_text),
                 }
             )
 
@@ -183,7 +247,23 @@ def write_sections_csv(
     resolved_output_path = Path(output_path)
     resolved_output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    headers = ["CRN", "Sub", "Num", "Seq", "Crd", "Desc", "Seats", "Waitlist", "Days", "Time", "Room", "Faculty"]
+    headers = [
+        "CRN",
+        "Sub",
+        "Num",
+        "Seq",
+        "Crd",
+        "Desc",
+        "Seats",
+        "Waitlist",
+        "Days",
+        "Time",
+        "Room",
+        "Faculty",
+        "Workload If Full",
+        "Workload Per Student",
+        "Special Workload",
+    ]
 
     with resolved_output_path.open(mode="w", newline="", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=headers)

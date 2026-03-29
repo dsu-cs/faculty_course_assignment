@@ -188,6 +188,9 @@ def _populate_sections_tab(workbook_path: Path, raw_sections: list[dict[str, str
         "J": 14,
         "K": 24,
         "L": 28,
+        "M": 16,
+        "N": 18,
+        "O": 16,
     }
     for column_letter, width in widths.items():
         sheet.column_dimensions[column_letter].width = width
