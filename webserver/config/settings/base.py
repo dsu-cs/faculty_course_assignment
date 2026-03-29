@@ -105,7 +105,7 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "users:redirect"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = "account_login"
+LOGIN_URL = "users:magic_login"
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -139,6 +139,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "fca.users.middleware.AuthenticationFlowMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
@@ -221,6 +222,18 @@ EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND",
     default="django.core.mail.backends.smtp.EmailBackend",
 )
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host
+EMAIL_HOST = env("EMAIL_HOST", default="localhost")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-port
+EMAIL_PORT = env.int("EMAIL_PORT", default=25)
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-user
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-use-ssl
+EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
@@ -280,6 +293,20 @@ ACCOUNT_FORMS = {"signup": "fca.users.forms.UserSignupForm"}
 SOCIALACCOUNT_ADAPTER = "fca.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {"signup": "fca.users.forms.UserSocialSignupForm"}
+
+
+# Magic link authentication
+# ------------------------------------------------------------------------------
+MAGIC_LINK_JWT_SECRET = env("MAGIC_LINK_JWT_SECRET", default="")
+MAGIC_LINK_JWT_ALGORITHM = env("MAGIC_LINK_JWT_ALGORITHM", default="HS256")
+MAGIC_LINK_TTL_MINUTES = env.int("MAGIC_LINK_TTL_MINUTES", default=30)
+MAGIC_LINK_ALLOWED_DOMAIN = env("MAGIC_LINK_ALLOWED_DOMAIN", default="dsu.edu")
+MAGIC_LINK_RESEND_ON_EXPIRED = env.bool("MAGIC_LINK_RESEND_ON_EXPIRED", default=True)
+MAGIC_LINK_URL_NAME = env("MAGIC_LINK_URL_NAME", default="users:magic_verify")
+
+# Session keys used by the custom auth flow.
+MAGIC_LINK_SESSION_EMAIL_KEY = "magic_link_email"
+ONBOARDING_REQUIRED_SESSION_KEY = "needs_onboarding"
 
 
 # Your stuff...

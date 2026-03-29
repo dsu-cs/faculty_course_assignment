@@ -1,21 +1,201 @@
-section_id,Aaron David Ingalls,Abbey Shimer,Alan Montgomery,Bethany R Lutovsky,Betsy Lea Schamber,Bill Bendix,Ganga Prasad Basyal,Jeffrey E Elbert,Julia Price-Lee,Kindra Jon Schneider,Konrad N Lightner,Laxmi Manasa Gorugantu,Luke Chowning,Nevine M Nawar,Peter C Britton,Russell Wayne Graves,Scott Richardson,Sheila G Mulder,Tim Murray,Wendy Simmermon
-76192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
-70722,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-71094,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
-76218,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
-77905,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
-73559,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-80640,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-75728,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-75738,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
-72944,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-76534,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-73553,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-80645,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
-70837,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-77928,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-70601,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-70723,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
-75310,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
-74222,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-79231,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+crn,assigned_faculty
+74260,Christina Yemane Mulu
+75713,William Christopher Sewell
+73912,Zainab Albujasim
+74438,Hannah L Altmann
+73642,Abid Mehmood
+70828,Daniel Lee Welynn
+70785,Andrew E Sathoff
+80691,Julia Price-Lee
+77880,Alex A Dececchi
+77839,William Christopher Sewell
+75757,Ahmad Tawfiq Al-Hammouri
+79231,Russell Wayne Graves
+73575,Viki R Johnson
+79214,Daniel Lee Welynn
+77192,Hannah L Altmann
+74934,Aaron David Ingalls
+74119,Aaron David Ingalls
+74439,Stacy Lynn Anderson
+75725,Bethany R Lutovsky
+71213,Joseph A Staudenbaur
+70730,Scott Richardson
+72823,Laxmi Manasa Gorugantu
+72965,Mohammad Tafiqur Rahman
+73856,Eric A Holm
+76192,Scott K Morstad
+77905,Daniel A Talley
+70773,Tate Allen Carson
+70754,Thomas M Lawson
+75741,Richard K Wicklein
+74431,Paul T LeVan
+78298,Brent L Tulloss
+79118,Chad R Fenner
+73894,Nicholas Daniel Handberg
+77046,Russell Wayne Graves
+77948,Steven Parker Gingras
+79213,Thomas M Jones
+75770,Megan Nicole Schuh
+73631,Bradley James Brockmueller
+77941,Jackson Gregory Heiberger
+75727,Bethany R Lutovsky
+73883,Kyle L Cronin
+73641,Cody Michael Welu
+79215,Matthew Bruce Ingram
+73645,Sophia Ivy Lewis
+73559,Jeffrey E Elbert
+74408,Tim Murray
+74051,Peng Guo
+79493,Nicole Marie Steele
+70788,Yen-Ling Chang
+70385,Tim Murray
+77090,Scott Richardson
+70856,Wendy Simmermon
+73884,Kyle Ronald Korman
+80698,Kim Jones
+73311,Julia Price-Lee
+76178,Tate Allen Carson
+70761,Justin L Blessinger
+74125,Jenny Leigh Schulte
+75253,Cherie B Noteboom
+73643,Christina Yemane Mulu
+78148,Kevin D Smith
+73041,Scott Wayne Klungseth
+73906,Mark A Spanier
+79494,Nicole Marie Steele
+74290,Samuel W Flint
+73629,Jenny Leigh Schulte
+74951,Samuel W Flint
+75303,Stacy Lynn Anderson
+73896,Andrew W Kramer
+71512,Eric A Holm
+75909,Scott Wayne Klungseth
+75831,Quentin Michael Covert
+70722,Wendy M Romero
+71089,Ganga Prasad Basyal
+72944,David Zeng
+74128,Jared T Soundy
+80673,Daniel A Talley
+75355,Andy William Roland
+73564,Laxmi Manasa Gorugantu
+70593,Nicole Marie Steele
+76237,Andrew E Sathoff
+75740,Hannah L Altmann
+75164,Deb Tech
+80675,Wendy Simmermon
+80644,Joseph A Staudenbaur
+75726,Matthew Bruce Ingram
+79133,Kyle Ronald Korman
+80641,Abbey Shimer
+77939,Ahmad Tawfiq Al-Hammouri
+74412,Wendy Simmermon
+73017,Scott Wayne Klungseth
+70692,Katie Lyn Anderson
+79130,Quentin Michael Covert
+74937,John D Hastings
+74121,John D Hastings
+73877,Zainab Albujasim
+73862,Farishta Rahman
+80637,Tim Murray
+73958,Scott Wayne Klungseth
+75254,David Zeng
+77187,Wendy M Romero
+81041,Mark A Spanier
+76593,Kathy Engbrecht
+74271,Tyler Jerome Flaagan
+75723,Matthew Bruce Ingram
+74988,Michael J Ham
+77837,Scott Richardson
+80708,Kristel K Bakker
+73873,Quentin Michael Covert
+73855,Varghese Mathew Vaidyan
+71158,Abbey Shimer
+74124,Brent L Tulloss
+76222,Kim Jones
+80647,William Christopher Sewell
+73937,Daniel A Talley
+76232,Steven Parker Gingras
+76592,Steven Parker Gingras
+71177,Betsy Lea Schamber
+79212,Joseph A Staudenbaur
+80727,Jihene Kaabi Ep Harrath
+70682,Alex A Dececchi
+76533,Kathy Engbrecht
+71093,Ganga Prasad Basyal
+75761,Scott Wayne Klungseth
+71216,Ken Klinner
+80670,Scott K Morstad
+73014,Erik John Pederson
+76535,John D Hastings
+74424,Paul T LeVan
+70595,Kevin D Smith
+79221,Abbey Shimer
+80713,Kristel K Bakker
+77907,Wendy Simmermon
+70837,Julia Price-Lee
+75367,Ganga Prasad Basyal
+73875,Tyler Jerome Flaagan
+79237,Richard K Wicklein
+73885,Cody Michael Welu
+75734,Kelly D MacLeod
+74805,Dr. Mark Hawkes
+73870,Varghese Mathew Vaidyan
+70439,Wendy Simmermon
+73869,Jason Mixon
+70758,Scott Richardson
+70346,Erich Matthew Eischen
+74658,Julia Price-Lee
+75728,Kelly D MacLeod
+78311,Daniel Gerald Spencer
+77926,Katie Lyn Anderson
+70760,William Christopher Sewell
+71221,Kyle Ronald Korman
+70757,Trinity Lynn Faythe Atkins
+77942,John D Hastings
+74110,Daniel A Talley
+70377,Erich Matthew Eischen
+74939,Michael J Ham
+74448,Hannah L Altmann
+71227,Joseph A Staudenbaur
+75165,Abeer Alkhwaldi
+73956,Kai Nunnery
+75310,Shane David Scholten
+76534,Rob Allen Richardson
+71464,
+73954,
+80707,Jared T Soundy
+73568,
+71234,
+73061,Jared T Soundy
+70696,
+70700,Jared T Soundy
+70790,
+71204,Jared T Soundy
+71441,
+75711,
+70779,
+73063,Jared T Soundy
+75175,
+73562,
+73060,
+73062,Jared T Soundy
+74415,
+70766,
+77047,Jared T Soundy
+71246,
+79232,
+80714,
+71238,
+70782,
+70437,
+75763,
+77918,
+72997,
+80829,
+70707,
+71453,
+74049,
+78328,
+80830,
+73561,
+75176,

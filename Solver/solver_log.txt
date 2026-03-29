@@ -1,0 +1,23 @@
+[Loader] time.csv: 200 rows
+[Loader] sections.csv: 200 rows
+[Loader] preferences.csv: 721 CRNs | 124 faculty | 40175 exclusion(s)
+[Loader] workload.csv: 27 faculty with research units
+[Loader] regular=162 | single_day=38 | internet=0 | conflict_pairs=1181 | workload units per section={5}
+
+──────────────────────────────────────────────────
+  Validation: ✗ VALIDATION FAILED
+──────────────────────────────────────────────────
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '77047' despite being marked as excluded.
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '80707' despite being marked as excluded.
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '73061' despite being marked as excluded.
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '70700' despite being marked as excluded.
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '73062' despite being marked as excluded.
+  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '71204' despite being marked as excluded.
+  [WARN]   W2 Workload: 'Jared T Soundy' assigned 40 units, soft cap is 30 units (overload penalty applied).
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '80707'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73061'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '70700'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '71204'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73063'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73062'.
+  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '77047'.

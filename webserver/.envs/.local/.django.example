@@ -1,0 +1,22 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+
+# Email (Mailtrap recommended for local development)
+# ------------------------------------------------------------------------------
+DJANGO_EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=sandbox.smtp.mailtrap.io
+EMAIL_PORT=2525
+EMAIL_HOST_USER=replace-with-mailtrap-username
+EMAIL_HOST_PASSWORD=replace-with-mailtrap-password
+EMAIL_USE_TLS=true
+DEFAULT_FROM_EMAIL=noreply@dsu.edu
+
+# Magic link authentication
+# ------------------------------------------------------------------------------
+MAGIC_LINK_JWT_SECRET=change_me
+MAGIC_LINK_JWT_ALGORITHM=HS256
+MAGIC_LINK_TTL_MINUTES=30
+MAGIC_LINK_ALLOWED_DOMAIN=dsu.edu
+MAGIC_LINK_RESEND_ON_EXPIRED=true

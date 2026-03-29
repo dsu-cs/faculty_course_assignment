@@ -70,6 +70,12 @@
               <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'faculty_preference' %}">Faculty Preferences<span class="visually-hidden">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dean_download' %}">Dean Download<span class="visually-hidden">(current)</span></a>
+            </li>
+            <li class="nav-item">
               {# URL provided by django-allauth/account/urls.py #}
               <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
             </li>
@@ -81,14 +87,7 @@
             </li>
             {% endif %}
             <li class="nav-item">
-              {# URL provided by django-allauth/account/urls.py #}
-              <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'faculty_preference' %}">Faculty Preferences<span class="visually-hidden">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dean_download' %}">Dean Download<span class="visually-hidden">(current)</span></a>
+              <a id="log-in-link" class="nav-link" href="{% url 'users:magic_login' %}">{% translate "Sign In" %}</a>
             </li>
             {% endif %}
           </ul>

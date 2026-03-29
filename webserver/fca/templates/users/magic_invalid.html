@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Invalid Magic Link
+{% endblock title %}
+
+{% block content %}
+  <h1>Forbidden (403)</h1>
+  <p>This sign-in link is invalid or has already been used.</p>
+  <p><a href="{% url 'users:magic_login' %}">Request a new magic link</a>.</p>
+{% endblock content %}

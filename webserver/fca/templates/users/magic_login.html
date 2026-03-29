@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Magic Link Login
+{% endblock title %}
+
+{% block content %}
+  <h1>Sign in with your DSU email</h1>
+  <p>Enter your <code>@dsu.edu</code> email address to receive a one-time sign-in link.</p>
+  <form method="post" action="{% url 'users:magic_login' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Send magic link</button>
+  </form>
+{% endblock content %}
