@@ -1,23 +1,766 @@
-[Loader] time.csv: 200 rows
-[Loader] sections.csv: 200 rows
-[Loader] preferences.csv: 721 CRNs | 124 faculty | 40175 exclusion(s)
+[Loader] time.csv: 706 rows
+[Loader] sections.csv: 706 rows
+[Loader] preferences.csv: 706 CRNs | 124 faculty | 17062 exclusion(s)
 [Loader] workload.csv: 27 faculty with research units
-[Loader] regular=162 | single_day=38 | internet=0 | conflict_pairs=1181 | workload units per section={5}
+[Loader] regular=250 | single_day=31 | internet=352 | special=73 | conflict_pairs=2973 | workload units per section={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 26}
+[Loader] cross_listed=168 internet twins filtered from OR
+         16739  ACCT 210 DT1  Principles of Accounting I
+         16744  ACCT 211 DT1  Principles of Accounting II
+         29039  ACCT 320 DT1  Cost Accounting
+         29041  ACCT 431 DT1  Advanced Income Tax
+         29524  ART 122 DT1  Design II Color
+         22747  BADM 111 DT1  Individual Financial Management
+         28029  BADM 112 DT1  Personal Investing
+         28031  BADM 113 DT1  Survey of Personal Financial Technology
+         13359  BADM 310 DT1  Business Finance
+         13377  BADM 321 DT1  Business Statistics II
+         29154  BADM 331 DT1  Financial Analytics
+         15901  BADM 350 DT1  Legal Environment of Business
+         15903  BADM 351 DT1  Business Law
+         16652  BADM 370 DT1  Marketing
+         16633  BADM 405 DT1  International Trade & Finance
+         16872  BADM 411 DT1  Investments
+         16677  BADM 425 DT1  Production/Operations Management
+         19456  BADM 438 DT1  Entrepreneurship II
+         22306  BADM 457 DT1  Business Ethics
+         25250  BADM 460 DT1  Human Resource Management
+         21289  BADM 464 DT1  Organizational Behavior
+         29156  BADM 474 DT1  Personal Selling
+         16680  BADM 482 DT1  Business Policy and Strategy
+         23623  BIOL 101 DT1  Biology Survey I
+         13285  BIOL 103 DT1  Biology Survey II
+         16460  CET 720 DT1  Leadership and Evaluation of Educational Technology
+         17374  CET 725 DT1  Emerging Technologies in Education
+         29515  CHEM 328 DT1  Organic Chemistry II
+         15887  CIS 123 DT1  Problem Solving & Programming
+         16873  CIS 206 DT1  Adv Comp Appl: Wordprocessing
+         16878  CIS 207 DT1  Advanced Applications: Spreadsheet
+         16880  CIS 208 DT1  Advanced Applications: Database
+         15897  CIS 251 DT1  Business Applications Programming
+         16672  CIS 332 DT1  Structured Systems Analysis and Design
+         15905  CIS 338 DT1  Project Management
+         16751  CIS 368 DT2  Predictive Analytics
+         16626  CIS 384 DT1  Decision Support Systems
+         15868  CIS 424 DT1  Software Development With Agile Methodologies
+         15908  CIS 427 DT1  Information Systems Planning and Management
+         16615  CIS 484 DT1  Database Management Systems
+         13353  CIS 487 DT1  Database Programming
+         29519  CIV 100 DT1  American Civics
+         30687  CIV 100 DT2  American Civics
+         27890  CLI 110 DT1  The US Intelligence Community
+         19405  CLI 420 DT1  Cyber Leadership
+         21372  CMST 101 DT1  Foundations of Communication
+         21373  CMST 101 DT2  Foundations of Communication
+         21374  CMST 101 DT3  Foundations of Communication
+         21375  CMST 101 DT4  Foundations of Communication
+         21376  CMST 101 DT5  Foundations of Communication
+         30799  CMST 101 DT6  Foundations of Communication
+         16558  CSC 105 DT1  Introduction to Computers
+         16559  CSC 105 DT2  Introduction to Computers
+         23636  CSC 105 DT3  Introduction to Computers
+         30790  CSC 105 DT4  Introduction to Computers
+         27437  CSC 105 DT5  Introduction to Computers
+         27436  CSC 134 DCA  Introduction to Cyber
+         16571  CSC 134 DT1  Introduction to Cyber
+         28396  CSC 147 DT1  Artificial Intelligence Survey
+         30202  CSC 150 DCA  Computer Science I
+         16584  CSC 150 DT1  Computer Science I
+         16586  CSC 150 DT2  Computer Science I
+         16600  CSC 163 DT1  Hardware Virtualization and Data Communication
+         16602  CSC 163 DT2  Hardware Virtualization and Data Communication
+         24652  CSC 234 DT1  Software Security
+         24370  CSC 247 DT1  Introduction to Artificial Intelligence
+         16649  CSC 250 DT1  Computer Science II
+         16650  CSC 250 DT2  Computer Science II
+         30640  CSC 250 DT4  Computer Science II
+         16665  CSC 260 DT1  Object Oriented Design
+         16670  CSC 285 DT1  Networking I
+         16673  CSC 285 DT2  Networking I
+         16681  CSC 300 DT1  Data Structures
+         16682  CSC 300 DT2  Data Structures
+         16686  CSC 310 DT1  Advanced Data Structures
+         29116  CSC 310 DT2  Advanced Data Structures
+         16691  CSC 314 DT1  Assembly Language
+         16692  CSC 314 DT2  Assembly Language
+         16694  CSC 321 DT1  Cyber Law and Policy
+         18324  CSC 321 DT2  Cyber Law and Policy
+         23641  CSC 334 DT1  Web Development
+         29119  CSC 334 DT2  Web Development
+         16703  CSC 385 DT1  Networking II
+         16705  CSC 385 DT2  Networking II
+         20539  CSC 386 DT1  Applications of Deep Learning
+         16711  CSC 404 DT1  Foundation of Computation
+         20434  CSC 404 DT2  Foundation of Computation
+         30608  CSC 404 DT3  Foundation of Computation
+         16714  CSC 407 DT1  Advanced Routing & Switching
+         27935  CSC 409 DT1  Operating Environments
+         16719  CSC 428 DT1  Reverse Engineering
+         16721  CSC 431 DT1  UNIX/Linux Administration
+         30607  CSC 431 DT2  UNIX/Linux Administration
+         16724  CSC 432 DT1  Malware Analysis
+         16727  CSC 432 DT2  Malware Analysis
+         16732  CSC 437 DT1  Survey of Enterprise Systems
+         16738  CSC 438 DT1  Defensive Network Security
+         16740  CSC 438 DT2  Defensive Network Security
+         16743  CSC 443 DT1  Scripting for Network Administration
+         16749  CSC 456 DT1  Operating Systems
+         16750  CSC 456 DT2  Operating Systems
+         30589  CSC 456 DT3  Operating Systems
+         21299  CSC 479 DT1  Applied Artificial Intelligence
+         22220  CSC 579 DT1  Applied Artificial Intelligence
+         16874  CSC 720 DT1  Theory of Computation
+         28099  CSC 726 DT1  Neural Networks
+         28091  CSC 727 DT1  Professional Application and Ethics of A.I.
+         16808  CSC 748 DT1  Software Exploitation
+         25847  CSC 770 DT1  Software Engineering Management
+         18664  CSC 786 DT1  Computer Science Problems
+         28098  CSC 789 DT1  A.I. Capstone
+         16640  ECON 202 DT1  Principles of Macroeconomics
+         22151  EDFN 300 DT1  Principles of Practices of Teaching Middle School
+         29606  EDFN 365 DT1  Computer-Based Technology and Learning
+         23716  EDFN 440 DT1  Classroom Management
+         16450  EDFN 475 DT1  Human Relations
+         20616  ELED 456 DT1  Evidence-Based Reading (4-8)
+         24709  ELED 456 DT2  Evidence-Based Reading (4-8)
+         29608  ELED 462 DT1  Teaching English As a New Language
+         13538  ENGL 101 DT1  Composition I
+         27358  ENGL 101 DT2  Composition I
+         27359  ENGL 101 DT3  Composition I
+         15786  ENGL 201 DT1  Composition II
+         18819  ENGL 201 DT2  Composition II
+         27360  ENGL 201 DT3  Composition II
+         16538  ENGL 212 DT1  Modern World Literature
+         16424  EPSY 302 DT1  Educational Psychology
+         29521  HIST 152 DT1  United States History II
+         21522  HIST 468 DT1  US & World Affairs, 1900-Pres
+         16379  INED 211 DT1  South Dakota American Indian Culture and Education
+         29607  INED 211 DT2  South Dakota American Indian Culture and Education
+         30704  INED 211 DT3  South Dakota American Indian Culture and Education
+         16836  INFA 721 DT1  Digital Forensics
+         27438  INFA 721 DT2  Digital Forensics
+         16840  INFA 723 DT1  Cryptography
+         29123  INFA 723 DT2  Cryptography
+         30421  INFA 723 DT3  Cryptography
+         18376  INFA 732 DT1  Malware Analysis
+         16844  INFA 745 DT1  Compliance and Audit
+         30420  INFA 745 DT2  Compliance and Audit
+         23629  MATH 101 DT1  Intermediate Algebra
+         11636  MATH 114 DT1  College Algebra
+         25416  MATH 114 DT2  College Algebra
+         28172  MATH 114 DT3  College Algebra
+         28177  MATH 120 DT1  Trigonometry
+         11780  MATH 123 DT1  Calculus I
+         28176  MATH 125 DT1  Calculus II
+         11746  MATH 201 DT1  Introduction to Discrete Mathematics
+         28174  MATH 281 DT1  Introduction to Statistics
+         13319  MATH 315 DT1  Linear Algebra
+         11787  MATH 316 DT1  Discrete Mathematics
+         11622  MATH 342 DT1  Math Concepts for Teachers II
+         11749  MATH 436 DT1  Number Theory and Cryptography
+         29275  MATH 492 DT1  Topics: History of Mathematics
+         27435  MATH 536 DT1  Number Theory and Cryptography
+         25344  MUS 100 DT1  Music Appreciation
+         27376  MUS 100 DT2  Music Appreciation
+         30688  MUS 100 DT3  Music Appreciation
+         16434  PSYC 101 DT1  General Psychology
+         30409  PSYC 101 DT2  General Psychology
+         30696  PSYC 101 DT3  General Psychology
+         16335  SEED 450 DT1  Reading and Content Literacy
+         16293  SOC 285 DT1  Society and Technology
+         16483  SPED 100 DT1  Introduction to Persons With Exceptionalities
+         21414  SPED 410 DT1  Behavior Management of Exceptional Children
+         22104  SPED 413 DT1  Serving Students with Severe Disabilities
+         25349  THEA 201 DT1  Film Appreciation
+         30350  THEA 201 DT2  Film Appreciation
+[CSP] 53816 variables | 434 coverage | 368652 conflict constraints | soft workload cap=30
+
+[Solver] Running (time limit: 60.0s) ...
+[Solver] Status    : OPTIMAL
+[Solver] Wall time : 5.368s
+[Solver] Objective : 1181  (optimal)
+[Output] Schedule written → schedule.csv
 
 ──────────────────────────────────────────────────
-  Validation: ✗ VALIDATION FAILED
+  Validation: ✓ ALL CHECKS PASSED
 ──────────────────────────────────────────────────
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '77047' despite being marked as excluded.
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '80707' despite being marked as excluded.
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '73061' despite being marked as excluded.
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '70700' despite being marked as excluded.
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '73062' despite being marked as excluded.
-  [ERROR]  C5 Exclusion violated: 'Jared T Soundy' was assigned to '71204' despite being marked as excluded.
-  [WARN]   W2 Workload: 'Jared T Soundy' assigned 40 units, soft cap is 30 units (overload penalty applied).
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '80707'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73061'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '70700'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '71204'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73063'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '73062'.
-  [WARN]   W1 Negative preference: 'Jared T Soundy' has score +0 for section '77047'.
+  [WARN]   W2 Workload: 'Brent L Tulloss' assigned 51 units, soft cap is 30 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Christine Charlotte Souter' assigned 22 units, soft cap is 20 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Hannah L Altmann' assigned 31 units, soft cap is 30 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Justin Z Schroeder' assigned 44 units, soft cap is 25 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Pat H Engebretson' assigned 18 units, soft cap is 15 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Paul T LeVan' assigned 16 units, soft cap is 15 units (overload penalty applied).
+  [WARN]   W2 Workload: 'Richard K Wicklein' assigned 33 units, soft cap is 30 units (overload penalty applied).
+
+══════════════════════════════════════════════════════════════
+  SCHEDULE SUMMARY
+══════════════════════════════════════════════════════════════
+  CRN        Assigned Faculty           Score
+  ────────── ───────────────────────── ──────
+  25251      Wendy Simmermon               +3
+  16741      Addie Mae Borah               +2
+  29038      Erich Matthew Eischen         +2
+  29040      Renae L Spohn                 +2
+  21315      Thomas M Jones                +3
+  23539      Thomas M Jones                +3
+  11838      Addie Mae Borah               +2
+  11841      Thomas M Jones                +3
+  11842      Thomas M Jones                +3
+  11844      Wendy M Romero                +2
+  27679      Daniel Lee Welynn             +3
+  27680      Daniel Lee Welynn             +3
+  22913      Alan Montgomery               +3
+  25835      Joseph A Staudenbaur          +3
+  13304      Joseph A Staudenbaur          +3
+  29204      Daniel Lee Welynn             +3
+  29714      Wendy M Romero                +3
+  13305      Tina Boldt-Belden             +2
+  13306      Thomas M Jones                +3
+  29205      Konrad N Lightner             +3
+  23541      Konrad N Lightner             +3
+  13309      Wendy M Romero                +3
+  13312      Tim Murray                    +3
+  13314      Daniel Lee Welynn             +2
+  13433      Tim Murray                    +2
+  13277      Christine Charlotte Souter     +2
+  29027      Ganga Prasad Basyal           +3
+  22746      Wendy Simmermon               +3
+  28028      Daniel A Talley               +3
+  28030      Deb Tech                      +2
+  13375      Yen-Ling Chang                +2
+  13358      Daniel A Talley               +3
+  13376      Renae L Spohn                 +3
+  29153      Deb Tech                      +3
+  16611      Daniel A Talley               +3
+  15900      Wendy Simmermon               +3
+  15902      Yen-Ling Chang                +3
+  16619      Deb Tech                      +3
+  16647      Ganga Prasad Basyal           +3
+  21288      Daniel A Talley               +3
+  13362      Ganga Prasad Basyal           +3
+  16674      Daniel A Talley               +2
+  19396      Daniel A Talley               +3
+  22305      Scott K Morstad               +3
+  16613      Renae L Spohn                 +3
+  16622      Wendy Simmermon               +2
+  29155      Scott K Morstad               +3
+  16678      Yen-Ling Chang                +3
+  13264      Peng Guo                      +2
+  13287      Nevine M Nawar                +3
+  13273      Alex A Dececchi               +2
+  29347      Trinity Lynn Faythe Atkins     +2
+  27410      Alex A Dececchi               +3
+  29349      Nevine M Nawar                +3
+  29354      Trinity Lynn Faythe Atkins     +3
+  29346      Kristel K Bakker              +3
+  30252      Tom L Halverson               +2
+  30253      Gillian Anne Morris           +2
+  13279      Trinity Lynn Faythe Atkins     +2
+  19457      Kristel K Bakker              +2
+  29350      Jennifer Annette Funke        +1
+  13373      Deb Tech                      +2
+  13374      Eric A Holm                   +2
+  16803      Laxmi Manasa Gorugantu        +3
+  16877      Andy Behrens                  +3
+  16879      Mohammad Tafiqur Rahman       +3
+  15895      Christine Charlotte Souter     +2
+  13351      Laxmi Manasa Gorugantu        +3
+  15904      Laxmi Manasa Gorugantu        +3
+  16753      Abeer Alkhwaldi               +3
+  16625      Jason S Jenkins               +2
+  15863      Abeer Alkhwaldi               +3
+  15906      Abeer Alkhwaldi               +3
+  16614      Deb Tech                      +3
+  25253      Andy Behrens                  +3
+  29518      Viki R Johnson                +2
+  27889      Peter C Britton               +2
+  19403      Kurt E Kemper                 +3
+  21345      Jennifer Mae Nash             +1
+  21347      Jun Liu                       +1
+  21348      Quentin Michael Covert        +1
+  29587      Andrew E Sathoff              +1
+  23543      Lisa Ann Hardie               +2
+  16555      Nicholas Daniel Handberg      +3
+  16556      Jihene Kaabi Ep Harrath       +3
+  19452      Brent L Tulloss               +3
+  16564      Jared T Soundy                +3
+  16566      Cody Michael Welu             +3
+  16567      Kyle Ronald Korman            +3
+  28395      Jennifer Annette Funke        +3
+  16576      Chad R Fenner                 +3
+  16577      Cody Michael Welu             +3
+  16591      Jason S Jenkins               +3
+  16592      Pat H Engebretson             +3
+  16595      Youssef Harrath               +3
+  16597      Jennifer Annette Funke        +3
+  18325      Jared T Soundy                +3
+  18654      Eric A Holm                   +3
+  24369      Nicholas Daniel Handberg      +3
+  16607      Tyler Jerome Flaagan          +3
+  16631      Khandaker Mamun Ahmed         +3
+  16637      Samuel W Flint                +3
+  16641      Khandaker Mamun Ahmed         +3
+  21295      Tyler Jerome Flaagan          +3
+  16643      Zainab Albujasim              +3
+  16657      Jackson Gregory Heiberger     +3
+  16669      Shawn Gregory Zwach           +3
+  23637      Varghese Mathew Vaidyan       +3
+  29109      Aaron David Ingalls           +3
+  16679      Jason S Jenkins               +3
+  21301      Ahmad Tawfiq Al-Hammouri      +3
+  27439      Rob Allen Richardson          +3
+  16685      Nicholas Daniel Handberg      +3
+  18655      Kathy Engbrecht               +3
+  23638      Michael J Ham                 +3
+  16687      Peng Guo                      +3
+  16690      Kyle Ronald Korman            +3
+  18656      Kyle Ronald Korman            +3
+  16693      Rob Allen Richardson          +3
+  23639      Shawn Gregory Zwach           +3
+  23640      Brent L Tulloss               +3
+  25351      Viki R Johnson                +3
+  16700      Mark A Spanier                +3
+  16701      Austin F O'Brien              +3
+  16702      Mark A Spanier                +3
+  20538      Tyler Jerome Flaagan          +3
+  16709      Samuel W Flint                +3
+  18659      Christina Yemane Mulu         +3
+  23642      Pat H Engebretson             +3
+  16712      Kyle L Cronin                 +3
+  27934      Shawn Gregory Zwach           +3
+  16717      Samuel W Flint                +3
+  16720      Brent L Tulloss               +3
+  16722      Cody Michael Welu             +3
+  23644      Jennifer Annette Funke        +3
+  16730      Farishta Rahman               +3
+  16731      Mark A Spanier                +3
+  16734      Omar F El-Gayar               +3
+  16735      Peng Guo                      +3
+  16737      Nicholas Daniel Handberg      +3
+  16742      Steven Parker Gingras         +3
+  16745      Jenny Leigh Schulte           +3
+  16747      Kathy Engbrecht               +3
+  16748      Steven Parker Gingras         +3
+  21298      Aaron David Ingalls           +3
+  22221      Samuel W Flint                +3
+  16799      Tyler Jerome Flaagan          +3
+  28100      Kyle L Cronin                 +3
+  28090      Brent L Tulloss               +3
+  16806      Tom L Halverson               +3
+  25848      John D Hastings               +3
+  18663      Jenny Leigh Schulte           +3
+  28097      Jason Mixon                   +3
+  13499      Konrad N Lightner             +3
+  13530      Wendy M Romero                +2
+  27356      Tate Allen Carson             +3
+  13378      Daniel A Talley               +3
+  16636      Christine Charlotte Souter     +2
+  16372      Nicole Marie Steele           +3
+  18646      Megan Nicole Schuh            +3
+  29133      Megan Nicole Schuh            +3
+  29140      Kindra Jon Schneider          +3
+  20615      Megan Nicole Schuh            +3
+  16442      Kevin D Smith                 +3
+  23545      Tate Allen Carson             +3
+  13535      William Christopher Sewell     +3
+  13536      Justin L Blessinger           +3
+  13537      William Christopher Sewell     +3
+  15917      William Christopher Sewell     +3
+  18674      Scott Richardson              +2
+  13563      Thomas M Lawson               +3
+  13564      Thomas M Lawson               +3
+  15778      Jennifer Ann Munger           +2
+  15781      Thomas M Lawson               +3
+  25330      Thomas M Lawson               +3
+  26027      Christine Charlotte Souter     +2
+  21380      William Christopher Sewell     +3
+  29199      Thomas M Lawson               +3
+  15789      Scott Richardson              +3
+  27361      Scott Richardson              +3
+  27362      Tate Allen Carson             +3
+  16362      Kai Nunnery                   +2
+  16423      Sheila G Mulder               +2
+  26038      Scott Wayne Klungseth         +3
+  16474      Scott Wayne Klungseth         +2
+  16337      Christine Charlotte Souter     +2
+  30785      Stacy Lynn Anderson           +2
+  16381      Stacy Lynn Anderson           +3
+  16476      Steven S Steele               +2
+  16339      Dr. Mark Hawkes               +2
+  30333      Luke Chowning                 +2
+  16820      Peter C Britton               +3
+  15918      Dr. Mark Hawkes               +2
+  15919      Scott Wayne Klungseth         +3
+  22987      Erik John Pederson            +3
+  19813      Bradley James Brockmueller     +2
+  19814      Andy William Roland           +3
+  16824      Bradley James Brockmueller     +2
+  15921      Andy William Roland           +3
+  25336      Dr. Mark Hawkes               +2
+  25339      Jeffrey E Elbert              +2
+  29197      Kurt E Kemper                 +2
+  29520      Konrad N Lightner             +1
+  16114      Kurt E Kemper                 +3
+  21521      Abbey Shimer                  +2
+  16378      Julia Price-Lee               +2
+  28092      Tyler Jerome Flaagan          +3
+  16838      Shawn Gregory Zwach           +2
+  28095      Jason S Jenkins               +3
+  28121      Quentin Michael Covert        +3
+  11632      Justin Z Schroeder            +3
+  11776      Richard K Wicklein            +3
+  11633      Richard K Wicklein            +3
+  21276      Richard K Wicklein            +3
+  19460      Justin Z Schroeder            +3
+  29273      Paul T LeVan                  +3
+  11669      Hannah L Altmann              +3
+  11612      Justin Z Schroeder            +3
+  11613      Justin Z Schroeder            +3
+  27432      Justin Z Schroeder            +3
+  11671      Dr. Mark Hawkes               +2
+  28175      Richard K Wicklein            +2
+  11614      Kim Jones                     +3
+  29272      Kim Jones                     +3
+  18259      Hannah L Altmann              +3
+  11786      Hannah L Altmann              +3
+  25880      Kim Jones                     +3
+  11620      Rich I Avery                  +2
+  11748      Hannah L Altmann              +3
+  30638      Paul T LeVan                  +3
+  25772      Hannah L Altmann              +2
+  30444      Justin Z Schroeder            +2
+  30793      Rich I Avery                  +3
+  23550      Daniel Gerald Spencer         +2
+  27371      Daniel Gerald Spencer         +2
+  22989      Steven S Steele               +2
+  16384      Christine Charlotte Souter     +2
+  16489      Lisa Ann Hardie               +2
+  30786      Steven S Steele               +2
+  16386      Scott Wayne Klungseth         +3
+  16425      Addie Mae Borah               +2
+  27618      Julia Price-Lee               +3
+  29126      Jennifer Mae Nash             +2
+  16292      Tim Murray                    +2
+  16482      Sandi Steinhoff-Muller        +3
+  29138      Jennifer Ann Munger           +3
+  29142      Nicole Marie Steele           +3
+  16512      Scott Richardson              +2
+  16514      Jennifer Ann Munger           +2
+  28181      Matthew Bruce Ingram          +2
+  17017      Konrad N Lightner             +2
+  29036      Yen-Ling Chang                +3
+  29037      Daniel A Talley               +3
+  13295      Alex A Dececchi               +3
+  13286      Tina Boldt-Belden             +2
+  28353      Kristel K Bakker              +3
+  27420      Kristel K Bakker              +3
+  19426      Kevin D Smith                 +3
+  28078      Jennifer Mae Nash             +3
+  29516      Lisa Ann Hardie               +2
+  16623      Deb Tech                      +3
+  29792      Viki R Johnson                +3
+  29217      Kurt E Kemper                 +3
+  27353      Kurt E Kemper                 +3
+  24392      Viki R Johnson                +3
+  25724      Matthew Bruce Ingram          +3
+  16699      Varghese Mathew Vaidyan       +3
+  20573      Tom L Halverson               +3
+  29120      Eric A Holm                   +3
+  30787      Nicholas Daniel Handberg      +3
+  16716      Bill Bendix                   +3
+  23643      Pat H Engebretson             +3
+  30959      David Lynn Kenley             +3
+  28215      John D Hastings               +3
+  28096      Kyle Ronald Korman            +3
+  30348      Youssef Harrath               +3
+  30349      Kathy Engbrecht               +3
+  29893      Mark A Spanier                +3
+  30356      Mark A Spanier                +3
+  30827      John D Hastings               +3
+  28123      Brent L Tulloss               +3
+  16804      Samuel W Flint                +3
+  30230      Tyler Jerome Flaagan          +3
+  28093      Tom L Halverson               +3
+  29935      Brent L Tulloss               +3
+  30868      Aaron David Ingalls           +3
+  16809      Steven Parker Gingras         +3
+  23645      Steven Parker Gingras         +3
+  24219      Khandaker Mamun Ahmed         +3
+  29523      Khandaker Mamun Ahmed         +3
+  16811      Jason Mixon                   +3
+  16812      Eric A Holm                   +3
+  21364      Eric A Holm                   +3
+  16816      Michael J Ham                 +3
+  16817      Kyle Ronald Korman            +3
+  24239      Mariam Gado                   +3
+  28124      Jennifer Annette Funke        +3
+  30695      Jennifer Annette Funke        +3
+  27586      Christina Yemane Mulu         +3
+  27639      Kyle Ronald Korman            +3
+  27861      Mark A Spanier                +3
+  27862      Jenny Leigh Schulte           +3
+  30615      Christina Yemane Mulu         +3
+  27896      Jared T Soundy                +3
+  27978      Shawn Gregory Zwach           +3
+  28062      Rob Allen Richardson          +3
+  28127      Rob Allen Richardson          +3
+  28143      Shawn Gregory Zwach           +3
+  28423      Jenny Leigh Schulte           +3
+  29937      Mark A Spanier                +3
+  30670      Christina Yemane Mulu         +3
+  30788      David Lynn Kenley             +3
+  30789      David Lynn Kenley             +3
+  30905      Steven Parker Gingras         +3
+  30916      Mark A Spanier                +3
+  30588      Kindra Jon Schneider          +3
+  27604      Jennifer Ann Munger           +2
+  27596      Jennifer Ann Munger           +3
+  29958      Jennifer Mae Nash             +3
+  30712      Jennifer Mae Nash             +3
+  30919      Jennifer Mae Nash             +3
+  29959      Nicole Marie Steele           +3
+  30713      Nicole Marie Steele           +3
+  30920      Nicole Marie Steele           +3
+  16325      Nicole Marie Steele           +3
+  16433      Nicole Marie Steele           +3
+  26005      Nicole Marie Steele           +3
+  16472      Kai Nunnery                   +3
+  26006      Kai Nunnery                   +3
+  16375      Megan Nicole Schuh            +3
+  28113      Megan Nicole Schuh            +3
+  16440      Jennifer Mae Nash             +3
+  26045      Jennifer Mae Nash             +3
+  26025      Kindra Jon Schneider          +3
+  26026      Kindra Jon Schneider          +3
+  16436      Megan Nicole Schuh            +3
+  28114      Katie Lyn Anderson            +3
+  16455      Betsy Lea Schamber            +3
+  28125      Tate Allen Carson             +3
+  30550      Tate Allen Carson             +3
+  29306      Thomas M Lawson               +3
+  27363      Tate Allen Carson             +3
+  18715      Thomas M Lawson               +3
+  27366      William Christopher Sewell     +3
+  26022      Erik John Pederson            +3
+  25979      Peter C Britton               +3
+  29986      Peter C Britton               +3
+  16102      Trinity Lynn Faythe Atkins     +2
+  16108      Russell Wayne Graves          +2
+  13379      Daniel Gerald Spencer         +1
+  16718      Christine Charlotte Souter     +2
+  21292      Julie M Wulf Plimpton         +3
+  16697      Christine Charlotte Souter     +2
+  16754      Julie M Wulf Plimpton         +2
+  16759      Addie Mae Borah               +2
+  16587      Renae L Spohn                 +2
+  27319      Julie M Wulf Plimpton         +3
+  16757      Tina Boldt-Belden             +2
+  23502      Julie M Wulf Plimpton         +3
+  22038      Renae L Spohn                 +3
+  27320      Bethany R Lutovsky            +1
+  27321      Tina Boldt-Belden             +2
+  23503      Nevine M Nawar                +3
+  30234      Dr. Mark Hawkes               +2
+  25267      Nevine M Nawar                +3
+  20577      Julie M Wulf Plimpton         +3
+  25341      Lisa Ann Hardie               +2
+  30375      Tina Boldt-Belden             +2
+  27355      Kurt E Kemper                 +3
+  30046      Shane David Scholten          +3
+  25356      Steven S Steele               +2
+  25715      Luke Chowning                 +3
+  16478      Dr. Mark Hawkes               +2
+  16829      Mariam Gado                   +3
+  28259      Gillian Anne Morris           +2
+  18375      Mariam Gado                   +3
+  30306      Mariam Gado                   +3
+  24230      Quentin Michael Covert        +3
+  25352      Mariam Gado                   +3
+  30347      Mariam Gado                   +3
+  18435      Tyler Jerome Flaagan          +3
+  13355      Andy Behrens                  +3
+  16553      Omar F El-Gayar               +3
+  16563      Youssef Harrath               +3
+  16568      Patti Jo Brooks               +3
+  15882      Cherie B Noteboom             +3
+  16733      Patti Jo Brooks               +3
+  29880      Omar F El-Gayar               +3
+  30697      Cherie B Noteboom             +3
+  16557      Zainab Albujasim              +2
+  16763      Patti Jo Brooks               +3
+  16764      Mohammad Tafiqur Rahman       +3
+  13364      Patti Jo Brooks               +3
+  13366      Andy Behrens                  +3
+  13368      Andy Behrens                  +3
+  13370      Andy Behrens                  +3
+  13372      Jason Mixon                   +2
+  30639      Mark A Spanier                +2
+  29771      Omar F El-Gayar               +3
+  29962      Omar F El-Gayar               +3
+  30361      Andy Behrens                  +3
+  27869      Omar F El-Gayar               +3
+  27880      Omar F El-Gayar               +3
+  27897      Andy Behrens                  +3
+  28102      Omar F El-Gayar               +3
+  16334      Thomas M Lawson               +2
+  27431      Christine Charlotte Souter     +2
+  11615      Rich I Avery                  +3
+  11619      Richard K Wicklein            +2
+  30043      Scott Wayne Klungseth         +3
+  29128      Scott Wayne Klungseth         +3
+  21446      Luke Chowning                 +2
+  21447      Luke Chowning                 +2
+  25345      Dr. Mark Hawkes               +2
+  29196      Daniel Gerald Spencer         +3
+  13281      Trinity Lynn Faythe Atkins     +2
+  13282      Peng Guo                      +3
+  28362      Christine Charlotte Souter     +2
+  28363      Peng Guo                      +3
+  29522      Abbey Shimer                  +2
+  29213      Abbey Shimer                  +3
+  29831      Lisa Ann Hardie               +2
+  29591      Cotton S Koch                 +3
+  18581      Scott Wayne Klungseth         +3
+  16290      Viki R Johnson                +2
+  29793      Viki R Johnson                +3
+  29794      Tina Boldt-Belden             +2
+  16547      Nicole Marie Steele           +1
+  16330      Megan Nicole Schuh            +3
+  26046      Megan Nicole Schuh            +3
+  16415      Nicole Marie Steele           +3
+  16331      Kai Nunnery                   +2
+  27856      Cotton S Koch                 +2
+  29605      Kindra Jon Schneider          +2
+  ─────────────────────────────────────────
+  Total preference score.............  +1181
+
+  Faculty                    Units   Sections   Cap   Research  Status
+  ───────────────────────── ──────  ─────────  ────  ─────────  ────────────
+  Aaron David Ingalls           24          6    30          0  ✓ OK
+  Abbey Shimer                   5          4    15         15  ✓ OK
+  Abeer Alkhwaldi               16          6    30          0  ✓ OK
+  Abid Mehmood                   0          0    30          0  ✓ OK
+  Addie Mae Borah               12          8    25          5  ✓ OK
+  Ahmad Tawfiq Al-Hammouri       4          1    30          0  ✓ OK
+  Alan Montgomery                1          1    15         15  ✓ OK
+  Alex A Dececchi                7          3    30          0  ✓ OK
+  Andrew E Sathoff              10          7    15         15  ✓ OK
+  Andrew W Kramer                0          0    20         10  ✓ OK
+  Andy Behrens                  15         10    30          0  ✓ OK
+  Andy William Roland            2          2    30          0  ✓ OK
+  Austin F O'Brien               1          1    30          0  ✓ OK
+  Bethany R Lutovsky             1          1    30          0  ✓ OK
+  Betsy Lea Schamber             1          1    15         15  ✓ OK
+  Bill Bendix                    1          1    30          0  ✓ OK
+  Bradley James Brockmueller      6          2    30          0  ✓ OK
+  Brent L Tulloss               51         14    30          0  ⚠ +21 over cap
+  Chad R Fenner                  6          1    30          0  ✓ OK
+  Cherie B Noteboom              3          2    30          0  ✓ OK
+  Christina Yemane Mulu          8          4    15         15  ✓ OK
+  Christine Charlotte Souter     22         12    20         10  ⚠ +2 over cap
+  Cody Michael Welu             13          6    30          0  ✓ OK
+  Cotton S Koch                  2          2    30          0  ✓ OK
+  Daniel A Talley               21         13    30          0  ✓ OK
+  Daniel Gerald Spencer         10          7    30          0  ✓ OK
+  Daniel Lee Welynn             12          4    30          0  ✓ OK
+  David Lynn Kenley              5          3    15         15  ✓ OK
+  David Zeng                     0          0    30          0  ✓ OK
+  Deb Tech                      18          9    30          0  ✓ OK
+  Dr. Mark Hawkes               19          7    30          0  ✓ OK
+  Eric A Holm                   18          7    30          0  ✓ OK
+  Erich Matthew Eischen          2          2    30          0  ✓ OK
+  Erik John Pederson             7          2    30          0  ✓ OK
+  Farishta Rahman                1          1    30          0  ✓ OK
+  Ganga Prasad Basyal            6          5    15         15  ✓ OK
+  Gillian Anne Morris           11          3    30          0  ✓ OK
+  Hannah L Altmann              31          9    30          0  ⚠ +1 over cap
+  Insu Park                      0          0    30          0  ✓ OK
+  Jackson Gregory Heiberger      3          2    30          0  ✓ OK
+  Jared T Soundy                 4          3    30          0  ✓ OK
+  Jason Mixon                   22          4    30          0  ✓ OK
+  Jason S Jenkins               20          6    30          0  ✓ OK
+  Jeffrey E Elbert               6          1    30          0  ✓ OK
+  Jennifer Ann Munger           13          6    20         10  ✓ OK
+  Jennifer Annette Funke        25         11    30          0  ✓ OK
+  Jennifer Mae Nash             19          9    30          0  ✓ OK
+  Jenny Leigh Schulte           18          5    30          0  ✓ OK
+  Jihene Kaabi Ep Harrath        4          1    30          0  ✓ OK
+  John D Hastings               27          4    30          0  ✓ OK
+  Joseph A Staudenbaur           4          2    30          0  ✓ OK
+  Julia Price-Lee               11          5    30          0  ✓ OK
+  Julie M Wulf Plimpton         30          5    30          0  ✓ OK
+  Jun Liu                        1          1    25          5  ✓ OK
+  Justin L Blessinger            4          1    30          0  ✓ OK
+  Justin Z Schroeder            44         10    25          5  ⚠ +19 over cap
+  Kai Nunnery                    9          4    30          0  ✓ OK
+  Kathy Engbrecht                4          3    20         10  ✓ OK
+  Katie Lyn Anderson             1          1    30          0  ✓ OK
+  Kelly D MacLeod                0          0    30          0  ✓ OK
+  Ken Klinner                    0          0    30          0  ✓ OK
+  Kevin D Smith                 10          3    30          0  ✓ OK
+  Khandaker Mamun Ahmed         10          4    30          0  ✓ OK
+  Kim Jones                      4          4    30          0  ✓ OK
+  Kindra Jon Schneider           7          6    30          0  ✓ OK
+  Konrad N Lightner             10          6    30          0  ✓ OK
+  Kristel K Bakker               8          5    25          5  ✓ OK
+  Kurt E Kemper                 14          7    30          0  ✓ OK
+  Kyle L Cronin                 11          4    25          5  ✓ OK
+  Kyle Ronald Korman            24         10    30          0  ✓ OK
+  Laxmi Manasa Gorugantu         9          6    30          0  ✓ OK
+  Lisa Ann Hardie               14          5    30          0  ✓ OK
+  Luke Chowning                 25          4    30          0  ✓ OK
+  Man Wang                       0          0    30          0  ✓ OK
+  Mariam Gado                   14          6    15         15  ✓ OK
+  Mark A Spanier                17         12    30          0  ✓ OK
+  Matthew Bruce Ingram           4          4    30          0  ✓ OK
+  Megan Nicole Schuh            16         12    30          0  ✓ OK
+  Michael J Ham                  8          4    30          0  ✓ OK
+  Mohammad Tafiqur Rahman       11          3    20         10  ✓ OK
+  Nevine M Nawar                20          5    30          0  ✓ OK
+  Nicholas Daniel Handberg      17          8    30          0  ✓ OK
+  Nicole M Claussen              0          0    25          5  ✓ OK
+  Nicole Marie Steele           29         12    30          0  ✓ OK
+  Omar F El-Gayar               13          8    30          0  ✓ OK
+  Pat H Engebretson             18          6    15         15  ⚠ +3 over cap
+  Patti Jo Brooks                8          4    30          0  ✓ OK
+  Paul T LeVan                  16          3    15         15  ⚠ +1 over cap
+  Peng Guo                       8          6    15         15  ✓ OK
+  Peter C Britton                9          5    30          0  ✓ OK
+  Quentin Michael Covert        15          5    20         10  ✓ OK
+  Renae L Spohn                 26          8    30          0  ✓ OK
+  Rich I Avery                  29          4    30          0  ✓ OK
+  Richard K Wicklein            33          9    30          0  ⚠ +3 over cap
+  Rob Allen Richardson          13          6    30          0  ✓ OK
+  Russell Wayne Graves           1          1    30          0  ✓ OK
+  Samuel W Flint                11          7    30          0  ✓ OK
+  Sandi Steinhoff-Muller         6          2    30          0  ✓ OK
+  Scott K Morstad                9          4    30          0  ✓ OK
+  Scott Richardson              18          8    30          0  ✓ OK
+  Scott Wayne Klungseth         12          7    25          5  ✓ OK
+  Shane David Scholten           1          1    30          0  ✓ OK
+  Shawn Gregory Zwach           22         12    30          0  ✓ OK
+  Sheila G Mulder                5          2    15         15  ✓ OK
+  Sophia Ivy Lewis               0          0    25          5  ✓ OK
+  Stacy Lynn Anderson            4          2    30          0  ✓ OK
+  Steven Parker Gingras         20          9    30          0  ✓ OK
+  Steven S Steele                7          4    30          0  ✓ OK
+  Tate Allen Carson             13          6    30          0  ✓ OK
+  Thomas M Jones                 9          6    30          0  ✓ OK
+  Thomas M Lawson               21         11    30          0  ✓ OK
+  Tim Murray                    11          4    30          0  ✓ OK
+  Tina Boldt-Belden             15          6    30          0  ✓ OK
+  Tom L Halverson               20          6    30          0  ✓ OK
+  Trinity Lynn Faythe Atkins      7          5    30          0  ✓ OK
+  Tyler Jerome Flaagan          27         11    30          0  ✓ OK
+  Varghese Mathew Vaidyan        7          2    30          0  ✓ OK
+  Viki R Johnson                15         10    25          5  ✓ OK
+  Wendy M Romero                14          4    30          0  ✓ OK
+  Wendy Simmermon               11          8    30          0  ✓ OK
+  William Christopher Sewell     14          5    30          0  ✓ OK
+  Yen-Ling Chang                 6          6    30          0  ✓ OK
+  Youssef Harrath                4          3    30          0  ✓ OK
+  Zainab Albujasim              14          5    30          0  ✓ OK
+
+  Sections not sent to OR (no assignment generated):
+    single_day : 31
+    special    : 73
+    total      : 104
