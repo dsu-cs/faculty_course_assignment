@@ -10,7 +10,23 @@ SECTION_CSV_CANDIDATES = (
     Path(settings.BASE_DIR) / "BIM Scraper" / "sections_tab.csv",
     Path(settings.BASE_DIR).parent / "Reference Workbook" / "sections_tab.csv",
 )
-RAW_SECTION_HEADERS = ["CRN", "Sub", "Num", "Seq", "Crd", "Desc", "Seats", "Waitlist", "Days", "Time", "Room", "Faculty"]
+RAW_SECTION_HEADERS = [
+    "CRN",
+    "Sub",
+    "Num",
+    "Seq",
+    "Crd",
+    "Desc",
+    "Seats",
+    "Waitlist",
+    "Days",
+    "Time",
+    "Room",
+    "Faculty",
+    "workload_if_full",
+    "workload_per_student",
+    "special_workload",
+]
 
 
 def get_sections_tab_path() -> Path:

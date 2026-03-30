@@ -174,8 +174,9 @@ def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
         rows = list(csv.reader(csv_file))
 
     assert rows == [
-        ["section_id", "Dr A", "Dr B"],
+        ["CRN", "Dr A", "Dr B"],
         ["10001", "2", "x"],
         ["10002", "2", "x"],
         ["10003", "x", "1"],
     ]
+

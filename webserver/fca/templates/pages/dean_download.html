@@ -37,8 +37,29 @@
           <div class="upload-card-body text-center">
             <div class="section-label with-lines">Current BIM Data CSV</div>
             <p class="section-text centered-text">
-              Latest course information from BIM scrape.
+              Latest course information from BIM scrape for the selected term.
             </p>
+
+            <div class="term-picker">
+              <label class="term-picker-label" for="id_bim_term">Term</label>
+              <select
+                class="form-select term-picker-select"
+                id="id_bim_term"
+                name="bim_term"
+                {% if not available_terms %}disabled{% endif %}
+              >
+                {% for term in available_terms %}
+                  <option value="{{ term }}" {% if term == selected_term %}selected{% endif %}>{{ term }}</option>
+                {% empty %}
+                  <option value="">Unable to load terms</option>
+                {% endfor %}
+              </select>
+              {% if term_load_error %}
+                <p class="term-picker-help text-danger mb-0">{{ term_load_error }}</p>
+              {% else %}
+                <p class="term-picker-help mb-0">The workbook will be generated from BIM for this semester.</p>
+              {% endif %}
+            </div>
 
             <div class="status-pill status-pill-center">
               <span>✓</span>
@@ -52,7 +73,7 @@
     <div class="download-panel text-center mt-5">
       <h3>Download Workbook</h3>
       <p>
-        Prepare and download the combined Excel workbook.
+        Prepare and download the combined Excel workbook using the selected BIM term.
       </p>
       <button type="submit" class="btn generate-btn">
         Download Workbook
