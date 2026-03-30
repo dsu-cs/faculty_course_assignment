@@ -1,202 +1,707 @@
-Sections
-CRN,Sub,Num,Seq,Crd,Desc,Seats,Waitlist,Days,Time,Room,Faculty,Current Workload
-71464,INFS,890,D01,1,Seminar,19/25,0,W,1100-1150,East Hall 201,,5
-74260,CSC,482,D01,3,Algorithms and Optimization,13/25,0,TuTh,1600-1715,East Hall 003,,5
-75713,CLI,242,D01,3,Cyber Social Science Method and Analysis,13/13,0,MWF,0900-0950,Tunheim Classroom Building 111,,5
-73912,CSC,314,D01,3,Assembly Language,3/25,0,MWF,1400-1450,East Hall 100,,5
-74438,MATH,281,D01,3,Introduction to Statistics,17/35,0,TuTh,1300-1415,Tunheim Classroom Building 203,,5
-73642,CSC,105,D06,3,Introduction to Computers,24/24,0,TuTh,0800-0915,Beacom Institute of Technology 112,,5
-70828,ARTD,185,D01,3,Introduction to Animation,25/30,0,MW,1400-1515,Beacom Institute of Technology 114,,5
-70785,BIOL,151,D01,3,General Biology I,54/60,0,MWF,1100-1150,Ruth Habeger Science Center 135,,5
-80691,PSYC,101,D02,3,General Psychology,21/25,0,MWF,1400-1450,Kennedy Center 104,,5
-73954,MUS,100,D01,3,Music Appreciation,21/30,0,Tu,1100-1215,Ruth Habeger Science Center 135,,5
-77880,BIOL,221,D01,3,Human Anatomy,11/48,0,MWF,1100-1150,Tunheim Classroom Building 203,,5
-80707,BIOL,211L,D01,1,Lab: Environmental Biology,25/25,0,M,1300-1450,Ruth Habeger Science Center 109,,5
-77839,ENGL,101,DK3,3,Composition I,10/12,0,MWF,1400-1450,Beadle Hall 205,,5
-75757,CSC,300,D05,3,Data Structures,16/25,0,MWF,0800-0850,East Hall 003,,5
-79231,GEOG,132,DH1,3,Physical Geography: Natural Landscapes,18/20,0,MWF,1400-1450,Ruth Habeger Science Center 121,,5
-73575,SOC,100,D01,3,Introduction to Sociology,20/25,0,TuTh,1300-1415,Beadle Hall 206,,5
-73568,SEED,303,D01,1,Sec/Mid Content Area: Math,15/15,0,F,0800-0850,Kennedy Center 105,,5
-79214,ARTD,442,D01,3,2D Digital Animation III,18/25,0,TuTh,1100-1215,Kennedy Center 112,,5
-77192,MATH,114,D03,3,College Algebra,32/35,0,TuTh,0930-1045,Ruth Habeger Science Center 114,,5
-74934,CSC,163,D01,3,Hardware Virtualization and Data Communication,17/25,0,MWF,0800-0850,East Hall 018,,5
-74119,CSC,428,D02,3,Reverse Engineering,0/25,0,TuTh,1430-1545,Beacom Institute of Technology 231,,5
-74439,PE,354,D01,3,Prevention and Care of Athletic Injuries,6/25,0,TuTh,1100-1215,Kennedy Center 122,,5
-75725,CMST,101,D03,3,Foundations of Communication,23/24,0,MWF,1100-1150,Beadle Hall 206,,5
-71213,DAD,222,D02,3,Audio Production I: Foundations,14/18,0,MWF,0900-0950,Tunheim Classroom Building 209,,5
-70730,ENGL,101,D01,3,Composition I,11/12,0,MWF,1000-1050,Beadle Hall 305,,5
-72823,CIS,123,D01,3,Problem Solving & Programming,17/25,0,MWF,1400-1450,East Hall 003,,5
-72965,CIS,372,D01,3,Programming for Analytics,7/25,0,TuTh,1100-1215,East Hall 003,,5
-73856,CSC,150,D06,3,Computer Science I,24/24,0,MWF,1500-1550,Kennedy Center 112,,5
-76192,ACCT,210,D02,3,Principles of Accounting I,21/25,0,TuTh,1300-1415,East Hall 003,,5
-77905,BADM,201,D01,3,Fundamentals of AI in Organizations,19/25,0,TuTh,0930-1045,Tunheim Classroom Building 111,,5
-70773,ENGL,201,D05,3,Composition II,9/24,0,MWF,1000-1050,Beadle Hall 006,,5
-70754,ENGL,101,D03,3,Composition I,18/24,0,MWF,1000-1050,Beadle Hall 205,,5
-75741,MATH,201,D04,3,Introduction to Discrete Mathematics,17/20,0,MWF,1100-1150,Ruth Habeger Science Center 114,,5
-74431,MATH,201,D01,3,Introduction to Discrete Mathematics,18/20,0,MWF,0900-0950,Ruth Habeger Science Center 114,,5
-78298,CSC,478,D01,3,Artificial Intelligence Tools and Frameworks,18/25,0,TuTh,1600-1715,East Hall 108,,5
-71234,INFS,605,D01,3,Foundations of Programming,24/25,0,Tu,1100-1330,Tunheim Classroom Building 109,,5
-79118,INFA,702,D01,3,Introduction to Data Privacy,23/25,0,TuTh,1600-1715,East Hall 010,,5
-73894,CSC,250,D01,3,Computer Science II,23/25,0,MWF,1400-1450,East Hall 108,,5
-77046,GEOG,131,D01,3,Physical Geography: Weather and Climate,16/25,0,MWF,1200-1250,Ruth Habeger Science Center 121,,5
-77948,CSC,247,D01,3,Introduction to Artificial Intelligence,17/25,0,MWF,1500-1550,East Hall 108,,5
-79213,ARTD,441,D01,3,3-D Design/Production,17/25,0,TuTh,0800-0915,Beacom Institute of Technology 114,,5
-75770,ELED,455,D01,3,Evidence-Based Reading (K-3),20/25,0,MWF,0900-0950,Kennedy Center 105,,5
-73631,CSC,105,D02,3,Introduction to Computers,23/24,0,MWF,0900-0950,Beacom Institute of Technology 112,,5
-77941,CSC,547,D01,3,Artificial Intelligence,25/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,,5
-73061,GS,100,DC2,0 TO 1,University Experience,84/85,0,M,1200-1250,East Hall 100,,5
-75727,CMST,101,D05,3,Foundations of Communication,24/24,0,TuTh,1100-1215,Beadle Hall 205,,5
-73883,CSC,420,D01,3,Cellular and Mobile Communications,0/25,0,MWF,0900-0950,Beacom Institute of Technology 233,,5
-73641,CSC,105,D05,3,Introduction to Computers,24/24,0,MWF,1500-1550,Beacom Institute of Technology 112,,5
-70696,BIOL,101L,D01,1,Biology Survey I Lab,18/25,0,Tu,1300-1450,Ruth Habeger Science Center 106,,5
-79215,CMST,215,DH2,3,Honors: Public Speaking,23/24,0,MWF,1500-1550,Beadle Hall 205,,5
-73645,CSC,105,D08,3,Introduction to Computers,24/24,0,TuTh,1100-1215,Beacom Institute of Technology 112,,5
-73559,CHEM,326,D01,3,Organic Chemistry I,4/10,0,MWF,1200-1250,Ruth Habeger Science Center 139,,5
-70700,BIOL,101L,D02,1,Biology Survey I Lab,21/25,0,Tu,1030-1225,Ruth Habeger Science Center 106,,5
-74408,ART,231,D01,3,Painting I,12/18,0,TuTh,1600-1830,Beadle Hall 302,,5
-74051,PHYS,185,D01,2,Solar System Astronomy,13/24,0,MW,1400-1450,Ruth Habeger Science Center 143,,5
-79493,SPED,417,D01,3,Vocational-Transitional Programming,22/25,0,TuTh,1100-1215,Kennedy Center 105,,5
-70788,BADM,310,D01,3,Business Finance,9/25,0,MWF,0900-0950,East Hall 018,,5
-70385,ART,111,D01,3,Drawing I,18/18,0,TuTh,1100-1330,Beadle Hall 302,,5
-77090,ENGL,201,D01,3,Composition II,17/24,0,TuTh,1430-1545,Beadle Hall 109,,5
-70856,BADM,360,D01,3,Organization and Management,3/25,0,TuTh,0800-0915,East Hall 217,,5
-70790,BIOL,151L,D01,1,General Biology I Lab,30/30,0,Th,0800-0950,Ruth Habeger Science Center 109,,5
-73884,CSC,420,D02,3,Cellular and Mobile Communications,0/25,1,MWF,1000-1050,Beacom Institute of Technology 233,,5
-80698,MATH,413,D01,3,Abstract Algebra I,14/20,0,TuTh,1300-1415,Ruth Habeger Science Center 113,,5
-73311,PSYC,101,D01,3,General Psychology,18/25,0,MWF,0900-0950,Kennedy Center 104,,5
-76178,ENGL,032,DK1,2,Basic Writing,11/12,0,TuTh,1000-1050,Beadle Hall 010,,5
-70761,ENGL,101,D07,3,Composition I,24/24,0,MWF,0900-0950,Beadle Hall 305,,5
-74125,CSC,436,D03,3,Offensive Network Security,11/25,0,TuTh,0800-0915,Beacom Institute of Technology 231,,5
-75253,CIS,210,D01,1,QuickBooks I,10/25,0,TuTh,1100-1215,East Hall 010,,5
-73643,CSC,105,D07,3,Introduction to Computers,24/24,0,TuTh,0930-1045,Beacom Institute of Technology 112,,5
-78148,ELED,360,D01,3,K-8 Social Science Methods,8/25,0,MWF,0800-0850,Kennedy Center 117,,5
-73041,GAME,444,D01,3,Project Development I,16/24,0,MWF,0800-0850,Beacom Institute of Technology 135,,5
-73906,CSC,300,D03,3,Data Structures,23/50,0,MWF,0900-0950,East Hall 100,,5
-79494,SPED,460,D01,3,Family Systems and Professional Collaboration,8/25,0,TuTh,1230-1345,Kennedy Center 105,,5
-74290,CSC,722,D01,3,Machine Learning Fundamentals,21/25,0,MW,1400-1515,Beacom Institute of Technology 233,,5
-71204,HON,102,DH1,1,Introduction to Honors,18/18,0,W,1400-1450,Ruth Habeger Science Center 132,,5
-73629,CSC,105,D01,3,Introduction to Computers,24/24,0,MWF,0800-0850,East Hall 108,,5
-74951,CSC,234,D05,3,Software Security,13/25,0,TuTh,0930-1045,Beacom Institute of Technology 231,,5
-75303,PE,300,D01,3,Applied Sport and Exercise Science,13/25,0,TuTh,0930-1045,Kennedy Center 123,,5
-71441,INFS,762,D01,3,Data Warehousing & Data Mining,24/25,0,Tu,1300-1530,Kennedy Center 122,,5
-73896,CSC,250,D02,3,Computer Science II,22/25,0,MWF,1100-1150,Beacom Institute of Technology 117,,5
-71512,CSC,150,D01,3,Computer Science I,23/24,0,MWF,0900-0950,Beacom Institute of Technology 213,,5
-75909,EXS,376,D01,3,Technology Integration,13/15,0,TuTh,1230-1345,Kennedy Center 123,,5
-75831,CSC,402,D01,3,Mathematical Foundations of Artificial Intelligence,2/25,0,MW,1500-1615,East Hall 018,,5
-70722,ART,121,D01,3,Design I 2D,18/20,0,MWF,1400-1540,Beadle Hall 303,,5
-71089,BADM,468,D01,3,International Management,20/25,0,TuTh,0930-1045,East Hall 108,,5
-72944,CIS,332,D01,3,Structured Systems Analysis and Design,16/25,0,TuTh,1300-1415,East Hall 018,,5
-75711,INFS,830,D01,3,Decision Support Systems,25/25,0,W,1500-1730,East Hall 201,,5
-74128,CSC,447,D01,3,Artificial Intelligence,4/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,,5
-80673,BADM,415,D01,3,Financial Institutions,11/25,0,MWF,1100-1150,East Hall 018,,5
-75355,GAME,363,D01,3,Game Genres: Deep Games,21/24,0,MWF,1100-1150,Beacom Institute of Technology 135,,5
-73564,CIS,275,D01,3,Web Application Programming I,19/25,0,TuTh,0930-1045,East Hall 003,,5
-70593,ELED,320,D01,3,K-8 Science Methods,8/25,0,MWF,0900-0950,Kennedy Center 117,,5
-76237,BIOL,101,D04,2,Biology Survey I,21/25,0,TuTh,0900-0950,Ruth Habeger Science Center 135,,5
-75740,MATH,201,D05,3,Introduction to Discrete Mathematics,19/20,0,MWF,1400-1450,Ruth Habeger Science Center 114,,5
-75164,CIS,438,D01,3,Advanced Project Management,23/25,0,TuTh,0930-1045,Tunheim Classroom Building 109,,5
-70779,BIOL,103L,D02,1,Biology Survey II Lab,16/24,0,W,1230-1425,Ruth Habeger Science Center 106,,5
-80675,BADM,476,D01,3,Marketing Research,21/25,0,MWF,0900-0950,East Hall 003,,5
-80644,DAD,310,D01,3,Sound Design for Film,12/18,0,MWF,1400-1450,Tunheim Classroom Building 209,,5
-75726,CMST,101,D04,3,Foundations of Communication,20/24,0,TuTh,0930-1045,Beadle Hall 205,,5
-79133,CSC,409,D01,3,Operating Environments,1/25,7,TuTh,0930-1045,Beacom Institute of Technology 213,,5
-73063,GS,100,DE2,0 TO 1,University Exper: ELED/SPED,25/25,0,W,1200-1250,Kennedy Center 105,,5
-80641,CIV,100,D02,3,American Civics,17/24,0,MWF,1400-1450,Beadle Hall 302,,5
-77939,CSC,439,D02,3,Threat Hunting and Incident Response,0/25,3,TuTh,1300-1415,Beacom Institute of Technology 233,,5
-74412,BADM,482,D01,3,Business Policy and Strategy,15/25,0,TuTh,1300-1415,East Hall 010,,5
-73017,GAME,365,D01,3,Classical Myth and Media,10/12,0,TuTh,0930-1045,Beacom Institute of Technology 135,,5
-70692,ELED,459,D01,3,Introduction to Literacy Assessment and Remediation,11/25,0,MWF,1100-1150,Kennedy Center 105,,5
-75175,INFS,601,D01,3,Information Systems,23/25,0,Tu,1500-1730,Tunheim Classroom Building 109,,5
-73562,CHEM,112L,D02,1,General Chemistry I Lab,12/20,0,Tu,0800-0950,Ruth Habeger Science Center 136,,5
-79130,CSC,470,D02,3,Software Engineering,1/25,0,MWF,0900-0950,Beacom Institute of Technology 231,,5
-74937,CSC,285,D01,3,Networking I,21/25,0,TuTh,0800-0915,Beacom Institute of Technology 213,,5
-74121,CSC,430,D01,3,Windows Administration,1/25,0,TuTh,1300-1415,Beacom Institute of Technology 117,,5
-73877,CSC,388,D01,3,Computer Forensics Fundamentals,0/25,4,TuTh,1100-1215,East Hall 018,,5
-73862,CSC,150,DH2,3,Computer Science I,25/25,0,MTuWThF,1126-1150,East Hall 100,,5
-80637,ART,121,D02,3,Design I 2D,19/20,0,MWF,1000-1140,Beadle Hall 303,,5
-73958,PE,207,D01,1,Professional Preparation  Strength Training,0/25,2,MW,1300-1350,Zimmermann Hall 001A,,5
-75254,CIS,211,D01,1,Quickbooks II,13/25,0,TuTh,1100-1215,East Hall 010,,5
-77187,ART,213,D02,3,Figure Drawing,1/18,0,TuTh,1430-1545,Beacom Institute of Technology 114,,5
-81041,CSC,409,D02,3,Operating Environments,18/25,0,MWF,0800-0850,Beacom Institute of Technology 213,,5
-73060,GS,100,DC1,0 TO 1,University Experience,145/145,0,M,1200-1250,Tunheim Classroom Building 203,,5
-76593,CSC,161,D02,3,"Computer Hardware, Data Communications, and Networking",23/25,0,MWF,1100-1150,East Hall 108,,5
-74271,CSC,718,D01,3,Operating Systems & Parallel Programming,18/25,0,TuTh,1430-1545,Kennedy Center 105,,5
-75723,CMST,101,D01,3,Foundations of Communication,21/24,0,MWF,0900-0950,Beadle Hall 109,,5
-74988,CSC,482,D02,3,Algorithms and Optimization,2/25,0,TuTh,1430-1545,East Hall 003,,5
-77837,ENGL,101,D08,3,Composition I,12/12,0,MWF,1400-1450,Beadle Hall 205,,5
-80708,BIOL,492,D01,3,Topics: Cells and Tissues,17/20,0,MWF,1100-1150,Ruth Habeger Science Center 109,,5
-73062,GS,100,DB2,0 TO 1,University Experience,40/40,0,Th,1200-1250,Tunheim Classroom Building 203,,5
-73873,CSC,387,D01,5,Routing and Switching,0/24,3,MWF,1100-1225,Beacom Institute of Technology 231,,5
-74415,EXS,350L,D01,1,Exercise Physiology Lab,6/15,0,Th,1300-1450,Kennedy Center 110,,5
-70766,BIOL,103L,D01,1,Biology Survey II Lab,19/24,0,Th,1300-1450,Ruth Habeger Science Center 106,,5
-73855,CSC,150,D03,3,Computer Science I,24/24,0,MWF,1100-1150,Kennedy Center 112,,5
-71158,HIST,121,D01,3,Western Civilization I,19/25,0,MWF,1000-1050,Beadle Hall 302,,5
-74124,CSC,436,D02,3,Offensive Network Security,0/25,1,TuTh,0930-1045,Beacom Institute of Technology 233,,5
-77047,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,16/25,0,Tu,1030-1225,Ruth Habeger Science Center 143,,5
-76222,MATH,281,DH1,3,Honors: Intro to Statistics,25/30,0,TuTh,1100-1215,Ruth Habeger Science Center 121,,5
-71246,INFS,720,D01,3,System Analysis and Design Using Case Tools,25/25,0,M,0900-1130,Tunheim Classroom Building 109,,5
-80647,ENGL,492,D01,3,ST: Online Radicalization,2/3,0,MWF,1000-1050,Beadle Hall 304,,5
-73937,ECON,201,D01,3,Principles of Microeconomics,3/25,0,MWF,0900-0950,East Hall 217,,5
-76232,CSC,439,D01,3,Threat Hunting and Incident Response,0/25,2,TuTh,0800-0915,East Hall 010,,5
-79232,GEOG,132L,DH1,1,Physical Geography  Natural Landscapes Lab,18/20,0,Tu,1300-1450,Ruth Habeger Science Center 143,,5
-80714,BIOL,331L,D01,1,Microbiology Lab,0/20,1,Tu,0800-0950,Ruth Habeger Science Center 101,,5
-76592,CSC,161,D01,3,"Computer Hardware, Data Communications, and Networking",24/25,0,MWF,1000-1050,Beacom Institute of Technology 112,,5
-71238,INFS,608,D01,3,Applied Statistics,24/25,0,W,1500-1730,Tunheim Classroom Building 109,,5
-70782,BIOL,145,D01,1,Introduction to Scientific Inquiry,15/16,0,W,1200-1245,Ruth Habeger Science Center 101,,5
-71177,INED,211,D01,3,South Dakota American Indian Culture and Education,22/25,0,MWF,1000-1050,Kennedy Center 120,,5
-79212,ARTD,350,D01,3,Background Design/Character Design,22/25,0,TuTh,1300-1415,Beacom Institute of Technology 114,,5
-80727,CSC,230,D01,1,Tech Foundations: Ethics,20/25,0,TuTh,1100-1215,East Hall 201,,5
-70682,BIOL,101,D01,2,Biology Survey I,18/25,0,MW,0800-0850,Ruth Habeger Science Center 135,,5
-70437,ARTD,480,D01,3,Digital Photography III,10/20,0,W,1600-1830,Beadle Hall 108,,5
-75763,EXS,350L,D02,1,Exercise Physiology Lab,0/15,0,Tu,1300-1450,Kennedy Center 110,,5
-76533,CSC,334,D01,3,Web Development,13/25,0,TuTh,0800-0915,Beacom Institute of Technology 117,,5
-77918,GS,100,DE1,0 TO 1,University Experience: PE/EXS,25/25,0,Tu,1200-1250,Kennedy Center 117,,5
-71093,BADM,481,D01,3,Promotional Management,18/25,0,TuTh,1300-1415,East Hall 217,,5
-72997,GAME,101,D01,1,Game Design Core Experience,39/40,0,W,1200-1250,Beacom Institute of Technology 135,,5
-75761,PE,341,D01,3,Curriculum Development and Evaluation,18/25,0,TuTh,0800-0915,Kennedy Center 122,,5
-71216,INFA,713,D01,3,Managing Security Risks,12/25,0,TuTh,0800-0915,East Hall 108,,5
-80670,ACCT,480,D01,3,Advanced Accounting,25/25,0,MWF,1200-1250,East Hall 003,,5
-80829,HON,202,DH1,1,Intermediate Honors Seminar,10/25,0,W,1200-1250,Beadle Hall 206,,5
-73014,GAME,333,D01,3,Project and Process I,18/24,0,MWF,0800-0850,Beacom Institute of Technology 135,,5
-76535,CSC,334,D03,3,Web Development,0/25,0,TuTh,1100-1215,Beacom Institute of Technology 117,,5
-74424,MATH,120,D01,3,Trigonometry,31/35,0,TuTh,1100-1215,Ruth Habeger Science Center 114,,5
-70595,ELED,330,D01,3,K-8 Math Methods,8/25,0,MWF,1000-1050,Kennedy Center 117,,5
-79221,HIST,358,D01,3,The United States Since 1941,11/13,0,TuTh,1300-1415,Kennedy Center 119,,5
-80713,BIOL,331,D01,3,Microbiology,0/20,2,MWF,0800-0850,Ruth Habeger Science Center 101,,5
-77907,CIS,378,D01,3,Applied Artificial Intelligence and Applications,25/25,0,TuTh,1100-1215,Tunheim Classroom Building 111,,5
-70837,EPSY,302,D01,3,Educational Psychology,21/25,0,MWF,1000-1050,Kennedy Center 104,,5
-75367,BADM,336,D01,3,Entrepreneurship I,14/25,0,MWF,0800-0850,East Hall 217,,5
-73875,CSC,387,D02,5,Routing and Switching,14/25,0,MWF,1400-1525,Beacom Institute of Technology 231,,5
-79237,MATH,201,D06,3,Introduction to Discrete Mathematics,20/20,0,MWF,1400-1450,Beadle Hall 206,,5
-73885,CSC,420,D03,3,Cellular and Mobile Communications,3/25,0,MWF,1100-1150,Beacom Institute of Technology 233,,5
-75734,CMST,215,DH1,3,Honors: Public Speaking,10/24,0,MWF,1100-1150,Beadle Hall 205,,5
-74805,EPSY,210,D02,3,Lifespan Development,20/25,0,MWF,1200-1250,Kennedy Center 104,,5
-70707,BIOL,101L,D03,1,Biology Survey I Lab,23/25,0,Tu,0800-0950,Ruth Habeger Science Center 106,,5
-73870,CSC,234,D03,3,Software Security,0/25,0,TuTh,1100-1215,Beacom Institute of Technology 231,,5
-70439,BADM,101,D01,3,Survey of Business,39/40,0,TuTh,1430-1545,East Hall 108,,5
-73869,CSC,234,D02,3,Software Security,1/25,0,TuTh,0930-1045,East Hall 018,,5
-70758,ENGL,101,D05,3,Composition I,23/24,0,TuTh,0930-1045,Beadle Hall 305,,5
-70346,ACCT,210,D01,3,Principles of Accounting I,18/25,0,MWF,1100-1150,East Hall 010,,5
-71453,INFS,768,D01,3,Predictive Analytics for Decision Making,22/25,0,Th,1300-1530,Tunheim Classroom Building 111,,5
-74658,EPSY,210,D01,3,Lifespan Development,25/25,0,TuTh,0930-1045,Kennedy Center 112,,5
-74049,PHYS,111L,D01,1,Introduction to Physics I Laboratory,8/24,0,Th,1300-1450,Ruth Habeger Science Center 143,,5
-75728,CMST,101,DEM,3,Foundations of Communication,24/24,0,TuTh,1340-1455,Off Campus MADIHS,,5
-78328,GS,100,DB1,0 TO 1,University Experience,40/40,0,W,1200-1250,East Hall 108,,5
-80830,HON,202,DH2,1,Intermediate Honors Seminar,16/25,0,F,1200-1250,Beadle Hall 206,,5
-78311,MUS,100,D02,3,Music Appreciation,21/30,0,MWF,1100-1150,Beadle Hall 006,,5
-77926,EDFN,102,D01,3,Introduction to Education,23/25,0,MWF,0900-0950,Kennedy Center 122,,5
-70760,ENGL,101,D06,3,Composition I,22/24,0,TuTh,1100-1215,Beadle Hall 305,,5
-71221,INFA,751,D01,3,Wireless Security,16/25,0,TuTh,1300-1415,East Hall 201,,5
-70757,BIOL,103,D01,2,Biology Survey II,35/48,0,MW,1000-1050,Ruth Habeger Science Center 106,,5
-77942,CSC,578,D01,3,Artificial Intelligence Tools and Frameworks,21/25,0,TuTh,1600-1715,Beacom Institute of Technology 233,,5
-74110,ECON,202,D01,3,Principles of Macroeconomics,12/25,0,MWF,1200-1250,East Hall 217,,5
-70377,ACCT,211,D01,3,Principles of Accounting II,7/25,0,MWF,1200-1250,East Hall 010,,5
-74939,CSC,285,D03,3,Networking I,14/25,0,TuTh,1300-1415,Beacom Institute of Technology 213,,5
-73561,CHEM,112L,D01,1,General Chemistry I Lab,12/20,0,Tu,1300-1450,Ruth Habeger Science Center 136,,5
-74448,MATH,114,D04,3,College Algebra,34/35,0,TuTh,1100-1215,Ruth Habeger Science Center 113,,5
-75176,INFS,724,D01,3,Project & Change Management,25/25,0,Th,1100-1330,Tunheim Classroom Building 109,,5
-71227,DAD,422,D01,3,Audio Production III  Advanced Techniques and MIDI Music,17/18,0,MWF,1500-1550,Tunheim Classroom Building 209,,5
-75165,CIS,474,D01,3,Business Intelligence and Big Data,19/25,0,MWF,0900-0950,East Hall 108,,5
-73956,MUS,204,D01,3,Introduction to Digital Sound Design,13/18,0,TuTh,1300-1415,Tunheim Classroom Building 209,,5
-75310,EXS,482,D01,3,Theory of Strength and Conditioning,2/25,0,MWF,0900-0950,Kennedy Center 112,,5
-76534,CSC,334,D02,3,Web Development,2/25,0,TuTh,0930-1045,Beacom Institute of Technology 117,,5
+CRN,Sub,Num,Seq,Crd,Desc,Current Seats,Max Seats,Waitlist,Faculty
+25251,ACCT,210,D01,3,Principles of Accounting I,4,26,0,
+16739,ACCT,210,DT1,3,Principles of Accounting I,0,25,0,
+16741,ACCT,211,D01,3,Principles of Accounting II,6,30,0,
+16744,ACCT,211,DT1,3,Principles of Accounting II,0,30,0,
+29038,ACCT,320,D01,3,Cost Accounting,0,8,0,
+29039,ACCT,320,DT1,3,Cost Accounting,2,21,0,
+29040,ACCT,431,D01,3,Advanced Income Tax,1,7,0,
+29041,ACCT,431,DT1,3,Advanced Income Tax,1,21,0,
+21315,ART,111,D01,3,Drawing I,10,18,0,
+23539,ART,111,D02,3,Drawing I,2,18,0,
+11838,ART,121,D01,3,Design I 2D,11,20,0,
+11841,ART,122,D02,3,Design II Color,1,19,0,
+29524,ART,122,DT1,3,Design II Color,6,18,0,
+11842,ART,123,D01,3,Three Dimensional Design,3,18,0,
+11844,ARTD,250,D01,3,2D Digital Animation,8,25,0,
+27679,ARTD,255,D01,3,"3-D Character Animation, Rigging, and Lighting",1,25,0,
+27680,ARTD,255,D02,3,"3-D Character Animation, Rigging, and Lighting",9,25,0,
+22913,ARTD,282,D02,3,2-D Design on Computers I,3,19,0,
+25835,ARTD,285,D01,3,2-D Design on Computers II,6,19,0,
+13304,ARTD,285,D02,3,2-D Design on Computers II,8,19,0,
+29204,ARTD,292,D01,3,ST: Creature Design,16,25,0,
+29714,ARTD,292,D02,3,Topics: The Creative Machines,19,25,0,
+13305,ARTD,306,D01,3,Graphics Applications,13,18,0,
+13306,ARTD,339,D01,3,Computer Graphics Design,4,19,0,
+29205,ARTD,355,D01,3,Animation Studio,14,25,0,
+23541,ARTD,356,D01,3,Digital Painting,6,20,0,
+13309,ARTD,380,D01,3,Digital Photography II,10,19,0,
+13312,ARTD,432,D01,3,Comp Graphic Effects II,16,19,0,
+13314,ARTD,441,D01,3,3-D Design/Production,10,25,0,
+13433,ARTD,442,D01,3,2D Digital Animation III,12,25,0,
+13434,ARTD,498,D01,3,Research,23,25,0,
+17017,ARTH,212,DT1,3,History of World Art II,0,30,0,
+13277,ASC,121,DH1,3,Integrated Science,4,20,0,
+13278,ASC,121L,DH1,1,Integrated Science Lab,4,20,0,
+29027,BADM,101,D01,3,Survey of Business,1,27,0,
+22746,BADM,111,D01,1,Individual Financial Management,2,10,0,
+22747,BADM,111,DT1,1,Individual Financial Management,3,15,0,
+28028,BADM,112,D01,1,Personal Investing,12,25,0,
+28029,BADM,112,DT1,1,Personal Investing,1,25,0,
+28030,BADM,113,D01,1,Survey of Personal Financial Technology,5,10,0,
+28031,BADM,113,DT1,1,Survey of Personal Financial Technology,1,15,0,
+13375,BADM,220,D01,3,Business Statistics,3,27,0,
+13358,BADM,310,D01,3,Business Finance,10,25,0,
+13359,BADM,310,DT1,3,Business Finance,2,25,0,
+13376,BADM,321,D01,3,Business Statistics II,14,25,0,
+13377,BADM,321,DT1,3,Business Statistics II,1,30,0,
+29153,BADM,331,D01,3,Financial Analytics,2,10,0,
+29154,BADM,331,DT1,3,Financial Analytics,12,15,0,
+16611,BADM,344,D01,3,Managerial Communications,0,25,0,
+15900,BADM,350,D01,3,Legal Environment of Business,14,25,0,
+15901,BADM,350,DT1,3,Legal Environment of Business,0,25,0,
+15902,BADM,351,D01,3,Business Law,3,6,0,
+15903,BADM,351,DT1,3,Business Law,0,19,0,
+16619,BADM,360,D01,3,Organization and Management,16,25,0,
+16647,BADM,370,D01,3,Marketing,2,25,0,
+16652,BADM,370,DT1,3,Marketing,2,30,0,
+21288,BADM,405,D01,3,International Trade & Finance,15,25,0,
+16633,BADM,405,DT1,3,International Trade & Finance,0,25,0,
+13362,BADM,411,D01,3,Investments,7,10,0,
+16872,BADM,411,DT1,3,Investments,2,15,0,
+16674,BADM,425,D01,3,Production/Operations Management,11,25,0,
+16677,BADM,425,DT1,3,Production/Operations Management,3,25,0,
+19396,BADM,438,D01,3,Entrepreneurship II,7,10,0,
+19456,BADM,438,DT1,3,Entrepreneurship II,2,15,0,
+22305,BADM,457,D01,3,Business Ethics,1,25,0,
+22306,BADM,457,DT1,3,Business Ethics,-1,30,0,
+16613,BADM,460,D01,3,Human Resource Management,13,25,0,
+25250,BADM,460,DT1,3,Human Resource Management,0,25,0,
+16622,BADM,464,D01,3,Organizational Behavior,2,9,0,
+21289,BADM,464,DT1,3,Organizational Behavior,1,18,0,
+29155,BADM,474,D01,3,Personal Selling,14,25,0,
+29156,BADM,474,DT1,3,Personal Selling,9,25,0,
+16678,BADM,482,D01,3,Business Policy and Strategy,2,10,0,
+16680,BADM,482,DT1,3,Business Policy and Strategy,1,15,0,
+16659,BADM,494,DZ1,1 TO 12,Internship,4,5,0,
+29036,BADM,712,DT1,3,Corporate Finance and Technology,2,25,0,
+29037,BADM,750,DT1,3,AI/Ethics and the Legal Environment of Business,3,25,0,
+13264,BIOL,101,D01,2,Biology Survey I,14,48,0,
+23623,BIOL,101,DT1,2,Biology Survey I,2,25,0,
+13268,BIOL,101L,D01,1,Biology Survey I Lab,12,24,0,
+13296,BIOL,101L,D02,1,Biology Survey I Lab,8,20,0,
+25408,BIOL,101L,D03,1,Biology Survey I Lab,14,24,0,
+13295,BIOL,101L,DT1,1,Biology Survey I Lab,3,25,0,
+13287,BIOL,103,D01,2,Biology Survey II,0,20,0,
+13285,BIOL,103,DT1,2,Biology Survey II,1,25,0,
+13288,BIOL,103L,D02,1,Biology Survey II Lab,0,20,0,
+13286,BIOL,103L,DT1,1,Biology Survey II Lab,1,25,0,
+28353,BIOL,106,DT2,2,Human Health and Biology,0,25,0,
+27420,BIOL,106L,DT1,1,Health and Human Biology Lab,0,25,0,
+13273,BIOL,153,D01,3,General Biology II,16,48,0,
+13274,BIOL,153L,D01,1,General Biology II Lab,4,24,0,
+13275,BIOL,153L,D02,1,General Biology II Lab,11,24,0,
+29347,BIOL,211,D01,2,Environmental Biology,4,20,0,
+29348,BIOL,211L,D01,1,Lab: Environmental Biology,5,20,0,
+27410,BIOL,325,D01,3,Physiology,4,25,0,
+27412,BIOL,325L,D01,1,Physiology Lab,5,25,0,
+29349,BIOL,335,D01,3,Introduction to Bioinformatics,0,20,0,
+29354,BIOL,371,D01,3,Genetics,0,26,0,
+29355,BIOL,371L,D01,1,Genetics Lab,0,26,0,
+29346,BIOL,492,D01,3,ST:Animal Behav & Conservation,14,20,0,
+11768,BIOL,498,D01,1 TO 12,Research,6,10,0,
+27407,BIOL,498,D02,1 TO 12,Research,6,10,0,
+27408,BIOL,498,D03,1 TO 12,Research,10,10,0,
+30995,CET,692,DD1,1,Topics: K12 Computer Education,50,50,0,
+30252,CET,720,D01,3,Leadership and Evaluation of Educational Technology,3,5,0,
+16460,CET,720,DT1,3,Leadership and Evaluation of Educational Technology,5,25,0,
+19426,CET,723,DT1,3,Inclusive STEM Instruction,20,25,0,
+30253,CET,725,D01,3,Emerging Technologies in Education,4,5,0,
+17374,CET,725,DT1,3,Emerging Technologies in Education,19,25,0,
+28078,CET,741,DT1,3,Learning Sciences in Online Education,15,25,0,
+13279,CHEM,114,D01,3,General Chemistry II,5,24,0,
+13280,CHEM,114L,D01,1,General Chemistry II Lab,5,24,0,
+19457,CHEM,328,D01,3,Organic Chemistry II,0,7,0,
+29515,CHEM,328,DT1,3,Organic Chemistry II,1,21,0,
+19458,CHEM,328L,D01,1,Organic Chemistry II Lab,1,8,0,
+29516,CHEM,328L,DT1,1,Organic Chemistry II Lab,1,17,0,
+29350,CHEM,460,D01,3,Biochemistry,8,20,0,
+29356,CHEM,498,D01,1 TO 12,Research,10,10,0,
+13373,CIS,123,D01,3,Problem Solving & Programming,7,28,0,
+13374,CIS,123,D02,3,Problem Solving & Programming,3,25,0,
+15887,CIS,123,DT1,3,Problem Solving & Programming,0,30,0,
+16803,CIS,206,D01,1,Adv Comp Appl: Wordprocessing,15,25,0,
+16873,CIS,206,DT1,1,Adv Comp Appl: Wordprocessing,5,25,0,
+16877,CIS,207,D01,1,Advanced Applications: Spreadsheet,13,25,0,
+16878,CIS,207,DT1,1,Advanced Applications: Spreadsheet,0,27,0,
+16879,CIS,208,D01,1,Advanced Applications: Database,15,25,0,
+16880,CIS,208,DT1,1,Advanced Applications: Database,5,25,0,
+15895,CIS,251,D01,3,Business Applications Programming,3,9,0,
+15897,CIS,251,DT1,3,Business Applications Programming,3,16,0,
+16623,CIS,325,DT1,3,Management Information Systems,0,30,0,
+13351,CIS,332,D01,3,Structured Systems Analysis and Design,4,25,0,
+16672,CIS,332,DT1,3,Structured Systems Analysis and Design,11,25,0,
+15904,CIS,338,D01,3,Project Management,1,25,0,
+15905,CIS,338,DT1,3,Project Management,4,25,0,
+16753,CIS,368,D01,3,Predictive Analytics,15,25,0,
+16751,CIS,368,DT2,3,Predictive Analytics,16,25,0,
+16625,CIS,384,D01,3,Decision Support Systems,4,10,0,
+16626,CIS,384,DT1,3,Decision Support Systems,-1,16,0,
+15863,CIS,424,D01,3,Software Development With Agile Methodologies,8,25,0,
+15868,CIS,424,DT1,3,Software Development With Agile Methodologies,5,25,0,
+15906,CIS,427,D01,3,Information Systems Planning and Management,5,10,0,
+15908,CIS,427,DT1,3,Information Systems Planning and Management,4,15,0,
+16614,CIS,484,D01,3,Database Management Systems,6,25,0,
+16615,CIS,484,DT1,3,Database Management Systems,2,27,0,
+25253,CIS,487,D01,3,Database Programming,6,10,0,
+13353,CIS,487,DT1,3,Database Programming,4,15,0,
+16661,CIS,494,DZ1,1 TO 8,Internship,3,5,0,
+29518,CIV,100,D01,3,American Civics,4,25,0,
+29519,CIV,100,DT1,3,American Civics,2,25,0,
+30687,CIV,100,DT2,3,American Civics,-1,25,0,
+27889,CLI,110,D01,3,The US Intelligence Community,3,9,0,
+27890,CLI,110,DT1,3,The US Intelligence Community,3,16,0,
+29792,CLI,320,DT1,3,"Religion, Beliefs and Technology",2,25,0,
+29217,CLI,410,DT1,3,National Security Law,8,17,0,
+19403,CLI,420,D01,3,Cyber Leadership,9,15,0,
+19405,CLI,420,DT1,3,Cyber Leadership,2,15,0,
+27353,CLI,492,DT1,3,Topics: Grand Strategy,6,17,0,
+20015,CLI,494,DZ1,1 TO 3,Internship,6,10,0,
+20014,CLI,498,D01,3,Research,5,5,0,
+30311,CLI,498,DH1,3,Research: Honors Thesis,0,1,0,
+30312,CLI,498,DH2,3,Research: Honors Thesis,0,1,0,
+24392,CLI,498,DT1,3,Research,5,5,0,
+21345,CMST,101,D01,3,Foundations of Communication,6,24,0,
+21347,CMST,101,D03,3,Foundations of Communication,4,24,0,
+21348,CMST,101,D04,3,Foundations of Communication,3,24,0,
+29587,CMST,101,DEM,3,Foundations of Communication,12,24,0,
+21372,CMST,101,DT1,3,Foundations of Communication,1,25,0,
+21373,CMST,101,DT2,3,Foundations of Communication,1,25,0,
+21374,CMST,101,DT3,3,Foundations of Communication,0,25,0,
+21375,CMST,101,DT4,3,Foundations of Communication,1,25,0,
+21376,CMST,101,DT5,3,Foundations of Communication,1,25,0,
+30799,CMST,101,DT6,3,Foundations of Communication,4,25,0,
+23543,CMST,201,D01,3,Interpersonal Communication,12,24,0,
+25724,CMST,470,DT1,3,Intercultural Communication,2,25,0,
+16555,CSC,105,D01,3,Introduction to Computers,9,25,0,
+16556,CSC,105,D02,3,Introduction to Computers,13,25,0,
+19452,CSC,105,D03,3,Introduction to Computers,16,25,0,
+16558,CSC,105,DT1,3,Introduction to Computers,9,25,0,
+16559,CSC,105,DT2,3,Introduction to Computers,13,25,0,
+23636,CSC,105,DT3,3,Introduction to Computers,6,25,0,
+30790,CSC,105,DT4,3,Introduction to Computers,12,25,0,
+27437,CSC,105,DT5,3,Introduction to Computers,9,20,0,
+16564,CSC,134,D01,3,Introduction to Cyber,2,25,0,
+16566,CSC,134,D02,3,Introduction to Cyber,9,25,0,
+16567,CSC,134,D03,3,Introduction to Cyber,13,25,0,
+27436,CSC,134,DCA,3,Introduction to Cyber,16,25,0,
+13776,CSC,134,DEC,3,Introduction to Cyber,23,25,0,
+16571,CSC,134,DT1,3,Introduction to Cyber,3,30,0,
+28395,CSC,147,D01,3,Artificial Intelligence Survey,20,25,0,
+28396,CSC,147,DT1,3,Artificial Intelligence Survey,8,25,0,
+16576,CSC,150,D01,3,Computer Science I,20,25,0,
+16577,CSC,150,D02,3,Computer Science I,7,25,0,
+30202,CSC,150,DCA,3,Computer Science I,6,25,0,
+16584,CSC,150,DT1,3,Computer Science I,4,30,0,
+16586,CSC,150,DT2,3,Computer Science I,15,30,0,
+16591,CSC,163,D01,3,Hardware Virtualization and Data Communication,2,30,0,
+16592,CSC,163,D02,3,Hardware Virtualization and Data Communication,22,30,0,
+16595,CSC,163,D03,3,Hardware Virtualization and Data Communication,4,30,0,
+16597,CSC,163,D04,3,Hardware Virtualization and Data Communication,18,30,0,
+16600,CSC,163,DT1,3,Hardware Virtualization and Data Communication,3,25,0,
+16602,CSC,163,DT2,3,Hardware Virtualization and Data Communication,12,25,0,
+18325,CSC,234,D01,3,Software Security,3,32,0,
+18654,CSC,234,D02,3,Software Security,21,25,0,
+24652,CSC,234,DT1,3,Software Security,0,30,0,
+24369,CSC,247,D01,3,Introduction to Artificial Intelligence,10,25,0,
+24370,CSC,247,DT1,3,Introduction to Artificial Intelligence,16,25,0,
+16607,CSC,250,D01,3,Computer Science II,8,36,0,
+16631,CSC,250,D02,3,Computer Science II,13,25,0,
+16637,CSC,250,D03,3,Computer Science II,9,25,0,
+16641,CSC,250,D04,3,Computer Science II,15,25,0,
+21295,CSC,250,D05,3,Computer Science II,6,36,0,
+16643,CSC,250,DH1,3,Computer Science II,26,36,0,
+16649,CSC,250,DT1,3,Computer Science II,2,30,0,
+16650,CSC,250,DT2,3,Computer Science II,9,30,0,
+30640,CSC,250,DT4,3,Computer Science II,4,25,0,
+16657,CSC,260,D01,3,Object Oriented Design,1,30,0,
+16665,CSC,260,DT1,3,Object Oriented Design,6,25,0,
+16669,CSC,285,D01,3,Networking I,3,32,0,
+23637,CSC,285,D02,3,Networking I,17,25,0,
+29109,CSC,285,D03,3,Networking I,10,25,0,
+13702,CSC,285,DEC,3,Networking I,22,25,0,
+16670,CSC,285,DT1,3,Networking I,8,25,0,
+16673,CSC,285,DT2,3,Networking I,13,25,0,
+16679,CSC,300,D01,3,Data Structures,7,32,0,
+21301,CSC,300,D02,3,Data Structures,12,25,0,
+27439,CSC,300,D03,3,Data Structures,7,25,0,
+16681,CSC,300,DT1,3,Data Structures,9,25,0,
+16682,CSC,300,DT2,3,Data Structures,9,25,0,
+16685,CSC,310,D01,3,Advanced Data Structures,2,28,0,
+18655,CSC,310,D02,3,Advanced Data Structures,4,25,0,
+23638,CSC,310,D03,3,Advanced Data Structures,9,28,0,
+16686,CSC,310,DT1,3,Advanced Data Structures,0,25,0,
+29116,CSC,310,DT2,3,Advanced Data Structures,6,25,0,
+16687,CSC,314,D01,3,Assembly Language,0,26,0,
+16690,CSC,314,D02,3,Assembly Language,0,26,0,
+18656,CSC,314,D03,3,Assembly Language,0,26,0,
+16691,CSC,314,DT1,3,Assembly Language,13,25,0,
+16692,CSC,314,DT2,3,Assembly Language,1,25,0,
+16693,CSC,321,D01,3,Cyber Law and Policy,6,34,0,
+23639,CSC,321,D02,3,Cyber Law and Policy,5,34,0,
+16694,CSC,321,DT1,3,Cyber Law and Policy,6,28,0,
+18324,CSC,321,DT2,3,Cyber Law and Policy,2,30,0,
+23640,CSC,334,D01,3,Web Development,6,25,0,
+25351,CSC,334,D02,3,Web Development,4,25,0,
+23641,CSC,334,DT1,3,Web Development,2,25,0,
+29119,CSC,334,DT2,3,Web Development,13,25,0,
+16699,CSC,364,DT1,1,Virtualization,18,25,0,
+16700,CSC,385,D01,3,Networking II,0,34,0,
+16701,CSC,385,D02,3,Networking II,0,34,0,
+16702,CSC,385,D03,3,Networking II,1,34,0,
+16703,CSC,385,DT1,3,Networking II,3,28,0,
+16705,CSC,385,DT2,3,Networking II,1,28,0,
+20538,CSC,386,D01,3,Applications of Deep Learning,0,28,0,
+20539,CSC,386,DT1,3,Applications of Deep Learning,0,25,0,
+20573,CSC,388,DT1,3,Computer Forensics Fundamentals,4,25,0,
+29120,CSC,388,DT2,3,Computer Forensics Fundamentals,12,25,0,
+30787,CSC,389,DT1,1,Cisco Networking Academy,15,20,0,
+16709,CSC,404,D01,3,Foundation of Computation,0,44,0,
+18659,CSC,404,D02,3,Foundation of Computation,10,35,0,
+23642,CSC,404,D03,3,Foundation of Computation,18,35,0,
+16711,CSC,404,DT1,3,Foundation of Computation,0,28,0,
+20434,CSC,404,DT2,3,Foundation of Computation,2,28,0,
+30608,CSC,404,DT3,3,Foundation of Computation,1,25,0,
+16712,CSC,407,D01,3,Advanced Routing & Switching,6,25,0,
+16714,CSC,407,DT1,3,Advanced Routing & Switching,10,25,0,
+27934,CSC,409,D01,3,Operating Environments,10,34,0,
+27935,CSC,409,DT1,3,Operating Environments,4,34,0,
+16716,CSC,419,DT1,3,Advanced Window Forensics,1,30,0,
+23643,CSC,419,DT2,3,Advanced Window Forensics,10,25,0,
+16717,CSC,428,D01,3,Reverse Engineering,1,25,0,
+16719,CSC,428,DT1,3,Reverse Engineering,1,25,0,
+16720,CSC,431,D01,3,UNIX/Linux Administration,2,28,0,
+16721,CSC,431,DT1,3,UNIX/Linux Administration,1,25,0,
+30607,CSC,431,DT2,3,UNIX/Linux Administration,14,25,0,
+16722,CSC,432,D01,3,Malware Analysis,0,30,0,
+23644,CSC,432,D02,3,Malware Analysis,0,30,0,
+16724,CSC,432,DT1,3,Malware Analysis,3,25,0,
+16727,CSC,432,DT2,3,Malware Analysis,1,25,0,
+16730,CSC,437,D01,3,Survey of Enterprise Systems,0,28,0,
+16731,CSC,437,D02,3,Survey of Enterprise Systems,2,28,0,
+16732,CSC,437,DT1,3,Survey of Enterprise Systems,1,28,0,
+16734,CSC,438,D01,3,Defensive Network Security,10,25,0,
+16735,CSC,438,D02,3,Defensive Network Security,1,25,0,
+16737,CSC,438,D03,3,Defensive Network Security,1,25,0,
+16738,CSC,438,DT1,3,Defensive Network Security,1,25,0,
+16740,CSC,438,DT2,3,Defensive Network Security,0,25,0,
+16742,CSC,443,D01,3,Scripting for Network Administration,6,25,0,
+16743,CSC,443,DT1,3,Scripting for Network Administration,2,28,0,
+16745,CSC,456,D01,3,Operating Systems,0,40,0,
+16747,CSC,456,D02,3,Operating Systems,1,40,0,
+16748,CSC,456,D03,3,Operating Systems,13,40,0,
+16749,CSC,456,DT1,3,Operating Systems,-1,25,0,
+16750,CSC,456,DT2,3,Operating Systems,0,25,0,
+30589,CSC,456,DT3,3,Operating Systems,9,25,0,
+21298,CSC,479,D01,3,Applied Artificial Intelligence,12,25,0,
+21299,CSC,479,DT1,3,Applied Artificial Intelligence,22,25,0,
+30282,CSC,491,D01,3,IS: AI Tools and Frameworks,0,1,0,
+29122,CSC,492,D02,1,Topics: Cyber Competition,19,20,0,
+16795,CSC,494,DZ1,1 TO 8,Internship,3,10,0,
+31016,CSC,494,DZ2,1 TO 8,Internship,8,10,0,
+30134,CSC,498,D01,3,Research,16,25,0,
+30307,CSC,498,D02,3,Research: Honors Thesis,0,1,0,
+30308,CSC,498,D03,3,Research: Honors Thesis,0,1,0,
+30309,CSC,498,D04,3,Research: Honors Thesis,0,1,0,
+30310,CSC,498,D05,3,Research: Honors Thesis,0,1,0,
+30924,CSC,498,D06,3,Research: CSI Muscle Sensing,0,1,0,
+30959,CSC,498,DT1,3,Research/Scholarship,0,1,0,
+28215,CSC,528,DT1,3,Reverse Engineering,23,25,0,
+22221,CSC,579,D01,3,Applied Artificial Intelligence,8,15,0,
+22220,CSC,579,DT1,3,Applied Artificial Intelligence,4,15,0,
+28096,CSC,609,DT1,3,Operating Environments,16,25,0,
+30348,CSC,617,DT1,3,Cybersecurity for Educators,2,25,0,
+30349,CSC,617,DT2,3,Cybersecurity for Educators,12,25,0,
+29893,CSC,653,DT1,3,Hardware and Networking for Educators,12,25,0,
+30356,CSC,653,DT2,3,Hardware and Networking for Educators,12,25,0,
+30827,CSC,653,DT3,3,Hardware and Networking for Educators,13,25,0,
+28123,CSC,712,DT1,3,Data Structures,12,25,0,
+16799,CSC,720,D01,3,Theory of Computation,15,25,0,
+16874,CSC,720,DT1,3,Theory of Computation,4,25,0,
+16804,CSC,723,DT1,3,Machine Learning for Cyber Security,5,25,0,
+28100,CSC,726,D01,3,Neural Networks,10,25,0,
+28099,CSC,726,DT1,3,Neural Networks,6,28,0,
+28090,CSC,727,D01,3,Professional Application and Ethics of A.I.,16,25,0,
+28091,CSC,727,DT1,3,Professional Application and Ethics of A.I.,2,31,0,
+30230,CSC,737,DT1,3,Embedded Systems,6,25,0,
+16806,CSC,748,D01,3,Software Exploitation,14,25,0,
+16808,CSC,748,DT1,3,Software Exploitation,6,27,0,
+28093,CSC,766,DT1,3,Quantum Programming,20,25,0,
+25848,CSC,770,D01,3,Software Engineering Management,19,25,0,
+25847,CSC,770,DT1,3,Software Engineering Management,20,25,0,
+29935,CSC,784,DT1,3,Quantum Computing for Cybersecurity Applications,24,25,0,
+18663,CSC,786,D01,3,Computer Science Problems,20,25,0,
+18664,CSC,786,DT1,3,Computer Science Problems,18,25,0,
+28097,CSC,789,D01,3,A.I. Capstone,23,25,0,
+28098,CSC,789,DT1,3,A.I. Capstone,21,25,0,
+30869,CSC,791,D01,3,IS: Robotics and AI,0,1,0,
+30868,CSC,791,DT1,3,IS: RF/SDR Research,0,1,0,
+30881,CSC,794,DZ1,1 TO 3,Internship,0,1,0,
+16809,CSC,804,DT1,3,Computer and Cyber Science Research Methodology,2,25,0,
+23645,CSC,804,DT2,3,Computer and Cyber Science Research Methodology,13,25,0,
+24219,CSC,808,DT1,3,Mixed Research Methods for Computer and Cyber Sciences: Design and Implementation,1,20,0,
+29523,CSC,808,DT2,3,Mixed Research Methods for Computer and Cyber Sciences: Design and Implementation,3,20,0,
+16811,CSC,809,DT1,3,Dissertation Preparation,8,25,0,
+16812,CSC,841,DT1,3,Cyber Operations II,9,25,0,
+21364,CSC,848,DT1,3,Advanced Software Exploitation,3,25,0,
+16816,CSC,890,DT1,1,SEMINAR: Cyber Ops Residency,16,25,0,
+16817,CSC,890,DT2,1,SEM: Cyber Defense Residency,4,25,0,
+24239,CSC,890,DT3,1,SEM:CompSci & CyberOp Research,2,25,0,
+28124,CSC,890,DT4,1,Seminar:Cyber Defense Research,6,25,0,
+30695,CSC,890,DT5,1,SEM: Cyber Defense Residency,8,25,0,
+27792,CSC,898D,D01,1 TO 12,Dissertation,4,5,0,
+29928,CSC,898D,D02,1 TO 12,Dissertation,3,5,0,
+30229,CSC,898D,D03,1 TO 12,Dissertation,4,5,0,
+30337,CSC,898D,D04,1 TO 12,Dissertation,4,5,0,
+30416,CSC,898D,D05,1 TO 12,Dissertation,4,5,0,
+30623,CSC,898D,D06,1 TO 12,Dissertation,4,5,0,
+30861,CSC,898D,D07,1 TO 12,Dissertation,4,5,0,
+30899,CSC,898D,D08,1 TO 12,Dissertation,3,5,0,
+27586,CSC,898D,DT1,1 TO 12,Dissertation,2,5,0,
+27639,CSC,898D,DT2,1 TO 12,Dissertation,0,5,0,
+27861,CSC,898D,DT3,1 TO 12,Dissertation,4,5,0,
+27862,CSC,898D,DT4,1 TO 12,Dissertation,0,6,0,
+30615,CSC,898D,DT5,1 TO 12,Dissertation,4,5,0,
+27896,CSC,898D,DT6,1 TO 12,Dissertation,4,5,0,
+27978,CSC,898D,DT7,1 TO 12,Dissertation,1,5,0,
+28062,CSC,898D,DT8,1 TO 12,Dissertation,3,5,0,
+28127,CSC,898D,DT9,1 TO 12,Dissertation,0,5,0,
+28143,CSC,898D,DTA,1 TO 12,Dissertation,2,5,0,
+28423,CSC,898D,DTB,1 TO 12,Dissertation,1,5,0,
+29937,CSC,898D,DTC,1 TO 12,Dissertation,3,5,0,
+30670,CSC,898D,DTD,1 TO 12,Dissertation,4,5,0,
+30788,CSC,898D,DTE,1 TO 12,Dissertation,4,5,0,
+30789,CSC,898D,DTF,1 TO 12,Dissertation,4,5,0,
+30905,CSC,898D,DTG,1 TO 12,Dissertation,3,5,0,
+30916,CSC,898D,DTH,1 TO 12,Dissertation,4,5,0,
+13499,DAD,322,D01,3,Audio Production II Multi Track Environments,9,18,0,
+13506,DAD,350,D01,2,Recording Sessions,3,18,0,
+13530,DAD,375,D01,3,Storyboarding,9,24,0,
+27356,DAD,492,D01,3,Topics: Sound Forensics,10,18,0,
+16126,DAD,494,DZ1,1 TO 3,Internship,11,25,0,
+13531,DAD,498,D01,3,Research,1,6,0,
+13532,DAD,498,D02,3,Research,4,6,0,
+13533,DAD,498,D03,3,Research,2,6,0,
+13534,DAD,498,D04,3,Research,1,8,0,
+18613,DAD,498,D05,3,Research,6,6,0,
+30313,DAD,498,DH1,3,Research: Honors Thesis,0,1,0,
+13378,ECON,201,D01,3,Principles of Microeconomics,0,30,0,
+16636,ECON,202,D01,3,Principles of Macroeconomics,2,30,0,
+16640,ECON,202,DT1,3,Principles of Macroeconomics,0,26,0,
+16345,ED,488,DZ1,2 TO 16,K-12 Student Teaching,6,10,0,
+16454,ED,495,DZ1,2,Practicum:Engl New Lang,17,25,0,
+30588,ED,592,DD1,1,Top: SD Hall Fame Leadership,75,75,0,
+27604,EDER,431,DT1,3,Educational Technology and Assessment,2,25,0,
+30494,EDFN,102,DEM,3,Introduction to Education,22,25,0,
+27596,EDFN,102,DT1,3,Introduction to Education,2,29,0,
+16391,EDFN,295,DZ2,1 TO 3,Practicum: Pre-Admission,14,15,0,
+16372,EDFN,300,D01,3,Principles of Practices of Teaching Middle School,15,25,0,
+22151,EDFN,300,DT1,3,Principles of Practices of Teaching Middle School,4,25,0,
+18646,EDFN,365,D01,3,Computer-Based Technology and Learning,8,25,0,
+29606,EDFN,365,DT1,3,Computer-Based Technology and Learning,3,29,0,
+16347,EDFN,395,DZ1,1,Practicum:Pre-Admission(OSEC),24,25,0,
+29133,EDFN,440,D01,3,Classroom Management,7,25,0,
+23716,EDFN,440,DT1,3,Classroom Management,4,25,0,
+29140,EDFN,475,D01,3,Human Relations,0,25,0,
+16450,EDFN,475,DT1,3,Human Relations,0,29,1,
+29958,EDFN,757,DT1,1,Critical Issues in Literacy Coaching,0,29,0,
+30712,EDFN,757,DT2,1,Critical Issues in Literacy Coaching,1,29,0,
+30919,EDFN,757,DT3,1,Critical Issues in Literacy Coaching,15,29,0,
+29959,EDFN,758,DT1,1,Coaching Using the Science of Learning,1,29,0,
+30713,EDFN,758,DT2,1,Coaching Using the Science of Learning,1,29,0,
+30920,EDFN,758,DT3,1,Coaching Using the Science of Learning,15,29,0,
+16325,ELED,310,DT1,2,"K-8 Methods of Music, Art, and Drama",9,25,0,
+16433,ELED,320,DT1,3,K-8 Science Methods,0,29,0,
+26005,ELED,320,DT2,3,K-8 Science Methods,2,25,0,
+16472,ELED,330,DT1,3,K-8 Math Methods,2,29,0,
+26006,ELED,330,DT2,3,K-8 Math Methods,0,29,0,
+16375,ELED,360,DT1,3,K-8 Social Science Methods,2,25,0,
+28113,ELED,360,DT2,3,K-8 Social Science Methods,1,26,0,
+16349,ELED,395,DZ2,1,Practicum: Pre Stu Tchg,25,25,0,
+16440,ELED,440,DT1,3,K-8 Language Arts Methods,1,25,0,
+26045,ELED,440,DT2,3,K-8 Language Arts Methods,0,26,0,
+26025,ELED,455,DT1,3,Evidence-Based Reading (K-3),2,29,0,
+26026,ELED,455,DT2,3,Evidence-Based Reading (K-3),5,29,0,
+20615,ELED,456,D01,3,Evidence-Based Reading (4-8),6,25,0,
+20616,ELED,456,DT1,3,Evidence-Based Reading (4-8),0,25,0,
+24709,ELED,456,DT2,3,Evidence-Based Reading (4-8),1,29,0,
+16436,ELED,459,DT1,3,Introduction to Literacy Assessment and Remediation,0,29,0,
+28114,ELED,459,DT2,3,Introduction to Literacy Assessment and Remediation,4,29,0,
+16442,ELED,462,D01,3,Teaching English As a New Language,3,26,0,
+29608,ELED,462,DT1,3,Teaching English As a New Language,2,30,0,
+16455,ELED,466,DT1,3,"P 12 Curriculum, Instruction, & Assessment for ELL",2,29,0,
+22859,ELED,488,DZ1,2 TO 16,K-8 Student Teaching,2,50,0,
+16356,ELED,495,DZ1,3,Practicum: Kindergarten,24,25,0,
+22214,ELED,495,DZ3,1,Practicum: COOP Fast Track,25,25,0,
+23545,ENGL,032,DK1,2,Basic Writing,0,12,0,
+28125,ENGL,033,DT1,3,Basic Writing,0,18,0,
+30550,ENGL,033,DT2,3,Basic Writing,0,18,0,
+13535,ENGL,101,D01,3,Composition I,11,12,0,
+13536,ENGL,101,D02,3,Composition I,14,24,0,
+13537,ENGL,101,D03,3,Composition I,4,24,0,
+15917,ENGL,101,D04,3,Composition I,20,24,0,
+18674,ENGL,101,DK1,3,Composition I,0,12,0,
+13538,ENGL,101,DT1,3,Composition I,1,25,0,
+27358,ENGL,101,DT2,3,Composition I,0,25,0,
+27359,ENGL,101,DT3,3,Composition I,0,25,0,
+13563,ENGL,201,D01,3,Composition II,13,24,0,
+13564,ENGL,201,D02,3,Composition II,10,24,0,
+15778,ENGL,201,D03,3,Composition II,1,24,0,
+15781,ENGL,201,D04,3,Composition II,1,24,0,
+25330,ENGL,201,D05,3,Composition II,8,24,0,
+26027,ENGL,201,D06,3,Composition II,0,24,0,
+21380,ENGL,201,DH1,3,Honors: Composition II,2,24,0,
+29199,ENGL,201,DH2,3,Composition II,12,24,0,
+15786,ENGL,201,DT1,3,Composition II,0,25,0,
+18819,ENGL,201,DT2,3,Composition II,0,25,0,
+27360,ENGL,201,DT3,3,Composition II,0,25,0,
+15789,ENGL,210,D01,3,Introduction to Literature,16,24,0,
+27361,ENGL,212,D01,3,Modern World Literature,1,7,0,
+16538,ENGL,212,DT1,3,Modern World Literature,3,18,0,
+27362,ENGL,222,D01,3,British Literature since 1800,19,24,0,
+29306,ENGL,283,DT1,3,Introduction to Creative Writing,1,25,0,
+27363,ENGL,363,DT1,3,Literary Genres: Monsters,2,13,0,
+18715,ENGL,379,DT1,3,Technical Communication,1,25,0,
+27366,ENGL,490,DT1,3,Seminar: Monsters,9,12,0,
+15915,ENGL,494,DZ1,1 TO 12,Internship,9,10,0,
+15916,ENGL,498,D01,2,Research,5,5,0,
+16362,EPSY,210,D01,3,Lifespan Development,19,25,0,
+16423,EPSY,302,D01,3,Educational Psychology,12,25,0,
+16424,EPSY,302,DT1,3,Educational Psychology,2,25,0,
+30502,EXCH,489,D01,0 TO 18,Student Exchange - International,9,10,0,
+30236,EXCH,489,D02,0 TO 18,Student Exchange - International,7,10,0,
+26038,EXS,145,D01,3,Introduction to Exercise Science and Physical Education,9,25,0,
+16474,EXS,300,D01,3,Introduction to Research,1,25,0,
+16337,EXS,353,D01,3,Kinesiology,10,25,0,
+30785,EXS,353,D02,3,Kinesiology,11,25,0,
+16381,EXS,376,D01,3,Technology Integration,1,25,0,
+16476,EXS,400,D01,3,Exercise Test and Prescription,1,25,0,
+16339,EXS,452,D01,3,Motor Learning & Development,16,25,0,
+16477,EXS,494,DZ1,1 TO 12,Internship,22,25,0,
+30333,EXS,498,D01,1 TO 12,Research,14,15,0,
+16820,GAME,111,D01,3,Introduction to Game Design,12,27,0,
+26022,GAME,210,DT1,3,Contemporary Issues in Esports,17,25,0,
+15918,GAME,222,D01,3,Computer Game Analysis and Development,10,25,0,
+15919,GAME,334,D01,3,Project and Process II,8,24,0,
+22987,GAME,351,D01,3,Business of Game Development,5,25,0,
+19813,GAME,360,D01,3,Narrative Design,11,24,0,
+19814,GAME,366,D01,3,Contemporary Myth and Media,0,13,0,
+16824,GAME,375,D01,3,Level Design I,11,24,0,
+15921,GAME,445,D01,3,Project Development II,4,24,0,
+25979,GAME,487,DT1,3,"Facility, Risk, and Event Management in Sports",6,15,0,
+27784,GAME,491,D01,3,IS: Capstone Experience,0,3,0,
+30997,GAME,491,D02,4,IS: Board Game Development,0,1,0,
+30144,GAME,492,D01,3,Topics: Game Projects,0,15,0,
+29986,GAME,587,DT1,3,"Facility, Risk, and Event Management in Sport",4,10,0,
+25336,GEOG,131,D01,3,Physical Geography: Weather and Climate,7,24,0,
+25337,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,7,24,0,
+16102,GEOG,132,DT1,3,Physical Geography: Natural Landscapes,2,35,0,
+16108,GEOG,132L,DT1,1,Physical Geography  Natural Landscapes Lab,2,35,0,
+25339,GEOG,200,D01,3,Introduction to Human Geography,19,24,0,
+13379,HIM,130,DT1,3,Basic Medical Terminology,7,25,0,
+16718,HIM,169,DT1,1,Legal Aspects of Health Information I,21,25,0,
+21292,HIM,170,DT1,2,Legal Aspects Health Information Management II,22,25,0,
+16697,HIM,225,DT1,3,Digital Health Information Systems,19,25,0,
+16754,HIM,265,DT1,3,Health Data Quality and Outcomes,20,25,0,
+16759,HIM,288,DT1,1,HIM Classrooms to HIM Careers,18,25,0,
+16587,HIM,364,DT1,3,Healthcare Standards and Interoperability,21,25,0,
+27319,HIM,386,DT1,2,Clinical Documentation Integrity,21,25,0,
+16757,HIM,488,DT1,1,HIM Classrooms to HIM Careers,18,25,0,
+23502,HIMS,702,DT1,3,Foundations of Health Information Classification Systems,19,25,0,
+22038,HIMS,743,DT1,3,Advanced Topics in Health Informatics and Health Information Management,21,25,0,
+27320,HIMS,744,DT1,3,Data Analytics in Healthcare,3,25,0,
+27321,HIMS,745,DT1,3,Cyber Ethics,7,25,0,
+23503,HIMS,748,DT1,3,Research Design in Health Informatics Healthcare Research,22,25,0,
+30234,HIMS,750,DT1,3,Exploration of Population Health Data in Health Informatics,14,25,0,
+25267,HIMS,751,DT1,3,Classification Systems and the Revenue Cycle,19,25,0,
+20577,HIMS,788,DT1,3,Research Problems/Projects,20,25,0,
+29197,HIST,122,DH1,3,Western Civilization II,8,25,0,
+25341,HIST,151,DT1,3,United States History I,5,30,0,
+30375,HIST,151,DT2,3,United States History I,1,30,0,
+29520,HIST,152,D02,3,United States History II,1,24,0,
+16114,HIST,152,DH1,3,Honors: U.S. History II,8,25,0,
+29521,HIST,152,DT1,3,United States History II,2,30,0,
+21521,HIST,468,D01,3,"US & World Affairs, 1900-Pres",3,9,0,
+21522,HIST,468,DT1,3,"US & World Affairs, 1900-Pres",3,16,0,
+27355,HIST,492,DT1,3,Topics: Grand Strategy,7,8,0,
+30046,HLTH,110,DT1,3,Health Concepts,0,26,0,
+25356,HLTH,370,DT1,3,Stress Management,1,25,0,
+25715,HLTH,420,DT2,3,K-12 Methods of Health Instruction,19,25,0,
+16478,HLTH,422,DT1,3,Nutrition,0,25,0,
+22139,HON,390,DH1,3,Sem:Global Reach of AI/Robotic,1,19,0,
+16378,INED,211,D01,3,South Dakota American Indian Culture and Education,2,25,0,
+16379,INED,211,DT1,3,South Dakota American Indian Culture and Education,0,25,0,
+29607,INED,211,DT2,3,South Dakota American Indian Culture and Education,1,25,0,
+30704,INED,211,DT3,3,South Dakota American Indian Culture and Education,13,25,0,
+16829,INFA,701,DT1,3,Principles of Information Assurance,16,25,0,
+28259,INFA,702,DT1,3,Data Privacy,2,25,0,
+18375,INFA,720,DT1,3,Incident Response,2,25,0,
+30306,INFA,720,DT2,3,Incident Response,2,25,0,
+28092,INFA,721,D01,3,Digital Forensics,12,25,0,
+16836,INFA,721,DT1,3,Digital Forensics,1,25,0,
+27438,INFA,721,DT2,3,Digital Forensics,10,25,0,
+24230,INFA,722,DT1,3,Data Privacy Management,4,25,0,
+16838,INFA,723,D01,3,Cryptography,3,25,0,
+16840,INFA,723,DT1,3,Cryptography,4,25,0,
+29123,INFA,723,DT2,3,Cryptography,3,25,0,
+30421,INFA,723,DT3,3,Cryptography,15,25,0,
+28095,INFA,732,D01,3,Malware Analysis,14,25,0,
+18376,INFA,732,DT1,3,Malware Analysis,23,75,0,
+25352,INFA,735,DT1,3,Offensive Security,6,25,0,
+30347,INFA,735,DT2,3,Offensive Security,8,25,0,
+28121,INFA,745,D01,3,Compliance and Audit,20,25,0,
+16844,INFA,745,DT1,3,Compliance and Audit,4,25,0,
+30420,INFA,745,DT2,3,Compliance and Audit,6,25,0,
+18435,INFA,758,DT1,3,Security Metrics,2,28,0,
+13354,INFS,720,D01,3,System Analysis and Design Using Case Tools,6,10,0,
+13355,INFS,720,DT1,3,System Analysis and Design Using Case Tools,3,15,0,
+16551,INFS,724,D01,3,Project & Change Management,4,9,0,
+16553,INFS,724,DT1,3,Project & Change Management,1,16,0,
+26562,INFS,730,D01,3,Web Application Development,6,10,0,
+16563,INFS,730,DT1,3,Web Application Development,4,15,0,
+16565,INFS,750,D01,3,"IT Infrastructure, Technology and Network Management",6,10,0,
+16568,INFS,750,DT1,3,"IT Infrastructure, Technology and Network Management",4,15,0,
+15878,INFS,770,D01,3,Advanced Machine Learning and Deep Learning Applications,0,10,0,
+15882,INFS,770,DT1,3,Advanced Machine Learning and Deep Learning Applications,-1,15,0,
+16729,INFS,772,D01,3,Programming for Data Analytics,1,10,0,
+16733,INFS,772,DT1,3,Programming for Data Analytics,0,15,0,
+29880,INFS,772,DT2,3,Programming for Data Analytics,4,25,0,
+30697,INFS,772,DT3,3,Programming for Data Analytics,5,25,0,
+16554,INFS,780,D01,3,Information Technology Strategy & Policy,2,6,0,
+16557,INFS,780,DT1,3,Information Technology Strategy & Policy,3,19,0,
+27325,INFS,794,DZ1,3,Internship,0,2,0,
+16762,INFS,815,D01,3,Quantitative Research Methods,2,9,0,
+16763,INFS,815,DT1,3,Quantitative Research Methods,2,16,0,
+16764,INFS,820,DT1,3,Current Issues Health Informatics,21,25,0,
+13363,INFS,834,D01,3,Knowledge Management,7,10,0,
+13364,INFS,834,DT1,3,Knowledge Management,9,15,0,
+13365,INFS,838,D01,3,Decision Support Knowledge Management Research,4,10,0,
+13366,INFS,838,DT1,3,Decision Support Knowledge Management Research,2,10,0,
+13368,INFS,848,DT1,3,Information Assurance Computer Security Research,0,11,0,
+13369,INFS,868,D01,3,Health Informatics Research,10,10,0,
+13370,INFS,868,DT1,3,Health Informatics Research,8,10,0,
+13371,INFS,890,D01,1,Seminar,14,25,0,
+13372,INFS,890,DT1,1,Seminar,15,25,0,
+30639,INFS,890,DT2,1,Seminar,10,25,0,
+29961,INFS,898D,D01,1 TO 12,Dissertation,4,5,0,
+30551,INFS,898D,D02,1 TO 12,Dissertation,4,5,0,
+30825,INFS,898D,D03,1 TO 12,Dissertation,4,5,0,
+30887,INFS,898D,D04,1 TO 12,Dissertation,4,5,0,
+30932,INFS,898D,D05,1 TO 12,Dissertation,4,5,0,
+29771,INFS,898D,DT1,1 TO 12,Dissertation,1,5,0,
+29962,INFS,898D,DT2,1 TO 12,Dissertation,0,5,0,
+30361,INFS,898D,DT3,1 TO 12,Dissertation,3,5,0,
+27869,INFS,898D,DT5,1 TO 12,Dissertation,0,5,0,
+27880,INFS,898D,DT6,1 TO 12,Dissertation,4,5,0,
+27897,INFS,898D,DT7,1 TO 12,Dissertation,4,5,0,
+28102,INFS,898D,DT8,1 TO 12,Dissertation,4,5,0,
+16334,LIBM,205,DT1,2,Children's Literature,11,25,0,
+11632,MATH,101,D01,3,Intermediate Algebra,28,35,0,
+23629,MATH,101,DT1,3,Intermediate Algebra,2,35,0,
+27431,MATH,103,DT1,3,Mathematical Reasoning,5,35,0,
+11776,MATH,114,D01,3,College Algebra,18,35,0,
+11633,MATH,114,D02,3,College Algebra,11,35,0,
+21276,MATH,114,DEM,3,College Algebra,15,35,0,
+11636,MATH,114,DT1,3,College Algebra,5,35,0,
+25416,MATH,114,DT2,3,College Algebra,6,35,0,
+28172,MATH,114,DT3,3,College Algebra,7,35,0,
+19460,MATH,120,D01,3,Trigonometry,18,35,0,
+28177,MATH,120,DT1,3,Trigonometry,12,35,0,
+11615,MATH,121,DT1,4,Survey of Calculus,4,70,0,
+29273,MATH,123,D02,4,Calculus I,9,20,0,
+11780,MATH,123,DT1,4,Calculus I,20,35,0,
+11669,MATH,125,D01,4,Calculus II,1,27,0,
+28176,MATH,125,DT1,4,Calculus II,14,20,0,
+11612,MATH,201,D01,3,Introduction to Discrete Mathematics,9,20,0,
+11613,MATH,201,D02,3,Introduction to Discrete Mathematics,9,20,0,
+27432,MATH,201,D04,3,Introduction to Discrete Mathematics,9,20,0,
+11746,MATH,201,DT1,3,Introduction to Discrete Mathematics,12,50,0,
+11671,MATH,281,D01,3,Introduction to Statistics,1,25,0,
+28175,MATH,281,D02,3,Introduction to Statistics,7,25,0,
+28174,MATH,281,DT1,3,Introduction to Statistics,8,35,0,
+11614,MATH,282,D01,3,Mathematics of Games,1,21,0,
+29272,MATH,282,D02,3,Mathematics of Games,4,15,0,
+18259,MATH,315,D01,3,Linear Algebra,1,25,0,
+13319,MATH,315,DT1,3,Linear Algebra,1,25,0,
+11786,MATH,316,D01,3,Discrete Mathematics,3,20,0,
+25880,MATH,316,D02,3,Discrete Mathematics,-1,22,0,
+11787,MATH,316,DT1,3,Discrete Mathematics,0,25,0,
+11619,MATH,341,DT1,3,Math Concepts for Teachers I,38,60,0,
+11620,MATH,342,D01,3,Math Concepts for Teachers II,30,35,0,
+11622,MATH,342,DT1,3,Math Concepts for Teachers II,48,60,0,
+11748,MATH,436,D01,3,Number Theory and Cryptography,9,35,0,
+11749,MATH,436,DT1,3,Number Theory and Cryptography,20,35,0,
+30638,MATH,491,D01,3,IS: Advanced Linear Algebra,0,1,0,
+25772,MATH,492,D01,3,Topics: History of Mathematics,21,25,0,
+29275,MATH,492,DT1,3,Topics: History of Mathematics,21,25,0,
+30444,MATH,536,D01,3,Number Theory and Cryptography,5,5,0,
+27435,MATH,536,DT1,3,Number Theory and Cryptography,34,35,0,
+30793,MATH,591,D01,3,IS: Linear Algebra,0,1,0,
+30447,MCOM,494,DZ1,1 TO 12,Internship,4,5,0,
+16124,MUEN,106,D01,2,Singer/Songwriter Studio,11,18,0,
+23550,MUS,100,D01,3,Music Appreciation,0,30,0,
+27371,MUS,100,D02,3,Music Appreciation,0,30,0,
+25344,MUS,100,DT1,3,Music Appreciation,1,30,0,
+27376,MUS,100,DT2,3,Music Appreciation,0,30,0,
+30688,MUS,100,DT3,3,Music Appreciation,0,35,0,
+22989,MUS,109,D01,3,Basic Musicianship II,12,18,0,
+30043,PE,100,DT1,1,Personal Fitness,0,25,0,
+16384,PE,181,D01,2,Fundamentals of Elementary PE,11,25,0,
+16489,PE,217,D01,1,Advanced Strength Training,11,25,0,
+30786,PE,217,D02,1,Advanced Strength Training,11,25,0,
+16386,PE,363,D01,3,Skills Concepts,12,25,0,
+29679,PE,395,DZ1,3,Practicum,24,25,0,
+29128,PE,453,DT1,3,Sport Psychology,3,25,0,
+21446,PE,483,DT1,2,Fundamentals and Theories of Coaching,1,26,0,
+21447,PE,484,DT1,1,Fundamentals and Theories of Coaching: Field Experience,1,27,0,
+25345,PHIL,100,DT1,3,Introduction to Philosophy,2,30,0,
+29196,PHIL,220,DT1,3,Introduction to Ethics,10,25,0,
+13281,PHYS,113,DT1,3,Introduction to Physics II,8,48,0,
+21431,PHYS,113L,D01,1,Introduction to Physics II Laboratory,1,8,0,
+13282,PHYS,113L,DT1,1,Introduction to Physics II Laboratory,7,40,0,
+28362,PHYS,187,DT1,2,"Stars, Galaxies, and Cosmology",2,30,0,
+28363,PHYS,187L,DT1,1,"Stars, Galaxies, and Cosmology Lab",2,30,0,
+29357,PHYS,498,D01,1 TO 12,Research,10,10,0,
+29522,POLS,100,DT1,3,American Government,0,25,0,
+29213,POLS,492,DT1,3,Topics: National Security Law,6,8,0,
+16425,PSYC,101,D01,3,General Psychology,3,26,0,
+16434,PSYC,101,DT1,3,General Psychology,1,29,0,
+30409,PSYC,101,DT2,3,General Psychology,0,29,0,
+30696,PSYC,101,DT3,3,General Psychology,0,29,0,
+27618,PSYC,451,D01,3,Psychology of Abnormal Behavior,15,25,0,
+29831,RUSS,101,DT1,4,Introductory Russian I,14,24,0,
+16393,SEED,295,DZ2,1,Practicum: Pre-Admission,7,10,0,
+29591,SEED,401,DT1,1,Methods of Educational Technology,7,10,0,
+18581,SEED,440,DT1,3,Classroom Management,1,5,0,
+29126,SEED,450,D01,3,Reading and Content Literacy,15,25,0,
+16335,SEED,450,DT1,3,Reading and Content Literacy,1,27,0,
+16357,SEED,488,DZ1,2 TO 16,7-12 Student Teaching,22,25,0,
+16358,SEED,495,DZ1,1,Practicum:Pre Stu Tchg(OSEC),25,25,0,
+16290,SOC,150,DT1,3,Social Problems,10,30,0,
+16292,SOC,285,D02,3,Society and Technology,2,24,0,
+16293,SOC,285,DT1,3,Society and Technology,-1,30,0,
+29793,SOC,356,DT1,3,Sociology of Religion,0,3,0,
+29794,SOC,402,DT1,3,Social Deviance,12,25,0,
+16547,SPAN,102,DT1,4,Introductory Spanish II,21,30,0,
+16482,SPED,100,D01,3,Introduction to Persons With Exceptionalities,18,25,0,
+16483,SPED,100,DT1,3,Introduction to Persons With Exceptionalities,2,25,0,
+29138,SPED,410,D01,3,Behavior Management of Exceptional Children,16,25,0,
+21414,SPED,410,DT1,3,Behavior Management of Exceptional Children,14,25,0,
+29142,SPED,413,D01,3,Serving Students with Severe Disabilities,16,25,0,
+22104,SPED,413,DT1,3,Serving Students with Severe Disabilities,8,25,0,
+16330,SPED,420,DT1,3,K-12 Curricular/Instructional Strategies,4,25,0,
+26046,SPED,420,DT2,3,K-12 Curricular/Instructional Strategies,5,25,0,
+16415,SPED,442,DT1,2,Serving Students With Learning Disabilities,7,25,0,
+16418,SPED,443,DZ1,1,Serving Students With Learning Disabilities Practicum,5,25,0,
+16331,SPED,460,DT1,3,Family Systems and Professional Collaboration,1,28,0,
+27856,SPED,460,DT2,3,Family Systems and Professional Collaboration,0,25,0,
+29605,SPED,465,DT1,3,Computer Applications Special Education,2,29,0,
+16359,SPED,488,DZ1,1 TO 16,Student Teaching in Special Education,4,40,0,
+16360,SPED,495,DZ1,1,Practicum: Spec Edu,25,25,0,
+22332,SPED,495,DZ2,3,Special Education Practicum,25,25,0,
+16512,THEA,131,D01,3,Introduction to Acting,23,30,0,
+16514,THEA,201,D01,3,Film Appreciation,2,30,0,
+28181,THEA,201,D02,3,Film Appreciation,4,30,0,
+25349,THEA,201,DT1,3,Film Appreciation,0,30,0,
+30350,THEA,201,DT2,3,Film Appreciation,1,30,0,
+16515,THEA,272,D01,1,Drama Activities,21,25,0,

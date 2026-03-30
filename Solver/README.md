@@ -78,13 +78,24 @@ The `room` column is reserved for future use — leave it blank for now.
 
 One row per section. If this file is missing, section metadata is derived from `time_blocks.csv`. The `Faculty` column is informational only — the solver assigns faculty from `preferences.csv` regardless of what is listed here.
 
-| CRN | Sub | Num | Seq | Crd | Desc | Seats | Waitlist | Days | Time | Room | Faculty | Current Workload |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 76192 | CSC | 150 | D01 | 3 | Computer Science I | 18/25 | 0 | TuTh | 1300-1415 | East Hall 010 | | 5 |
+**Standard format:**
 
-- `Seats` — combined format `current/max` (e.g. `18/25`)
-- `Time` — combined format `HHMM-HHMM` (e.g. `1300-1415`)
-- `Current Workload` — workload units this section contributes to a faculty member's total load. Defaults to `DEFAULT_COURSE_WORKLOAD` if missing (configured at the top of `faculty_scheduling.py`).
+| CRN | Sub | Num | Seq | Crd | Desc | Current Seats | Max Seats | Waitlist | Faculty |
+|---|---|---|---|---|---|---|---|---|---|
+| 25251 | ACCT | 210 | D01 | 3 | Principles of Accounting I | 4 | 26 | 0 | |
+
+**Extended format (with workload columns):**
+
+| CRN | Sub | Num | Seq | Crd | Desc | Seats | Waitlist | workload_if_full | workload_per_student | special_workload |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 25251 | ACCT | 210 | D01 | 3 | Principles of Accounting I | 4/26 | 0 | 3 | 0.12 | |
+
+- `Seats` — combined format `current/max` (e.g. `4/26`), or split into `Current Seats` / `Max Seats` columns
+- `workload_if_full` — workload units when section is at capacity
+- `workload_per_student` — units per enrolled student when section is not full
+- `special_workload` — override for special section types (dissertation, practicum, etc.)
+
+If workload columns are absent, all sections default to `DEFAULT_COURSE_WORKLOAD` units.
 
 ---
 
@@ -105,15 +116,26 @@ effective cap = FACULTY_MAX_WORKLOAD - research_units
 
 ---
 ## Workload Configuration
+
 Workload limits are configured via constants at the top of `faculty_scheduling.py`:
 ```python
-FACULTY_MAX_WORKLOAD  = 30   # soft cap — total units per faculty per semester
-OVERLOAD_PENALTY      = 10   # preference points lost per unit over cap
-DEFAULT_COURSE_WORKLOAD = 4  # fallback units per section when current_workload is missing
+FACULTY_MAX_WORKLOAD    = 30   # soft cap — total units per faculty per semester
+OVERLOAD_PENALTY        = 10   # preference points lost per unit over cap
+DEFAULT_COURSE_WORKLOAD =  4   # fallback units per section when workload columns are missing
 ```
 
 The workload constraint is **soft** — the solver penalises exceeding the cap in the objective function but will do so if no feasible solution exists within the cap.
 
+**Workload formula (when workload columns are present):**
+```
+if current_seats >= max_seats > 0:
+    units = workload_if_full
+else:
+    units = round(workload_per_student × current_seats)
+units = max(units, 1)   # floor at 1 so empty sections are never free
+```
+
+If only `workload_if_full` is present (no `workload_per_student`), that value is used directly. If neither is present, `DEFAULT_COURSE_WORKLOAD` is used. The full DSU policy formula (small section threshold, grad multiplier, cross-listed bonus) is pending client confirmation — the formula is isolated in one loop in `load_all()` and is a single block change when confirmed.
 ---
 
 ## How to Run
@@ -173,15 +195,16 @@ All terminal output is also saved to `solver_log.txt` — a plain text log of th
 
 ## Section Bucketing
 
-Sections are split into three buckets after joining `sections.csv` and `time_blocks.csv` on CRN:
+Sections are split into four buckets after joining `sections.csv` and `time_blocks.csv` on CRN:
 
 | Bucket | Criteria | Sent to OR | In Conflict Pairs |
 |---|---|---|---|
 | `regular` | Multi-day pattern (MWF, TuTh, MW, etc.) | ✓ | ✓ |
 | `single_day` | Exactly one day (M, Tu, W, Th, F) | ✗ | ✗ |
-| `internet` | No days/time value | ✓ | ✗ |
+| `internet` | Days value is `Internet` or `Online`, or blank days with seq starting `DT` | ✓ (standalone only) | ✗ |
+| `special` | Blank days, seq does not start with `DT` — research, practicum, dissertation | ✗ | ✗ |
 
-Internet section twin detection (same Sub + Num + Desc as an in-person section) is handled separately — see `KNOWN_ISSUES.md` KI-004.
+Internet sections that share the same `Sub + Num + Desc` as a regular section are cross-listed twins — they are filtered from OR and receive the same faculty assignment as their regular counterpart after solving. See `write_schedule_csv()`.
 
 ---
 
@@ -266,12 +289,11 @@ python faculty_scheduling.py --test
 ```
 
 ---
-
 ## Known Limitations
 
 See `KNOWN_ISSUES.md` for the full list. Key items:
 
-- **KI-001 — Dual credit sections** (e.g. CSC 461 / CSC 561 co-taught) are treated as independent sections and may cause false time conflict violations or split assignments.
-- **KI-004 — Internet section twins** (online versions of in-person sections) are sent to OR without filtering. Twin detection based on Sub + Num + Desc is pending.
+- **KI-001 — Dual credit sections** (e.g. CSC 461 / CSC 561 co-taught) are treated as independent sections and may receive split faculty assignments.
+- **KI-002 — Workload formula** — dynamic calculation based on enrollment and `workload_if_full` / `workload_per_student` is implemented. Full DSU policy rules (grad multiplier, small section threshold) are pending client confirmation.
 - **KI-003 — Room assignment** is not modelled. The `room` column is stored but not used in constraints.
-- **Workload formula** — `current_workload` per section is currently a fixed value. Dynamic calculation based on enrollment, credits, and course level is planned.
+- **KI-005 — Co-taught sections** listing two faculty separated by `/` are not yet handled.
