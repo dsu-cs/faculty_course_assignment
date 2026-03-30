@@ -105,15 +105,41 @@ End Sub
 
 ' Find faculty by CRN from the parallel collections
 Private Function FindAssignedFaculty(ByVal targetCrn As String, ByVal crnList As Collection, ByVal facultyList As Collection) As String
-    Dim i As Long
-    For i = 1 To crnList.Count
-        If Trim$(CStr(crnList(i))) = targetCrn Then
-            FindAssignedFaculty = Trim$(CStr(facultyList(i)))
-            Exit Function
-        End If
-    Next i
+    Static crnToFaculty As Object              ' Scripting.Dictionary cache: CRN -> Faculty
+    Static cachedCrnList As Collection         ' Collections used to build the cache
+    Static cachedFacultyList As Collection
     
-    FindAssignedFaculty = ""
+    Dim i As Long
+    Dim key As String
+    
+    ' Lazily create the dictionary object
+    If crnToFaculty Is Nothing Then
+        Set crnToFaculty = CreateObject("Scripting.Dictionary")
+    End If
+    
+    ' Rebuild cache if the input collections differ from the cached ones
+    If (cachedCrnList Is Nothing) _
+       Or Not (cachedCrnList Is crnList) _
+       Or Not (cachedFacultyList Is facultyList) Then
+        
+        crnToFaculty.RemoveAll
+        
+        For i = 1 To crnList.Count
+            key = Trim$(CStr(crnList(i)))
+            ' Last occurrence wins if duplicate CRNs exist
+            crnToFaculty(key) = Trim$(CStr(facultyList(i)))
+        Next i
+        
+        Set cachedCrnList = crnList
+        Set cachedFacultyList = facultyList
+    End If
+    
+    key = Trim$(targetCrn)
+    If crnToFaculty.Exists(key) Then
+        FindAssignedFaculty = crnToFaculty(key)
+    Else
+        FindAssignedFaculty = ""
+    End If
 End Function
 
 ' Minimal CSV splitter that supports quoted values with commas
