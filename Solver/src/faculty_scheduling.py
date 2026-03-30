@@ -70,6 +70,17 @@ HEADER_ALIASES: dict[str, str] = {
     "course_ref_num":   "crn",
 
     # Sections tab
+    "section_id":     "crn",
+    "subject":        "sub",        # already there as "subject"
+    "course_number":  "num",        # missing
+    "sequence":       "seq",        # missing  
+    "credits":        "crd",        # already there
+    "title":          "desc",       # already there as "title"
+    "current_seats":  "current_seats",  # already there
+    "max_seats":      "max_seats",      # already there
+    "pattern":        "days",       # missing — for time CSV
+
+
     "sub":              "sub",
     "subject":          "sub",
     "num":              "num",
@@ -362,7 +373,7 @@ class ValidationReport:
         self.warnings.append(msg)
 
     def print_report(self) -> None:
-        status = "✓ ALL CHECKS PASSED" if self.passed else "✗ VALIDATION FAILED"
+        status = "ALL CHECKS PASSED" if self.passed else "VALIDATION FAILED"
         print(f"\n{'─' * 50}")
         print(f"  Validation: {status}")
         print(f"{'─' * 50}")
@@ -576,7 +587,7 @@ def safe_float(val, default: float = 0.0) -> float:
         except (ValueError, TypeError):
             return default
 
-def safe_int(val, default: int = 0.0) -> int:
+def safe_int(val, default: int = 0) -> int:
         try:
             return int(val) if val is not None else default
         except (ValueError, TypeError):
@@ -910,11 +921,11 @@ def run_solver(built: BuiltModel,
 
     # Handle failure cases with descriptive messages
     if status == cp_model.INFEASIBLE:
-        print("[Solver] ✗ INFEASIBLE — no valid assignment exists.")
+        print("[Solver] INFEASIBLE — no valid assignment exists.")
         print("         Check: are workload bounds achievable given the number of sections?")
         print("         Check: are conflict constraints leaving any section unassignable?")
     elif status == cp_model.UNKNOWN:
-        print(f"[Solver] ✗ TIMED OUT — no solution found within {time_limit}s.")
+        print(f"[Solver] TIMED OUT — no solution found within {time_limit}s.")
         print("         Try increasing SOLVER_TIME_LIMIT_SECONDS.")
     else:
         print(f"[Solver] Unexpected status: {status_name}")
@@ -1037,7 +1048,7 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
         units = unit_load[f]
         sects = sect_load[f]
         research = FACULTY_MAX_WORKLOAD - mx   # research = cap reduction
-        status = "✓ OK" if units <= mx else f"⚠ +{units - mx} over cap"
+        status = "OK" if units <= mx else f"+{units - mx} over cap"
         print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {research:>9}  {status}")
 
     
@@ -1066,7 +1077,7 @@ def write_schedule_csv(assignment: dict[str, str],
             faculty = assignment.get(sec.crn, "")
             writer.writerow([sec.crn, faculty])
 
-    print(f"[Output] Schedule written → {output_path}")
+    print(f"[Output] Schedule written to {output_path}")
 
 
 # ══════════════════════════════════════════════════════════════════════
