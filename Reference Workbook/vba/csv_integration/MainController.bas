@@ -31,7 +31,14 @@ Public Sub RunSolver()
     Dim response As String
     response = SolverAPI.CallSolver(prefCSV, timeCSV, sectionsCSV)
     
-    ' Step 4: Notify user
+    ' Step 4: Notify user based on response
+    If Len(response) >= 6 And Left$(response, 6) = "ERROR:" Then
+        MsgBox "Solver request failed." & vbCrLf & vbCrLf & _
+               "Server error response:" & vbCrLf & Left$(response, 500), _
+               vbCritical, "Solver Error"
+        Exit Sub
+    End If
+    
     MsgBox "Solver request completed successfully." & vbCrLf & vbCrLf & _
            "Server response preview:" & vbCrLf & Left$(response, 500), _
            vbInformation, "Success"
