@@ -656,7 +656,7 @@ def build_conflict_pairs(regular: list[Section]) -> list[tuple[str, str]]:
 
     return pairs
 
-def build_linked_pairs(sections_to_solve: list[str]) -> list[tuple[str, str]]:
+def build_linked_pairs(sections: dict) -> list[tuple[str, str]]:
     """
     Find each section that shares the same day pattern, start time, and
     course id where one course number is exactly 100 higher than the other
@@ -676,15 +676,14 @@ def build_linked_pairs(sections_to_solve: list[str]) -> list[tuple[str, str]]:
     """
 
     linked_pairs: list[tuple[str, str]] = []
-    section_list = _build_section(sections_to_solve)
 
-    for s1, s2 in combinations(section_list, 2):
+    for s1, s2 in combinations(sections, 2):
         if (_sections_conflict(s1, s2) and #same time
-            (s1.num == s2.num+100 or s1.num == s2.num-100) and #Number of course 1 == number of course 2 + 100 OR vice versa
+            (int(s1.num) == int(s2.num)+100 or int(s1.num) == int(s2.num)-100) and #Number of course 1 == number of course 2 + 100 OR vice versa
             s1.desc == s2.desc): #Desc of course 1 == desc of course 2
             linked_pairs.append((s1.crn, s2.crn))
 
-    return 
+    return linked_pairs
 
 def load_all(
     #sections_path:    str = DEFAULT_SECTIONS_PATH,
@@ -804,7 +803,9 @@ def load_all(
         for s in cross_listed:
             print(f"         {s.crn}  {s.sub} {s.num} {s.seq}  {s.desc}")
 
-    dualcred_pairs = build_linked_pairs(sections_to_solve)
+    dualcred_pairs = build_linked_pairs(regular)
+
+    print("dualcred_pairs: ", dualcred_pairs)
 
     return SchedulingData(
         regular          = regular,
