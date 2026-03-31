@@ -1110,7 +1110,7 @@ def test_day_parsing() -> None:
     for raw, expected in cases:
         result = _parse_days(raw)
         assert result == expected, f"FAIL: '{raw}' → {result}, expected {expected}"
-        print(f"  ✓ '{raw}' → {result}")
+        print(f"'{raw}' → {result}")
 
     print("  T1 PASSED\n")
 
@@ -1139,10 +1139,10 @@ def test_conflict_detection() -> None:
     assert not _sections_conflict(a, d), "FAIL: back-to-back should not conflict"
     assert _sections_conflict(e, f),     "FAIL: MTuWF vs MWF share M,W,F should conflict"
 
-    print("  ✓ MWF 10:00–10:50  vs  MW 10:00–11:15  → conflict")
-    print("  ✓ MWF 10:00–10:50  vs  TTh 10:00–11:15 → no conflict")
-    print("  ✓ MWF 10:00–10:50  vs  MWF 10:50–11:40 → no conflict (back-to-back)")
-    print("  ✓ MTuWF 8:00–8:50  vs  MWF 8:00–8:50   → conflict (share M,W,F)")
+    print("MWF 10:00-10:50  vs  MW 10:00-11:15   conflict")
+    print("MWF 10:00-10:50  vs  TTh 10:00-11:15  no conflict")
+    print("MWF 10:00-10:50  vs  MWF 10:50-11:40  no conflict (back-to-back)")
+    print("MTuWF 8:00-8:50  vs  MWF 8:00-8:50    conflict (share M,W,F)")
     print("  T2 PASSED\n")
 
 
@@ -1234,7 +1234,7 @@ def main() -> None:
         log_content = captured.getvalue()
         with open(args.log, "w", encoding="utf-8") as f:
             f.write(log_content)
-        print(f"[Log] Output saved → {args.log}")
+        print(f"[Log] Output saved to {args.log}")
 
 
 if __name__ == "__main__":
