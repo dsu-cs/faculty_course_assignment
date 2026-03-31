@@ -336,6 +336,7 @@ class SchedulingData:
     preferences:      dict[str, dict[str, int]]  # [crn][faculty] = score (0-3)
     exclusions:       set[tuple[str, str]]        # (crn, faculty) hard bans
     conflict_pairs:   list[tuple[str, str]]       # regular sections only
+    dualcred_pairs:   list[tuple[str, str]]       # dual credit classes paired by (crn, crn)
     workload:         dict[str, tuple[int, int]]  # [faculty] = (min_units, max_units)
     section_workload: dict[str, int]              # [crn] = workload units from current_workload
     all_sections_ordered: list[Section]           # all sections in original sections.csv read order
@@ -655,6 +656,36 @@ def build_conflict_pairs(regular: list[Section]) -> list[tuple[str, str]]:
 
     return pairs
 
+def build_linked_pairs(sections_to_solve: list[str]) -> list[tuple[str, str]]:
+    """
+    Find each section that shares the same day pattern, start time, and
+    course id where one course number is exactly 100 higher than the other
+
+    Example results:
+        MWF 08:00-08:50, CSC420  |
+            vs                   | → LINKED (same info, course number one higher)
+        MWF 08:00-8:50, CSC520   |
+
+        MWF 08:00-08:50, CSC400  |
+            vs                   | → not linked (mismatched course numbers)
+        MWF 08:00-8:50, CSC520   |
+
+        MWF 10:00-10:50, CSC420  |
+            vs                   | → not linked (mismatched course time)
+        MWF 08:00-8:50, CSC520   |
+    """
+
+    linked_pairs: list[tuple[str, str]] = []
+    section_list = _build_section(sections_to_solve)
+
+    for s1, s2 in combinations(section_list, 2):
+        if (_sections_conflict(s1, s2) and #same time
+            (s1.num == s2.num+100 or s1.num == s2.num-100) and #Number of course 1 == number of course 2 + 100 OR vice versa
+            s1.desc == s2.desc): #Desc of course 1 == desc of course 2
+            linked_pairs.append((s1.crn, s2.crn))
+
+    return 
+
 def load_all(
     #sections_path:    str = DEFAULT_SECTIONS_PATH,
 
@@ -773,6 +804,8 @@ def load_all(
         for s in cross_listed:
             print(f"         {s.crn}  {s.sub} {s.num} {s.seq}  {s.desc}")
 
+    dualcred_pairs = build_linked_pairs(sections_to_solve)
+
     return SchedulingData(
         regular          = regular,
         single_day       = single_day,
@@ -783,6 +816,7 @@ def load_all(
         preferences      = preferences,
         exclusions       = exclusions,
         conflict_pairs   = conflict_pairs,
+        dualcred_pairs   = dualcred_pairs,
         workload         = workload,
         section_workload = section_workload,
         all_sections_ordered = all_sections_ordered,
