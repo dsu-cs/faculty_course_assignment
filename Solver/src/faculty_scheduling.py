@@ -883,6 +883,11 @@ def build_csp(model: cp_model.CpModel, data: SchedulingData) -> BuiltModel:
         for f in faculty:
             model.add(x[s1, f] + x[s2, f] <= 1)
 
+    # faculty MUST be assigned both parts of dual-credit courses that occur at the same time
+    for crn1, crn2 in data.dualcred_pairs:
+        for f in faculty:
+            model.add(x[crn1, f] == x[crn2, f])
+
     preference_terms = [
         data.preferences.get(s, {}).get(f, 0) * x[s, f]
         for s in sections
