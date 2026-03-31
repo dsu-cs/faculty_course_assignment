@@ -683,6 +683,11 @@ def build_linked_pairs(sections: dict) -> list[tuple[str, str]]:
             s1.desc == s2.desc): #Desc of course 1 == desc of course 2
             linked_pairs.append((s1.crn, s2.crn))
 
+    with open("dualcred_pairs.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["crn1", "crn2"])  # header
+        writer.writerows(linked_pairs)
+
     return linked_pairs
 
 def load_all(
@@ -805,8 +810,6 @@ def load_all(
 
     dualcred_pairs = build_linked_pairs(regular)
 
-    print("dualcred_pairs: ", dualcred_pairs)
-
     return SchedulingData(
         regular          = regular,
         single_day       = single_day,
@@ -884,10 +887,10 @@ def build_csp(model: cp_model.CpModel, data: SchedulingData) -> BuiltModel:
         for f in faculty:
             model.add(x[s1, f] + x[s2, f] <= 1)
 
-    # faculty MUST be assigned both parts of dual-credit courses that occur at the same time
-    for crn1, crn2 in data.dualcred_pairs:
-        for f in faculty:
-            model.add(x[crn1, f] == x[crn2, f])
+    # faculty MUST be assigned both parts of dual-credit courses that occur at the same time (KI-001)
+    # for crn1, crn2 in data.dualcred_pairs:
+    #    for f in faculty:
+    #        model.add(x[crn1, f] == x[crn2, f])
 
     preference_terms = [
         data.preferences.get(s, {}).get(f, 0) * x[s, f]
