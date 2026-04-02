@@ -114,9 +114,9 @@ HEADER_ALIASES: dict[str, str] = {
     # ── Workload placeholders ─────────────────────────────────────────
     # Update the LEFT side when real column names are confirmed.
     # Do NOT change the RIGHT side — those match Section field names.
-    "current_workload":     "current_workload",      # total workload units for section
-    "workload_per_student": "workload_per_student",  # workload per enrolled student
-    "research_workload":    "research_workload",     # unique/research section workload
+    "workload_if_full":      "workload_if_full",
+    "workload_per_student":  "workload_per_student",
+    "special_workload":      "special_workload",
 
     #per faculty workload stuff
     "research_units":   "research_units",
@@ -228,7 +228,7 @@ def _parse_seats(raw) -> tuple[int, int]:
             # A date like 12/11/2000 would give mx=2000 which is clearly wrong and sometimes happens due to bad excel formatting
             if cur > 999 or mx > 999:
                 return 0, 0
-            return cur, mx
+            return max(cur, 0), max(mx, 0)
         except ValueError:
             return 0, 0
     # Single number — treat as current seats, max unknown
@@ -296,11 +296,9 @@ class Section:
     end:   time | None           = None
     room:  str | None            = None
 
-    # Workload placeholders ─────────────────────────────────────────
-    # Update HEADER_ALIASES when real column names are confirmed.
-    current_workload:     float | None = None  # total workload units for section
-    workload_per_student: float | None = None  # workload per enrolled student
-    research_workload:    float | None = None  # unique/research section workload
+    workload_if_full:     float | None = None
+    workload_per_student: float | None = None
+    special_workload:     float | None = None
 
 
 
@@ -316,10 +314,12 @@ class SchedulingData:
         regular    → MWF/TTh/MW/MTWF/etc. — sent to OR, conflict pairs built
         single_day → M/Tu/W/Th/F          — NOT sent to OR
         internet   → no days/time          — sent to OR, filter twins/dual credit/internet crosslisted?
+        special    → blank days — research/practicum/dissertation — never sent to OR
     """
     regular:    list[Section]
     single_day: list[Section]
     internet:   list[Section]
+    special:    list[Section]
     sections_to_solve: list[str] #THIS IS WHATS SENT TO THE OR SOLVER. SHOULD HAVE FILTERED DUAL CREDIT AND INTERNET SECTIONS
     faculty:          list[str]
     preferences:      dict[str, dict[str, int]]  # [crn][faculty] = score (0-3)
@@ -327,6 +327,7 @@ class SchedulingData:
     conflict_pairs:   list[tuple[str, str]]       # regular sections only
     workload:         dict[str, tuple[int, int]]  # [faculty] = (min_units, max_units)
     section_workload: dict[str, int]              # [crn] = workload units from current_workload
+    all_sections_ordered: list[Section]           # all sections in original sections.csv read order
 
 
 @dataclass
@@ -569,6 +570,18 @@ def load_schedule_csv(path: str) -> dict[str, str]:
                 assignment[crn] = faculty
     return assignment
 
+def safe_float(val, default: float = 0.0) -> float:
+        try:
+            return float(val) if val is not None else default
+        except (ValueError, TypeError):
+            return default
+
+def safe_int(val, default: int = 0.0) -> int:
+        try:
+            return int(val) if val is not None else default
+        except (ValueError, TypeError):
+            return default
+
 def _build_section(sec_data: dict, time_data: dict | None) -> Section:
     """
     Combine a Sections tab row and its matching Time tab row (if any)
@@ -576,19 +589,16 @@ def _build_section(sec_data: dict, time_data: dict | None) -> Section:
 
     If time_data is None or has no Days value, the section is internet.
     """
-    def safe_int(val, default: int = 0) -> int:
-        try:
-            return int(val) if val is not None else default
-        except (ValueError, TypeError):
-            return default
 
     # Parse seats — try combined "x/y" format first, fall back to separate columns
     _cur, _max = _parse_seats(sec_data.get("seats"))
-    current_seats = _cur or safe_int(sec_data.get("current_seats"))
-    max_seats     = _max or safe_int(sec_data.get("max_seats"))
+    current_seats = _cur or max(0, safe_int(sec_data.get("current_seats")))
+    max_seats     = _max or max(0, safe_int(sec_data.get("max_seats")))
 
-    # Parse time fields — None if internet
+    # Parse time fields — None if no time data available
     days_raw  = time_data.get("days")  if time_data else None
+
+
     days      = _parse_days(days_raw)
     start     = _parse_time(time_data.get("start_time")) if time_data else None
     end       = _parse_time(time_data.get("end_time"))   if time_data else None
@@ -610,10 +620,9 @@ def _build_section(sec_data: dict, time_data: dict | None) -> Section:
         end           = end,
         room          = room,
         # Workload fields — read from CSV if present, None if column not yet added
-        # current_workload is active now; per_student and research pending workload.py
-        current_workload     = safe_int(sec_data.get("current_workload")) or None,
-        workload_per_student = safe_int(sec_data.get("workload_per_student")) or None,
-        research_workload    = safe_int(sec_data.get("research_workload")) or None,
+        workload_if_full     = max(0.0, safe_float(sec_data.get("workload_if_full")))  or None,
+        workload_per_student = max(0.0, safe_float(sec_data.get("workload_per_student"))) or None,
+        special_workload     = max(0.0, safe_float(sec_data.get("special_workload")))  or None,
     )
 
 def build_conflict_pairs(regular: list[Section]) -> list[tuple[str, str]]:
@@ -677,19 +686,25 @@ def load_all(
     regular:    list[Section] = []
     single_day: list[Section] = []
     internet:   list[Section] = []
+    special:    list[Section] = []
+    all_sections_ordered: list[Section] = [] 
 
     for crn, sec_data in sections_by_crn.items():
         time_data = time_by_crn.get(crn)
         section   = _build_section(sec_data, time_data)
+        all_sections_ordered.append(section)
 
-        if section.days is None:
-            # No days value → internet section
+        days_raw = str((time_data or {}).get("days") or "").strip().lower()
+
+        if days_raw in {"internet", "online"}:
             internet.append(section)
+        elif section.days is None and section.seq.startswith("DT"):
+            internet.append(section)
+        elif section.days is None:
+            special.append(section)       # blank days — research/practicum
         elif _is_single_day(section.days):
-            # Exactly one day → single_day bucket
             single_day.append(section)
         else:
-            # Multiple days → regular bucket
             regular.append(section)
 
     # ── Step 5: Read Preferences ──────────────────────────────────────
@@ -701,12 +716,21 @@ def load_all(
     # ── Section workload units ───────────────────────────────────────
     # Read current_workload from each section. Defaults to DEFAULT_COURSE_WORKLOAD if missing.
     # so the constraint is always unit-based, never section-count based.
-    all_sections = regular + single_day + internet
+    all_sections = regular + single_day + internet + special
     section_workload: dict[str, int] = {}
     for sec in all_sections:
-        try:
-            units = int(sec.current_workload) if sec.current_workload is not None else DEFAULT_COURSE_WORKLOAD
-        except (ValueError, TypeError):
+        if sec.workload_if_full is not None and sec.workload_per_student is not None:
+            if sec.current_seats > 0 and sec.max_seats > 0 and sec.current_seats >= sec.max_seats:
+                # class is full — use workload_if_full directly
+                units = int(sec.workload_if_full)
+            else:
+                # not full — scale by enrollment
+                units = round(sec.workload_per_student * sec.current_seats)
+            # floor at 1 so empty sections don't get 0 workload
+            units = max(units, 1)
+        elif sec.workload_if_full is not None:
+            units = int(sec.workload_if_full)
+        else:
             units = DEFAULT_COURSE_WORKLOAD
         section_workload[sec.crn] = units
 
@@ -722,17 +746,27 @@ def load_all(
     print(f"[Loader] regular={len(regular)} | "
           f"single_day={len(single_day)} | "
           f"internet={len(internet)} | "
+          f"special={len(special)} | "
           f"conflict_pairs={len(conflict_pairs)} | "
           f"workload units per section={set(section_workload.values())}")
 
     # filter linked internet twins and dual credit here before this list is built
     # Only what's in this list gets sent to OR
-    sections_to_solve = ([s.crn for s in regular] + [s.crn for s in internet])
+    regular_keys = {(s.sub, s.num, s.desc) for s in regular}
+    standalone_internet = [s for s in internet if (s.sub, s.num, s.desc) not in regular_keys]
+    sections_to_solve = [s.crn for s in regular] + [s.crn for s in standalone_internet]
+
+    cross_listed = [s for s in internet if (s.sub, s.num, s.desc) in regular_keys]
+    if cross_listed:
+        print(f"[Loader] cross_listed={len(cross_listed)} internet twins filtered from OR")
+        for s in cross_listed:
+            print(f"         {s.crn}  {s.sub} {s.num} {s.seq}  {s.desc}")
 
     return SchedulingData(
         regular          = regular,
         single_day       = single_day,
         internet         = internet,
+        special          = special,
         sections_to_solve= sections_to_solve, #This is what OR sees
         faculty          = faculty,
         preferences      = preferences,
@@ -740,6 +774,7 @@ def load_all(
         conflict_pairs   = conflict_pairs,
         workload         = workload,
         section_workload = section_workload,
+        all_sections_ordered = all_sections_ordered,
     )
     
 
@@ -963,7 +998,7 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     """Print a formatted human-readable schedule to the terminal."""
 
 
-    '''
+    
     print(f"\n{'═' * 62}")
     print("  SCHEDULE SUMMARY")
     print(f"{'═' * 62}")
@@ -984,9 +1019,9 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     print(f"  {'─' * 41}")
     print(f"  {'Total preference score':.<35} {total_score:>+6}")
 
-    '''
+    
 
-    '''
+    
     print(f"\n  {'Faculty':<25} {'Units':>6}  {'Sections':>9}  {'Cap':>4}  {'Research':>9}  Status")
     print(f"  {'─'*25} {'─'*6}  {'─'*9}  {'─'*4}  {'─'*9}  {'─'*12}")
 
@@ -1005,16 +1040,24 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
         status = "✓ OK" if units <= mx else f"⚠ +{units - mx} over cap"
         print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {research:>9}  {status}")
 
-    '''
+    
 
-    print(f"\n  Single-day sections (not scheduled): {len(data.single_day)}")
-    print(f"{'═' * 62}\n")
+    unassigned = len(data.single_day) + len(data.special)
+    print(f"\n  Sections not sent to OR (no assignment generated):")
+    print(f"    single_day : {len(data.single_day)}")
+    print(f"    special    : {len(data.special)}")
+    print(f"    total      : {unassigned}")
 
 def write_schedule_csv(assignment: dict[str, str],
                        data: SchedulingData,
                        output_path: str) -> None:
 
-    all_sections = data.regular + data.single_day + data.internet
+    all_sections = data.all_sections_ordered
+    regular_by_key = {(s.sub, s.num, s.desc): s.crn for s in data.regular}
+    for sec in data.internet:
+        key = (sec.sub, sec.num, sec.desc)
+        if key in regular_by_key and sec.crn not in assignment:
+            assignment[sec.crn] = assignment.get(regular_by_key[key], "")
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -1165,20 +1208,16 @@ def main() -> None:
             print("No solution found. Exiting.")
             sys.exit(1)
 
-        # Step 4 — Validate
+        # Step 4 — Write output (unconditional)
+        write_schedule_csv(assignment, data, args.output)
+
+        # Step 5 — Reload and validate from written file
+        assignment = load_schedule_csv(args.output)
         report = validate(assignment, data)
         report.print_report()
 
-        if not report.passed:
-            print("Validation failed — schedule NOT written.")
-            sys.exit(1)
-
-        # Step 5 — Summary
+        # Step 6 — Summary
         print_summary(assignment, data)
-
-        # Step 6 — Write output
-        write_schedule_csv(assignment, data, args.output)
-
     finally:
         sys.stdout = sys.__stdout__
         log_content = captured.getvalue()

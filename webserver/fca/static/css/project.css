@@ -273,6 +273,41 @@ color:var(--trojan-blue-darkened)!important;
   font-weight: 700;
 }
 
+.term-picker {
+  width: min(100%, 320px);
+  margin: 0 auto 1.4rem;
+  text-align: left;
+}
+
+.term-picker-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1d4a78;
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.term-picker-select {
+  border-radius: 12px;
+  border: 1px solid #c5d9ea;
+  min-height: 48px;
+  box-shadow: inset 0 1px 2px rgba(15, 53, 87, 0.05);
+}
+
+.term-picker-select:focus {
+  border-color: #52b36f;
+  box-shadow: 0 0 0 0.2rem rgba(82, 179, 111, 0.2);
+}
+
+.term-picker-help {
+  margin-top: 0.55rem;
+  color: #5c7088;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
 .download-panel {
   max-width: 520px;
   margin: 0 auto;
@@ -344,4 +379,5 @@ color:var(--trojan-blue-darkened)!important;
     font-size: 1.7rem;
   }
 }
+
 

@@ -47,35 +47,28 @@ Also add a C6 check to `validate()` to verify linked pairs were not split.
 
 ---
 
-### KI-002 | Workload is section-count based, not credit/enrollment weighted
-**Status:** Deferred
+### KI-002 | Workload formula — partial implementation, pending policy confirmation
+**Status:** In Progress
 **Date logged:** 2026-03-13
 **Area:** `data_loader` · `build_csp` · `csv_format`
 
-The current workload model uses a simple `min_sections` / `max_sections` bound
-per faculty (e.g. 1–3 sections). In reality, workload should be calculated as a
-weighted total — typically a cap of 30 workload units per semester — where each
-section contributes units based on:
-
-- **Credit hours** (a 3-credit section contributes more than a 1-credit section)
-- **Enrollment** (larger classes may carry more weight)
-- **Course level** (graduate sections often count more than undergraduate)
-
-**Example of what the real model should look like:**
-```
-Dr. Smith cap = 30 units
-  CSC 150 D01  3 credits × 24 enrolled → contributes ~9 units
-  CSC 300 D02  3 credits × 23 enrolled → contributes ~9 units
-  CSC 718 D01  3 credits × 18 enrolled (grad) → contributes ~12 units
-  Total = 30 units  ✓
+Dynamic workload calculation is now implemented in `load_all()`. When `workload_if_full` and `workload_per_student` columns are present in `sections.csv`, the formula is:
+```python
+if current_seats >= max_seats > 0:
+    units = workload_if_full
+else:
+    units = round(workload_per_student × current_seats)
+units = max(units, 1)
 ```
 
-**Why deferred:** Requires agreement on the weighting formula with the
-department. The `workload.csv` format will need new columns (`credit_weight`,
-`level_weight`, `cap`), and `build_csp()` will need to switch from
-`add_exactly_one` section counts to a weighted integer sum constraint.
+If only `workload_if_full` is present, that value is used directly. If neither column is present, sections fall back to `DEFAULT_COURSE_WORKLOAD = 4`.
 
-**Keeping for now:** Simple section count (min/max) is sufficient for the demo.
+**Remaining work:** The full DSU policy rules have not yet been confirmed with the client:
+- Small section threshold (< 10 students, 100–600 level): `enrolled × 0.10 × credit_hours`
+- Grad 700+ multiplier: `credit_hours × 1.33`
+- Cross-listed 400/500 bonus: `+1 unit`
+
+The formula is isolated in one loop in `load_all()` and is a single block change once the client confirms.
 
 ---
 
@@ -115,29 +108,15 @@ online sections are correctly excluded from room assignment.
 
 ---
 
-### KI-004 | Online sections excluded from scheduling but still in preferences.csv
-**Status:** Open
+### KI-004 | Cross-listed internet twin detection and assignment copy
+**Status:** Resolved
 **Date logged:** 2026-03-13
-**Area:** `data_loader` · `csv_format`
+**Resolved:** 2026-03-29
+**Area:** `data_loader` · `output`
 
-Sections with no days or times (DT1, DT2, etc. in the registrar data) are
-currently skipped when building `time_blocks.csv` but their CRNs still appear
-as rows in `preferences.csv`. This means:
+Internet sections sharing the same `Sub + Num + Desc` as a regular in-person section are now detected in `load_all()` and filtered from the OR solver. After solving, `write_schedule_csv()` copies the regular section's faculty assignment to the twin. Twins share identical preference scores in `preferences.csv` (cached by `(sub, num, desc)` key during generation).
 
-1. The solver never assigns a faculty to them (they are not in `sections`).
-2. But they exist as rows in the preferences matrix, which is confusing for
-   anyone editing the CSV manually.
-3. When rooms are added (KI-003), online sections must be explicitly excluded
-   from room assignment constraints — they do not need a physical room.
-
-**Proposed fix:**
-Add an `is_online` flag to `SchedulingData` or maintain a separate
-`online_sections: list[str]` set. In `load_all()`, warn when a CRN appears in
-`preferences.csv` but not in `time_blocks.csv`. In the future room model,
-skip `y[s, r]` variable creation for online sections entirely.
-
-**Short-term workaround:** Keep online sections out of `time_blocks.csv` and
-accept the mismatch for now. Document it clearly in `README.md`.
+In the latest run: 168 twins detected and filtered, assignments copied correctly, validation passed.
 
 ---
 
@@ -199,27 +178,15 @@ derivable from the course number suffix (e.g. `L` in `BIOL 101L`).
 
 ---
 
-### KI-009 | Single-day sections (Tu, W, Th, M, F) not supported
-**Status:** Open
+### KI-009 | Single-day sections bucketed and excluded from OR
+**Status:** Resolved
 **Date logged:** 2026-03-13
+**Resolved:** 2026-03-29
 **Area:** `data_loader`
 
-The registrar data contains sections that meet only one day per week
-(e.g. `W 1200-1250`, `Tu 1300-1450`, `Th 1000-1250`). These are currently
-dropped during time block parsing because the day string does not match any
-entry in `PATTERN_DAYS`.
+Single-day sections (M, Tu, W, Th, F) are now detected in `_is_single_day()` and bucketed into `single_day` in `load_all()`. They are excluded from OR and from conflict pair generation, but are preserved in `all_sections_ordered` and written to `schedule.csv` with a blank faculty assignment so the output row count matches `sections.csv` exactly.
 
-Examples from the data:
-```
-BIOL 145 D01    W   12:00   (1-credit weekly lab)
-BIOL 101L D01   Tu  13:00   (lab section)
-ARTD 480 D01    W   16:00   (single-day studio)
-```
-
-**Proposed fix:**
-Extend `PATTERN_DAYS` and `DURATION_MINUTES` to include single-day patterns.
-Duration for these is variable (not fixed like MWF/TTh/MW) so either read
-end time from the CSV for these cases or require a separate duration column.
+In the latest run: 31 single-day sections correctly bucketed and excluded.
 
 ---
 
@@ -258,7 +225,11 @@ is built.
 
 ## Resolved Issues
 
-_None yet._
+### KI-004 | Cross-listed internet twin detection and assignment copy
+[see above]
+
+### KI-009 | Single-day sections bucketed and excluded from OR
+[see above]
 
 ---
 
