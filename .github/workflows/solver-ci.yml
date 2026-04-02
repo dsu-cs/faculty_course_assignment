@@ -75,7 +75,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Build solver image
-        run: docker build -t solver:ci ./Solver
+        run: docker build -t solver:ci -f Solver/Dockerfile .
 
       - name: Run solver test suite in Docker
         run: docker run --rm solver:ci --test
