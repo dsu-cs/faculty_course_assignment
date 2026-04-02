@@ -1,13 +1,17 @@
 ---
-name: Docker Compose CD
+name: Deploy to VM
 
 description: Re-deploy on updates to `main` to our VM over SSH.
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - 'main'
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/cd.yml'
+      - 'webserver/**'
+      - 'solver_server/**'
+  workflow_dispatch:
 
 jobs:
   deploy:

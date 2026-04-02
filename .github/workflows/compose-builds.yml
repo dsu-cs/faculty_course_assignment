@@ -4,7 +4,15 @@ description: Build & Run the Docker compose stack and pass health checks.
 
 on:
   pull_request:
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/compose-builds.yml'
   push:
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/compose-builds.yml'
 
 jobs:
   validate:
