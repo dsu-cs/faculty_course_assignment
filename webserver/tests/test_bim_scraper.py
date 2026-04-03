@@ -25,7 +25,7 @@ def test_standard_undergraduate_workload_fields():
 
     assert result == {
         "workload_if_full": "3",
-        "workload_per_student": "0.3",
+        "workload_per_student": "0.12",
         "special_workload": "",
     }
 
@@ -44,12 +44,12 @@ def test_graduate_course_uses_equated_multiplier():
 
     assert result == {
         "workload_if_full": "4",
-        "workload_per_student": "0.4",
+        "workload_per_student": "0.16",
         "special_workload": "",
     }
 
 
-def test_undergraduate_research_uses_per_student_formula_at_full_capacity():
+def test_undergraduate_research_is_capped_at_five_workload_units():
     row = {
         "Num": "498",
         "Crd": "3",
@@ -62,8 +62,27 @@ def test_undergraduate_research_uses_per_student_formula_at_full_capacity():
     result = BIM_SCRAPER._build_workload_fields(row)
 
     assert result == {
-        "workload_if_full": "7.5",
-        "workload_per_student": "0.3",
+        "workload_if_full": "5",
+        "workload_per_student": "0.2",
+        "special_workload": "",
+    }
+
+
+def test_variable_credit_internship_is_capped_at_five_workload_units():
+    row = {
+        "Num": "494",
+        "Crd": "1 TO 12",
+        "Desc": "Internship",
+        "Seats": "4/5",
+        "Days": "Internet",
+        "Faculty": "Jane Doe",
+    }
+
+    result = BIM_SCRAPER._build_workload_fields(row)
+
+    assert result == {
+        "workload_if_full": "5",
+        "workload_per_student": "1",
         "special_workload": "",
     }
 
@@ -82,6 +101,25 @@ def test_dissertation_caps_full_workload_at_six_students():
 
     assert result == {
         "workload_if_full": "3",
+        "workload_per_student": "0.3",
+        "special_workload": "",
+    }
+
+
+def test_student_teaching_is_capped_at_five_workload_units():
+    row = {
+        "Num": "489",
+        "Crd": "0 TO 18",
+        "Desc": "Student Teaching",
+        "Seats": "10/10",
+        "Days": "MWF",
+        "Faculty": "Jane Doe",
+    }
+
+    result = BIM_SCRAPER._build_workload_fields(row)
+
+    assert result == {
+        "workload_if_full": "5",
         "workload_per_student": "0.5",
         "special_workload": "",
     }
@@ -101,7 +139,7 @@ def test_team_taught_sections_split_workload_evenly():
 
     assert result == {
         "workload_if_full": "1.5",
-        "workload_per_student": "0.15",
+        "workload_per_student": "0.06",
         "special_workload": "",
     }
 

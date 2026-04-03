@@ -19,6 +19,7 @@ PRIVATE_INSTRUCTION_MULTIPLIER = Decimal("0.33")
 DISSERTATION_PER_STUDENT = Decimal("0.5")
 STUDENT_TEACHING_PER_STUDENT = Decimal("0.67")
 MAX_DISSERTATION_CHAIR_STUDENTS = 6
+MAX_SECTION_WORKLOAD = Decimal("5")
 TERM_SELECTORS = ("select#selTerm", "select[name='selTerm']", "select")
 
 
@@ -164,6 +165,19 @@ def _workload_if_full(
     return _standard_workload(credit_hours, course_level)
 
 
+def _cap_workload_values(
+    workload_if_full: Decimal,
+    workload_per_student: Decimal,
+    max_seats: int,
+) -> tuple[Decimal, Decimal]:
+    capped_if_full = min(workload_if_full, MAX_SECTION_WORKLOAD)
+    if max_seats <= 0:
+        return capped_if_full, min(workload_per_student, capped_if_full)
+
+    capped_per_student = min(workload_per_student, capped_if_full / Decimal(max_seats))
+    return capped_if_full, capped_per_student
+
+
 def _build_workload_fields(row: dict[str, str]) -> dict[str, str]:
     credit_hours = _parse_credit_hours(row.get("Crd", ""))
     current_seats, max_seats = _parse_seat_counts(row.get("Seats", ""))
@@ -190,6 +204,13 @@ def _build_workload_fields(row: dict[str, str]) -> dict[str, str]:
     # Policy IIA.13: split section workload evenly when more than one faculty member teaches the section.
     workload_if_full /= faculty_divisor
     workload_per_student /= faculty_divisor
+
+    # Safety guard: BIM-derived workload values should never exceed 5 workload units.
+    workload_if_full, workload_per_student = _cap_workload_values(
+        workload_if_full,
+        workload_per_student,
+        max_seats,
+    )
 
     return {
         "workload_if_full": _format_decimal(workload_if_full),
