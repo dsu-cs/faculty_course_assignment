@@ -24,6 +24,7 @@ class FacultyPreferenceSubmission(models.Model):
 
 class FacultyCoursePreference(models.Model):
     class PreferenceValue(models.TextChoices):
+        HAVE_TAUGHT = "H", "H"
         UNWILLING = "X", "X"
         ZERO = "0", "0"
         ONE = "1", "1"
@@ -35,7 +36,7 @@ class FacultyCoursePreference(models.Model):
         on_delete=models.CASCADE,
         related_name="course_preferences",
     )
-    crn = models.CharField(max_length=32)
+    course_key = models.CharField(max_length=32)
     prefix = models.CharField(max_length=16)
     course_number = models.CharField(max_length=16)
     sequence = models.CharField(max_length=16, blank=True)
@@ -48,8 +49,8 @@ class FacultyCoursePreference(models.Model):
     preference = models.CharField(max_length=1, choices=PreferenceValue.choices)
 
     class Meta:
-        ordering = ["prefix", "course_number", "sequence", "crn"]
-        unique_together = [("submission", "crn")]
+        ordering = ["prefix", "course_number", "sequence", "course_key"]
+        unique_together = [("submission", "course_key")]
 
     def __str__(self) -> str:
         return f"{self.prefix} {self.course_number} {self.sequence} ({self.preference})"

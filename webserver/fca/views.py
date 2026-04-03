@@ -10,8 +10,9 @@ from fca.preferences.exporters import get_available_bim_terms
 from fca.preferences.exporters import get_default_bim_term
 from fca.preferences.models import FacultyCoursePreference
 from fca.preferences.models import FacultyPreferenceSubmission
-from fca.preferences.services import group_sections_for_preferences
 from fca.preferences.services import get_prefixes
+from fca.preferences.services import get_previously_taught_course_keys
+from fca.preferences.services import group_sections_for_preferences
 from fca.preferences.services import load_sections_tab_data
 
 
@@ -23,6 +24,21 @@ VALID_PREFERENCE_VALUES = {
 def _normalize_preference_value(value: str) -> str:
     normalized = value.strip().upper()
     return normalized if normalized in VALID_PREFERENCE_VALUES else ""
+
+
+def _faculty_identifier_for_request(request) -> str:
+    if request.user.is_authenticated:
+        return request.user.name or request.user.username or "anonymous"
+    return "anonymous"
+
+
+def _latest_submission_for_faculty(faculty_identifier: str) -> FacultyPreferenceSubmission | None:
+    return (
+        FacultyPreferenceSubmission.objects.filter(faculty_identifier=faculty_identifier)
+        .prefetch_related("course_preferences")
+        .order_by("-submitted_at", "-id")
+        .first()
+    )
 
 
 class DeanDownloadView(View):
@@ -77,25 +93,50 @@ class DeanDownloadView(View):
 class FacultyPreferenceView(View):
     template_name = "pages/faculty_preference.html"
 
-    def get_context_data(self, selected_prefixes: list[str] | None = None):
+    def get_context_data(self, request, selected_prefixes: list[str] | None = None):
         sections = load_sections_tab_data()
         courses = group_sections_for_preferences(sections)
         prefixes = get_prefixes(sections)
+        faculty_identifier = _faculty_identifier_for_request(request)
+        latest_submission = _latest_submission_for_faculty(faculty_identifier)
+        taught_course_keys = get_previously_taught_course_keys(faculty_identifier)
+
+        saved_preferences: dict[str, str] = {}
+        resolved_selected_prefixes = selected_prefixes or []
+        if latest_submission is not None:
+            saved_preferences = {
+                course_preference.course_key: course_preference.preference
+                for course_preference in latest_submission.course_preferences.all()
+            }
+            if not selected_prefixes:
+                resolved_selected_prefixes = list(latest_submission.selected_prefixes)
+
+        default_preferences: dict[str, str] = {}
+        for course in courses:
+            course_key = str(course["course_key"])
+            default_preferences[course_key] = saved_preferences.get(
+                course_key,
+                FacultyCoursePreference.PreferenceValue.HAVE_TAUGHT
+                if course_key in taught_course_keys
+                else FacultyCoursePreference.PreferenceValue.UNWILLING,
+            )
+
         return {
             "prefixes": prefixes,
             "courses": courses,
-            "selected_prefixes": selected_prefixes or [],
+            "selected_prefixes": resolved_selected_prefixes,
+            "default_preferences": default_preferences,
         }
 
     def get(self, request):
-        return render(request, self.template_name, self.get_context_data())
+        return render(request, self.template_name, self.get_context_data(request))
 
     def post(self, request):
         sections = load_sections_tab_data()
         courses = group_sections_for_preferences(sections)
         if not courses:
             messages.error(request, "No course data was found in sections_tab.csv.")
-            return render(request, self.template_name, self.get_context_data())
+            return render(request, self.template_name, self.get_context_data(request))
 
         selected_prefixes = sorted(
             {
@@ -116,11 +157,11 @@ class FacultyPreferenceView(View):
 
         saved_preferences: list[FacultyCoursePreference] = []
         for course in courses:
-            course_id = str(course["id"])
-            preference = submitted_preferences.get(course_id, "X")
+            course_key = str(course["course_key"])
+            preference = submitted_preferences.get(course_key, FacultyCoursePreference.PreferenceValue.UNWILLING)
             saved_preferences.append(
                 FacultyCoursePreference(
-                    crn=course_id,
+                    course_key=course_key,
                     prefix=str(course["prefix"]),
                     course_number=str(course["number"]),
                     sequence="",
@@ -134,9 +175,7 @@ class FacultyPreferenceView(View):
                 ),
             )
 
-        faculty_identifier = "anonymous"
-        if request.user.is_authenticated:
-            faculty_identifier = request.user.name or request.user.username
+        faculty_identifier = _faculty_identifier_for_request(request)
 
         with transaction.atomic():
             submission = FacultyPreferenceSubmission.objects.create(
@@ -150,5 +189,3 @@ class FacultyPreferenceView(View):
 
         messages.success(request, "Preferences submitted successfully.")
         return redirect("faculty_preference")
-
-

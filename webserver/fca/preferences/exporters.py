@@ -23,7 +23,7 @@ REFERENCE_WORKBOOK_DIR_CANDIDATES = (
 REFERENCE_WORKBOOK_FILE_CANDIDATES = ("workbook.xlsm", "workbook.xlsx")
 BIM_SCRAPER_PATH = Path(settings.BASE_DIR) / "BIM Scraper" / "bim_scraper.py"
 EXPORT_DIR = Path(settings.MEDIA_ROOT) / "dean_downloads"
-PREFERENCE_RANK = {"X": -1, "0": 0, "1": 1, "2": 2, "3": 3}
+PREFERENCE_RANK = {"X": -1, "0": 0, "1": 1, "2": 2, "3": 3, "H": 4}
 
 
 @dataclass
@@ -34,7 +34,11 @@ class DeanDownloadArtifacts:
 
 
 def _normalize_preference_for_csv(value: str) -> str:
-    return "x" if value.upper() == "X" else value
+    if value.upper() == "X":
+        return "x"
+    if value.upper() == "H":
+        return "3"
+    return value
 
 
 def _get_reference_workbook_dir() -> Path:
@@ -311,4 +315,3 @@ def build_dean_download_artifacts(term: str | None = None) -> DeanDownloadArtifa
         preferences_csv_path=preferences_csv_path,
         workbook_path=workbook_path,
     )
-

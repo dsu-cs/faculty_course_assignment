@@ -44,7 +44,7 @@
                 <th style="width:120px;">Prefix</th>
                 <th>Course</th>
                 <th>Section Details</th>
-                <th style="width:260px;">Preference</th>
+                <th style="width:320px;">Preference</th>
               </tr>
             </thead>
             <tbody id="courseTableBody">
@@ -66,6 +66,7 @@
 </div>
 
 {{ courses|json_script:"courses-data" }}
+{{ default_preferences|json_script:"default-preferences-data" }}
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
@@ -73,6 +74,8 @@
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     const courses = JSON.parse(document.getElementById("courses-data").textContent);
+    const defaultPreferences = JSON.parse(document.getElementById("default-preferences-data").textContent);
+    const preferenceValues = ["H", "3", "2", "1", "0", "X"];
     const tableBody = document.getElementById("courseTableBody");
     const prefixSelect = new TomSelect("#prefixFilter", {
       plugins: ["remove_button"],
@@ -81,7 +84,9 @@
       persist: false,
       placeholder: "Search prefixes...",
     });
-    const preferenceState = new Map(courses.map((course) => [String(course.id), "X"]));
+    const preferenceState = new Map(
+      courses.map((course) => [String(course.course_key), defaultPreferences[String(course.course_key)] || "X"]),
+    );
 
     const selectedPrefixes = () => prefixSelect.getValue().map((value) => value.toUpperCase());
 
@@ -91,6 +96,19 @@
       .replaceAll(">", "&gt;")
       .replaceAll("\"", "&quot;")
       .replaceAll("'", "&#39;");
+
+    function buttonClass(value) {
+      if (value === "X") {
+        return "btn-outline-danger";
+      }
+      if (value === "H") {
+        return "btn-outline-success";
+      }
+      if (value === "0") {
+        return "btn-outline-primary";
+      }
+      return "btn-outline-secondary";
+    }
 
     function renderCourses() {
       const activePrefixes = selectedPrefixes();
@@ -120,13 +138,12 @@
             <td>${escapeHtml(detailLabel)}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Preference for ${escapeHtml(`${course.prefix} ${course.number}`)}">
-                ${["0", "1", "2", "3", "X"].map((value) => {
-                  const labelClass = value === "X" ? "btn-outline-danger" : value === "0" ? "btn-outline-primary" : "btn-outline-secondary";
-                  const inputId = `c${course.id}_${value}`;
-                  const checked = preferenceState.get(String(course.id)) === value ? "checked" : "";
+                ${preferenceValues.map((value) => {
+                  const inputId = `c${course.course_key}_${value}`;
+                  const checked = preferenceState.get(String(course.course_key)) === value ? "checked" : "";
                   return `
-                    <input type="radio" class="btn-check" name="pref_${course.id}" id="${inputId}" value="${value}" ${checked}>
-                    <label class="btn ${labelClass}" for="${inputId}">${value}</label>
+                    <input type="radio" class="btn-check" name="pref_${course.course_key}" id="${inputId}" value="${value}" ${checked}>
+                    <label class="btn ${buttonClass(value)}" for="${inputId}">${value}</label>
                   `;
                 }).join("")}
               </div>
