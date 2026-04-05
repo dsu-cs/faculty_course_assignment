@@ -9,6 +9,7 @@ from django.urls import reverse
 from fca.preferences.exporters import build_preferences_csv
 from fca.preferences.models import FacultyCoursePreference
 from fca.preferences.models import FacultyPreferenceSubmission
+from fca.users.tests.factories import UserFactory
 
 
 pytestmark = pytest.mark.django_db
@@ -18,7 +19,8 @@ pytestmark = pytest.mark.django_db
 def sample_sections() -> list[dict[str, str]]:
     return [
         {
-            "id": "10001",
+            "id": "CSC-105",
+            "course_key": "CSC-105",
             "crn": "10001",
             "prefix": "CSC",
             "number": "105",
@@ -31,7 +33,8 @@ def sample_sections() -> list[dict[str, str]]:
             "room": "EH 101",
         },
         {
-            "id": "10002",
+            "id": "CSC-105",
+            "course_key": "CSC-105",
             "crn": "10002",
             "prefix": "CSC",
             "number": "105",
@@ -44,7 +47,8 @@ def sample_sections() -> list[dict[str, str]]:
             "room": "EH 102",
         },
         {
-            "id": "10003",
+            "id": "MATH-201",
+            "course_key": "MATH-201",
             "crn": "10003",
             "prefix": "MATH",
             "number": "201",
@@ -60,13 +64,20 @@ def sample_sections() -> list[dict[str, str]]:
 
 
 @pytest.fixture
+def faculty_user() -> object:
+    return UserFactory.create(email="faculty@dsu.edu", name="Ada Lovelace")
+
+
+@pytest.fixture
 def patch_sections(monkeypatch: pytest.MonkeyPatch, sample_sections: list[dict[str, str]]):
     monkeypatch.setattr("fca.views.load_sections_tab_data", lambda: sample_sections)
-    monkeypatch.setattr("fca.preferences.exporters.load_sections_tab_data", lambda: sample_sections)
+    monkeypatch.setattr("fca.preferences.exporters.load_sections_tab_data", lambda _path=None: sample_sections)
+    monkeypatch.setattr("fca.views.get_previously_taught_course_keys", lambda faculty_identifier: set())
     return sample_sections
 
 
-def test_faculty_preference_get_groups_courses(client, patch_sections: list[dict[str, str]]):
+def test_faculty_preference_get_groups_courses(client, faculty_user, patch_sections: list[dict[str, str]]):
+    client.force_login(faculty_user)
     response = client.get(reverse("faculty_preference"))
 
     assert response.status_code == 200
@@ -76,7 +87,26 @@ def test_faculty_preference_get_groups_courses(client, patch_sections: list[dict
     assert courses[0]["section_count"] == 2
 
 
-def test_faculty_preference_post_defaults_unseen_courses_to_x(client, patch_sections: list[dict[str, str]]):
+def test_faculty_preference_get_defaults_previously_taught_courses_to_h(
+    client,
+    faculty_user,
+    monkeypatch: pytest.MonkeyPatch,
+    patch_sections: list[dict[str, str]],
+):
+    client.force_login(faculty_user)
+    monkeypatch.setattr("fca.views.get_previously_taught_course_keys", lambda faculty_identifier: {"CSC-105"})
+
+    response = client.get(reverse("faculty_preference"))
+
+    assert response.status_code == 200
+    assert response.context["default_preferences"] == {
+        "CSC-105": "H",
+        "MATH-201": "X",
+    }
+
+
+def test_faculty_preference_post_defaults_unseen_courses_to_x(client, faculty_user, patch_sections: list[dict[str, str]]):
+    client.force_login(faculty_user)
     response = client.post(
         reverse("faculty_preference"),
         data={
@@ -90,13 +120,14 @@ def test_faculty_preference_post_defaults_unseen_courses_to_x(client, patch_sect
     submission = FacultyPreferenceSubmission.objects.get()
     saved_preferences = list(
         FacultyCoursePreference.objects.order_by("prefix", "course_number").values_list(
-            "crn",
+            "course_key",
             "prefix",
             "course_number",
             "preference",
         ),
     )
     assert submission.selected_prefixes == ["CSC"]
+    assert submission.faculty_identifier == "Ada Lovelace"
     assert saved_preferences == [
         ("CSC-105", "CSC", "105", "3"),
         ("MATH-201", "MATH", "201", "X"),
@@ -104,14 +135,14 @@ def test_faculty_preference_post_defaults_unseen_courses_to_x(client, patch_sect
     assert b"Preferences submitted successfully." in response.content
 
 
-def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
+def test_build_preferences_csv_maps_h_to_solver_friendly_score(
     tmp_path: Path,
     patch_sections: list[dict[str, str]],
 ):
     submission_a = FacultyPreferenceSubmission.objects.create(faculty_identifier="Dr A")
     FacultyCoursePreference.objects.create(
         submission=submission_a,
-        crn="CSC-105",
+        course_key="CSC-105",
         prefix="CSC",
         course_number="105",
         sequence="",
@@ -121,11 +152,11 @@ def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
         meeting_days="",
         meeting_time="",
         room="2 section(s)",
-        preference="2",
+        preference="H",
     )
     FacultyCoursePreference.objects.create(
         submission=submission_a,
-        crn="MATH-201",
+        course_key="MATH-201",
         prefix="MATH",
         course_number="201",
         sequence="",
@@ -141,7 +172,7 @@ def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
     submission_b = FacultyPreferenceSubmission.objects.create(faculty_identifier="Dr B")
     FacultyCoursePreference.objects.create(
         submission=submission_b,
-        crn="CSC-105",
+        course_key="CSC-105",
         prefix="CSC",
         course_number="105",
         sequence="",
@@ -155,7 +186,7 @@ def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
     )
     FacultyCoursePreference.objects.create(
         submission=submission_b,
-        crn="MATH-201",
+        course_key="MATH-201",
         prefix="MATH",
         course_number="201",
         sequence="",
@@ -175,8 +206,7 @@ def test_build_preferences_csv_expands_grouped_preferences_to_each_section(
 
     assert rows == [
         ["CRN", "Dr A", "Dr B"],
-        ["10001", "2", "x"],
-        ["10002", "2", "x"],
+        ["10001", "3", "x"],
+        ["10002", "3", "x"],
         ["10003", "x", "1"],
     ]
-

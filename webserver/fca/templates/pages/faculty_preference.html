@@ -29,13 +29,23 @@
           {% endfor %}
         </select>
 
-        <div class="form-text">
-          Search and select one or more prefixes.
+        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+          <div class="form-text mb-0" id="prefixSelectionHelp">
+            Search and select one or more prefixes.
+          </div>
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="clearPrefixes">
+            Clear prefixes
+          </button>
         </div>
       </div>
 
       <div class="mb-3">
-        <h5 class="mb-3">Courses</h5>
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h5 class="mb-0">Courses</h5>
+          <div class="text-muted small" id="courseCountSummary">
+            No courses loaded.
+          </div>
+        </div>
 
         <div class="table-responsive">
           <table class="table table-bordered align-middle">
@@ -44,7 +54,7 @@
                 <th style="width:120px;">Prefix</th>
                 <th>Course</th>
                 <th>Section Details</th>
-                <th style="width:260px;">Preference</th>
+                <th style="width:320px;">Preference</th>
               </tr>
             </thead>
             <tbody id="courseTableBody">
@@ -58,7 +68,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" id="submitPreferencesButton">
         Submit Preferences
       </button>
     </form>
@@ -66,14 +76,27 @@
 </div>
 
 {{ courses|json_script:"courses-data" }}
+{{ default_preferences|json_script:"default-preferences-data" }}
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const courses = JSON.parse(document.getElementById("courses-data").textContent);
+    const coursesElement = document.getElementById("courses-data");
+    const defaultPreferencesElement = document.getElementById("default-preferences-data");
+
+    const courses = coursesElement ? JSON.parse(coursesElement.textContent) : [];
+    const defaultPreferences = defaultPreferencesElement ? JSON.parse(defaultPreferencesElement.textContent) : {};
+
+    const preferenceValues = ["H", "3", "2", "1", "0", "X"];
     const tableBody = document.getElementById("courseTableBody");
+    const form = document.getElementById("facultyPreferenceForm");
+    const submitButton = document.getElementById("submitPreferencesButton");
+    const courseCountSummary = document.getElementById("courseCountSummary");
+    const prefixSelectionHelp = document.getElementById("prefixSelectionHelp");
+    const clearPrefixesButton = document.getElementById("clearPrefixes");
+
     const prefixSelect = new TomSelect("#prefixFilter", {
       plugins: ["remove_button"],
       maxItems: null,
@@ -81,9 +104,19 @@
       persist: false,
       placeholder: "Search prefixes...",
     });
-    const preferenceState = new Map(courses.map((course) => [String(course.id), "X"]));
 
-    const selectedPrefixes = () => prefixSelect.getValue().map((value) => value.toUpperCase());
+    const preferenceState = new Map(
+      courses.map((course) => [
+        String(course.course_key),
+        defaultPreferences[String(course.course_key)] || "X",
+      ]),
+    );
+
+    const selectedPrefixes = () => {
+      const value = prefixSelect.getValue();
+      const values = Array.isArray(value) ? value : (value ? [value] : []);
+      return values.map((item) => String(item).toUpperCase());
+    };
 
     const escapeHtml = (value) => String(value)
       .replaceAll("&", "&amp;")
@@ -92,13 +125,31 @@
       .replaceAll("\"", "&quot;")
       .replaceAll("'", "&#39;");
 
+    function buttonClass(value) {
+      if (value === "X") {
+        return "btn-outline-danger";
+      }
+      if (value === "H") {
+        return "btn-outline-success";
+      }
+      if (value === "0") {
+        return "btn-outline-primary";
+      }
+      return "btn-outline-secondary";
+    }
+
+    function updatePrefixHelp() {
+      const count = selectedPrefixes().length;
+      prefixSelectionHelp.textContent = count
+        ? `${count} prefix${count === 1 ? "" : "es"} selected.`
+        : "Search and select one or more prefixes.";
+    }
+
     function renderCourses() {
       const activePrefixes = selectedPrefixes();
-      const visibleCourses = activePrefixes.length
-        ? courses.filter((course) => activePrefixes.includes(course.prefix))
-        : [];
 
-      if (!visibleCourses.length) {
+      if (!activePrefixes.length) {
+        courseCountSummary.textContent = "No courses loaded.";
         tableBody.innerHTML = `
           <tr>
             <td colspan="4" class="text-muted text-center py-4">
@@ -109,9 +160,35 @@
         return;
       }
 
+      const visibleCourses = courses
+        .filter((course) => activePrefixes.includes(String(course.prefix).toUpperCase()))
+        .sort((a, b) => {
+          if (String(a.prefix) !== String(b.prefix)) {
+            return String(a.prefix).localeCompare(String(b.prefix));
+          }
+          if (String(a.number) !== String(b.number)) {
+            return String(a.number).localeCompare(String(b.number), undefined, { numeric: true });
+          }
+          return String(a.title).localeCompare(String(b.title));
+        });
+
+      if (!visibleCourses.length) {
+        courseCountSummary.textContent = "0 grouped courses shown.";
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="text-muted text-center py-4">
+              No grouped courses found for the selected prefix.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      courseCountSummary.textContent = `${visibleCourses.length} grouped course${visibleCourses.length === 1 ? "" : "s"} shown.`;
+
       tableBody.innerHTML = visibleCourses.map((course) => {
         const courseLabel = `${course.number} - ${course.title}`;
-        const detailLabel = `${course.section_count} section${course.section_count === 1 ? "" : "s"} grouped`;
+        const detailLabel = `${course.section_count} grouped section${course.section_count === 1 ? "" : "s"}`;
 
         return `
           <tr>
@@ -120,13 +197,12 @@
             <td>${escapeHtml(detailLabel)}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Preference for ${escapeHtml(`${course.prefix} ${course.number}`)}">
-                ${["0", "1", "2", "3", "X"].map((value) => {
-                  const labelClass = value === "X" ? "btn-outline-danger" : value === "0" ? "btn-outline-primary" : "btn-outline-secondary";
-                  const inputId = `c${course.id}_${value}`;
-                  const checked = preferenceState.get(String(course.id)) === value ? "checked" : "";
+                ${preferenceValues.map((value) => {
+                  const inputId = `c${course.course_key}_${value}`;
+                  const checked = preferenceState.get(String(course.course_key)) === value ? "checked" : "";
                   return `
-                    <input type="radio" class="btn-check" name="pref_${course.id}" id="${inputId}" value="${value}" ${checked}>
-                    <label class="btn ${labelClass}" for="${inputId}">${value}</label>
+                    <input type="radio" class="btn-check" name="pref_${course.course_key}" id="${inputId}" value="${value}" ${checked}>
+                    <label class="btn ${buttonClass(value)}" for="${inputId}">${value}</label>
                   `;
                 }).join("")}
               </div>
@@ -147,7 +223,23 @@
       preferenceState.set(target.name.replace("pref_", ""), target.value);
     });
 
-    prefixSelect.on("change", renderCourses);
+    clearPrefixesButton.addEventListener("click", () => {
+      prefixSelect.clear();
+      updatePrefixHelp();
+      renderCourses();
+    });
+
+    form.addEventListener("submit", () => {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    });
+
+    prefixSelect.on("change", () => {
+      updatePrefixHelp();
+      renderCourses();
+    });
+
+    updatePrefixHelp();
     renderCourses();
   });
 </script>

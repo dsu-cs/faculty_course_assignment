@@ -8,7 +8,7 @@ class FacultyCoursePreferenceInline(admin.TabularInline):
     model = FacultyCoursePreference
     extra = 0
     readonly_fields = (
-        "crn",
+        "course_key",
         "prefix",
         "course_number",
         "sequence",
@@ -33,6 +33,6 @@ class FacultyPreferenceSubmissionAdmin(admin.ModelAdmin):
 
 @admin.register(FacultyCoursePreference)
 class FacultyCoursePreferenceAdmin(admin.ModelAdmin):
-    list_display = ("submission", "prefix", "course_number", "sequence", "preference")
+    list_display = ("submission", "course_key", "prefix", "course_number", "sequence", "preference")
     list_filter = ("prefix", "preference")
-    search_fields = ("crn", "title", "faculty")
+    search_fields = ("course_key", "title", "faculty")

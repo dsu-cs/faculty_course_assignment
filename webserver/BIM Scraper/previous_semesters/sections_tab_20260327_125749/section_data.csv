@@ -1,0 +1,725 @@
+CRN,Sub,Num,Seq,Crd,Desc,Seats,Waitlist,Days,Time,Room,Faculty
+70346,ACCT,210,D01,3,Principles of Accounting I,18/25,0,MWF,1100-1150,East Hall 010,Erich Matthew Eischen
+76192,ACCT,210,D02,3,Principles of Accounting I,21/25,0,TuTh,1300-1415,East Hall 003,Wendy Simmermon
+70375,ACCT,210,DT1,3,Principles of Accounting I,7/25,0,,,,Wendy Simmermon
+70377,ACCT,211,D01,3,Principles of Accounting II,9/25,0,MWF,1200-1250,East Hall 010,Erich Matthew Eischen
+79163,ACCT,211,DT1,3,Principles of Accounting II,14/25,0,,,,Erich Matthew Eischen
+80665,ACCT,310,D01,3,Intermediate Accounting I,10/25,0,MWF,0900-0950,East Hall 010,Erich Matthew Eischen
+80666,ACCT,310,DT1,3,Intermediate Accounting I,13/25,0,,,,Erich Matthew Eischen
+80669,ACCT,478,DT1,3,Tax Compliance and Planning,20/25,0,,,,Erich Matthew Eischen
+80670,ACCT,480,D01,3,Advanced Accounting,25/25,0,MWF,1200-1250,East Hall 003,Scott K Morstad
+80671,ACCT,480,DT1,3,Advanced Accounting,24/25,0,,,,Scott K Morstad
+70385,ART,111,D01,3,Drawing I,24/24,0,TuTh,1100-1330,Beadle Hall 302,Alan Montgomery
+81235,ART,111,DT1,3,Drawing I,30/30,0,,,,Alan Montgomery
+70722,ART,121,D01,3,Design I 2D,22/24,0,MWF,1400-1540,Beadle Hall 303,Alan Montgomery
+80637,ART,121,D02,3,Design I 2D,23/24,0,MWF,1000-1140,Beadle Hall 303,Wendy M Romero
+70783,ART,121,DT1,3,Design I 2D,27/30,0,,,,Alan Montgomery
+70786,ART,123,D01,3,Three Dimensional Design,11/18,0,TuTh,1100-1329,Beadle Hall 006,Tim Murray
+77187,ART,213,D02,3,Figure Drawing,0/18,0,TuTh,1430-1545,Beacom Institute of Technology 114,Daniel Lee Welynn
+74408,ART,231,D01,3,Painting I,10/18,0,TuTh,1600-1830,Beadle Hall 302,Wendy M Romero
+70828,ARTD,185,D01,3,Introduction to Animation,24/30,0,MW,1400-1515,Beacom Institute of Technology 114,Daniel Lee Welynn
+79209,ARTD,186,D01,3,"3-D Animation, Modeling, and Concepts",22/30,0,MWF,0800-0940,Beacom Institute of Technology 114,Konrad N Lightner
+79210,ARTD,186,D02,3,"3-D Animation, Modeling, and Concepts",14/30,0,MWF,1000-1140,Beacom Institute of Technology 114,Konrad N Lightner
+76514,ARTD,245,DT1,3,History of Graphics,23/30,0,,,,Thomas M Jones
+71084,ARTD,280,D01,3,Digital Photography I,6/20,0,MWF,1000-1140,Beadle Hall 108,Thomas M Jones
+80638,ARTD,280,DT1,3,Digital Photography I,16/20,0,,,,Thomas M Jones
+71092,ARTD,282,D02,3,2-D Design on Computers I,2/20,0,MW,1400-1515,Beadle Hall 108,Wendy M Romero
+79211,ARTD,282,DT1,3,2-D Design on Computers I,14/20,0,,,,Joseph A Staudenbaur
+71094,ARTD,286,D01,3,Motion Graphics and Compositing,13/20,0,TuTh,0930-1045,Beadle Hall 108,Tim Murray
+79212,ARTD,350,D01,3,Background Design/Character Design,20/25,0,TuTh,1300-1415,Beacom Institute of Technology 114,Daniel Lee Welynn
+79213,ARTD,441,D01,3,3-D Design/Production,15/25,0,TuTh,0800-0915,Beacom Institute of Technology 114,Konrad N Lightner
+79214,ARTD,442,D01,3,2D Digital Animation III,17/25,0,TuTh,1100-1215,Kennedy Center 112,Daniel Lee Welynn
+70437,ARTD,480,D01,3,Digital Photography III,10/20,0,W,1600-1830,Beadle Hall 108,Thomas M Jones
+70438,ARTD,498,D01,3,Research,25/25,0,,,,Thomas M Jones
+74849,ARTH,211,DT1,3,History of World Art I,24/30,0,,,,Joseph A Staudenbaur
+70682,BIOL,101,D01,2,Biology Survey I,18/25,0,MW,0800-0850,Ruth Habeger Science Center 135,Kristel K Bakker
+76218,BIOL,101,D02,2,Biology Survey I,21/25,0,TuTh,0900-0950,Ruth Habeger Science Center 135,Nevine M Nawar
+76236,BIOL,101,D03,2,Biology Survey I,21/25,0,MW,0800-0850,Ruth Habeger Science Center 135,Kristel K Bakker
+76237,BIOL,101,D04,2,Biology Survey I,22/25,0,TuTh,0900-0950,Ruth Habeger Science Center 135,Nevine M Nawar
+70720,BIOL,101,DEM,2,Biology Survey I,25/25,0,,,Off Campus MADIHS,Kristel K Bakker/Maxine Unterbrunner
+70691,BIOL,101,DT1,2,Biology Survey I,22/50,0,,,,Nevine M Nawar
+70696,BIOL,101L,D01,1,Biology Survey I Lab,18/25,0,Tu,1300-1450,Ruth Habeger Science Center 106,Kristel K Bakker
+70700,BIOL,101L,D02,1,Biology Survey I Lab,21/25,0,Tu,1030-1225,Ruth Habeger Science Center 106,Nevine M Nawar
+70707,BIOL,101L,D03,1,Biology Survey I Lab,21/25,0,Tu,0800-0950,Ruth Habeger Science Center 106,Kristel K Bakker
+70711,BIOL,101L,D04,1,Biology Survey I Lab,22/25,0,M,1300-1450,Ruth Habeger Science Center 106,Nevine M Nawar
+70729,BIOL,101L,DEM,1,Biology Survey I Lab,25/25,0,,,Off Campus MADIHS,Kristel K Bakker/Maxine Unterbrunner
+70715,BIOL,101L,DT1,1,Biology Survey I Lab,1/25,0,,,,Nevine M Nawar
+70716,BIOL,101L,DT2,1,Biology Survey I Lab,22/25,0,,,,Nevine M Nawar
+70757,BIOL,103,D01,2,Biology Survey II,34/48,0,MW,1000-1050,Ruth Habeger Science Center 106,Nevine M Nawar
+70766,BIOL,103L,D01,1,Biology Survey II Lab,18/24,0,Th,1300-1450,Ruth Habeger Science Center 106,Nevine M Nawar
+70779,BIOL,103L,D02,1,Biology Survey II Lab,16/24,0,W,1230-1425,Ruth Habeger Science Center 106,Nevine M Nawar
+70785,BIOL,151,D01,3,General Biology I,54/60,0,MWF,1100-1150,Ruth Habeger Science Center 135,Kristel K Bakker
+70790,BIOL,151L,D01,1,General Biology I Lab,30/30,0,Th,0800-0950,Ruth Habeger Science Center 109,Trinity Lynn Faythe Atkins
+70811,BIOL,151L,D02,1,General Biology I Lab,24/30,0,Th,1030-1225,Ruth Habeger Science Center 109,Trinity Lynn Faythe Atkins
+77880,BIOL,221,D01,3,Human Anatomy,12/48,0,MWF,1100-1150,Tunheim Classroom Building 203,Alex A Dececchi
+77881,BIOL,221L,D01,1,Human Anatomy Lab,8/24,0,Tu,1300-1450,Ruth Habeger Science Center 109,Alex A Dececchi
+77882,BIOL,221L,D02,1,Human Anatomy Lab,4/24,0,Tu,1030-1225,Ruth Habeger Science Center 109,Alex A Dececchi
+81269,BIOL,331,DT1,3,Microbiology,3/25,0,,,,
+80714,BIOL,331L,D01,1,Microbiology Lab,3/25,0,Tu,0800-0950,Ruth Habeger Science Center 101,Trinity Lynn Faythe Atkins
+80708,BIOL,492,D01,3,Topics: Cells and Tissues,16/20,0,MWF,1000-1050,Ruth Habeger Science Center 109,Kristel K Bakker
+77954,BIOL,492,D04,4,Top: Human Gross Anatomy,5/10,0,MWF,1000-1050,Ruth Habeger Science Center 106,Alex A Dececchi
+74870,BIOL,498,D01,1 TO 12,Research,10/10,0,,,,Kristel K Bakker
+70840,BIOL,498,D02,1 TO 12,Research,10/10,0,,,,Alex A Dececchi
+70439,BADM,101,D01,3,Survey of Business,39/40,0,TuTh,1430-1545,East Hall 108,Wendy Simmermon
+70440,BADM,101,DT1,3,Survey of Business,18/25,0,,,,Wendy Simmermon
+77905,BADM,201,D01,3,Fundamentals of AI in Organizations,17/25,0,TuTh,0930-1045,Tunheim Classroom Building 111,Ganga Prasad Basyal
+77906,BADM,201,DT1,3,Fundamentals of AI in Organizations,25/25,0,,,,Ganga Prasad Basyal
+70764,BADM,220,D01,3,Business Statistics,21/25,0,TuTh,1430-1545,East Hall 217,Daniel A Talley
+70775,BADM,220,DT1,3,Business Statistics,0/25,4,,,,Daniel A Talley
+70788,BADM,310,D01,3,Business Finance,9/25,0,MWF,0900-0950,East Hall 018,Yen-Ling Chang
+70797,BADM,310,DT1,3,Business Finance,11/25,0,,,,Yen-Ling Chang
+70827,BADM,321,D01,3,Business Statistics II,1/25,0,MWF,1100-1150,East Hall 217,
+75367,BADM,336,D01,3,Entrepreneurship I,14/25,0,MWF,0800-0850,East Hall 217,
+75368,BADM,336,DT1,3,Entrepreneurship I,0/25,0,,,,
+70829,BADM,344,D01,3,Managerial Communications,13/25,0,TuTh,0930-1045,East Hall 010,Wendy Simmermon
+70831,BADM,344,DT1,3,Managerial Communications,9/25,0,,,,
+70833,BADM,350,D01,3,Legal Environment of Business,12/25,0,MWF,1400-1450,East Hall 010,Scott K Morstad
+70835,BADM,350,DT1,3,Legal Environment of Business,12/25,0,,,,Scott K Morstad
+70856,BADM,360,D01,3,Organization and Management,3/25,0,TuTh,0800-0915,East Hall 217,
+70858,BADM,360,DT1,3,Organization and Management,0/25,0,,,,
+74410,BADM,370,D01,3,Marketing,0/25,0,TuTh,0930-1045,East Hall 217,Deb Tech
+74411,BADM,370,DT1,3,Marketing,9/25,0,,,,Deb Tech
+80673,BADM,415,D01,3,Financial Institutions,11/25,0,MWF,1100-1150,East Hall 018,Yen-Ling Chang
+80674,BADM,415,DT1,3,Financial Institutions,16/25,0,,,,Yen-Ling Chang
+80680,BADM,420,D01,3,Financial Technology,18/25,0,MWF,1500-1550,East Hall 003,Yen-Ling Chang
+80681,BADM,420,DT1,3,Financial Technology,7/25,0,,,,Yen-Ling Chang
+70877,BADM,425,D01,3,Production/Operations Management,19/25,0,TuTh,1430-1545,East Hall 010,
+70878,BADM,425,DT1,3,Production/Operations Management,6/25,0,,,,
+71083,BADM,435,D01,3,Management Technology & Innovation,18/25,0,MWF,1400-1450,East Hall 018,
+76989,BADM,435,DT1,3,Management Technology & Innovation,9/25,0,,,,
+71089,BADM,468,D01,3,International Management,19/25,0,TuTh,0930-1045,East Hall 108,
+71091,BADM,468,DT1,3,International Management,14/25,0,,,,
+80675,BADM,476,D01,3,Marketing Research,21/25,0,MWF,0900-0950,East Hall 003,
+80676,BADM,476,DT1,3,Marketing Research,15/25,0,,,,
+71093,BADM,481,D01,3,Promotional Management,18/25,0,TuTh,1300-1415,East Hall 217,Deb Tech
+70603,BADM,481,DT1,3,Promotional Management,17/25,0,,,,Deb Tech
+74412,BADM,482,D01,3,Business Policy and Strategy,15/25,0,TuTh,1300-1415,East Hall 010,
+74413,BADM,482,DT1,3,Business Policy and Strategy,5/25,0,,,,
+75177,BADM,494,DZ1,1 TO 12,Internship,5/5,0,,,,Deb Tech
+80677,BADM,730,DT1,3,Supply Chain Management,22/25,0,,,,
+80678,BADM,755,DT1,3,Organizational Behavior & Human Resources Management Process,14/25,0,,,,
+80679,BADM,782,DT1,3,Strategic Management and Decision Making,16/25,0,,,,
+72812,CHEM,112,D01,3,General Chemistry I,23/40,0,MWF,0900-0950,Ruth Habeger Science Center 135,Jeffrey E Elbert
+73561,CHEM,112L,D01,1,General Chemistry I Lab,12/20,0,Tu,1300-1450,Ruth Habeger Science Center 136,Jeffrey E Elbert
+73562,CHEM,112L,D02,1,General Chemistry I Lab,12/20,0,Tu,0800-0950,Ruth Habeger Science Center 136,Jeffrey E Elbert
+73559,CHEM,326,D01,3,Organic Chemistry I,5/10,0,MWF,1200-1250,Ruth Habeger Science Center 139,Jeffrey E Elbert
+80715,CHEM,326,DT1,3,Organic Chemistry I,7/15,0,,,,Jeffrey E Elbert
+73560,CHEM,326L,D01,1,Organic Chemistry I Lab,5/10,0,Th,1000-1250,Ruth Habeger Science Center 139,Jeffrey E Elbert
+80716,CHEM,326L,DT1,1,Organic Chemistry I Lab,7/15,0,,,,Jeffrey E Elbert
+72820,CHEM,498,D01,1 TO 12,Research,10/10,0,,,,Jeffrey E Elbert
+80640,CIV,100,D01,3,American Civics,1/24,0,MWF,1100-1150,Beadle Hall 302,Abbey Shimer
+80641,CIV,100,D02,3,American Civics,18/24,0,MWF,1400-1450,Beadle Hall 302,Abbey Shimer
+80642,CIV,100,DT1,3,American Civics,21/24,0,,,,Abbey Shimer
+75723,CMST,101,D01,3,Foundations of Communication,21/24,0,MWF,0900-0950,Beadle Hall 109,Bethany R Lutovsky
+75724,CMST,101,D02,3,Foundations of Communication,20/24,0,MWF,1000-1050,Beadle Hall 206,Kelly D MacLeod
+75725,CMST,101,D03,3,Foundations of Communication,23/24,0,MWF,1100-1150,Beadle Hall 206,Kelly D MacLeod
+75726,CMST,101,D04,3,Foundations of Communication,20/24,0,TuTh,0930-1045,Beadle Hall 205,Bethany R Lutovsky
+75727,CMST,101,D05,3,Foundations of Communication,24/24,0,TuTh,1100-1215,Beadle Hall 205,Bethany R Lutovsky
+75728,CMST,101,DEM,3,Foundations of Communication,24/24,0,TuTh,1340-1455,Off Campus MADIHS,Bethany R Lutovsky
+75729,CMST,101,DT1,3,Foundations of Communication,12/25,0,,,,
+75730,CMST,101,DT2,3,Foundations of Communication,24/25,0,,,,
+75731,CMST,101,DT3,3,Foundations of Communication,24/25,0,,,,
+75732,CMST,101,DT4,3,Foundations of Communication,25/25,0,,,,
+75733,CMST,101,DT5,3,Foundations of Communication,25/25,0,,,,
+76173,CMST,101,DT6,3,Foundations of Communication,25/25,0,,,,
+75734,CMST,215,DH1,3,Honors: Public Speaking,11/24,0,MWF,1100-1150,Beadle Hall 205,Matthew Bruce Ingram
+79215,CMST,215,DH2,3,Honors: Public Speaking,23/24,0,MWF,1500-1550,Beadle Hall 205,Matthew Bruce Ingram
+77923,CET,432,DT1,3,Esports Foundations and Systems,14/15,0,,,,Kevin D Smith
+77924,CET,532,DT1,3,Esports Foundations and Systems,10/10,0,,,,Kevin D Smith
+80692,CET,712,DT1,3,Instructional Design for Interactive Learning,14/25,0,,,,Megan Nicole Schuh
+72181,CET,756,DT1,3,Introduction to Instructional Programming,22/25,0,,,,Tina Boldt-Belden
+78758,CET,785,DT1,3,Research Methods in Education Technology,18/25,0,,,,Katie Lyn Anderson
+72997,GAME,101,D01,1,Game Design Core Experience,39/40,0,W,1200-1250,Beacom Institute of Technology 135,Peter C Britton
+79285,GAME,110,DT1,3,Introduction to Esports,18/25,0,,,,Andy William Roland
+73005,GAME,111,D01,3,Introduction to Game Design,23/24,0,TuTh,1100-1215,Beacom Institute of Technology 135,Peter C Britton
+73008,GAME,220,D01,3,Game Programming Tools,10/27,0,MWF,1400-1450,Beacom Institute of Technology 135,Peter C Britton
+73010,GAME,261,D01,3,Worldbuilding,12/30,0,TuTh,1100-1215,Beacom Institute of Technology 135,Erik John Pederson
+73014,GAME,333,D01,3,Project and Process I,16/24,0,MWF,0800-0850,Beacom Institute of Technology 135,Peter C Britton/Erik John Pederson
+81154,GAME,355,D01,3,Experimental Games I,25/25,0,TuTh,1300-1415,Beacom Institute of Technology 131,Erik John Pederson
+75355,GAME,363,D01,3,Game Genres: Deep Games,21/24,0,MWF,1100-1150,Beacom Institute of Technology 135,Erik John Pederson
+73017,GAME,365,D01,3,Classical Myth and Media,11/12,0,TuTh,0930-1045,Beacom Institute of Technology 135,Erik John Pederson
+73041,GAME,444,D01,3,Project Development I,16/24,0,MWF,0800-0850,Beacom Institute of Technology 135,Peter C Britton/Erik John Pederson
+75738,GAME,475,D01,3,Level Design II,16/24,0,TuTh,1300-1415,Beacom Institute of Technology 135,Peter C Britton
+78092,GAME,487,DT1,3,"Facility, Risk, and Event Management in Sports",24/25,0,,,,Scott Wayne Klungseth
+72823,CIS,123,D01,3,Problem Solving & Programming,17/25,0,MWF,1400-1450,East Hall 003,Mohammad Tafiqur Rahman
+72826,CIS,123,DT1,3,Problem Solving & Programming,1/25,0,,,,Mohammad Tafiqur Rahman
+80771,CIS,123,DT2,3,Problem Solving & Programming,14/25,0,,,,
+74750,CIS,206,DT1,1,Adv Comp Appl:,13/25,0,,,,Laxmi Manasa Gorugantu
+74755,CIS,207,DT1,1,Advanced Applications: Spreadsheet,0/25,0,,,,Laxmi Manasa Gorugantu
+74756,CIS,208,DT1,1,Advanced Applications: Database,13/25,0,,,,Laxmi Manasa Gorugantu
+75253,CIS,210,D01,1,QuickBooks I,10/25,0,TuTh,1100-1215,East Hall 010,Wendy Simmermon
+74704,CIS,210,DT1,1,QuickBooks I,22/25,0,,,,Wendy Simmermon
+75254,CIS,211,D01,1,Quickbooks II,12/25,0,TuTh,1100-1215,East Hall 010,Wendy Simmermon
+74705,CIS,211,DT1,1,Quickbooks II,21/25,0,,,,Wendy Simmermon
+73564,CIS,275,D01,3,Web Application Programming I,17/25,0,TuTh,0930-1045,East Hall 003,Mohammad Tafiqur Rahman
+73565,CIS,275,DT1,3,Web Application Programming I,24/25,0,,,,Mohammad Tafiqur Rahman
+72940,CIS,325,D01,3,Management Information Systems,0/25,0,MWF,1100-1150,Kennedy Center 117,Laxmi Manasa Gorugantu
+72941,CIS,325,DT1,3,Management Information Systems,0/25,2,,,,Abeer Alkhwaldi
+72944,CIS,332,D01,3,Structured Systems Analysis and Design,16/25,0,TuTh,1300-1415,East Hall 018,Laxmi Manasa Gorugantu
+72948,CIS,332,DT1,3,Structured Systems Analysis and Design,21/25,0,,,,Laxmi Manasa Gorugantu
+72965,CIS,372,D01,3,Programming for Analytics,7/25,0,TuTh,1100-1215,East Hall 003,Andy Behrens
+72968,CIS,372,DT1,3,Programming for Analytics,16/25,0,,,,Andy Behrens
+72970,CIS,375,DT1,3,Web Application Programming II,22/25,0,,,,Mohammad Tafiqur Rahman
+77907,CIS,378,D01,3,Applied Artificial Intelligence and Applications,25/25,0,TuTh,1100-1215,Tunheim Classroom Building 111,David Zeng
+77908,CIS,378,DT1,3,Applied Artificial Intelligence and Applications,25/25,0,,,,David Zeng
+75164,CIS,438,D01,3,Advanced Project Management,23/25,0,TuTh,0930-1045,Tunheim Classroom Building 109,Cherie B Noteboom
+72976,CIS,438,DT1,3,Advanced Project Management,19/25,0,,,,Cherie B Noteboom
+75165,CIS,474,D01,3,Business Intelligence and Big Data,19/25,0,MWF,0900-0950,East Hall 108,Abeer Alkhwaldi
+75166,CIS,474,DT1,3,Business Intelligence and Big Data,22/25,0,,,,Abeer Alkhwaldi
+72983,CIS,484,D01,3,Database Management Systems,11/25,0,MWF,1000-1050,East Hall 010,Abeer Alkhwaldi
+72990,CIS,484,DT1,3,Database Management Systems,21/25,0,,,,Abeer Alkhwaldi
+72998,CIS,494,DZ1,1 TO 8,Internship,5/5,0,,,,Deb Tech
+73629,CSC,105,D01,3,Introduction to Computers,24/24,0,MWF,0800-0850,East Hall 108,Farishta Rahman
+73631,CSC,105,D02,3,Introduction to Computers,23/24,0,MWF,0900-0950,Beacom Institute of Technology 112,Jennifer Annette Funke
+73635,CSC,105,D03,3,Introduction to Computers,19/24,0,MWF,1000-1050,Beacom Institute of Technology 112,Jennifer Annette Funke
+73639,CSC,105,D04,3,Introduction to Computers,24/24,0,MWF,1100-1150,East Hall 108,Farishta Rahman
+73641,CSC,105,D05,3,Introduction to Computers,24/24,0,MWF,1500-1550,Beacom Institute of Technology 112,Jennifer Annette Funke
+73642,CSC,105,D06,3,Introduction to Computers,24/24,0,TuTh,0800-0915,Beacom Institute of Technology 112,
+73643,CSC,105,D07,3,Introduction to Computers,24/24,0,TuTh,0930-1045,Beacom Institute of Technology 112,Kathy Engbrecht
+73645,CSC,105,D08,3,Introduction to Computers,24/24,0,TuTh,1100-1215,Beacom Institute of Technology 112,Kathy Engbrecht
+73647,CSC,105,D09,3,Introduction to Computers,25/25,0,TuTh,1430-1545,Beacom Institute of Technology 117,Farishta Rahman
+73648,CSC,105,D10,3,Introduction to Computers,24/24,0,MWF,1400-1450,Beacom Institute of Technology 112,Jennifer Annette Funke
+73652,CSC,105,DH1,3,Introduction to Computers,0/0,0,MTuWThF,0800-0825,East Hall 100,
+73653,CSC,105,DH2,3,Introduction to Computers,23/25,0,MTuWThF,1100-1125,East Hall 100,Tom L Halverson
+71508,CSC,105,DT1,3,Introduction to Computers,20/25,0,,,,Farishta Rahman
+72782,CSC,105,DT2,3,Introduction to Computers,23/25,0,,,,Steven Parker Gingras
+72784,CSC,105,DT3,3,Introduction to Computers,25/25,0,,,,Steven Parker Gingras
+73850,CSC,134,D01,3,Introduction to Cyber,22/25,0,MWF,0900-0950,Beacom Institute of Technology 117,Jenny Leigh Schulte
+73851,CSC,134,D02,3,Introduction to Cyber,20/25,0,MWF,1000-1050,Beacom Institute of Technology 117,
+73852,CSC,134,D03,3,Introduction to Cyber,21/25,0,MWF,1100-1150LocationTBD,,
+79564,CSC,134,DCA,3,Introduction to Cyber,25/25,0,,,,Jenny Leigh Schulte
+71510,CSC,134,DT1,3,Introduction to Cyber,17/25,0,,,,Gillian Anne Morris
+81043,CSC,134,DT2,3,Introduction to Cyber,25/25,0,,,,Jenny Leigh Schulte
+72793,CSC,145,DT1,3,Cyber Security Fundamentals,-2/0,0,,,,
+71512,CSC,150,D01,3,Computer Science I,23/24,0,MWF,0900-0950,Beacom Institute of Technology 213,
+73854,CSC,150,D02,3,Computer Science I,17/24,0,MWF,1000-1050,Beacom Institute of Technology 213,
+73855,CSC,150,D03,3,Computer Science I,24/24,0,MWF,1100-1150,Kennedy Center 112,
+73857,CSC,150,D04,3,Computer Science I,23/24,0,TuTh,1300-1415,Beacom Institute of Technology 112,
+73853,CSC,150,D05,3,Computer Science I,24/24,0,TuTh,1430-1545,Beacom Institute of Technology 112,
+73856,CSC,150,D06,3,Computer Science I,24/24,0,MWF,1500-1550,Kennedy Center 112,
+77936,CSC,150,DC2,3,Computer Science I,0/0,0,,,,
+77935,CSC,150,DCA,3,Computer Science I,25/25,0,,,,Nicholas Daniel Handberg
+73858,CSC,150,DH1,3,Computer Science I,0/0,0,MTuWThF,0826-0850,East Hall 100,
+73862,CSC,150,DH2,3,Computer Science I,24/25,0,MTuWThF,1126-1150,East Hall 100,Tom L Halverson
+71511,CSC,150,DT1,3,Computer Science I,20/25,0,,,,
+72794,CSC,150,DT2,3,Computer Science I,25/25,0,,,,
+72796,CSC,150,DT4,3,Computer Science I,24/25,0,,,,Zainab Albujasim
+76592,CSC,161,D01,3,"Computer Hardware, Data Communications, and Networking",24/25,0,MWF,1000-1050,East Hall 108,
+76593,CSC,161,D02,3,"Computer Hardware, Data Communications, and Networking",23/25,0,MWF,1100-1150,Beacom Institute of Technology 112,Jennifer Annette Funke
+74934,CSC,163,D01,3,Hardware Virtualization and Data Communication,17/25,0,MWF,0800-0850,East Hall 018,Rob Allen Richardson
+75039,CSC,163,DEC,3,Hardware Virtualization and Data Communication,25/25,0,,,,Bradley James Brockmueller
+74935,CSC,163,DT1,3,Hardware Virtualization and Data Communication,18/25,0,,,,Eric A Holm
+74936,CSC,163,DT2,3,Hardware Virtualization and Data Communication,24/25,0,,,,Eric A Holm
+80727,CSC,230,D01,1,Tech Foundations: Ethics,20/25,0,TuTh,1100-1215,East Hall 201,
+80728,CSC,230,DT1,1,Tech Foundations: Ethics,17/25,0,,,,
+77946,CSC,232,D01,1,Tech Foundations: Scripting,20/25,0,TuTh,1100-1215,East Hall 201,
+77947,CSC,232,DT1,1,Tech Foundations: Scripting,18/25,0,,,,
+80729,CSC,233,D01,1,Tech Foundations: Secure AI Lifecycle,21/25,0,TuTh,1100-1215,East Hall 201,
+80748,CSC,233,DT1,1,Tech Foundations: Secure AI Lifecycle,20/25,0,,,,
+73868,CSC,234,D01,3,Software Security,15/25,0,TuTh,0800-0915,East Hall 018,Rob Allen Richardson
+73869,CSC,234,D02,3,Software Security,0/25,0,TuTh,0930-1045,East Hall 018,Ahmad Tawfiq Al-Hammouri
+73870,CSC,234,D03,3,Software Security,1/25,0,TuTh,1100-1215,Beacom Institute of Technology 231,
+73871,CSC,234,D04,3,Software Security,14/25,0,TuTh,1430-1545,East Hall 018,Rob Allen Richardson
+74951,CSC,234,D05,3,Software Security,11/25,0,TuTh,0930-1045,Beacom Institute of Technology 231,Shawn Gregory Zwach
+73872,CSC,234,DT1,3,Software Security,9/25,0,,,,Rob Allen Richardson
+73874,CSC,234,DT2,3,Software Security,24/25,0,,,,Ahmad Tawfiq Al-Hammouri
+74741,CSC,234,DT3,3,Software Security,22/25,0,,,,
+77948,CSC,247,D01,3,Introduction to Artificial Intelligence,17/25,0,MWF,1500-1550,East Hall 108,
+77949,CSC,247,DT1,3,Introduction to Artificial Intelligence,19/25,0,,,,
+73894,CSC,250,D01,3,Computer Science II,23/25,0,MWF,1400-1450,East Hall 108,Nicholas Daniel Handberg
+73896,CSC,250,D02,3,Computer Science II,22/25,0,MWF,1100-1150,Beacom Institute of Technology 117,Nicholas Daniel Handberg
+79136,CSC,250,D03,3,Computer Science II,23/25,0,MWF,1100-1150,Beacom Institute of Technology 213,
+79565,CSC,250,DCA,3,Computer Science II,25/25,0,,,,Nicholas Daniel Handberg
+73898,CSC,250,DT1,3,Computer Science II,11/25,0,,,,Sophia Ivy Lewis
+73899,CSC,250,DT2,3,Computer Science II,23/25,0,,,,Sophia Ivy Lewis
+73900,CSC,250,DT3,3,Computer Science II,25/25,0,,,,
+73902,CSC,260,D01,3,Object Oriented Design,1/25,0,TuTh,1430-1545,East Hall 100,Nicholas Daniel Handberg
+73903,CSC,260,DT1,3,Object Oriented Design,16/25,0,,,,Nicholas Daniel Handberg
+76009,CSC,274,D01,3,Creative Coding,16/20,0,TuTh,0930-1045,East Hall 100,
+79604,CSC,275,D01,3,Introduction to Quantum Computing,21/25,0,MWF,1000-1050,East Hall 018,Peng Guo
+79603,CSC,275,DT1,3,Introduction to Quantum Computing,25/25,0,,,,Peng Guo
+74937,CSC,285,D01,3,Networking I,20/25,0,TuTh,0800-0915,Beacom Institute of Technology 213,Brent L Tulloss
+74938,CSC,285,D02,3,Networking I,9/25,0,TuTh,1100-1215,Beacom Institute of Technology 213,Brent L Tulloss
+74939,CSC,285,D03,3,Networking I,14/25,0,TuTh,1300-1415,Beacom Institute of Technology 213,Brent L Tulloss
+74940,CSC,285,D04,3,Networking I,24/25,0,TuTh,1430-1545,Beacom Institute of Technology 213,Brent L Tulloss
+74941,CSC,285,DT1,3,Networking I,11/25,0,,,,
+74942,CSC,285,DT2,3,Networking I,22/25,0,,,,
+73905,CSC,300,D02,3,Data Structures,13/25,0,MWF,1500-1550,East Hall 010,Youssef Harrath
+73906,CSC,300,D03,3,Data Structures,17/50,0,MWF,0900-0950,East Hall 100,Tom L Halverson
+73907,CSC,300,D04,3,Data Structures,2/25,0,MWF,1000-1050,East Hall 003,Christina Yemane Mulu
+75757,CSC,300,D05,3,Data Structures,18/25,0,MWF,0800-0850,East Hall 003,Christina Yemane Mulu
+73909,CSC,300,DT1,3,Data Structures,10/25,0,,,,Christina Yemane Mulu
+73911,CSC,300,DT4,3,Data Structures,18/25,0,,,,Youssef Harrath
+73912,CSC,314,D01,3,Assembly Language,2/25,0,MWF,1400-1450,East Hall 100,Tom L Halverson
+81236,CSC,314,D02,3,Assembly Language,23/25,0,MWF,0800-0850,East Hall 100,Tom L Halverson
+75313,CSC,314,D03,3,Assembly Language,5/25,0,MWF,1500-1550,East Hall 100,Ahmad Tawfiq Al-Hammouri
+73859,CSC,314,DT1,3,Assembly Language,12/25,0,,,,Ahmad Tawfiq Al-Hammouri
+73860,CSC,314,DT2,3,Assembly Language,24/25,0,,,,Jihene Kaabi Ep Harrath
+73861,CSC,321,D01,3,Cyber Law and Policy,1/25,0,MWF,1400-1450,Beacom Institute of Technology 117,Milinda Rambel-Stone
+73863,CSC,321,D02,3,Cyber Law and Policy,19/25,0,MWF,1500-1550,Beacom Institute of Technology 117,Milinda Rambel-Stone
+73864,CSC,321,DT1,3,Cyber Law and Policy,7/25,0,,,,Steven Parker Gingras
+73865,CSC,321,DT2,3,Cyber Law and Policy,25/25,0,,,,Steven Parker Gingras
+76533,CSC,334,D01,3,Web Development,11/25,0,TuTh,0800-0915,Beacom Institute of Technology 117,Aaron David Ingalls
+76534,CSC,334,D02,3,Web Development,0/25,0,TuTh,0930-1045,Beacom Institute of Technology 117,Aaron David Ingalls
+76535,CSC,334,D03,3,Web Development,0/25,0,TuTh,1100-1215,Beacom Institute of Technology 117,Aaron David Ingalls
+76465,CSC,334,DT1,3,Web Development,1/25,0,,,,Aaron David Ingalls
+76536,CSC,334,DT2,3,Web Development,22/25,0,,,,Aaron David Ingalls
+76587,CSC,376,DT1,3,Web Development Environments,17/25,0,,,,Aaron David Ingalls
+73873,CSC,387,D01,5,Routing and Switching,0/24,2,MWF,1100-1225,Beacom Institute of Technology 231,Pat H Engebretson
+73875,CSC,387,D02,5,Routing and Switching,13/25,0,MWF,1400-1525,Beacom Institute of Technology 231,Pat H Engebretson
+73876,CSC,387,DT1,5,Routing and Switching,12/25,0,,,,Pat H Engebretson
+73877,CSC,388,D01,3,Computer Forensics Fundamentals,0/25,4,TuTh,1100-1215,East Hall 018,Jenny Leigh Schulte
+73878,CSC,388,DT1,3,Computer Forensics Fundamentals,16/25,0,,,,Steven Parker Gingras
+81242,CSC,389,DT1,1,Cisco Networking Academy,25/25,0,,,,Pat H Engebretson
+75831,CSC,402,D01,3,Mathematical Foundations of Artificial Intelligence,1/25,0,MW,1500-1615,East Hall 018,Mark A Spanier
+75832,CSC,402,DT1,3,Mathematical Foundations of Artificial Intelligence,15/25,0,,,,Mark A Spanier
+79133,CSC,409,D01,3,Operating Environments,0/25,3,TuTh,0930-1045,Beacom Institute of Technology 213,Brent L Tulloss
+81041,CSC,409,D02,3,Operating Environments,13/25,0,MWF,0800-0850,Beacom Institute of Technology 213,Jackson Gregory Heiberger
+79134,CSC,409,DT1,3,Operating Environments,3/25,0,,,,Brent L Tulloss
+73880,CSC,410,D01,3,Parallel Computing,0/50,1,MWF,1000-1050,East Hall 100,Tom L Halverson
+73881,CSC,410,DT1,3,Parallel Computing,1/25,0,,,,Christina Yemane Mulu
+72973,CSC,418,DT1,3,Advanced Computer Forensics,-5/25,2,,,,Quentin Michael Covert
+81042,CSC,418,DT2,3,Advanced Computer Forensics,20/25,0,,,,Quentin Michael Covert
+73883,CSC,420,D01,3,Cellular and Mobile Communications,0/25,0,MWF,0900-0950,Beacom Institute of Technology 233,Kyle L Cronin
+73884,CSC,420,D02,3,Cellular and Mobile Communications,0/25,1,MWF,1000-1050,Beacom Institute of Technology 233,Kyle L Cronin
+73885,CSC,420,D03,3,Cellular and Mobile Communications,0/25,1,MWF,1100-1150,Beacom Institute of Technology 233,Shawn Gregory Zwach
+73886,CSC,420,DT1,3,Cellular and Mobile Communications,0/25,0,,,,Kyle L Cronin
+73888,CSC,420,DT2,3,Cellular and Mobile Communications,24/25,0,,,,Shawn Gregory Zwach
+74118,CSC,428,D01,3,Reverse Engineering,0/25,8,TuTh,1300-1415,Beacom Institute of Technology 231,Andrew W Kramer
+74119,CSC,428,D02,3,Reverse Engineering,0/25,1,TuTh,1430-1545,Beacom Institute of Technology 231,Ahmad Tawfiq Al-Hammouri
+74120,CSC,428,DT1,3,Reverse Engineering,0/25,0,,,,
+77937,CSC,428,DT2,3,Reverse Engineering,21/25,0,,,,
+74121,CSC,430,D01,3,Windows Administration,0/25,1,TuTh,1300-1415,Beacom Institute of Technology 117,Jackson Gregory Heiberger
+74122,CSC,430,DT1,3,Windows Administration,2/25,0,,,,Jackson Gregory Heiberger
+74123,CSC,436,D01,3,Offensive Network Security,0/25,1,TuTh,1100-1215,Beacom Institute of Technology 233,Tyler Jerome Flaagan
+74124,CSC,436,D02,3,Offensive Network Security,0/25,2,TuTh,0930-1045,Beacom Institute of Technology 233,Tyler Jerome Flaagan
+74125,CSC,436,D03,3,Offensive Network Security,10/25,0,TuTh,0800-0915,Beacom Institute of Technology 231,
+74126,CSC,436,DT1,3,Offensive Network Security,0/25,1,,,,Tyler Jerome Flaagan
+74127,CSC,436,DT2,3,Offensive Network Security,0/25,0,,,,
+77938,CSC,437,DT1,3,Survey of Enterprise Systems,0/25,3,,,,Jackson Gregory Heiberger
+76232,CSC,439,D01,3,Threat Hunting and Incident Response,0/25,2,TuTh,0800-0915,East Hall 010,Cody Michael Welu
+77939,CSC,439,D02,3,Threat Hunting and Incident Response,0/25,3,TuTh,1300-1415,Beacom Institute of Technology 233,Cody Michael Welu
+81039,CSC,439,D03,3,Threat Hunting and Incident Response,18/25,0,TuTh,1600-1750,Beacom Institute of Technology 231,
+76233,CSC,439,DT1,3,Threat Hunting and Incident Response,0/25,1,,,,Cody Michael Welu
+77940,CSC,439,DT2,3,Threat Hunting and Incident Response,0/25,0,,,,Kyle Ronald Korman
+81040,CSC,439,DT3,3,Threat Hunting and Incident Response,21/25,0,,,,
+74128,CSC,447,D01,3,Artificial Intelligence,4/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,Jason Mixon
+74129,CSC,447,DT1,3,Artificial Intelligence,0/25,0,,,,Jason Mixon
+74130,CSC,461,D01,3,Programming Languages,0/25,8,TuTh,1100-1215,East Hall 108,Samuel W Flint
+74131,CSC,461,D02,3,Programming Languages,1/25,0,TuTh,1300-1415,East Hall 108,Zainab Albujasim
+74132,CSC,461,DT1,3,Programming Languages,0/25,0,,,,Samuel W Flint
+74256,CSC,461,DT2,3,Programming Languages,20/25,0,,,,Samuel W Flint
+74257,CSC,470,D01,3,Software Engineering,7/25,0,TuTh,1300-1415,East Hall 100,Jason S Jenkins
+79130,CSC,470,D02,3,Software Engineering,1/25,0,MWF,0900-0950,Beacom Institute of Technology 231,Jared T Soundy
+74258,CSC,470,DT1,3,Software Engineering,7/25,0,,,,Jared T Soundy
+74259,CSC,470,DT2,3,Software Engineering,18/25,0,,,,Jason S Jenkins
+78298,CSC,478,D01,3,Artificial Intelligence Tools and Frameworks,18/25,0,TuTh,1600-1715,East Hall 108,Jason Mixon
+78299,CSC,478,DT1,3,Artificial Intelligence Tools and Frameworks,19/25,0,,,,Jason Mixon
+74260,CSC,482,D01,3,Algorithms and Optimization,13/25,0,TuTh,1600-1715,East Hall 003,Khandaker Mamun Ahmed
+74988,CSC,482,D02,3,Algorithms and Optimization,1/25,0,TuTh,1430-1545,East Hall 003,Khandaker Mamun Ahmed
+74261,CSC,482,DT1,3,Algorithms and Optimization,6/25,0,,,,John D Hastings
+74262,CSC,482,DT2,3,Algorithms and Optimization,22/25,0,,,,John D Hastings
+77913,CSC,494,DZ1,1 TO 8,Internship,5/5,0,,,,Kathy Engbrecht
+74264,CSC,498,D01,3,Research,25/25,0,,,,Tom L Halverson
+75758,CSC,502,D01,3,Mathematical Foundations of Artificial Intelligence,25/25,0,MW,1500-1615,East Hall 018,Mark A Spanier
+75759,CSC,502,DT1,3,Mathematical Foundations of Artificial Intelligence,14/25,0,,,,Mark A Spanier
+79117,CSC,528,DT1,3,Reverse Engineering,24/25,0,,,,
+78404,CSC,561,D01,3,Programming Languages,25/25,0,TuTh,1100-1215,East Hall 108,Samuel W Flint
+76466,CSC,561,DT1,3,Programming Languages,25/25,0,,,,Samuel W Flint
+76857,CSC,570,DT1,3,Software Engineering,24/25,0,,,,Jason S Jenkins
+77942,CSC,578,D01,3,Artificial Intelligence Tools and Frameworks,22/25,0,TuTh,1600-1715,Beacom Institute of Technology 233,Jason Mixon
+77943,CSC,578,DT1,3,Artificial Intelligence Tools and Frameworks,17/25,0,,,,Jason Mixon
+81109,CSC,582,D01,3,Algorithms and Optimization,25/25,0,TuTh,1430-1545LocationTBD,,
+81108,CSC,582,DT1,3,Algorithms and Optimization,25/25,0,,,,
+79135,CSC,609,DT1,3,Operating Environments,25/25,0,,,,Jackson Gregory Heiberger
+80749,CSC,611,DT1,3,"Cybersecurity Policy, Law, and Ethics for Educators",23/25,0,,,,Jenny Leigh Schulte
+80750,CSC,611,DT2,3,"Cybersecurity Policy, Law, and Ethics for Educators",25/25,0,,,,Jenny Leigh Schulte
+80751,CSC,613,DT1,3,Artificial Intelligence for Educators,21/25,0,,,,
+80752,CSC,613,DT2,3,Artificial Intelligence for Educators,25/25,0,,,,
+79131,CSC,702,D01,3,Mathematics of A.I.,21/25,0,MWF,1000-1050,Beacom Institute of Technology 231,Jared T Soundy
+79132,CSC,702,DT1,3,Mathematics of A.I.,14/25,0,,,,Jared T Soundy
+79120,CSC,705,D01,3,Design and Analysis of Computer Algorithms,24/25,0,MWF,1600-1650,East Hall 010,Youssef Harrath
+79122,CSC,705,DT1,3,Design and Analysis of Computer Algorithms,23/25,0,,,,Youssef Harrath
+74271,CSC,718,D01,3,Operating Systems & Parallel Programming,17/25,0,TuTh,1430-1545,Kennedy Center 105,Abid Mehmood
+74273,CSC,718,DT1,3,Operating Systems & Parallel Programming,5/25,0,,,,
+74290,CSC,722,D01,3,Machine Learning Fundamentals,21/25,0,MW,1400-1515,Beacom Institute of Technology 233,Austin F O'Brien
+74293,CSC,722,DT1,3,Machine Learning Fundamentals,0/25,1,,,,Austin F O'Brien
+76856,CSC,722,DT2,3,Machine Learning Fundamentals,8/25,0,,,,
+74990,CSC,748,DT1,3,Software Exploitation,8/25,0,,,,Andrew W Kramer
+79116,CSC,761,D01,3,Advanced Artificial Intelligence,25/25,0,TuTh,1730-1815,East Hall 003,Khandaker Mamun Ahmed
+79107,CSC,761,DT1,3,Advanced Artificial Intelligence,17/25,0,,,,Khandaker Mamun Ahmed
+81245,CSC,761,DT2,3,Advanced Artificial Intelligence,25/25,0,,,,Zainab Albujasim
+79119,CSC,763,DT1,3,Quantum Computing Fundamentals,21/25,0,,,,Peng Guo
+79602,CSC,767,DT1,3,Quantum-resilient Cryptography,23/25,0,,,,Mariam Gado
+81241,CSC,774,DT1,3,Reverse Engineering,17/25,0,,,,Michael J Ham
+79601,CSC,782,DT1,3,Collaborative Cyber Security Research,-1/0,1,,,,
+74991,CSC,786,D01,3,Computer Science Problems,21/25,0,TuTh,1300-1415,Kennedy Center 105,Abid Mehmood
+74992,CSC,786,DT1,3,Computer Science Problems,20/25,0,,,,Abid Mehmood
+80958,CSC,789,DT1,3,A.I. Capstone,18/20,0,,,,
+73913,CSC,803,DT1,3,Introduction to Research,8/25,0,,,,David Lynn Kenley
+79127,CSC,803,DT2,3,Introduction to Research,23/25,0,,,,Jihene Kaabi Ep Harrath
+71203,CSC,807,DT1,3,Computer and Cyber Science Research Design and Implementation,0/25,7,,,,John D Hastings
+76855,CSC,809,DT1,3,Dissertation Preparation,9/25,0,,,,Varghese Mathew Vaidyan
+71205,CSC,840,DT1,3,Cyber Operations I,10/25,0,,,,Michael J Ham
+75933,CSC,846,DT1,3,Advanced Malware Analysis,2/24,0,,,,Michael J Ham
+76854,CSC,890,DT1,1,SEM: Computer Sci and Cyber Op,11/25,0,,,,Varghese Mathew Vaidyan
+77944,CSC,890,DT2,1,Sem: Cyber Ops Residency,8/25,0,,,,Michael J Ham
+79124,CSC,890,DT3,1,Sem: Cyber Defense Research,3/25,0,,,,John D Hastings
+80914,CSC,890,DT4,1,Sem: Cyber Defense Residency,12/25,0,,,,Kyle L Cronin
+79387,CSC,898D,D01,1 TO 12,Dissertation,4/5,0,,,,Varghese Mathew Vaidyan
+78102,CSC,898D,DT1,1 TO 12,Dissertation,3/5,0,,,,Michael J Ham
+78201,CSC,898D,DT2,1 TO 12,Dissertation,3/5,0,,,,Tyler Jerome Flaagan
+78258,CSC,898D,DT3,1 TO 12,Dissertation,4/5,0,,,,Cody Michael Welu
+78341,CSC,898D,DT4,1 TO 12,Dissertation,4/5,0,,,,Mark A Spanier
+78382,CSC,898D,DT5,1 TO 12,Dissertation,4/5,0,,,,Kyle Ronald Korman
+80972,CSC,898D,DT6,1 TO 12,Dissertation,3/5,0,,,,John D Hastings
+80976,CSC,898D,DT7,1 TO 12,Dissertation,4/5,0,,,,Youssef Harrath
+80978,CSC,898D,DT8,1 TO 12,Dissertation,4/5,0,,,,Andrew W Kramer
+81112,CSC,898D,DT9,1 TO 12,Dissertation,3/5,0,,,,Chad R Fenner
+81316,CSC,898D,DTA,1 TO 12,Dissertation,4/5,0,,,,Pat H Engebretson
+73553,CLI,101,D01,3,Introduction to Cyber Leadership,10/13,0,TuTh,1100-1215,Beadle Hall 304,Bill Bendix
+73554,CLI,101,DT1,3,Introduction to Cyber Leadership,8/12,0,,,,Bill Bendix
+75713,CLI,242,D01,3,Cyber Social Science Method and Analysis,13/13,0,MWF,0900-0950,Tunheim Classroom Building 111,Kurt E Kemper
+75714,CLI,242,DT1,3,Cyber Social Science Method and Analysis,10/12,0,,,,Kurt E Kemper
+79219,CLI,440,DT1,3,Cybercrime,17/24,0,,,,
+78118,CLI,470,D01,3,Online Radicalization,7/9,0,MWF,1000-1050,Beadle Hall 304,William Christopher Sewell
+78119,CLI,470,DT1,3,Online Radicalization,3/9,0,,,,William Christopher Sewell
+80968,CLI,492,DT1,3,Top: Great Power Comp in Cyber,12/15,0,,,,
+75390,CLI,494,DZ1,1 TO 3,Internship,25/25,0,,,,Bill Bendix
+75389,CLI,498,D01,3,Research,25/25,0,,,,Bill Bendix
+74738,DAD,110,D01,1,Introduction to Digital Arts and Design,39/40,0,W,1200-1250,Ruth Habeger Science Center 135,Kai Nunnery
+71213,DAD,222,D02,3,Audio Production I: Foundations,14/18,0,MWF,0900-0950,Tunheim Classroom Building 209,Tate Allen Carson
+79216,DAD,280,D01,3,Film Editing,11/20,0,TuTh,1100-1215,Beadle Hall 108,Joseph A Staudenbaur
+80644,DAD,310,D01,3,Sound Design for Film,12/18,0,MWF,1400-1450,Tunheim Classroom Building 209,Tate Allen Carson
+80645,DAD,375,D01,3,Storyboarding,21/24,0,TuTh,0930-1150,Beacom Institute of Technology 114,Konrad N Lightner
+71227,DAD,422,D01,3,Audio Production III  Advanced Techniques and MIDI Music,17/18,0,MWF,1500-1550,Tunheim Classroom Building 209,Tate Allen Carson
+71230,DAD,494,DZ1,3,Internship,25/25,0,,,,Tate Allen Carson
+71239,DAD,498,D01,3,Research,24/25,0,,,,Daniel Lee Welynn
+71241,DAD,498,D02,3,Research,24/25,0,,,,Tim Murray
+71242,DAD,498,D03,3,Research,25/25,0,,,,
+71244,DAD,498,D04,3,Research,25/25,0,,,,
+75104,DAD,498,D05,3,Research,25/25,0,,,,
+75128,DAD,498,D06,3,Research,25/25,0,,,,
+73937,ECON,201,D01,3,Principles of Microeconomics,2/25,0,MWF,0900-0950,East Hall 217,
+70807,ECON,201,DT1,3,Principles of Microeconomics,3/25,0,,,,Daniel A Talley
+74110,ECON,202,D01,3,Principles of Macroeconomics,10/25,0,MWF,1200-1250,East Hall 217,
+74946,ED,488,DZ2,2 TO 16,K-12 Student Teaching,9/10,0,,,,Nicole Marie Steele
+75041,ED,495,DZ1,2,Practicum: English as New Lang,23/25,0,,,,Kindra Jon Schneider
+79600,ED,592,D01,1,Top: Instruct & Assess High Ed,25/25,0,Tu,1400-1450,Tunheim Classroom Building 109,Dr. Mark Hawkes
+74658,EPSY,210,D01,3,Lifespan Development,25/25,0,TuTh,0930-1045,Kennedy Center 112,Dr. Mark Hawkes
+74805,EPSY,210,D02,3,Lifespan Development,20/25,0,MWF,1200-1250,Kennedy Center 104,Julia Price-Lee
+70836,EPSY,210,DT1,3,Lifespan Development,18/25,0,,,,
+70837,EPSY,302,D01,3,Educational Psychology,20/25,0,MWF,1000-1050,Kennedy Center 104,Julia Price-Lee
+70838,EPSY,302,DT1,3,Educational Psychology,8/25,0,,,,
+77928,EDER,431,D01,3,Educational Technology and Assessment,13/25,0,MWF,1200-1250,Kennedy Center 117,Kindra Jon Schneider
+77929,EDER,431,DT1,3,Educational Technology and Assessment,17/25,0,,,,
+77930,EDER,431,DT2,3,Educational Technology and Assessment,6/25,0,,,,
+74874,ELED,303,DT2,3,Earth and Physical Science for Elementary Teachers,24/25,0,,,,Steven S Steele
+74875,ELED,303L,DT2,1,Earth & Physical Science Lab,24/25,0,,,,Steven S Steele
+70593,ELED,320,D01,3,K-8 Science Methods,7/25,0,MWF,0900-0950,Kennedy Center 117,Betsy Lea Schamber
+70594,ELED,320,DT1,3,K-8 Science Methods,16/25,0,,,,Betsy Lea Schamber
+77920,ELED,320,DT2,3,K-8 Science Methods,19/25,0,,,,Jennifer Mae Nash
+70595,ELED,330,D01,3,K-8 Math Methods,7/25,0,MWF,1000-1050,Kennedy Center 117,Kevin D Smith
+77921,ELED,330,DT1,3,K-8 Math Methods,11/25,0,,,,Kevin D Smith
+78076,ELED,330,DT2,3,K-8 Math Methods,18/25,0,,,,Kevin D Smith
+78148,ELED,360,D01,3,K-8 Social Science Methods,7/25,0,MWF,0800-0850,Kennedy Center 117,Megan Nicole Schuh
+76216,ELED,360,DT1,3,K-8 Social Science Methods,9/25,0,,,,Megan Nicole Schuh
+70598,ELED,360,DT2,3,K-8 Social Science Methods,10/25,0,,,,Megan Nicole Schuh
+70599,ELED,361,DT1,2,Social Science for Elementary Teachers,24/25,0,,,,
+77034,ELED,422,DT2,2,K-8 Science & Math Technology,23/25,0,,,,Jennifer Mae Nash
+70601,ELED,440,D01,3,K-8 Language Arts Methods,19/25,0,MWF,1000-1050,Kennedy Center 105,Sheila G Mulder
+70604,ELED,440,DT1,3,K-8 Language Arts Methods,2/25,0,,,,Sheila G Mulder
+80941,ELED,440,DT2,3,K-8 Language Arts Methods,14/25,0,,,,
+75770,ELED,455,D01,3,Evidence-Based Reading (K-3),20/25,0,MWF,0900-0950,Kennedy Center 105,Katie Lyn Anderson
+75965,ELED,455,DT1,3,Evidence-Based Reading (K-3),17/25,0,,,,Katie Lyn Anderson
+76212,ELED,456,DT1,3,Evidence-Based Reading (4-8),19/25,0,,,,
+70692,ELED,459,D01,3,Introduction to Literacy Assessment and Remediation,10/25,0,MWF,1100-1150,Kennedy Center 105,Katie Lyn Anderson
+78207,ELED,459,DT1,3,Introduction to Literacy Assessment and Remediation,0/25,0,,,,Sheila G Mulder
+70694,ELED,459,DT2,3,Introduction to Literacy Assessment and Remediation,13/25,0,,,,Sheila G Mulder
+70697,ELED,462,DT1,3,Teaching English As a New Language,10/25,0,,,,
+70703,ELED,488,DZ1,2 TO 16,K-8 Student Teaching,41/50,0,,,,Nicole Marie Steele
+70704,ELED,495,DZ1,3,Practicum: Kindergarten,23/25,0,,,,Nicole Marie Steele
+76178,ENGL,032,DK1,2,Basic Writing,11/12,0,TuTh,1000-1050,Beadle Hall 010,
+76179,ENGL,032,DK2,2,Basic Writing,12/12,0,TuTh,1100-1150,Beadle Hall 010,
+77836,ENGL,032,DK3,2,Basic Writing,10/12,0,TuTh,1300-1350,Beadle Hall 304,Scott Richardson
+70723,ENGL,033,D06,3,Basic Writing,9/15,0,TuTh,0930-1045,Beadle Hall 109,Scott Richardson
+80643,ENGL,033,DT1,3,Basic Writing,16/20,0,,,,
+70730,ENGL,101,D01,3,Composition I,11/12,0,MWF,1000-1050,Beadle Hall 305,
+70752,ENGL,101,D02,3,Composition I,11/12,0,MWF,1100-1150,Beadle Hall 305,
+70754,ENGL,101,D03,3,Composition I,18/24,0,MWF,1000-1050,Beadle Hall 205,Scott Richardson
+70758,ENGL,101,D05,3,Composition I,22/24,0,TuTh,0930-1045,Beadle Hall 305,Justin L Blessinger
+70760,ENGL,101,D06,3,Composition I,22/24,0,TuTh,1100-1215,Beadle Hall 305,Justin L Blessinger
+70761,ENGL,101,D07,3,Composition I,23/24,0,MWF,0900-0950,Beadle Hall 305,
+77837,ENGL,101,D08,3,Composition I,12/12,0,MWF,1400-1450,Beadle Hall 205,Scott Richardson
+74241,ENGL,101,DH1,3,Honors: Composition I,21/24,0,MWF,0900-0950,Beadle Hall 304,Thomas M Lawson
+74739,ENGL,101,DK1,3,Composition I,11/12,0,MWF,1000-1050,Beadle Hall 305,
+74740,ENGL,101,DK2,3,Composition I,12/12,0,MWF,1100-1150,Beadle Hall 305,
+77839,ENGL,101,DK3,3,Composition I,10/12,0,MWF,1400-1450,Beadle Hall 205,Scott Richardson
+70765,ENGL,101,DT1,3,Composition I,25/25,0,,,,
+74945,ENGL,101,DT2,3,Composition I,22/25,0,,,,
+76822,ENGL,101,DT3,3,Composition I,24/25,0,,,,
+77090,ENGL,201,D01,3,Composition II,16/24,0,TuTh,1430-1545,Beadle Hall 109,Thomas M Lawson
+75735,ENGL,201,D03,3,Composition II,2/24,0,MWF,0900-0950,Beadle Hall 205,Scott Richardson
+70769,ENGL,201,D04,3,Composition II,15/24,0,TuTh,1100-1215,Beadle Hall 109,Thomas M Lawson
+70773,ENGL,201,D05,3,Composition II,11/24,0,MWF,1000-1050,Beadle Hall 006,Justin L Blessinger
+70776,ENGL,201,DT1,3,Composition II,0/25,0,,,,William Christopher Sewell
+77841,ENGL,201,DT2,3,Composition II,22/25,0,,,,William Christopher Sewell
+75439,ENGL,201,DT3,3,Composition II,25/25,0,,,,William Christopher Sewell
+75736,ENGL,268,D01,3,Lit: AI in Lit and Film,8/12,0,TuTh,1300-1415,Beadle Hall 109,Thomas M Lawson
+77843,ENGL,283,DT1,3,Introduction to Creative Writing,11/25,0,,,,
+75737,ENGL,363,D01,3,Lit: AI in Lit and Film,11/12,0,TuTh,1300-1415,Beadle Hall 109,Thomas M Lawson
+80647,ENGL,492,D01,3,ST: Online Radicalization,2/3,0,MWF,1000-1050,Beadle Hall 304,William Christopher Sewell
+80649,ENGL,492,DT1,3,ST: Online Radicalization,1/4,0,,,,William Christopher Sewell
+70830,ENGL,494,DZ1,1 TO 12,Internship,25/25,0,,,,Tate Allen Carson
+70834,ENGL,498,D01,2,Research,1/1,0,,,,
+72798,EXCH,488,D01,0 TO 18,National Student Exchange,10/10,0,,,,Nicole M Claussen
+72807,EXCH,488,D02,0 TO 18,National Student Exchange,10/10,0,,,,Nicole M Claussen
+79878,EXCH,489,D01,0 TO 18,Student Exchange - International,10/10,0,,,,Nicole M Claussen
+79879,EXCH,489,D02,0 TO 18,Student Exchange - International,10/10,0,,,,Nicole M Claussen
+72811,EXS,145,D01,3,Introduction to Exercise Science and Physical Education,22/25,0,TuTh,0930-1045,Kennedy Center 122,Stacy Lynn Anderson
+74414,EXS,350,D01,3,Exercise Physiology,0/25,0,MWF,1100-1150,Kennedy Center 122,Luke Chowning
+74415,EXS,350L,D01,1,Exercise Physiology Lab,5/15,0,Th,1300-1450,Kennedy Center 110,Luke Chowning
+75763,EXS,350L,D02,1,Exercise Physiology Lab,0/15,0,Tu,1300-1450,Kennedy Center 110,Luke Chowning
+75909,EXS,376,D01,3,Technology Integration,13/15,0,TuTh,1230-1345,Kennedy Center 123,Scott Wayne Klungseth
+81088,EXS,452,DT1,3,Motor Learning & Development,21/25,0,,,,Shane David Scholten
+74416,EXS,454,D01,3,Biomechanics,5/25,0,MWF,1200-1250,Kennedy Center 112,Shane David Scholten
+75310,EXS,482,D01,3,Theory of Strength and Conditioning,1/25,0,MWF,0900-0950,Kennedy Center 112,Luke Chowning
+72993,EXS,494,DZ1,1 TO 12,Internship,25/25,0,,,,Luke Chowning
+80856,EXS,498,DT1,2,Research,13/15,0,,,,Luke Chowning
+77926,EDFN,102,D01,3,Introduction to Education,22/25,0,MWF,0900-0950,Kennedy Center 122,Kindra Jon Schneider
+77927,EDFN,102,DT1,3,Introduction to Education,20/25,0,,,,Jennifer Mae Nash
+73939,EDFN,295,DZ1,1 TO 3,Practicum: Pre-Admission,15/15,0,,,,Cotton S Koch
+75864,EDFN,295,DZ4,1 TO 3,Practic:Pre-Admission (online),25/25,0,,,,Cotton S Koch
+74222,EDFN,300,D01,3,Principles of Practices of Teaching Middle School,20/25,0,MWF,1100-1150,Kennedy Center 120,Betsy Lea Schamber
+77917,EDFN,300,DT1,3,Principles of Practices of Teaching Middle School,18/25,0,,,,Betsy Lea Schamber
+73944,EDFN,365,DT1,3,Computer-Based Technology and Learning,21/25,0,,,,Megan Nicole Schuh
+73945,EDFN,365,DT2,3,Computer-Based Technology and Learning,11/25,0,,,,Jennifer Mae Nash
+73948,EDFN,395,DZ1,1,Practicum:Pre-Admission(OSEC),1/1,0,,,,Nicole Marie Steele
+70583,EDFN,440,DT1,3,Classroom Management,19/25,0,,,,Jennifer Ann Munger
+76001,EDFN,440,DT2,3,Classroom Management,19/25,0,,,,Jennifer Ann Munger
+75307,EDFN,460,DT1,3,Applying Linguistics to Teaching English as a Second Language,11/25,0,,,,
+74220,EDFN,475,DT1,3,Human Relations,11/25,0,,,,
+80912,EDFN,764,DT1,1,Literacy Coaching for Differentiated Instruction,25/29,0,,,,Katie Lyn Anderson
+81015,EDFN,764,DT2,1,Literacy Coaching for Differentiated Instruction,29/29,0,,,,Sheila G Mulder
+81016,EDFN,764,DT3,1,Literacy Coaching for Differentiated Instruction,29/29,0,,,,Katie Lyn Anderson
+80913,EDFN,767,DT1,1,School-Wide Literacy Intervention,26/29,0,,,,Sheila G Mulder
+81017,EDFN,767,DT2,1,School-Wide Literacy Intervention,28/29,0,,,,Katie Lyn Anderson
+81018,EDFN,767,DT3,1,School-Wide Literacy Intervention,29/29,0,,,,Sheila G Mulder
+73059,GS,100,DA1,0 TO 1,Univ Exper: Arts & Sciences,49/50,0,W,1200-1250,Beadle Hall 109,Lisa Ann Hardie
+78328,GS,100,DB1,0 TO 1,University Experience,40/40,0,W,1200-1250,East Hall 108,Christine Charlotte Souter
+73062,GS,100,DB2,0 TO 1,University Experience,40/40,0,Th,1200-1250,Tunheim Classroom Building 203,Christine Charlotte Souter
+73060,GS,100,DC1,0 TO 1,University Experience,145/145,0,M,1200-1250,Tunheim Classroom Building 203,Tom L Halverson
+73061,GS,100,DC2,0 TO 1,University Experience,84/85,0,M,1200-1250,East Hall 100,Tom L Halverson
+77918,GS,100,DE1,0 TO 1,University Experience: PE/EXS,25/25,0,Tu,1200-1250,Kennedy Center 117,Addie Mae Borah
+73063,GS,100,DE2,0 TO 1,University Exper: ELED/SPED,25/25,0,W,1200-1250,Kennedy Center 105,Addie Mae Borah
+79573,GS,199,0,0,Section Placeholder,50/50,0,,,,
+77046,GEOG,131,D01,3,Physical Geography: Weather and Climate,17/25,0,MWF,1200-1250,Ruth Habeger Science Center 121,Russell Wayne Graves
+73045,GEOG,131,DT1,3,Physical Geography: Weather and Climate,0/35,0,,,,Russell Wayne Graves
+77047,GEOG,131L,D01,1,Physical Geography  Weather and Climate Lab,17/25,0,Tu,1030-1225,Ruth Habeger Science Center 143,Russell Wayne Graves
+73047,GEOG,131L,DT1,1,Physical Geography  Weather and Climate Lab,0/35,0,,,,Russell Wayne Graves
+79231,GEOG,132,DH1,3,Physical Geography: Natural Landscapes,18/20,0,MWF,1400-1450,Ruth Habeger Science Center 121,Russell Wayne Graves
+79232,GEOG,132L,DH1,1,Physical Geography  Natural Landscapes Lab,18/20,0,Tu,1300-1450,Ruth Habeger Science Center 143,Russell Wayne Graves
+71211,HLTH,201,DT1,2,ATOD Prevention Education,12/25,0,,,,Scott Wayne Klungseth
+75453,HLTH,320,DT1,3,Community Health,11/25,0,,,,Scott Wayne Klungseth
+71174,HLTH,370,DT1,3,Stress Management,14/25,0,,,,Luke Chowning
+80795,HLTH,422,DT1,3,Nutrition,10/25,0,,,,Shane David Scholten
+71152,HIMS,701,DT1,3,Foundations in Healthcare Information,23/25,0,,,,Julie M Wulf Plimpton
+76194,HIMS,742,DT1,3,Health Informatics Information Systems and Technology,20/25,0,,,,Patti Jo Brooks
+80770,HIMS,744,DT1,3,Data Analytics in Healthcare,24/25,0,,,,Patti Jo Brooks
+77911,HIMS,746,DT1,3,"Information, AI, and Data Governance",19/25,0,,,,Renae L Spohn
+76847,HIMS,747,DT1,3,Leadership and Management for Health Informatics,16/25,0,,,,Julie M Wulf Plimpton
+77912,HIMS,758,DT1,3,Workflow and Usability Optimization in Health Informatics,13/25,0,,,,Renae L Spohn
+79180,HIM,150,DT1,3,Introduction to Digital Health Informatics/Information Management,5/25,0,,,,Julie M Wulf Plimpton
+79181,HIM,360,DT1,4,Leadership for Health Informatics and Information Management,24/25,0,,,,Patti Jo Brooks
+79284,HIM,370,DT1,2,Practical Coding Application,25/25,0,,,,Julie M Wulf Plimpton
+79182,HIM,380,DT1,3,Digital Health Data Analytics,22/25,0,,,,Patti Jo Brooks
+77909,HIM,440,DT1,3,Healthcare Information Governance,22/25,0,,,,Renae L Spohn
+80769,HIM,444,DT1,3,Digital Health Technology,19/25,0,,,,Patti Jo Brooks
+79183,HIM,450,DT1,3,Digital Health Informatics and Information Management Research,19/25,0,,,,Renae L Spohn
+71158,HIST,121,D01,3,Western Civilization I,18/25,0,MWF,1000-1050,Beadle Hall 302,Kurt E Kemper
+80650,HIST,151,DH1,3,Honors:United States History I,24/25,0,MWSa,1000-1050,Beadle Hall 109,Abbey Shimer
+77048,HIST,151,DT1,3,United States History I,0/25,0,,,,David Lynn Kenley
+77848,HIST,151,DT2,3,United States History I,6/25,0,,,,
+79613,HIST,151,DT3,3,United States History I,24/25,0,,,,
+79221,HIST,358,D01,3,The United States Since 1941,10/13,0,TuTh,1300-1415,Kennedy Center 119,Kurt E Kemper
+79222,HIST,358,DT1,3,The United States Since 1941,4/12,0,,,,Kurt E Kemper
+71204,HON,102,DH1,1,Introduction to Honors,18/18,0,W,1400-1450,Ruth Habeger Science Center 132,Justin L Blessinger
+71206,HON,102,DH2,1,Introduction to Honors,18/18,0,W,1200-1250,Ruth Habeger Science Center 132,Justin L Blessinger
+76824,HON,102,DH3,1,Introduction to Honors,18/18,0,F,1200-1250,Ruth Habeger Science Center 132,Justin L Blessinger
+80829,HON,202,DH1,1,Intermediate Honors Seminar,9/25,0,W,1200-1250,Beadle Hall 206,Bethany R Lutovsky
+80830,HON,202,DH2,1,Intermediate Honors Seminar,16/25,0,F,1200-1250,Beadle Hall 206,Bethany R Lutovsky
+76825,HON,392,DH1,1,ST: Thesis Discovery,0/18,0,M,1200-1250,Ruth Habeger Science Center 132,
+71177,INED,211,D01,3,South Dakota American Indian Culture and Education,22/25,0,MWF,1000-1050,Kennedy Center 120,Betsy Lea Schamber
+71214,INED,211,DT1,3,South Dakota American Indian Culture and Education,18/25,0,,,,Betsy Lea Schamber
+79813,INED,211,DT2,3,South Dakota American Indian Culture and Education,11/25,0,,,,Betsy Lea Schamber
+75755,INFA,701,DT1,3,Principles of Information Assurance,23/25,0,,,,
+79118,INFA,702,D01,3,Introduction to Data Privacy,22/25,0,TuTh,1600-1715,East Hall 010,Quentin Michael Covert
+76850,INFA,702,DT1,3,Introduction to Data Privacy,6/25,0,,,,Quentin Michael Covert
+77945,INFA,702,DT2,3,Introduction to Data Privacy,24/25,0,,,,Milinda Rambel-Stone
+79129,INFA,702,DT3,3,Introduction to Data Privacy,23/25,0,,,,Milinda Rambel-Stone
+71216,INFA,713,D01,3,Managing Security Risks,12/25,0,TuTh,0800-0915,East Hall 108,Chad R Fenner
+71218,INFA,713,DT1,3,Managing Security Risks,0/25,1,,,,Chad R Fenner
+76851,INFA,713,DT2,3,Managing Security Risks,0/25,1,,,,Chad R Fenner
+81243,INFA,713,DT3,3,Managing Security Risks,22/25,0,,,,Milinda Rambel-Stone
+71219,INFA,720,DT1,3,Incident Response,12/25,0,,,,Ken Klinner
+76852,INFA,722,DT1,3,Data Privacy Management,14/25,0,,,,
+79126,INFA,723,DT1,3,Cryptography,18/25,0,,,,Jason S Jenkins
+75404,INFA,730,DT1,1,Physical Security,11/25,0,,,,
+75405,INFA,731,DT1,1,Personnel Security,15/25,0,,,,
+75406,INFA,733,DT1,1,Vendor Management,12/25,0,,,,
+71220,INFA,735,DT1,3,Offensive Security,14/25,0,,,,Tyler Jerome Flaagan
+71221,INFA,751,D01,3,Wireless Security,16/25,0,TuTh,1300-1415,East Hall 201,Oswald Regis Oswald Adohinzin
+71223,INFA,751,DT1,3,Wireless Security,0/25,1,,,,Oswald Regis Oswald Adohinzin
+74995,INFA,751,DT2,3,Wireless Security,6/25,0,,,,
+81244,INFA,751,DT3,3,Wireless Security,23/25,0,,,,Oswald Regis Oswald Adohinzin
+79128,INFA,754,D01,3,Network Security Monitoring and Intrusion Detection,22/25,0,TuTh,1430-1545,Beacom Institute of Technology 233,Kyle Ronald Korman
+71224,INFA,754,DT1,3,Network Security Monitoring and Intrusion Detection,0/25,0,,,,Kyle Ronald Korman
+76853,INFA,754,DT2,3,Network Security Monitoring and Intrusion Detection,24/25,0,,,,Kyle Ronald Korman
+75175,INFS,601,D01,3,Information Systems,23/25,0,Tu,1500-1730,Tunheim Classroom Building 109,Insu Park
+71225,INFS,601,DT1,3,Information Systems,22/25,0,,,,Insu Park
+71234,INFS,605,D01,3,Foundations of Programming,24/25,0,Tu,1100-1330,Tunheim Classroom Building 109,Mohammad Tafiqur Rahman
+71236,INFS,605,DT1,3,Foundations of Programming,21/25,0,,,,Mohammad Tafiqur Rahman
+71238,INFS,608,D01,3,Applied Statistics,24/25,0,W,1500-1730,Tunheim Classroom Building 109,Ganga Prasad Basyal
+71240,INFS,608,DT1,3,Applied Statistics,20/25,0,,,,Ganga Prasad Basyal
+71243,INFS,614,D01,3,Introduction to Research,24/25,0,W,1400-1450,East Hall 201,Omar F El-Gayar
+71245,INFS,614,DT1,3,Introduction to Research,19/25,0,,,,Omar F El-Gayar
+71246,INFS,720,D01,3,System Analysis and Design Using Case Tools,25/25,0,M,0900-1130,Tunheim Classroom Building 109,Insu Park
+71247,INFS,720,DT1,3,System Analysis and Design Using Case Tools,24/25,0,,,,Insu Park
+75176,INFS,724,D01,3,Project & Change Management,25/25,0,Th,1100-1330,Tunheim Classroom Building 109,Cherie B Noteboom
+71431,INFS,724,DT1,3,Project & Change Management,5/25,0,,,,Cherie B Noteboom
+71436,INFS,760,D01,3,Enterprise Modeling and Data Management,23/25,0,M,1500-1730,East Hall 217,Jun Liu
+71437,INFS,760,DT1,3,Enterprise Modeling and Data Management,21/25,0,,,,Jun Liu
+71441,INFS,762,D01,3,Data Warehousing & Data Mining,24/25,0,Tu,1300-1530,Kennedy Center 122,Jun Liu
+71443,INFS,762,DT1,3,Data Warehousing & Data Mining,19/25,0,,,,Jun Liu
+71453,INFS,768,D01,3,Predictive Analytics for Decision Making,22/25,0,Th,1300-1530,Tunheim Classroom Building 111,Andy Behrens
+71454,INFS,768,DT1,3,Predictive Analytics for Decision Making,17/25,0,,,,Andy Behrens
+78028,INFS,784,D01,3,Artificial Intelligence Applications,23/25,0,Tu,1300-1530,Tunheim Classroom Building 111,David Zeng
+78029,INFS,784,DT1,3,Artificial Intelligence Applications,11/25,0,,,,David Zeng
+76195,INFS,794,DZ1,3,Internship,5/5,0,,,,
+71456,INFS,805,D01,3,Design Research Methods,23/25,0,W,1200-1250,East Hall 201,Omar F El-Gayar
+71457,INFS,805,DT1,3,Design Research Methods,15/25,0,,,,Omar F El-Gayar
+71458,INFS,810,D01,3,Qualitative Research Methods,23/25,0,M,1500-1730,Tunheim Classroom Building 109,Insu Park
+71459,INFS,810,DT1,3,Qualitative Research Methods,11/25,0,,,,Insu Park
+75711,INFS,830,D01,3,Decision Support Systems,25/25,0,W,1500-1730,East Hall 201,Jun Liu
+71462,INFS,830,DT1,3,Decision Support Systems,21/25,0,,,,Jun Liu
+71464,INFS,890,D01,1,Seminar,19/25,0,W,1100-1150,East Hall 201,Insu Park
+71465,INFS,890,DT1,1,Seminar,8/25,0,,,,Insu Park
+78106,INFS,898D,DT1,1 TO 12,Dissertation,4/5,0,,,,Insu Park
+80936,INFS,898D,DT2,1 TO 12,Dissertation,4/5,0,,,,Cherie B Noteboom
+80970,INFS,898D,DT3,1 TO 12,Dissertation,4/5,0,,,,Omar F El-Gayar
+72790,LIBM,205,D02,2,Children's Literature,24/25,0,TuTh,0830-0920,Kennedy Center 120,Jennifer Ann Munger
+80652,MCOM,161,DT1,3,Graphic Communication,22/24,0,,,,Tim Murray
+79223,MCOM,351,D01,3,Web Design,15/20,0,TuTh,0800-0915,Beadle Hall 108,Tim Murray
+81268,MCOM,351,DT1,3,Web Design,14/15,0,,,,Tim Murray
+73949,MCOM,362,D01,3,Digital Typography,16/20,0,TuTh,1600-1715,Beadle Hall 108,Tim Murray
+74418,MATH,101,D01,3,Intermediate Algebra,32/35,0,MWF,0900-0950,Ruth Habeger Science Center 113,Kim Jones
+76220,MATH,101,DT1,3,Intermediate Algebra,34/35,0,,,,
+76221,MATH,103,DT1,3,Mathematical Reasoning,32/35,0,,,,
+74446,MATH,114,D01,3,College Algebra,34/35,0,MWF,1400-1450,Ruth Habeger Science Center 135,Rich I Avery
+74447,MATH,114,D02,3,College Algebra,27/35,0,MWF,1000-1050,Ruth Habeger Science Center 113,Rich I Avery
+77192,MATH,114,D03,3,College Algebra,32/35,0,TuTh,0930-1045,Ruth Habeger Science Center 114,
+74448,MATH,114,D04,3,College Algebra,34/35,0,TuTh,1100-1215,Ruth Habeger Science Center 113,
+74449,MATH,114,DT1,3,College Algebra,16/35,0,,,,
+74982,MATH,114,DT2,3,College Algebra,33/35,0,,,,
+80700,MATH,114,DT3,3,College Algebra,35/35,0,,,,
+74424,MATH,120,D01,3,Trigonometry,31/35,0,TuTh,1100-1215,Ruth Habeger Science Center 114,Kim Jones
+80701,MATH,120,DT1,3,Trigonometry,27/35,0,,,,
+74426,MATH,121,DT1,4,Survey of Calculus,9/50,0,,,,Rich I Avery
+74428,MATH,123,D01,4,Calculus I,7/20,0,MTuWF,1300-1350,Beadle Hall 205,Rich I Avery
+80694,MATH,123,DT1,4,Calculus I,12/20,0,,,,Paul T LeVan
+74431,MATH,201,D01,3,Introduction to Discrete Mathematics,18/20,0,MWF,0900-0950,Ruth Habeger Science Center 114,
+74432,MATH,201,D02,3,Introduction to Discrete Mathematics,15/20,0,MWF,1000-1050,Ruth Habeger Science Center 114,
+75741,MATH,201,D04,3,Introduction to Discrete Mathematics,17/20,0,MWF,1100-1150,Ruth Habeger Science Center 114,Hannah L Altmann
+75740,MATH,201,D05,3,Introduction to Discrete Mathematics,19/20,0,MWF,1400-1450,Ruth Habeger Science Center 114,Justin Z Schroeder
+79237,MATH,201,D06,3,Introduction to Discrete Mathematics,20/20,0,MWF,1400-1450,Beadle Hall 206,Hannah L Altmann
+74435,MATH,201,DT1,3,Introduction to Discrete Mathematics,35/50,0,,,,Rich I Avery
+74438,MATH,281,D01,3,Introduction to Statistics,17/35,0,TuTh,1300-1415,Tunheim Classroom Building 203,Paul T LeVan
+76222,MATH,281,DH1,3,Honors: Intro to Statistics,25/30,0,TuTh,1100-1215,Ruth Habeger Science Center 121,Richard K Wicklein
+79233,MATH,281,DT1,3,Introduction to Statistics,17/30,0,,,,Richard K Wicklein
+72792,MATH,282,D01,3,Mathematics of Games,12/22,0,MWF,0900-0950,Ruth Habeger Science Center 121,Justin Z Schroeder
+80693,MATH,315,DT1,3,Linear Algebra,14/20,0,,,,Hannah L Altmann
+72795,MATH,316,D01,3,Discrete Mathematics,5/20,0,MWF,1100-1150,Ruth Habeger Science Center 121,Justin Z Schroeder
+77191,MATH,316,D02,3,Discrete Mathematics,12/20,0,MWF,0900-0950,Beadle Hall 006,Hannah L Altmann
+72797,MATH,316,DT1,3,Discrete Mathematics,13/20,0,,,,Justin Z Schroeder
+72802,MATH,341,D01,3,Math Concepts for Teachers I,22/30,0,TuTh,0800-0915,Ruth Habeger Science Center 113,Kim Jones
+72808,MATH,341,DT1,3,Math Concepts for Teachers I,19/30,0,,,,Kim Jones
+72809,MATH,342,DT1,3,Math Concepts for Teachers II,17/30,0,,,,Kim Jones
+77874,MATH,381,DT1,3,Introduction to Probability and Statistics,10/25,0,,,,Richard K Wicklein
+80698,MATH,413,D01,3,Abstract Algebra I,14/20,0,TuTh,1300-1415,Ruth Habeger Science Center 113,Richard K Wicklein
+80699,MATH,413,DT1,3,Abstract Algebra I,14/20,0,,,,Richard K Wicklein
+80695,MATH,437,D01,3,Post-Quantum Cryptography,3/20,0,MWF,1400-1450,Ruth Habeger Science Center 113,Paul T LeVan
+80696,MATH,437,DT1,3,Post-Quantum Cryptography,16/20,0,,,,Paul T LeVan
+81110,MATH,513,DT1,3,Abstract Algebra I,10/10,0,,,,Richard K Wicklein
+80697,MATH,537,DT1,3,Post-Quantum Cryptography,18/20,0,,,,Paul T LeVan
+73954,MUS,100,D01,3,Music Appreciation,19/30,0,Tu,1100-1215,Ruth Habeger Science Center 135,Kai Nunnery
+78311,MUS,100,D02,3,Music Appreciation,21/30,0,MWF,1100-1150,Beadle Hall 006,Tate Allen Carson
+74761,MUS,100,DH1,3,Honors: Music Appreciation,21/30,0,TuTh,1300-1415,Ruth Habeger Science Center 135,Daniel Gerald Spencer
+77086,MUS,100,DT1,3,Music Appreciation,10/30,0,,,,Kai Nunnery
+80653,MUS,100,DT2,3,Music Appreciation,28/30,0,,,,Daniel Gerald Spencer
+73955,MUS,108,D01,3,Musicianship I,15/18,0,TuTh,1600-1715,Tunheim Classroom Building 209,Kai Nunnery
+73956,MUS,204,D01,3,Introduction to Digital Sound Design,13/18,0,TuTh,1300-1415,Tunheim Classroom Building 209,Kai Nunnery
+80974,MUEN,122,D01,0 OR 1,Concert Band,17/20,0,,,,Kai Nunnery
+77198,PHIL,100,D01,3,Introduction to Philosophy,10/24,0,TuTh,0930-1045,Beadle Hall 303,Daniel Gerald Spencer
+76713,PHIL,100,DT1,3,Introduction to Philosophy,10/25,0,,,,Daniel Gerald Spencer
+79614,PHIL,200,DT1,3,Introduction to Logic,14/30,0,,,,
+76849,PE,100,DT1,1,Personal Fitness,23/25,0,,,,Stacy Lynn Anderson
+73958,PE,207,D01,1,Professional Preparation  Strength Training,0/25,1,MW,1300-1350,Zimmermann Hall 001A,
+75303,PE,300,D01,3,Applied Sport and Exercise Science,13/25,0,TuTh,0930-1045,Kennedy Center 123,Scott Wayne Klungseth
+75761,PE,341,D01,3,Curriculum Development and Evaluation,18/25,0,TuTh,0800-0915,Kennedy Center 122,Stacy Lynn Anderson
+77111,PE,352,DT1,3,Adapted Physical Education,20/25,0,,,,Stacy Lynn Anderson
+74439,PE,354,D01,3,Prevention and Care of Athletic Injuries,6/25,0,TuTh,1100-1215,Kennedy Center 122,Stacy Lynn Anderson
+74047,PE,453,DT1,3,Sport Psychology,9/25,0,,,,Scott Wayne Klungseth
+74048,PHYS,111,D01,3,Introduction to Physics I,20/48,0,MWF,1300-1350,Ruth Habeger Science Center 135,Peng Guo
+74049,PHYS,111L,D01,1,Introduction to Physics I Laboratory,7/24,0,Th,1300-1450,Ruth Habeger Science Center 143,Peng Guo
+74050,PHYS,111L,D02,1,Introduction to Physics I Laboratory,12/24,0,Th,1030-1225,Ruth Habeger Science Center 143,Peng Guo
+74051,PHYS,185,D01,2,Solar System Astronomy,11/24,0,MW,1400-1450,Ruth Habeger Science Center 143,
+74052,PHYS,185L,D01,1,Solar System Astronomy Lab,11/24,0,F,1400-1550,Ruth Habeger Science Center 143,
+74053,PHYS,498,D01,1 TO 12,Research,10/10,0,,,,Peng Guo
+80654,POLS,100,DT1,3,American Government,22/25,0,,,,Abbey Shimer
+73309,POLS,350,D01,3,International Relations,9/13,0,TuTh,0930-1045,Beadle Hall 304,Bill Bendix
+73310,POLS,350,DT1,3,International Relations,5/12,0,,,,Bill Bendix
+80973,POLS,492,DT1,3,Top: Great Power Comp in Cyber,9/10,0,,,,
+73311,PSYC,101,D01,3,General Psychology,17/25,0,MWF,0900-0950,Kennedy Center 104,Julia Price-Lee
+80691,PSYC,101,D02,3,General Psychology,21/25,0,MWF,1400-1450,Kennedy Center 104,Julia Price-Lee
+73313,PSYC,101,DT1,3,General Psychology,20/25,0,,,,
+80690,PSYC,101,DT2,3,General Psychology,25/25,0,,,,
+73940,SEED,295,DZ2,1,Practicum: Pre-Admission,6/10,0,,,,Cotton S Koch
+73529,SEED,302,D01,2,Sec/Mid Content Area: PE,20/25,0,MW,1000-1050,Kennedy Center 123,Stacy Lynn Anderson
+73566,SEED,302,D03,2,Sec/Mid Content Area: Math,9/10,0,MW,0800-0850,Kennedy Center 105,Kevin D Smith
+75762,SEED,302,DT1,2,Sec/Mid Content Area: Biology,24/25,0,,,,Jennifer Mae Nash
+78105,SEED,302,DT2,3,Sec/Mid Content Area: English,25/25,0,,,,William Christopher Sewell
+73567,SEED,302,DT3,2,Sec/Mid Content Area: Comp/Bus,24/25,0,,,,
+73568,SEED,303,D01,1,Sec/Mid Content Area: Math,15/15,0,F,0800-0850,Kennedy Center 105,Kevin D Smith
+75474,SEED,440,DT1,2,Classroom Management,25/25,0,,,,Jennifer Ann Munger
+73570,SEED,450,DT1,3,Reading and Content Literacy,19/25,0,,,,
+73572,SEED,488,DZ1,2 TO 16,7-12 Student Teaching,23/25,0,,,,Nicole Marie Steele
+73573,SEED,495,DZ1,1 TO 3,Pract:Pre-Student Tchg (OSEC),25/25,0,,,,Nicole Marie Steele
+73575,SOC,100,D01,3,Introduction to Sociology,19/25,0,TuTh,1300-1415,Beadle Hall 206,Viki R Johnson
+73577,SOC,100,D02,3,Introduction to Sociology,17/25,0,TuTh,1100-1215,Beadle Hall 206,Viki R Johnson
+73579,SOC,100,DT1,3,Introduction to Sociology,30/30,0,,,,
+75739,SOC,240,DT1,3,The Sociology of Rural America,26/30,0,,,,
+73587,SOC,285,DT1,3,Society and Technology,19/30,0,,,,
+77850,SOC,370,DT1,3,People and Their Cultures,8/25,0,,,,Viki R Johnson
+76002,SOC,492,DT1,3,ST: Society and Education,15/18,0,,,,Viki R Johnson
+73589,SPAN,101,DT1,4,Introductory Spanish I,19/30,0,,,,
+73846,SPED,100,DT1,3,Introduction to Persons With Exceptionalities,24/25,0,,,,Sandi Steinhoff-Muller
+73847,SPED,100,DT2,3,Introduction to Persons With Exceptionalities,19/25,0,,,,Sandi Steinhoff-Muller
+76215,SPED,410,DT1,3,Behavior Management of Exceptional Children,3/25,0,,,,Jennifer Ann Munger
+77925,SPED,413,DT1,3,Serving Students with Severe Disabilities,10/25,0,,,,Sandi Steinhoff-Muller
+79493,SPED,417,D01,3,Vocational-Transitional Programming,22/25,0,TuTh,1100-1215,Kennedy Center 105,Sandi Steinhoff-Muller
+75311,SPED,417,DT1,3,Vocational-Transitional Programming,3/25,0,,,,Sandi Steinhoff-Muller
+78439,SPED,417,DT2,3,Vocational-Transitional Programming,17/25,0,,,,Sandi Steinhoff-Muller
+75306,SPED,431,D01,3,Identification and Assessment in Special Education,16/25,0,TuTh,0930-1045,Kennedy Center 120,Jennifer Ann Munger
+75749,SPED,431,DT1,3,Identification and Assessment in Special Education,1/25,0,,,,Jennifer Ann Munger
+79499,SPED,431,DT2,3,Identification and Assessment in Special Education,13/25,0,,,,Jennifer Ann Munger
+79676,SPED,442,D01,2,Serving Students With Learning Disabilities,24/25,0,TuTh,,,Jennifer Ann Munger
+78365,SPED,442,DT1,2,Serving Students With Learning Disabilities,20/25,0,,,,Jennifer Ann Munger
+79677,SPED,443,D01,1,Serving Students With Learning Disabilities Practicum,24/25,0,TuTh,,,Jennifer Ann Munger
+78366,SPED,443,DZ1,1,Serving Students With Learning Disabilities Practicum,19/25,0,,,,Jennifer Ann Munger
+79494,SPED,460,D01,3,Family Systems and Professional Collaboration,8/25,0,TuTh,1230-1345,Kennedy Center 105,Sandi Steinhoff-Muller
+74225,SPED,460,DT1,3,Family Systems and Professional Collaboration,0/25,2,,,,Sandi Steinhoff-Muller
+73848,SPED,465,DT1,3,Computer Applications Special Education,18/25,0,,,,Megan Nicole Schuh
+73849,SPED,488,DZ1,1 TO 16,Student Teaching in Special Education,10/10,0,,,,Nicole Marie Steele
+76177,THEA,201,D01,3,Film Appreciation,9/30,0,MWF,0900-0950,Beadle Hall 206,Kelly D MacLeod
+77085,THEA,201,DT1,3,Film Appreciation,0/30,1,,,,Joseph A Staudenbaur
+76828,THEA,272,D01,1,Drama Activities,24/25,0,,,,Kelly D MacLeod
