@@ -2,3 +2,4 @@ venv__pycache__/
 *.pyc
 __pycache__/
 *.backup
+.env
