@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           port: '22'
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          timeout: 300  # if we take over 5 minutes, there's a problem...
+          timeout: '300s'  # if we take over 5 minutes, there's a problem...
           # ref_name is the branch name, main for this workflow
           # .env is copied only if missing to avoid accidental overwrite.
           script: |
