@@ -3,7 +3,7 @@ Communications Server - Listens for Excel workbook requests
 Author: Muhammad Bhutta
 Feature: Communications to/from Server
 Team: Lindsey Crow, Tyler Hardy
-Updated: March 29, 2026 - Integrated with Anto's solver
+Updated: April 1, 2026 - Added validation endpoint
 """
 from flask import Flask, request, jsonify
 import logging
@@ -158,6 +158,48 @@ def solve():
     
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}", exc_info=True)
+        return jsonify({
+            "status": "error",
+            "message": str(e),
+            "timestamp": datetime.now().isoformat()
+        }), 500
+
+@app.route('/validate', methods=['POST'])
+def validate():
+    """Validation endpoint - checks for constraint violations before solver runs"""
+    try:
+        # Get JSON data from request
+        data = request.get_json(force=True, silent=True)
+        
+        if data is None:
+            return jsonify({"status": "error", "message": "Invalid JSON"}), 400
+        
+        if not data:
+            return jsonify({"status": "warning", "message": "Empty request"}), 200
+        
+        # Extract CSV data (same as /solve)
+        sections_csv = data.get('sections_csv', '')
+        time_blocks_csv = data.get('time_blocks_csv', '')
+        preferences_csv = data.get('preferences_csv', '')
+        workload_csv = data.get('workload_csv', '')
+        
+        logger.info("Processing validation request")
+        
+        # TODO: Add validation logic in next step
+        # For now, return empty violations (placeholder)
+        violations = []
+        
+        # Return detailed response
+        return jsonify({
+            "status": "success",
+            "has_violations": len(violations) > 0,
+            "violation_count": len(violations),
+            "violations": violations,
+            "timestamp": datetime.now().isoformat()
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Validation error: {str(e)}", exc_info=True)
         return jsonify({
             "status": "error",
             "message": str(e),
