@@ -35,11 +35,8 @@ jobs:
           script: |
             set -eux
             cd "${{ secrets.PROJECT_PATH }}"
-            if [ ! -f .env ] && [ -f .env.example ]; then
-              cp .env.example .env
-              echo "Copied .env.example to .env"
-            elif [ ! -f .env ]; then
-              echo "WARNING: .env not found and .env.example not present" >&2
+            if [ ! -f .env ]; then
+              echo "Error: .env not found" >&2
               exit 1
             else
               echo ".env already exists"
