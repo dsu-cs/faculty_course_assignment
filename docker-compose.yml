@@ -1,15 +1,18 @@
+---
 services:
   postgres:
-    # Reference: https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+    # https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
     image: postgres:latest
     container_name: postgres
-    # we won't expose ports, containers will communicate via internal docker network
+    # we won't expose ports
+    # containers will communicate via internal docker network
     env_file:
       - .env
     networks:
       - backend
     volumes:
       - postgres_data:/var/lib/postgresql
+      - backups:/backups
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 1s
@@ -18,11 +21,36 @@ services:
       start_period: 10s
     restart: unless-stopped
 
+  django:
+    build:
+      context: webserver/
+      dockerfile: ./compose/local/django/Dockerfile
+    image: django
+    container_name: django
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    volumes:
+      - /app/.venv
+      - ./webserver:/app:z
+    env_file:
+      - .env
+    ports:
+      - '8000:8000'
+    command: /start
 
   solver-api:
     build:
-      context: Solver
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Solver/Dockerfile
     container_name: solver-api
     depends_on:
       postgres:
@@ -37,7 +65,11 @@ services:
     volumes:
       - solver_output:/app/output
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health').read()"]
+      test:
+        - "CMD"
+        - "python"
+        - "-c"
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health').read()"
       interval: 30s
       timeout: 5s
       retries: 3
@@ -53,5 +85,7 @@ networks:
 volumes:
   postgres_data:
     name: postgres
+  backups:
+    name: backups
   solver_output:
     name: solver-output

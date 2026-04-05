@@ -1,0 +1,51 @@
+---
+name: Deploy to VM
+
+description: Re-deploy on updates to `main` to our VM over SSH.
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/cd.yml'
+      - 'webserver/**'
+      - 'solver_server/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # https://github.com/appleboy/ssh-action
+      - name: Deploy to remote server via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          port: '22'
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          timeout: 300  # if we take over 5 minutes, there's a problem...
+          # ref_name is the branch name, main for this workflow
+          # .env is copied only if missing to avoid accidental overwrite.
+          script: |
+            set -eux
+            cd "${{ secrets.PROJECT_PATH }}"
+            if [ ! -f .env ]; then
+              echo "Error: .env not found" >&2
+              exit 1
+            else
+              echo ".env already exists"
+            fi
+            git fetch --all --prune
+            git checkout --force "${{ github.ref_name }}"
+            git pull origin "${{ github.ref_name }}"
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose pull
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose build
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose up -d \
+              --force-recreate
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose ps

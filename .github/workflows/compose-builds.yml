@@ -1,0 +1,55 @@
+---
+name: Docker Compose Validation
+description: Build & Run the Docker compose stack and pass health checks.
+
+on:
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/compose-builds.yml'
+  push:
+    branches: ['main']
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/compose-builds.yml'
+
+jobs:
+  validate:
+    name: Compose validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # https://github.com/docker/setup-docker-action
+      - name: Set up Docker Engine
+        uses: docker/setup-docker-action@v5
+        with:
+          version: latest
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      # https://github.com/marketplace/actions/docker-setup-compose
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v2
+        with:
+          version: latest
+          cache-binary: true
+
+      - name: Build containers
+        run: docker compose build
+
+      - name: Start services
+        run: docker compose up -d
+
+      # https://github.com/marketplace/actions/docker-compose-health-check
+      - name: Wait for health checks
+        uses: jaracogmbh/docker-compose-health-check-action@v1.0.0
+        with:
+          max-retries: 30
+          retry-interval: 10
+          compose-file: docker-compose.yml
+          skip-exited: false
+          skip-no-healthcheck: false
