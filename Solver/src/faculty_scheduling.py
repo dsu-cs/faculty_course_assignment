@@ -53,9 +53,10 @@ DEFAULT_LOG_PATH         = "solver_log.txt"
 
 # ── Workload configuration ────────────────────────────────────────────
 FACULTY_MAX_WORKLOAD    = 30   # soft cap — total units per faculty per semester
-OVERLOAD_PENALTY        = 10   # preference points lost per unit over cap
+FACULTY_MIN_WORKLOAD    = 1
+OVERLOAD_PENALTY        = 1000   # preference points lost per unit over cap
 DEFAULT_COURSE_WORKLOAD =  4   # fallback units per section if current_workload missing
-
+DEFAULT_EMPTY_COURSE_WORKLOAD = 1
 # Solver time limit — increase for larger problems
 SOLVER_TIME_LIMIT_SECONDS = 60.0
 
@@ -121,6 +122,7 @@ HEADER_ALIASES: dict[str, str] = {
     "room":             "room",
     "location":         "room",
     "building":         "room",
+    "time":             "time_range",   # combined '1300-1415' format
 
     # ── Workload placeholders ─────────────────────────────────────────
     # Update the LEFT side when real column names are confirmed.
@@ -247,6 +249,29 @@ def _parse_seats(raw) -> tuple[int, int]:
         return int(s), 0
     except ValueError:
         return 0, 0
+
+def _parse_time_range(raw: str | None) -> tuple[time | None, time | None]:
+    """
+    Parse a combined time range string '1300-1415' into (start, end) times.
+    Returns (None, None) if missing or unparseable.
+    """
+    if not raw or not str(raw).strip():
+        return None, None
+    s = str(raw).strip()
+    if "-" not in s:
+        return None, None
+    parts = s.split("-", 1)
+    try:
+        def _hhmm(t: str) -> time:
+            t = t.strip()
+            if ":" in t:
+                h, m = map(int, t.split(":"))
+            else:
+                h, m = int(t[:-2]), int(t[-2:])
+            return time(h, m)
+        return _hhmm(parts[0]), _hhmm(parts[1])
+    except (ValueError, IndexError):
+        return None, None
 
 def _times_overlap(a_start: time, a_end: time,
                    b_start: time, b_end: time) -> bool:
@@ -593,7 +618,7 @@ def safe_int(val, default: int = 0) -> int:
         except (ValueError, TypeError):
             return default
 
-def _build_section(sec_data: dict, time_data: dict | None) -> Section:
+def _build_section(sec_data: dict | None) -> Section:
     """
     Combine a Sections tab row and its matching Time tab row (if any)
     into a single Section object.
@@ -607,13 +632,14 @@ def _build_section(sec_data: dict, time_data: dict | None) -> Section:
     max_seats     = _max or max(0, safe_int(sec_data.get("max_seats")))
 
     # Parse time fields — None if no time data available
-    days_raw  = time_data.get("days")  if time_data else None
+    days_raw = str(sec_data.get("days") or "").strip()
+    days     = _parse_days(days_raw)
+    
+    time_range_raw = sec_data.get("time_range")
+    start, end = _parse_time_range(time_range_raw)
 
 
-    days      = _parse_days(days_raw)
-    start     = _parse_time(time_data.get("start_time")) if time_data else None
-    end       = _parse_time(time_data.get("end_time"))   if time_data else None
-    room      = str(time_data.get("room") or "").strip() or None if time_data else None
+    room = str(sec_data.get("room") or "").strip() or None
 
     return Section(
         crn           = sec_data.get("crn", ""),
@@ -659,7 +685,7 @@ def load_all(
     #sections_path:    str = DEFAULT_SECTIONS_PATH,
 
     sections_path:    str | None = DEFAULT_SECTIONS_PATH, #  MAKING IT OPTIONAL FOR CD
-    time_blocks_path: str = DEFAULT_TIME_PATH,
+    time_blocks_path: str | None = DEFAULT_TIME_PATH, 
     preferences_path: str = DEFAULT_PREFERENCES_PATH,
     workload_path:    str | None = DEFAULT_WORKLOAD_PATH,
 ) -> SchedulingData:
@@ -675,9 +701,7 @@ def load_all(
       5. Read preferences.csv → faculty list, scores, exclusions
       6. Build conflict pairs from regular sections only
     """
-    # ── Step 1 & 2: Read CSVs ────────────────────────────────────────
-    time_by_crn = load_time_csv(time_blocks_path)
-
+    
     try:
         sections_by_crn = load_sections_csv(sections_path)
     except (FileNotFoundError, TypeError):
@@ -701,11 +725,10 @@ def load_all(
     all_sections_ordered: list[Section] = [] 
 
     for crn, sec_data in sections_by_crn.items():
-        time_data = time_by_crn.get(crn)
-        section   = _build_section(sec_data, time_data)
+        section   = _build_section(sec_data)
         all_sections_ordered.append(section)
 
-        days_raw = str((time_data or {}).get("days") or "").strip().lower()
+        days_raw = str(sec_data.get("days") or "").strip()
 
         if days_raw in {"internet", "online"}:
             internet.append(section)
@@ -731,14 +754,8 @@ def load_all(
     section_workload: dict[str, int] = {}
     for sec in all_sections:
         if sec.workload_if_full is not None and sec.workload_per_student is not None:
-            if sec.current_seats > 0 and sec.max_seats > 0 and sec.current_seats >= sec.max_seats:
-                # class is full — use workload_if_full directly
-                units = int(sec.workload_if_full)
-            else:
-                # not full — scale by enrollment
-                units = round(sec.workload_per_student * sec.current_seats)
-            # floor at 1 so empty sections don't get 0 workload
-            units = max(units, 1)
+            units = int(min(sec.workload_if_full, sec.workload_per_student * sec.current_seats))
+            units = max(units, DEFAULT_EMPTY_COURSE_WORKLOAD)
         elif sec.workload_if_full is not None:
             units = int(sec.workload_if_full)
         else:
@@ -752,7 +769,7 @@ def load_all(
         research_units = load_workload_csv(workload_path)
     except (FileNotFoundError, TypeError):
         research_units = {}
-    workload = {f: (0, max(0,FACULTY_MAX_WORKLOAD - research_units.get(f,0))) for f in faculty}
+    workload = {f: (FACULTY_MIN_WORKLOAD, max(0,FACULTY_MAX_WORKLOAD - research_units.get(f,0))) for f in faculty}
 
     print(f"[Loader] regular={len(regular)} | "
           f"single_day={len(single_day)} | "
@@ -768,10 +785,10 @@ def load_all(
     sections_to_solve = [s.crn for s in regular] + [s.crn for s in standalone_internet]
 
     cross_listed = [s for s in internet if (s.sub, s.num, s.desc) in regular_keys]
-    if cross_listed:
+    '''if cross_listed:
         print(f"[Loader] cross_listed={len(cross_listed)} internet twins filtered from OR")
         for s in cross_listed:
-            print(f"         {s.crn}  {s.sub} {s.num} {s.seq}  {s.desc}")
+            print(f"         {s.crn}  {s.sub} {s.num} {s.seq}  {s.desc}")'''
 
     return SchedulingData(
         regular          = regular,
@@ -981,6 +998,15 @@ def validate(assignment: dict[str, str], data: SchedulingData) -> ValidationRepo
             report.warn(f"W2 Workload: '{f}' assigned {actual} units, "
                         f"soft cap is {mx} units (overload penalty applied).")
 
+    # W3 — Low workload warning (below expected minimum)
+    EXPECTED_MIN = 28
+    for f in data.faculty:
+        actual = load_units[f]
+        if actual < EXPECTED_MIN:
+            report.warn(f"W3 Low workload: '{f}' assigned {actual} units "
+                        f"(below {EXPECTED_MIN} expected minimum).")
+        
+
     # C4 — No faculty member can teach two sections that overlap in time
     for s1, s2 in data.conflict_pairs:
         f1 = assignment.get(s1)
@@ -1009,7 +1035,7 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
     """Print a formatted human-readable schedule to the terminal."""
 
 
-    
+    '''
     print(f"\n{'═' * 62}")
     print("  SCHEDULE SUMMARY")
     print(f"{'═' * 62}")
@@ -1051,7 +1077,7 @@ def print_summary(assignment: dict[str, str], data: SchedulingData) -> None:
         status = "OK" if units <= mx else f"+{units - mx} over cap"
         print(f"  {f:<25} {units:>6}  {sects:>9}  {mx:>4}  {research:>9}  {status}")
 
-    
+    '''
 
     unassigned = len(data.single_day) + len(data.special)
     print(f"\n  Sections not sent to OR (no assignment generated):")
